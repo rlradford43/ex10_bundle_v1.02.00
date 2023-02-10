@@ -1,0 +1,7 @@
+{
+    "terminal.integrated.scrollback": 3000,
+    "files.associations": {
+        "limits": "c",
+        "typeinfo": "c"
+    }
+}
