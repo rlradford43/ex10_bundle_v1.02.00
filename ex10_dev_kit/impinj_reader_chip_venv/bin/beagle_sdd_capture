@@ -1,0 +1,12 @@
+#!/home/pi/ex10_bundle_v1.02.00/ex10_dev_kit/impinj_reader_chip_venv/bin/python3
+# EASY-INSTALL-ENTRY-SCRIPT: 'ex10-dev-kit','console_scripts','beagle_sdd_capture'
+__requires__ = 'ex10-dev-kit'
+import re
+import sys
+from pkg_resources import load_entry_point
+
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
+    sys.exit(
+        load_entry_point('ex10-dev-kit', 'console_scripts', 'beagle_sdd_capture')()
+    )

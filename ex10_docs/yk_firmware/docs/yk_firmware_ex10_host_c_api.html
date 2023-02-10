@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Impinj Reader Chip C Host API &#8212; Impinj Reader Chip SDK</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinxdoc.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Ex10Reader Layer" href="yk_firmware_ex10_host_c_reader_layer.html" />
+    <link rel="prev" title="Impinj Reader Chip Host API Overview" href="yk_firmware_ex10_host_api_overview.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="yk_firmware_ex10_host_c_reader_layer.html" title="Ex10Reader Layer"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="yk_firmware_ex10_host_api_overview.html" title="Impinj Reader Chip Host API Overview"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Impinj Reader Chip SDK</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Impinj Reader Chip C Host API</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="impinj-reader-chip-c-host-api">
+<span id="ex10-api-host-c-api"></span><h1>Impinj Reader Chip C Host API<a class="headerlink" href="#impinj-reader-chip-c-host-api" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="yk_firmware_ex10_host_c_reader_layer.html">Ex10Reader Layer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="yk_firmware_ex10_host_c_reader_layer.html#reverse-power-threshold-detection">Reverse Power Threshold Detection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="yk_firmware_ex10_host_c_power_modes_layer.html">Ex10PowerModes Layer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="yk_firmware_ex10_host_c_power_modes_layer.html#measured-power-modes-current-consumption">Measured Power Modes current consumption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="yk_firmware_ex10_host_c_power_modes_layer.html#power-modes-porting-considerations">Power Modes porting considerations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="yk_firmware_ex10_host_c_power_modes_layer.html#settling-time-delays">Settling time delays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="yk_firmware_ex10_host_c_power_modes_layer.html#power-mode-state-consistency-with-the-ex10reader-layer">Power Mode state consistency with the Ex10Reader layer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="yk_firmware_ex10_host_c_ops_layer.html">Ex10Ops Layer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="yk_firmware_ex10_host_c_ops_layer.html#sdk-aggregate-operations">SDK Aggregate Operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="yk_firmware_ex10_host_c_ops_layer.html#cwon">CwOn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="yk_firmware_ex10_host_c_ops_layer.html#cwoff">CwOff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="yk_firmware_ex10_host_c_ops_layer.html#ramptransmitpower">RampTransmitPower</a></li>
+<li class="toctree-l3"><a class="reference internal" href="yk_firmware_ex10_host_c_ops_layer.html#startetsiburst">StartEtsiBurst</a></li>
+<li class="toctree-l3"><a class="reference internal" href="yk_firmware_ex10_host_c_ops_layer.html#inventory">Inventory</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html">Ex10Protocol Layer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yk_firmware_ex10_host_c_commands_layer.html">Ex10Commands Layer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yk_firmware_ex10_host_c_transactor_layer.html">Ex10Transactor Layer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yk_firmware_ex10_host_c_helpers.html">Ex10Helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html">EventFifo Packet Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#byte-span-type">Byte Span Type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#region-specific-types">Region Specific Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yk_firmware_ex10_host_c_gen2_commands.html">Gen2 Access Commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="yk_firmware_ex10_host_c_gen2_commands.html#gen2-tx-command-manager">Gen2 Tx Command Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="yk_firmware_ex10_host_c_gen2_commands.html#gen2-tx-command-manager-usage">Gen2 Tx Command Manager Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="yk_firmware_ex10_host_c_gen2_commands.html#step-1-setup">Step 1 – Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="yk_firmware_ex10_host_c_gen2_commands.html#step-2-error-management">Step 2 – Error Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="yk_firmware_ex10_host_c_gen2_commands.html#step-3-adding-commands">Step 3 – Adding commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="yk_firmware_ex10_host_c_gen2_commands.html#step-4-ex10-device-side-management">Step 4 – Ex10 device side management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="yk_firmware_ex10_host_c_gen2_commands.html#step-5-enabling-commands">Step 5 – Enabling commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="yk_firmware_ex10_host_c_gen2_commands.html#step-6-running-commands">Step 6 – Running commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="yk_firmware_ex10_host_c_gen2_commands.html#select">Select:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="yk_firmware_ex10_host_c_gen2_commands.html#access">Access:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html">Impinj Reader Chip Register Accessors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yk_firmware_ex10_host_c_aggregate_op_builder.html">Ex10Ops Aggregate Op Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yk_firmware_ex10_host_c_sjc_accessor.html">Ex10Ops SjcAccessor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yk_firmware_ex10_host_c_board_specific.html">Board Specific Implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yk_firmware_ex10_host_c_board_initialization.html">Board Initialization</a></li>
+</ul>
+</div>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="../../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="yk_firmware_ex10_host_api_overview.html"
+                        title="previous chapter">Impinj Reader Chip Host API Overview</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="yk_firmware_ex10_host_c_reader_layer.html"
+                        title="next chapter">Ex10Reader Layer</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="yk_firmware_ex10_host_c_reader_layer.html" title="Ex10Reader Layer"
+             >next</a></li>
+        <li class="right" >
+          <a href="yk_firmware_ex10_host_api_overview.html" title="Impinj Reader Chip Host API Overview"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Impinj Reader Chip SDK</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Impinj Reader Chip C Host API</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, Impinj, Inc..
+    </div>
+  </body>
+</html>

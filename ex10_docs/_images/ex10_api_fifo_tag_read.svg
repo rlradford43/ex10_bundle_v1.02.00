@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg baseProfile="full" height="210px" version="1.1" width="650px" xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink"><defs /><style type="text/css"><![CDATA[.text-monospace {
+    font-size:12px;
+    font-family:monospace;
+}
+.box-field {
+    stroke:#002b49;
+    stroke-width:1;
+    fill:#67cfe3;
+    fill-opacity:1;
+}
+.box-padding {
+    fill:#ieaeff2;
+    fill-opacity:1;
+}
+]]></style><text class="text-monospace" x="80" y="20">0</text><text class="text-monospace" x="230" y="20">1</text><text class="text-monospace" x="380" y="20">2</text><text class="text-monospace" x="530" y="20">3</text><text class="text-monospace" x="20" y="50"> 0</text><text class="text-monospace" x="20" y="80"> 4</text><text class="text-monospace" x="20" y="110"> 8</text><text class="text-monospace" x="10" y="140">12</text><text class="text-monospace" x="10" y="170">16</text><text class="text-monospace" x="10" y="200">20</text><rect class="box-field" height="30" width="150" x="40" y="30" /><text class="text-monospace" x="50" y="50">packet_length</text><rect class="box-field" height="30" width="150" x="190" y="30" /><text class="text-monospace" x="210" y="50">packet_type</text><rect class="box-field" height="30" width="300" x="340" y="30" /><text class="text-monospace" x="475" y="50">sha</text><rect class="box-field" height="30" width="600" x="40" y="60" /><text class="text-monospace" x="290" y="80">us_counter</text><rect class="box-field" height="30" width="300" x="40" y="90" /><text class="text-monospace" x="170" y="110">rssi</text><rect class="box-field" height="30" width="300" x="340" y="90" /><text class="text-monospace" x="420" y="110">rf_phase_begin</text><rect class="box-field" height="30" width="300" x="40" y="120" /><text class="text-monospace" x="130" y="140">rf_phase_end</text><rect class="box-field" height="30" width="300" x="340" y="120" /><text class="text-monospace" x="425" y="140">halted_handle</text><rect class="box-field" height="30" width="150" x="40" y="150" /><text class="text-monospace" x="95" y="170">type</text><rect class="box-field" height="30" width="150" x="190" y="150" /><text class="text-monospace" x="215" y="170">tid_offset</text><rect class="box-field" height="30" width="150" x="340" y="150" /><text class="text-monospace" x="350" y="170">halted_on_tag</text><rect class="box-field" height="30" width="150" x="490" y="150" /><text class="text-monospace" x="515" y="170">packet_rfu</text><rect class="box-field" height="30" width="600" x="40" y="180" /><text class="text-monospace" x="250" y="200">dynamic_data_start</text></svg>

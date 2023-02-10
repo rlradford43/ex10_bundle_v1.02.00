@@ -1,0 +1,4 @@
+[console_scripts]
+beagle_sdd_capture = utils.beagle_sdd_capture:main
+r807 = utils.r807:main
+

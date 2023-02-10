@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Impinj Reader Chip Host API Overview &#8212; Impinj Reader Chip SDK</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinxdoc.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Impinj Reader Chip C Host API" href="yk_firmware_ex10_host_c_api.html" />
+    <link rel="prev" title="Impinj Reader Chip SDK Overview" href="yk_firmware_ex10_overview.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="yk_firmware_ex10_host_c_api.html" title="Impinj Reader Chip C Host API"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="yk_firmware_ex10_overview.html" title="Impinj Reader Chip SDK Overview"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Impinj Reader Chip SDK</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Impinj Reader Chip Host API Overview</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="impinj-reader-chip-host-api-overview">
+<span id="ex10-api-host-api-overview"></span><h1>Impinj Reader Chip Host API Overview<a class="headerlink" href="#impinj-reader-chip-host-api-overview" title="Permalink to this headline">¶</a></h1>
+<p>The Impinj reader chip comes with a C source library and examples for
+the reader host device. The library provides multiple layers of abstraction of the
+Impinj reader chip wireline. These layers, seen in <a class="reference internal" href="yk_firmware_ex10_overview.html#host-api-5"><span class="std std-numref">Fig. 1</span></a>, provide
+multiple levels of increasing complexity to the host application developer to
+choose from when designing a custom host application.</p>
+<figure class="align-default" id="id1">
+<span id="host-api-5"></span><img alt="../../_images/host_api_5.svg" src="../../_images/host_api_5.svg" /><figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Host API Overview</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<section id="impinj-reader-chip-host-api-layers-overview">
+<h2>Impinj Reader Chip Host API Layers Overview<a class="headerlink" href="#impinj-reader-chip-host-api-layers-overview" title="Permalink to this headline">¶</a></h2>
+<p>The Impinj Reader Chip Host API provides a high-level interface for basic
+RAIN RFID functionality. It consists of 3 layers, with each successive layer
+implementing lower level functionality than the layer above it. Specifically,
+the layers are Ex10Reader at the top, followed by Ex10Ops and Ex10Protocol at the bottom.
+The Ex10Protcol layer interfaces directly with the Impinj reader chip wireline as shown in
+<a class="reference internal" href="yk_firmware_ex10_overview.html#host-api-6"><span class="std std-numref">Fig. 2</span></a> below.
+Because the host library is distributed as source and the wireline specification is
+provided, host application developers can use the API as-is or modify the API at
+any layer.</p>
+<figure class="align-default" id="id2">
+<span id="host-api-6"></span><img alt="../../_images/host_api_6.svg" src="../../_images/host_api_6.svg" /><figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Host API Layers</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>An Ex10Interfaces object provides access to the API layers
+(reader/ops/protocol objects). The ‘ex10_typical_board_setup’ function in the
+‘include/ex10_api/board_init.h’ file is used to create and initialize an
+instance of the Ex10Interfaces object. The API layers provided by the
+Ex10Interfaces object are described in the following sections.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="../../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Impinj Reader Chip Host API Overview</a><ul>
+<li><a class="reference internal" href="#impinj-reader-chip-host-api-layers-overview">Impinj Reader Chip Host API Layers Overview</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="yk_firmware_ex10_overview.html"
+                        title="previous chapter">Impinj Reader Chip SDK Overview</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="yk_firmware_ex10_host_c_api.html"
+                        title="next chapter">Impinj Reader Chip C Host API</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="yk_firmware_ex10_host_c_api.html" title="Impinj Reader Chip C Host API"
+             >next</a></li>
+        <li class="right" >
+          <a href="yk_firmware_ex10_overview.html" title="Impinj Reader Chip SDK Overview"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Impinj Reader Chip SDK</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Impinj Reader Chip Host API Overview</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, Impinj, Inc..
+    </div>
+  </body>
+</html>

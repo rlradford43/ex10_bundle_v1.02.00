@@ -1,0 +1,4 @@
+crcmod
+numpy
+pyyaml
+requests

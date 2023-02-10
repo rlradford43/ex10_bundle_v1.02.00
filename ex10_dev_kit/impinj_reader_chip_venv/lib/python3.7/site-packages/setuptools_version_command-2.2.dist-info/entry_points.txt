@@ -1,0 +1,7 @@
+[distutils.setup_keywords]
+version_command = setuptools_version_command:validate_version_command_keyword
+
+[egg_info.writers]
+version.txt = setuptools_version_command:write_metadata_value
+version_full.txt = setuptools_version_command:write_metadata_value
+

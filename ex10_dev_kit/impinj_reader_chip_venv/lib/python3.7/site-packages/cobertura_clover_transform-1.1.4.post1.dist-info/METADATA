@@ -1,0 +1,21 @@
+Metadata-Version: 2.0
+Name: cobertura-clover-transform
+Version: 1.1.4.post1
+Summary: Tools for transforming Cobertura test coverage XML into Clover-style XML
+Home-page: http://github.com/cwacek/cobertura-clover-transform
+Author: Chris Wacek
+Author-email: cwacek@gmail.com
+License: MIT
+Keywords: cobertura coverage test clover xml
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Testing
+Requires-Dist: lxml
+
+UNKNOWN
+
+

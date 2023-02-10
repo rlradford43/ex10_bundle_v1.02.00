@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Board Initialization &#8212; Impinj Reader Chip SDK</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinxdoc.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Impinj Reader Chip SDK Event Packet Processing" href="yk_firmware_ex10_host_event_packet_processing.html" />
+    <link rel="prev" title="Board Specific Implementation" href="yk_firmware_ex10_host_c_board_specific.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="yk_firmware_ex10_host_event_packet_processing.html" title="Impinj Reader Chip SDK Event Packet Processing"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="yk_firmware_ex10_host_c_board_specific.html" title="Board Specific Implementation"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Impinj Reader Chip SDK</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="yk_firmware_ex10_host_c_api.html" accesskey="U">Impinj Reader Chip C Host API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Board Initialization</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="board-initialization">
+<span id="ex10-api-host-c-api-board-init"></span><h1>Board Initialization<a class="headerlink" href="#board-initialization" title="Permalink to this headline">¶</a></h1>
+<p>The board initialization provides a set of function calls for:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Initializing all of the SDK software modules.</p></li>
+<li><p>Powering up the the Impinj Reader Chip.</p></li>
+<li><p>Confguring the Impinj Reader Chip.</p></li>
+</ul>
+</div></blockquote>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv426ex10_get_board_init_statusv">
+<span id="_CPPv326ex10_get_board_init_statusv"></span><span id="_CPPv226ex10_get_board_init_statusv"></span><span id="ex10_get_board_init_status__void"></span><span class="target" id="board__init_8h_1a51496be11aa56aadd248bd85a2d5b68b"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">Ex10BoardInitStatus</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ex10_get_board_init_status</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426ex10_get_board_init_statusv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>If an error was encountered during board initialization, it can be returned via this function call. </p>
+<p>When this function is called, the board_init.c internal struct BoardInitError is cleared.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>struct BoardInitError The error status structure that contains any error encountered during board initialization. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420ex10_board_gpio_initPK17Ex10GpioInterface">
+<span id="_CPPv320ex10_board_gpio_initPK17Ex10GpioInterface"></span><span id="_CPPv220ex10_board_gpio_initPK17Ex10GpioInterface"></span><span id="ex10_board_gpio_init__Ex10GpioInterfaceCP"></span><span class="target" id="board__init_8h_1ac7a7c3b1d9999a7e7d03b37c50653372"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ex10_board_gpio_init</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_board_specific.html#_CPPv417Ex10GpioInterface" title="Ex10GpioInterface"><span class="n"><span class="pre">Ex10GpioInterface</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">gpio_if</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420ex10_board_gpio_initPK17Ex10GpioInterface" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Initialize the gpio_driver pins required for Impinj Reader Chip operation. </p>
+<p>The following schematic pins are set as output direction, with the levels: PWR_EN deassert, active high, pin level = 0 ENABLE deassert, active high, pin level = 0 RESET_N assert, active low, pin level = 0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>gpio_if</strong> – The instance of the GpioInterface. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424ex10_typical_board_setup8uint32_tPKc">
+<span id="_CPPv324ex10_typical_board_setup8uint32_tPKc"></span><span id="_CPPv224ex10_typical_board_setup8uint32_tPKc"></span><span id="ex10_typical_board_setup__uint32_t.cCP"></span><span class="target" id="board__init_8h_1ab1a7ddaa6685a3fa467314cfa5a04c2a"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414Ex10Interfaces" title="Ex10Interfaces"><span class="n"><span class="pre">Ex10Interfaces</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ex10_typical_board_setup</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">spi_clock_hz</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">region_name</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424ex10_typical_board_setup8uint32_tPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Initialize the Impinj Reader Chip and its associated Ex10 host interfaces in a typical configuration for use in a reader application. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>spi_clock_hz</strong> – The SPI interface clokc speed in Hz. </p></li>
+<li><p><strong>region_name</strong> – The region in which the reader will operate. i.e. “FCC” or “ETSI”</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>struct <a class="reference internal" href="#struct_ex10_interfaces"><span class="std std-ref">Ex10Interfaces</span></a> The Ex10 interface struct. This interface contains pointers to each of the Ex10 interface objects. If the interface fails to initialize then each object pointer is is set to NULL. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv427ex10_bootloader_board_setup8uint32_t">
+<span id="_CPPv327ex10_bootloader_board_setup8uint32_t"></span><span id="_CPPv227ex10_bootloader_board_setup8uint32_t"></span><span id="ex10_bootloader_board_setup__uint32_t"></span><span class="target" id="board__init_8h_1a69a6038364271d818a9681b5f486a7fa"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv412Ex10Protocol" title="Ex10Protocol"><span class="n"><span class="pre">Ex10Protocol</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ex10_bootloader_board_setup</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">spi_clock_hz</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427ex10_bootloader_board_setup8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Initialize the Impinj Reader Chip and its associated Ex10 host interfaces in a minimal configuration for communication with the bootloader. </p>
+<p>This initialization profile is primarily used for uploading new firmware images into the Impinj Reader Chip.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>spi_clock_hz</strong> – The SPI interface clokc speed in Hz. This value must be 1 MHz or less.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>struct <a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#struct_ex10_protocol"><span class="std std-ref">Ex10Protocol</span></a> const* A pointer the Ex10 protocol object. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv429ex10_typical_board_uart_setup15AllowedBpsRates">
+<span id="_CPPv329ex10_typical_board_uart_setup15AllowedBpsRates"></span><span id="_CPPv229ex10_typical_board_uart_setup15AllowedBpsRates"></span><span id="ex10_typical_board_uart_setup__AllowedBpsRates"></span><span class="target" id="board__init_8h_1aaca6c772f64bd87670eb9d05f1c155cd"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ex10_typical_board_uart_setup</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="n"><span class="pre">AllowedBpsRates</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bitrate</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv429ex10_typical_board_uart_setup15AllowedBpsRates" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>On the Impinj Reader Chip development board this fucntion wraps the UART device driver initialization. </p>
+<p>This function should only be called after the successful call to ex10_typical_board_setup() when the host UART is to be used to control the development board operation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bitrate</strong> – One of the valid values in enum AllowedBpsRates. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv430ex10_bootloader_board_teardownv">
+<span id="_CPPv330ex10_bootloader_board_teardownv"></span><span id="_CPPv230ex10_bootloader_board_teardownv"></span><span id="ex10_bootloader_board_teardown__void"></span><span class="target" id="board__init_8h_1a0d50875de4e6f28a25b02aa1b7882b85"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ex10_bootloader_board_teardown</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv430ex10_bootloader_board_teardownv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Deinitailize the <a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#struct_ex10_protocol"><span class="std std-ref">Ex10Protocol</span></a> object and power down the Impinj Reader Chip when the Impinj Reader Chip was configured in bootloader execution status. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv427ex10_typical_board_teardownv">
+<span id="_CPPv327ex10_typical_board_teardownv"></span><span id="_CPPv227ex10_typical_board_teardownv"></span><span id="ex10_typical_board_teardown__void"></span><span class="target" id="board__init_8h_1a4c52fb7b8803efe4c05b6360a98ac827"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ex10_typical_board_teardown</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427ex10_typical_board_teardownv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Deinitailize the <a class="reference internal" href="#struct_ex10_interfaces"><span class="std std-ref">Ex10Interfaces</span></a> groups of objects and power down the Impinj Reader Chip. </p>
+<p>This is strictly a software and driver layer release of host resources. No transactions are performed to the Impinj Reader Chip over the host interface within this function call. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv432ex10_typical_board_uart_teardownv">
+<span id="_CPPv332ex10_typical_board_uart_teardownv"></span><span id="_CPPv232ex10_typical_board_uart_teardownv"></span><span id="ex10_typical_board_uart_teardown__void"></span><span class="target" id="board__init_8h_1a83730f5f6a472f3bb1cdaee766a2c9e6"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ex10_typical_board_uart_teardown</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv432ex10_typical_board_uart_teardownv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Deinitailize the UART driver used to control the development board. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-variables">Variables</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv420DEFAULT_SPI_CLOCK_HZ">
+<span id="_CPPv320DEFAULT_SPI_CLOCK_HZ"></span><span id="_CPPv220DEFAULT_SPI_CLOCK_HZ"></span><span id="DEFAULT_SPI_CLOCK_HZ__uint32_tC"></span><span class="target" id="board__init_8h_1a2a81e947ce1596573c7ef39c20752f34"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DEFAULT_SPI_CLOCK_HZ</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4000000u</span></span><a class="headerlink" href="#_CPPv420DEFAULT_SPI_CLOCK_HZ" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Typical usage is 4MHz when running the Application. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv423BOOTLOADER_SPI_CLOCK_HZ">
+<span id="_CPPv323BOOTLOADER_SPI_CLOCK_HZ"></span><span id="_CPPv223BOOTLOADER_SPI_CLOCK_HZ"></span><span id="BOOTLOADER_SPI_CLOCK_HZ__uint32_tC"></span><span class="target" id="board__init_8h_1aaa152a52e8fa4fac3ef1b1159984b5eb"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BOOTLOADER_SPI_CLOCK_HZ</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1000000u</span></span><a class="headerlink" href="#_CPPv423BOOTLOADER_SPI_CLOCK_HZ" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A reduced clock speed is required when running the Bootloader. </p>
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv414Ex10Interfaces">
+<span id="_CPPv314Ex10Interfaces"></span><span id="_CPPv214Ex10Interfaces"></span><span id="Ex10Interfaces"></span><span class="target" id="struct_ex10_interfaces"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Ex10Interfaces</span></span></span><a class="headerlink" href="#_CPPv414Ex10Interfaces" title="Permalink to this definition">¶</a><br /></dt>
+<dd><em>#include &lt;board_init.h&gt;</em><p>The Impinj Reader chip aggregate interface. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14Ex10Interfaces8protocolE">
+<span id="_CPPv3N14Ex10Interfaces8protocolE"></span><span id="_CPPv2N14Ex10Interfaces8protocolE"></span><span id="Ex10Interfaces::protocol__Ex10ProtocolCP"></span><span class="target" id="struct_ex10_interfaces_1a73ce0b695da9d4c84f362eee0a94993b"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv412Ex10Protocol" title="Ex10Protocol"><span class="n"><span class="pre">Ex10Protocol</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">protocol</span></span></span><a class="headerlink" href="#_CPPv4N14Ex10Interfaces8protocolE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14Ex10Interfaces3opsE">
+<span id="_CPPv3N14Ex10Interfaces3opsE"></span><span id="_CPPv2N14Ex10Interfaces3opsE"></span><span id="Ex10Interfaces::ops__Ex10OpsCP"></span><span class="target" id="struct_ex10_interfaces_1a4e261cfeb8dcf3489034fe2532cad7e9"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_ops_layer.html#_CPPv47Ex10Ops" title="Ex10Ops"><span class="n"><span class="pre">Ex10Ops</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ops</span></span></span><a class="headerlink" href="#_CPPv4N14Ex10Interfaces3opsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14Ex10Interfaces6readerE">
+<span id="_CPPv3N14Ex10Interfaces6readerE"></span><span id="_CPPv2N14Ex10Interfaces6readerE"></span><span id="Ex10Interfaces::reader__Ex10ReaderCP"></span><span class="target" id="struct_ex10_interfaces_1aed79bbc995c72eeed3d6e2e2b5de59c9"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_reader_layer.html#_CPPv410Ex10Reader" title="Ex10Reader"><span class="n"><span class="pre">Ex10Reader</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">reader</span></span></span><a class="headerlink" href="#_CPPv4N14Ex10Interfaces6readerE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14Ex10Interfaces11power_modesE">
+<span id="_CPPv3N14Ex10Interfaces11power_modesE"></span><span id="_CPPv2N14Ex10Interfaces11power_modesE"></span><span id="Ex10Interfaces::power_modes__Ex10PowerModesCP"></span><span class="target" id="struct_ex10_interfaces_1a9ffb56ad4d66f50ae392dd6f71e5b4f4"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_power_modes_layer.html#_CPPv414Ex10PowerModes" title="Ex10PowerModes"><span class="n"><span class="pre">Ex10PowerModes</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">power_modes</span></span></span><a class="headerlink" href="#_CPPv4N14Ex10Interfaces11power_modesE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14Ex10Interfaces7helpersE">
+<span id="_CPPv3N14Ex10Interfaces7helpersE"></span><span id="_CPPv2N14Ex10Interfaces7helpersE"></span><span id="Ex10Interfaces::helpers__Ex10HelpersCP"></span><span class="target" id="struct_ex10_interfaces_1ab1641ac7685ad0c7f0400d75b0268f0d"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_helpers.html#_CPPv411Ex10Helpers" title="Ex10Helpers"><span class="n"><span class="pre">Ex10Helpers</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">helpers</span></span></span><a class="headerlink" href="#_CPPv4N14Ex10Interfaces7helpersE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14Ex10Interfaces13gen2_commandsE">
+<span id="_CPPv3N14Ex10Interfaces13gen2_commandsE"></span><span id="_CPPv2N14Ex10Interfaces13gen2_commandsE"></span><span id="Ex10Interfaces::gen2_commands__Ex10Gen2CommandsCP"></span><span class="target" id="struct_ex10_interfaces_1a232db0982104ac0f634ff63124b2d26d"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_gen2_commands.html#_CPPv416Ex10Gen2Commands" title="Ex10Gen2Commands"><span class="n"><span class="pre">Ex10Gen2Commands</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">gen2_commands</span></span></span><a class="headerlink" href="#_CPPv4N14Ex10Interfaces13gen2_commandsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14Ex10Interfaces12event_parserE">
+<span id="_CPPv3N14Ex10Interfaces12event_parserE"></span><span id="_CPPv2N14Ex10Interfaces12event_parserE"></span><span id="Ex10Interfaces::event_parser__Ex10EventParserCP"></span><span class="target" id="struct_ex10_interfaces_1a30c7cb28c727dfe2a83e201e093a5d58"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv415Ex10EventParser" title="Ex10EventParser"><span class="n"><span class="pre">Ex10EventParser</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">event_parser</span></span></span><a class="headerlink" href="#_CPPv4N14Ex10Interfaces12event_parserE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14Ex10Interfaces7versionE">
+<span id="_CPPv3N14Ex10Interfaces7versionE"></span><span id="_CPPv2N14Ex10Interfaces7versionE"></span><span id="Ex10Interfaces::version__Ex10VersionCP"></span><span class="target" id="struct_ex10_interfaces_1a92d880efefcd842b314861bb69984669"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">Ex10Version</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">version</span></span></span><a class="headerlink" href="#_CPPv4N14Ex10Interfaces7versionE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="../../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="yk_firmware_ex10_host_c_board_specific.html"
+                        title="previous chapter">Board Specific Implementation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="yk_firmware_ex10_host_event_packet_processing.html"
+                        title="next chapter">Impinj Reader Chip SDK Event Packet Processing</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="yk_firmware_ex10_host_event_packet_processing.html" title="Impinj Reader Chip SDK Event Packet Processing"
+             >next</a></li>
+        <li class="right" >
+          <a href="yk_firmware_ex10_host_c_board_specific.html" title="Board Specific Implementation"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Impinj Reader Chip SDK</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="yk_firmware_ex10_host_c_api.html" >Impinj Reader Chip C Host API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Board Initialization</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, Impinj, Inc..
+    </div>
+  </body>
+</html>

@@ -1,0 +1,1280 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Changelog for 1.2.0 &#8212; Impinj Reader Chip SDK</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinxdoc.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="index.html">Impinj Reader Chip SDK</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Changelog for 1.2.0</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="changelog-for-version">
+<h1>Changelog for 1.2.0<a class="headerlink" href="#changelog-for-version" title="Permalink to this headline">¶</a></h1>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Header file</p></th>
+<th class="head"><p>API change description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>board/board_spec.h</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">get_gpio_output_levels()</span></code> input parameters updated:</p>
+<p><strong>Previous</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span> <span class="p">(</span><span class="o">*</span><span class="n">get_gpio_output_levels</span><span class="p">)(</span><span class="kt">uint8_t</span>       <span class="n">antenna</span><span class="p">,</span>
+                                   <span class="kt">uint16_t</span>      <span class="n">rf_mode</span><span class="p">,</span>
+                                   <span class="kt">uint32_t</span>      <span class="n">frequency_khz</span><span class="p">,</span>
+                                   <span class="k">enum</span> <span class="n">RfFilter</span> <span class="n">rf_filter</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span> <span class="p">(</span><span class="o">*</span><span class="n">get_gpio_output_levels</span><span class="p">)(</span><span class="kt">uint8_t</span>                 <span class="n">antenna</span><span class="p">,</span>
+                                   <span class="k">enum</span> <span class="n">BasebandFilterType</span> <span class="n">rx_baseband_filter</span><span class="p">,</span>
+                                   <span class="k">enum</span> <span class="n">RfFilter</span>           <span class="n">tx_rf_filter</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Recommended Action</strong>:</p>
+<ul>
+<li><p>Do not pass in <code class="docutils literal notranslate"><span class="pre">frequency_khz</span></code> parameter (was previously unused)</p></li>
+<li><p>Pass in <code class="docutils literal notranslate"><span class="pre">rx_baseband_filter</span></code> instead of <code class="docutils literal notranslate"><span class="pre">rf_mode</span></code>.
+<code class="docutils literal notranslate"><span class="pre">rx_baseband_filter</span></code> can be derived from <code class="docutils literal notranslate"><span class="pre">rf_mode</span></code> as follows:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="k">const</span> <span class="n">use_drm_filter</span> <span class="o">=</span> <span class="n">reader</span><span class="p">.</span><span class="n">ops</span><span class="o">-&gt;</span><span class="n">rf_mode_is_drm</span><span class="p">(</span><span class="n">rf_mode</span><span class="p">);</span>
+<span class="k">enum</span> <span class="n">BasebandFilterType</span> <span class="k">const</span> <span class="n">rx_baseband_filter</span> <span class="o">=</span>
+   <span class="n">use_drm_filter</span> <span class="o">?</span> <span class="nl">BasebandFilterBandpass</span> <span class="p">:</span> <span class="n">BasebandFilterHighpass</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>board/board_spec.h</p></td>
+<td><p>The following function added to <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Ex10BoardSpec</span></code>:</p>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">Ex10BoardSpec</span>
+<span class="p">{</span>
+<span class="p">...</span>
+   <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">get_gpio_output_pins_set_clear</span><span class="p">)(</span>
+                <span class="k">struct</span> <span class="nc">GpioPinsSetClear</span><span class="o">*</span> <span class="n">gpio_pins_set_clear</span><span class="p">,</span>
+                <span class="kt">uint8_t</span>                  <span class="n">antenna</span><span class="p">,</span>
+                <span class="k">enum</span> <span class="n">BasebandFilterType</span>  <span class="n">rx_baseband_filter</span><span class="p">,</span>
+                <span class="k">enum</span> <span class="n">RfFilter</span>            <span class="n">tx_rf_filter</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p><strong>Recommended Action</strong>:</p>
+<ul class="simple">
+<li><p>Used by Ex10 Reader layer, see <a class="reference external" href="yk_firmware_ex10_host_c_board_specific.html#_CPPv4N13Ex10BoardSpec30get_gpio_output_pins_set_clearE">Ex10BoardSpec.get_gpio_output_pins_set_clear()</a> for details.
+See <code class="docutils literal notranslate"><span class="pre">/ex10_c_dev_kit/board/e710_ref_design/board_spec.c</span></code> for an implementation example.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>board/driver_list.h</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">get_ex10_board_driver_list()</span></code> updated to returns a <code class="docutils literal notranslate"><span class="pre">const</span></code>
+qualified pointer to <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Ex10DriverList</span></code>, previously this pointer
+was mutable.</p>
+<p><strong>Previous</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">Ex10DriverList</span><span class="o">*</span> <span class="n">get_ex10_board_driver_list</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">Ex10DriverList</span> <span class="k">const</span><span class="o">*</span> <span class="n">get_ex10_board_driver_list</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Recommended Action</strong>:</p>
+<ul class="simple">
+<li><p>At call site, add <code class="docutils literal notranslate"><span class="pre">const</span></code> qualifier to the parameter containing the
+returned pointer.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>board/ex10_gpio.h</p></td>
+<td><p>The following functions added to <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Ex10GpioHelpers</span></code>:</p>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">Ex10GpioHelpers</span>
+<span class="p">{</span>
+    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">set_antenna_port</span><span class="p">)(</span><span class="k">struct</span> <span class="nc">GpioPinsSetClear</span><span class="o">*</span> <span class="n">gpio_pins_set_clear</span><span class="p">,</span>
+                             <span class="kt">uint8_t</span>                  <span class="n">antenna</span><span class="p">);</span>
+
+    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">set_rx_baseband_filter</span><span class="p">)(</span><span class="k">struct</span> <span class="nc">GpioPinsSetClear</span><span class="o">*</span> <span class="n">gpio_pins_set_clear</span><span class="p">,</span>
+                                   <span class="k">enum</span> <span class="n">BasebandFilterType</span>  <span class="n">rx_baseband_filter</span><span class="p">);</span>
+
+    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">set_pa_bias_enable</span><span class="p">)(</span><span class="k">struct</span> <span class="nc">GpioPinsSetClear</span><span class="o">*</span> <span class="n">gpio_pins_set_clear</span><span class="p">,</span>
+                               <span class="kt">bool</span>                     <span class="n">pa_bias_enable</span><span class="p">);</span>
+
+    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">set_pa_power_range</span><span class="p">)(</span><span class="k">struct</span> <span class="nc">GpioPinsSetClear</span><span class="o">*</span> <span class="n">gpio_pins_set_clear</span><span class="p">,</span>
+                               <span class="k">enum</span> <span class="n">PowerRange</span>          <span class="n">pa_power_range</span><span class="p">);</span>
+
+    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">set_rf_power_supply_enable</span><span class="p">)(</span>
+                             <span class="k">struct</span> <span class="nc">GpioPinsSetClear</span><span class="o">*</span> <span class="n">gpio_pins_set_clear</span><span class="p">,</span>
+                             <span class="kt">bool</span>                     <span class="n">rf_ps_enable</span><span class="p">);</span>
+
+    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">set_tx_rf_filter</span><span class="p">)(</span><span class="k">struct</span> <span class="nc">GpioPinsSetClear</span><span class="o">*</span> <span class="n">gpio_pins_set_clear</span><span class="p">,</span>
+                             <span class="k">enum</span> <span class="n">RfFilter</span>            <span class="n">tx_rf_filter</span><span class="p">);</span>
+
+    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">set_dio_unused_pins</span><span class="p">)(</span><span class="k">struct</span> <span class="nc">GpioPinsSetClear</span><span class="o">*</span> <span class="n">gpio_pins_set_clear</span><span class="p">,</span>
+                                <span class="kt">uint32_t</span>                 <span class="n">dio_bits</span><span class="p">);</span>
+
+    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">print_pin_bits</span><span class="p">)(</span><span class="kt">FILE</span><span class="o">*</span> <span class="n">fp</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">gpio_pin_bits</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Recommended Action</strong>:</p>
+<blockquote>
+<div><p>Used by <code class="docutils literal notranslate"><span class="pre">/board/e710_ref_design/board_spec.c</span></code>, see
+<a class="reference external" href="yk_firmware_ex10_host_c_board_specific.html#_CPPv415Ex10GpioHelpers">Ex10GpioHelpers</a>
+for details.
+See <code class="docutils literal notranslate"><span class="pre">/ex10_c_dev_kit/board/e710_ref_design/ex10_gpio.c</span></code> for an
+implementation example.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><p>include/ex10_api/aggregate_op_builder.h</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">append_measure_rssi()</span></code> now requires an additional input parameter:</p>
+<p><strong>Previous</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="p">(</span><span class="o">*</span><span class="n">append_measure_rssi</span><span class="p">)(</span><span class="k">struct</span> <span class="nc">ByteSpan</span><span class="o">*</span> <span class="n">agg_op_span</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="p">(</span><span class="o">*</span><span class="n">append_measure_rssi</span><span class="p">)(</span><span class="k">struct</span> <span class="nc">ByteSpan</span><span class="o">*</span> <span class="n">agg_op_span</span><span class="p">,</span>
+                            <span class="kt">uint8_t</span>          <span class="n">rssi_count</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Recommended Action</strong>:</dt><dd><p>Pass in additional parameter rssi_count, see Ex10Ops.measure_rssi()
+for details. Previous implementation defaulted to an rssi_count
+value of 0x0Fu.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><p>include/ex10_api/commands.h</p></td>
+<td><p>Return type of the following commands changed from <code class="docutils literal notranslate"><span class="pre">enum</span> <span class="pre">ResponseCode</span></code>
+to <a class="reference external" href="yk_firmware_ex10_host_c_commands_layer.html#_CPPv422Ex10CommandsHostErrors">struct Ex10CommandsHostErrors</a>
+for better clarity and readability:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">read(..)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test_read(..)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">write(..)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">read_fifo(..)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">write_info_page(..)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">start_upload(..)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">continue_upload(..)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">continue_upload(..)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test_transfer(..)</span></code></p></li>
+</ul>
+<dl class="simple">
+<dt><strong>Recommended Action</strong>:</dt><dd><p>Update the call site to accept the new error type. For examples, refer
+to the Protocol layer of the Ex10 SDK.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><p>include/ex10_api/commands.h</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">write()</span></code> requires additional input parameter:</p>
+<p><strong>Previous</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">write</span><span class="p">)(</span><span class="k">struct</span> <span class="nc">ConstByteSpan</span> <span class="k">const</span><span class="o">*</span> <span class="n">byte_spans</span><span class="p">,</span>
+              <span class="kt">size_t</span>                      <span class="n">number_of_spans</span><span class="p">,</span>
+              <span class="kt">uint32_t</span>                    <span class="n">ready_n_timeout_ms</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">Ex10CommandsHostErrors</span> <span class="p">(</span><span class="o">*</span><span class="n">write</span><span class="p">)(</span>
+                     <span class="k">const</span> <span class="k">struct</span> <span class="nc">RegisterInfo</span><span class="o">*</span> <span class="k">const</span> <span class="n">reg_list</span><span class="p">[],</span>
+                     <span class="k">struct</span> <span class="nc">ConstByteSpan</span> <span class="k">const</span><span class="o">*</span>      <span class="n">byte_spans</span><span class="p">[],</span>
+                     <span class="kt">size_t</span>                           <span class="n">segment_count</span><span class="p">,</span>
+                     <span class="kt">uint32_t</span>                         <span class="n">ready_n_timeout_ms</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Recommended Action</strong>:</dt><dd><p>Pass in <code class="docutils literal notranslate"><span class="pre">reg_list</span></code>, a pointer to a buffer of
+<a class="reference external" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv412RegisterInfo">struct RegisterInfo</a>,
+from which the address and length are used.
+For examples, refer to the Protocol layer of the Ex10 SDK.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><p>include/ex10_api/event_fifo_packet_types.h</p></td>
+<td><p>Updated name of a member of <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">TagReadFields</span></code>:</p>
+<p><strong>Previous</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">TagReadFields</span>
+<span class="p">{</span>
+    <span class="p">...</span>
+    <span class="kt">uint16_t</span> <span class="k">const</span><span class="o">*</span> <span class="n">crc</span><span class="p">;</span>
+    <span class="p">...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">TagReadFields</span>
+<span class="p">{</span>
+    <span class="p">...</span>
+    <span class="kt">uint16_t</span> <span class="k">const</span><span class="o">*</span> <span class="n">stored_crc</span><span class="p">;</span>
+    <span class="p">...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Recommended Action</strong>:</dt><dd><p>Rename <code class="docutils literal notranslate"><span class="pre">crc</span></code> to <code class="docutils literal notranslate"><span class="pre">stored_crc</span></code></p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><p>include/ex10_api/event_fifo_packet_types.h</p></td>
+<td><p>Added two new fields to <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">TagReadFields</span></code>:</p>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">TagReadFields</span>
+<span class="p">{</span>
+    <span class="p">...</span>
+    <span class="kt">uint16_t</span> <span class="k">const</span><span class="o">*</span> <span class="n">xpc_w1</span><span class="p">;</span>
+    <span class="kt">uint16_t</span> <span class="k">const</span><span class="o">*</span> <span class="n">xpc_w2</span><span class="p">;</span>
+    <span class="p">...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Recommended Action</strong>:</dt><dd><p>Facilitate these additions to allow the dev kit to
+utilize the xpc words.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><p>include/ex10_api/ex10_helpers.h</p></td>
+<td><p>Updated names of members of <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">TagReadData</span></code>:</p>
+<p><strong>Previous</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">TagReadData</span>
+<span class="p">{</span>
+    <span class="p">...</span>
+    <span class="kt">uint16_t</span><span class="o">*</span> <span class="n">pc</span><span class="p">;</span>
+    <span class="kt">uint8_t</span><span class="o">*</span>  <span class="n">epc</span><span class="p">;</span>
+    <span class="kt">uint16_t</span><span class="o">*</span> <span class="n">crc</span><span class="p">;</span>
+    <span class="kt">uint8_t</span><span class="o">*</span>  <span class="n">tid</span><span class="p">;</span>
+    <span class="p">...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">TagReadData</span>
+<span class="p">{</span>
+    <span class="p">...</span>
+    <span class="kt">uint16_t</span> <span class="n">pc</span><span class="p">;</span>
+    <span class="kt">uint8_t</span>  <span class="n">epc</span><span class="p">[</span><span class="n">EPC_BUFFER_BYTE_LENGTH</span><span class="p">];</span>
+    <span class="kt">uint16_t</span> <span class="n">stored_crc</span><span class="p">;</span>
+    <span class="kt">bool</span>     <span class="n">stored_crc_is_valid</span><span class="p">;</span>
+    <span class="kt">uint8_t</span>  <span class="n">tid</span><span class="p">[</span><span class="n">TID_LENGTH_BYTES</span><span class="p">];</span>
+    <span class="p">...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Recommended Action</strong>:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pc</span></code> type changed from pointer to numerical type, no need to
+initialize pointer or dereference at the call site.</p></li>
+<li><p>Rename <code class="docutils literal notranslate"><span class="pre">crc</span></code> to <code class="docutils literal notranslate"><span class="pre">stored_crc</span></code> and no need to initialize pointer or
+dereference at the call site, as type changed from pointer to
+numerical type.
+Use <code class="docutils literal notranslate"><span class="pre">stored_crc_is_valid</span></code> to determine if a Stored CRC was
+backscattered by the tag.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">epc</span></code> and <code class="docutils literal notranslate"><span class="pre">tid</span></code> types changed from pointer to array, no need to
+initialize these variables at call site before usage.</p></li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><p>include/ex10_api/ex10_helpers.h</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">enforce_gen2_response</span></code> removed from <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">InventoryHelperParams</span></code></p>
+<dl class="simple">
+<dt><strong>Recommended Action</strong>:</dt><dd><p>Remove initialization of this field.
+Previously this was used for generalized testing and now removed
+from the Ex10 Helpers layer for a better separation between test
+code and SDK. If required by the usecase, it is up to the caller
+to ensure Gen2 response was received.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><p>include/ex10_api/ex10_helpers.h</p></td>
+<td><p>Function moved to different module:</p>
+<p><strong>Previous</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">Ex10Helpers</span>
+<span class="p">{</span>
+    <span class="p">...</span>
+    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">dump_gen2_access_registers</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">Ex10Gen2TxCommandManager</span>
+<span class="p">{</span>
+    <span class="p">...</span>
+    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">dump_control_registers</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Recommended Action</strong>:</dt><dd><p>Function moved and renamed for better organization, no changes in functionality.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><p>include/ex10_api/ex10_helpers.h</p></td>
+<td><p>Function moved to new module:</p>
+<p><strong>Previous</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">Ex10Helpers</span>
+<span class="p">{</span>
+    <span class="p">...</span>
+    <span class="kt">size_t</span> <span class="p">(</span><span class="o">*</span><span class="n">print_packets</span><span class="p">)(</span><span class="k">struct</span> <span class="nc">EventFifoPacket</span> <span class="k">const</span><span class="o">*</span> <span class="n">packet</span><span class="p">);</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">Ex10EventFifoPrinter</span>
+<span class="p">{</span>
+    <span class="p">...</span>
+    <span class="kt">size_t</span> <span class="p">(</span><span class="o">*</span><span class="n">print_packets</span><span class="p">)(</span><span class="k">struct</span> <span class="nc">EventFifoPacket</span> <span class="k">const</span><span class="o">*</span> <span class="n">packet</span><span class="p">);</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Recommended Action</strong>:</dt><dd><p>Function moved and renamed for better organization, no changes in functionality.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><p>include/ex10_api/ex10_helpers.h</p></td>
+<td><p>Functions moved to new module and return type updated for better
+clarity and readability:</p>
+<p><strong>Previous</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">Ex10Helpers</span>
+<span class="p">{</span>
+    <span class="p">...</span>
+    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">check_gen2_error</span><span class="p">)(</span><span class="k">struct</span> <span class="nc">Gen2Reply</span> <span class="k">const</span><span class="o">*</span> <span class="n">reply</span><span class="p">);</span>
+    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">copy_tag_read_data</span><span class="p">)(</span><span class="k">struct</span> <span class="nc">TagReadData</span><span class="o">*</span>         <span class="n">dst</span><span class="p">,</span>
+                               <span class="k">struct</span> <span class="nc">TagReadFields</span> <span class="k">const</span><span class="o">*</span> <span class="n">src</span><span class="p">);</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">Ex10EventFifoPrinter</span>
+<span class="p">{</span>
+    <span class="p">...</span>
+    <span class="kt">bool</span> <span class="p">(</span><span class="o">*</span><span class="n">check_gen2_error</span><span class="p">)(</span><span class="k">struct</span> <span class="nc">Gen2Reply</span> <span class="k">const</span><span class="o">*</span> <span class="n">reply</span><span class="p">);</span>
+    <span class="kt">bool</span> <span class="p">(</span><span class="o">*</span><span class="n">copy_tag_read_data</span><span class="p">)(</span><span class="k">struct</span> <span class="nc">TagReadData</span><span class="o">*</span>         <span class="n">dst</span><span class="p">,</span>
+                               <span class="k">struct</span> <span class="nc">TagReadFields</span> <span class="k">const</span><span class="o">*</span> <span class="n">src</span><span class="p">);</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Recommended Action</strong>:</dt><dd><p>Update the call site to check the new error type.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><p>include/ex10_api/ex10_helpers.h</p></td>
+<td><p>Return type updated for better clarity and readability:</p>
+<p><strong>Previous</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">Ex10Helpers</span>
+<span class="p">{</span>
+    <span class="p">...</span>
+    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">simple_inventory</span><span class="p">)(</span><span class="k">struct</span> <span class="nc">InventoryHelperParams</span><span class="o">*</span> <span class="n">ihp</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">continuous_inventory</span><span class="p">)(</span><span class="k">struct</span> <span class="nc">ContInventoryHelperParams</span><span class="o">*</span> <span class="n">cihp</span><span class="p">);</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">Ex10Helpers</span>
+<span class="p">{</span>
+    <span class="p">...</span>
+    <span class="k">enum</span> <span class="n">InventoryHelperReturns</span> <span class="p">(</span><span class="o">*</span><span class="n">simple_inventory</span><span class="p">)</span>
+                                     <span class="p">(</span><span class="k">struct</span> <span class="nc">InventoryHelperParams</span><span class="o">*</span> <span class="n">ihp</span><span class="p">);</span>
+    <span class="k">enum</span> <span class="n">InventoryHelperReturns</span> <span class="p">(</span><span class="o">*</span><span class="n">continuous_inventory</span><span class="p">)</span>
+                                     <span class="p">(</span><span class="k">struct</span> <span class="nc">ContInventoryHelperParams</span><span class="o">*</span> <span class="n">cihp</span><span class="p">);</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Recommended Action</strong>:</dt><dd><p>Update the call site to accept the new error type.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><p>include/ex10_api/ops.h</p></td>
+<td><p>Input parameter added to <code class="docutils literal notranslate"><span class="pre">measure_rssi()</span></code>:</p>
+<p><strong>Previous</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">measure_rssi</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">measure_rssi</span><span class="p">)(</span><span class="kt">uint8_t</span> <span class="n">rssi_count</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Recommended Action</strong>:</dt><dd><p>Pass in additional parameter <cite>rssi_count</cite>, see <a class="reference external" href="yk_firmware_ex10_host_c_ops_layer.html#_CPPv4N7Ex10Ops12measure_rssiE">Ex10Ops.measure_rssi()</a> for details.
+Previous implementation defaulted to an <cite>rssi_count</cite> value of 0x0Fu.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><p>include/ex10_api/ops.h</p></td>
+<td><p>The following functions updated to use <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">GpioPinsSetClear</span></code>
+instead of <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">GpioControlFields</span></code>:</p>
+<p><strong>Previous</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">OpCompletionStatus</span> <span class="p">(</span><span class="o">*</span><span class="n">start_etsi_burst</span><span class="p">)(</span>
+         <span class="p">...</span>
+         <span class="k">struct</span> <span class="nc">GpioControlFields</span> <span class="k">const</span><span class="o">*</span>  <span class="n">gpio_controls</span><span class="p">,</span>
+         <span class="p">...);</span>
+<span class="k">struct</span> <span class="nc">OpCompletionStatus</span> <span class="p">(</span><span class="o">*</span><span class="n">cw_on</span><span class="p">)(</span>
+         <span class="p">...</span>
+         <span class="k">struct</span> <span class="nc">GpioControlFields</span> <span class="k">const</span><span class="o">*</span> <span class="n">gpio_controls</span><span class="p">,</span>
+         <span class="p">...);</span>
+<span class="k">struct</span> <span class="nc">OpCompletionStatus</span> <span class="p">(</span><span class="o">*</span><span class="n">inventory</span><span class="p">)(</span>
+         <span class="p">...</span>
+         <span class="k">struct</span> <span class="nc">GpioControlFields</span> <span class="k">const</span><span class="o">*</span> <span class="n">gpio_controls</span><span class="p">,</span>
+         <span class="p">...);</span>
+</pre></div>
+</div>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">OpCompletionStatus</span> <span class="p">(</span><span class="o">*</span><span class="n">start_etsi_burst</span><span class="p">)(</span>
+         <span class="p">...</span>
+         <span class="k">struct</span> <span class="nc">GpioPinsSetClear</span> <span class="k">const</span><span class="o">*</span> <span class="n">gpio_pins_set_clear</span><span class="p">,</span>
+         <span class="p">...);</span>                    <span class="p">...</span>
+<span class="k">struct</span> <span class="nc">OpCompletionStatus</span> <span class="p">(</span><span class="o">*</span><span class="n">cw_on</span><span class="p">)(</span>
+         <span class="p">...</span>
+         <span class="k">struct</span> <span class="nc">GpioPinsSetClear</span> <span class="k">const</span><span class="o">*</span> <span class="n">gpio_pins_set_clear</span><span class="p">,</span>
+         <span class="p">...);</span>
+<span class="k">struct</span> <span class="nc">OpCompletionStatus</span> <span class="p">(</span><span class="o">*</span><span class="n">inventory</span><span class="p">)(</span>
+         <span class="p">...</span>
+         <span class="k">struct</span> <span class="nc">GpioPinsSetClear</span> <span class="k">const</span><span class="o">*</span> <span class="n">gpio_pins_set_clear</span><span class="p">,</span>
+         <span class="p">...);</span>
+</pre></div>
+</div>
+<p><strong>Recommended Action</strong>:</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>include/ex10_api/ops.h</p></td>
+<td><p>The cw_on function in <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Ex10Ops</span></code> updated to use
+<code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">PowerDroopCompensationFields</span></code></p>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">OpCompletionStatus</span> <span class="p">(</span><span class="o">*</span><span class="n">cw_on</span><span class="p">)(</span>
+         <span class="p">...</span>
+         <span class="k">struct</span> <span class="nc">PowerDroopCompensationFields</span> <span class="k">const</span><span class="o">*</span> <span class="n">droop_comp</span>
+         <span class="p">...);</span>
+</pre></div>
+</div>
+<p><strong>Recommended Action</strong>:</p>
+<p>No action needed if the default usage of this feature is desired.
+This parameter can be changed to turn the feature off if not
+desired.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>include/ex10_api/ops.h</p></td>
+<td><p>New additional input parameter added to the following functions:</p>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">OpCompletionStatus</span> <span class="p">(</span><span class="o">*</span><span class="n">cw_on</span><span class="p">)(</span>
+    <span class="p">...</span>
+    <span class="k">struct</span> <span class="nc">PowerDroopCompensationFields</span> <span class="k">const</span><span class="o">*</span> <span class="n">droop_comp</span>
+    <span class="p">);</span>
+
+<span class="k">struct</span> <span class="nc">OpCompletionStatus</span> <span class="p">(</span><span class="o">*</span><span class="n">inventory</span><span class="p">)(</span>
+    <span class="p">...</span>
+    <span class="k">struct</span> <span class="nc">PowerDroopCompensationFields</span> <span class="k">const</span><span class="o">*</span> <span class="n">droop_comp</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Recommended Action</strong>:</dt><dd><p><a class="reference external" href="yk_firmware_power_droop_compensation.html">Tx Power Droop Compensation</a>
+support implemented and controlled via the newly added <code class="docutils literal notranslate"><span class="pre">droop_comp</span></code> parameter.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><p>include/ex10_api/ex10_protocol.h</p></td>
+<td><p>Return type of the following commands changed from <code class="docutils literal notranslate"><span class="pre">enum</span> <span class="pre">ResponseCode</span></code>
+to <a class="reference external" href="yk_firmware_ex10_host_c_commands_layer.html#_CPPv422Ex10CommandsHostErrors">struct Ex10CommandsHostErrors</a>
+for better clarity and readability:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">read_multiple(..)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test_transfer(..)</span></code></p></li>
+</ul>
+<dl class="simple">
+<dt><strong>Recommended Action</strong>:</dt><dd><p>Update the call site to accept the new error type. For examples, refer
+to the Protocol layer of the Ex10 SDK.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><p>board/e710_ref_design/ex10_reader.h</p></td>
+<td><p>The following function has been removed from the
+<code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Ex10Reader</span></code> interface.</p>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">send_access_commands</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Recommended Action</strong>:</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">send_gen2_halted_sequence</span></code> in the ops interface
+should be used.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>include/ex10_api/ex10_reader.h</p></td>
+<td><p>Type of <code class="docutils literal notranslate"><span class="pre">gpio</span></code> member of <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">CwConfig</span></code> updated:</p>
+<p><strong>Previous</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">CwConfig</span>
+<span class="p">{</span>
+    <span class="k">struct</span> <span class="nc">GpioControlFields</span>          <span class="n">gpio</span><span class="p">;</span>
+    <span class="p">...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">CwConfig</span>
+<span class="p">{</span>
+    <span class="k">struct</span> <span class="nc">GpioPinsSetClear</span>          <span class="n">gpio</span><span class="p">;</span>
+    <span class="p">...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Recommended Action</strong>:</dt><dd><p>See Ex10 Reader layer for usage example, additional details available
+in <a class="reference external" href="yk_firmware_ex10_host_c_ops_layer.html#struct_gpio_pins_set_clear">struct GpioPinsSetClear</a>
+for details.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><p>include/ex10_api/gpio_interface.h</p></td>
+<td><p>The following defines were duplicates and were removed:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#define DEFAULT_SPI_SPEED_HZ 4000000</span>
+<span class="cp">#define APP_UPLOAD_SPI_SPEED_HZ 1000000</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Recommended Action</strong>:</dt><dd><dl class="simple">
+<dt>Use equivalent defines from <code class="docutils literal notranslate"><span class="pre">include/ex10_api/board_init.h</span></code>:</dt><dd><ul class="simple">
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">DEFAULT_SPI_SPEED_HZ</span></code> by <code class="docutils literal notranslate"><span class="pre">DEFAULT_SPI_CLOCK_HZ</span></code></p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">APP_UPLOAD_SPI_SPEED_HZ</span></code> by <code class="docutils literal notranslate"><span class="pre">BOOTLOADER_SPI_CLOCK_HZ</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Makefile</p></td>
+<td><p>The following CFLAG added to Ex10 SDK Makefile:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">CFLAGS</span> <span class="o">+=</span> <span class="o">-</span><span class="n">Wpedantic</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Recommended Action</strong>:</dt><dd><p>A pedantic flag added to our Makefile in order to force the Ex10 SDK
+into ISO compliance. As a result, Ex10 SDK should be easier to port
+to a different host processor, reducing compiler specific errors from
+Impinj code.
+Using same Makefile will enforce ISO compliance onto the
+application as well and will require ensuring that the application’s
+coding standards match ISO. If this is undesired, the pedantic flag
+may be removed from the makefile.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><p>board/region.h</p></td>
+<td><p>Channel getters changed to get the active channel and the next channel
+members of <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Ex10Region</span></code>.  The active channel is updated by the
+ramp up code in the SDK.  The next channel allows the user to determine
+what the next channel will be when the SDK ramps up next.  Added the
+ability to get the index of the channel in the array.</p>
+<p><strong>Previous</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">Ex10Region</span>
+<span class="p">{</span>
+    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">update_current_channel</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+    <span class="kt">uint32_t</span> <span class="p">(</span><span class="o">*</span><span class="n">get_current_channel_khz</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+    <span class="p">...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">Ex10Region</span>
+<span class="p">{</span>
+    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">update_active_channel</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+    <span class="kt">uint32_t</span> <span class="p">(</span><span class="o">*</span><span class="n">get_active_channel_khz</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+    <span class="kt">uint32_t</span> <span class="p">(</span><span class="o">*</span><span class="n">get_next_channel_khz</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+    <span class="kt">size_t</span> <span class="p">(</span><span class="o">*</span><span class="n">get_active_channel_index</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+    <span class="kt">size_t</span> <span class="p">(</span><span class="o">*</span><span class="n">get_next_channel_index</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+    <span class="p">...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Recommended Action</strong>:</dt><dd><p>The <code class="docutils literal notranslate"><span class="pre">update</span></code> functions have been replaced with <code class="docutils literal notranslate"><span class="pre">active</span></code> functions
+with the same functionality</p>
+<ul class="simple">
+<li><p>update_current_channel() -&gt; update_active_channel()</p></li>
+<li><p>get_current_channel_khz() -&gt; get_active_channel_khz()</p></li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><p>include/ex10_api/ex10_helpers.h</p></td>
+<td><p>In <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">InventoryHelperParams</span></code> - <code class="docutils literal notranslate"><span class="pre">tx_power_dbm</span></code> member renamed to
+<code class="docutils literal notranslate"><span class="pre">tx_power_cdbm</span></code> to clearly reflect the units of the passed-in values.</p>
+<p><strong>Previous</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">InventoryHelperParams</span>
+<span class="p">{</span>
+    <span class="p">...</span>
+    <span class="kt">uint16_t</span> <span class="k">const</span> <span class="n">tx_power_dbm</span><span class="p">;</span>
+    <span class="p">...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">InventoryHelperParams</span>
+<span class="p">{</span>
+    <span class="p">...</span>
+    <span class="kt">uint16_t</span> <span class="k">const</span> <span class="n">tx_power_cdbm</span><span class="p">;</span>
+    <span class="p">...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Recommended Action</strong>:</dt><dd><p>Update the name used at call site to <code class="docutils literal notranslate"><span class="pre">tx_power_cdbm</span></code>. This is a
+name change only, no update needed to the passed-in values.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><p>Makefile</p>
+<p>dev_kit/ex10_c_dev_kit/src/Makefile</p>
+<p>board/e710_ref_design/Makefile</p>
+<p>dev_kit/ex10_c_dev_kit/examples/Makefile</p>
+</td>
+<td><p>Environment variable <code class="docutils literal notranslate"><span class="pre">BUILD_BASE</span></code> provides the root location of compied SDK artifacts.</p>
+<p>Environment variable <code class="docutils literal notranslate"><span class="pre">BUILD_DIR</span></code> uses <code class="docutils literal notranslate"><span class="pre">BUILD_BASE</span></code> and <code class="docutils literal notranslate"><span class="pre">BOARD_TARGET</span></code> to specify
+the location of compied SDK artifacts.</p>
+<p><code class="docutils literal notranslate"><span class="pre">BUILD_DIR</span></code> is exported to sub-directory <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> s and determines the location of
+compiled SDK artifacts.</p>
+<p><strong>Previous</strong>:</p>
+<p>file <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> (top level)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>BUILD_BASE       := ./build
+BUILD_DIR        := $(BUILD_BASE)/$(BOARD_TARGET)
+
+# ...
+
+export Q CC AR OBJDUMP CFLAGS CPPFLAGS LDFLAGS BOARD_TARGET EX10_CSDK_ROOT
+</pre></div>
+</div>
+<p>files <code class="docutils literal notranslate"><span class="pre">src/Makefile</span></code>, <code class="docutils literal notranslate"><span class="pre">examples/Makefile</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>BUILD_DIR      := $(EX10_CSDK_ROOT)/build/$(BOARD_TARGET)
+</pre></div>
+</div>
+<p>file <code class="docutils literal notranslate"><span class="pre">board/e710_ref_design/Makefile</span></code></p>
+<blockquote>
+<div><p>BUILD_DIR      := $(EX10_CSDK_ROOT)/build/e710_ref_design</p>
+</div></blockquote>
+<p><strong>New</strong>:</p>
+<p>file <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> (top level)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>BUILD_BASE       ?= ./build
+BUILD_DIR        := $(abspath $(BUILD_BASE)/$(BOARD_TARGET))
+
+# ...
+
+export Q CC AR OBJDUMP CFLAGS CPPFLAGS LDFLAGS BOARD_TARGET EX10_CSDK_ROOT BUILD_DIR
+</pre></div>
+</div>
+<p>files <code class="docutils literal notranslate"><span class="pre">src/Makefile</span></code>, <code class="docutils literal notranslate"><span class="pre">examples/Makefile</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>BUILD_DIR      ?= $(EX10_CSDK_ROOT)/build/$(BOARD_TARGET)
+</pre></div>
+</div>
+<p>file <code class="docutils literal notranslate"><span class="pre">board/e710_ref_design/Makefile</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>BUILD_DIR      ?= $(EX10_CSDK_ROOT)/build/e710_ref_design
+</pre></div>
+</div>
+<p><strong>Recommended Action</strong>:</p>
+<p>No actions are required when using the C SDK.
+<code class="docutils literal notranslate"><span class="pre">BUILD_BASE</span></code> may be used to specifiy the build artifact location.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>board/board_spec.h</p>
+<p>board/e710_ref_design/board_spec.c</p>
+</td>
+<td><p>The following function is added to <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Ex10BoardSpec</span></code>:</p>
+<p><strong>New</strong>:</p>
+<p>file <code class="docutils literal notranslate"><span class="pre">board/board_spec.h</span></code>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">Ex10BoardSpec</span>
+<span class="p">{</span>
+<span class="p">...</span>
+    <span class="cm">/**</span>
+<span class="cm">      * @return uint32_t The time, in milliseconds, required after power and bias</span>
+<span class="cm">      *                  are applied to the power amplifier, until the system is</span>
+<span class="cm">      *                  ready to inventory tags.</span>
+<span class="cm">      */</span>
+    <span class="kt">uint32_t</span> <span class="p">(</span><span class="o">*</span><span class="n">get_pa_bias_power_on_delay_ms</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>file <code class="docutils literal notranslate"><span class="pre">board/e710_ref_design/board_spec.c</span></code>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="kt">uint32_t</span> <span class="nf">get_pa_bias_power_on_delay_ms</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="mi">2u</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Recommended Action</strong>:</p>
+<p>Used by Ex10PowerModes layer, this function’s return value should provide sufficient
+settling time for the Power Amplifer (PA) to power on. Customers should modify
+this parameter based on their Power Amplifier settling time.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>board/gpio_driver.h</p>
+<p>board/e710_ref_design/gpio_driver.c</p>
+<p>board/e710_ref_design/driver_list.c</p>
+<p>include/ex10_api/gpio_interface.h</p>
+</td>
+<td><p>The <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Ex10GpioDriver</span></code> is changed to accomodate powering on and off the
+Impinj Reader Chip and improved error handling.</p>
+<p><strong>Previous</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">register_irq_callback</span><span class="p">)(</span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">cb_func</span><span class="p">)(</span><span class="kt">void</span><span class="p">));</span>
+<span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">deregister_irq_callback</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">register_irq_callback</span><span class="p">)(</span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">cb_func</span><span class="p">)(</span><span class="kt">void</span><span class="p">));</span>
+<span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">deregister_irq_callback</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">busy_wait_ready_n</span><span class="p">)(</span><span class="kt">uint32_t</span> <span class="n">timeout_ms</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="p">(</span><span class="o">*</span><span class="n">get_board_power</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">register_irq_callback</span><span class="p">)(</span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">cb_func</span><span class="p">)(</span><span class="kt">void</span><span class="p">));</span>
+<span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">deregister_irq_callback</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="kt">bool</span> <span class="p">(</span><span class="o">*</span><span class="n">thread_is_irq_monitor</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">busy_wait_ready_n</span><span class="p">)(</span><span class="kt">uint32_t</span> <span class="n">timeout_ms</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Recommended Action</strong>:</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">Ex10GpioDriver.get_board_power()</span></code> is added and used by the <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Ex10Protocol</span></code>
+module to determine whether the Impinj Reader Chip is powered on or not. When the device is not
+powered, read/write access is blocked and interrupts are not processed. Customers should
+implement this function to expose the host GPIO <cite>PWR_EN</cite> (or host specific GPIO equivalent)
+power enable line.</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">Ex10GpioDriver.register_irq_callback()</span></code> and <code class="docutils literal notranslate"><span class="pre">Ex10GpioDriver.deregister_irq_callback()</span></code>
+return integer values to indicate whether the function calls are successful. Zero indicating success
+and non-zero indicating failure. Previously <code class="docutils literal notranslate"><span class="pre">assert(0)</span></code> was used to trap failures or failures were
+ignored. Failures are now contained within the return value. The <code class="docutils literal notranslate"><span class="pre">Ex10Protocol.init_ex10()</span></code>
+function uses the <code class="docutils literal notranslate"><span class="pre">Ex10GpioDriver.register_irq_callback()</span></code> return value as its return value.</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">Ex10GpioDriver.thread_is_irq_monitor()</span></code> is added to provide a platform independent
+method for determining thread identity for debugging and profiling.</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">Ex10GpioDriver.busy_wait_ready_n()</span></code> is changed to return an integer return value
+to indicates success or failure. Previously, errors were trapped using <code class="docutils literal notranslate"><span class="pre">assert(0)</span></code>. The return
+value of this function is now checked withing the</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">Ex10GpioDriver.thread_is_irq_monitor()</span></code> can be used to provide a more portable
+implemetation of the <code class="docutils literal notranslate"><span class="pre">ex10_get_thread_id()</span></code> function found in
+<code class="docutils literal notranslate"><span class="pre">/ex10_c_dev_kit/board/e710_ref_design/board_spec.c</span></code>. No action is required.</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">Ex10GpioDriver.busy_wait_ready_n()</span></code> no longer faults using <code class="docutils literal notranslate"><span class="pre">assert(0)</span></code>, but instead
+returns a <code class="docutils literal notranslate"><span class="pre">-1</span></code> value and sets <code class="docutils literal notranslate"><span class="pre">errno</span></code> appropriately when an error occurs. No action is required.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>include/ex10_api/ex10_protocol.h</p>
+<p>src/ex10_api/ex10_protocol.c</p>
+</td>
+<td><p>The <a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#ex10-api-host-c-api-protocol"><span class="std std-ref">Ex10Protocol</span></a> initailization functions have changed:</p>
+<p><strong>Previous</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">init</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">init</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+<span class="kt">int</span>  <span class="p">(</span><span class="o">*</span><span class="n">init_ex10</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Although the <code class="docutils literal notranslate"><span class="pre">Ex10Protocol.init()</span></code> interface function signature remains the same, the new
+implementation of this function only initializes the Ex10Protocol software module. It no
+longer performs interaction with the Impinj Reader Chip.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Ex10Protocol.init_ex10()</span></code> interface function is used to initialize the Impinj Reader
+Chip at the protocol layer.</p>
+<p><strong>Recommended Action</strong>:</p>
+<p>Instead of calling <code class="docutils literal notranslate"><span class="pre">Ex10Protocol.init()</span></code> to initialize the <code class="docutils literal notranslate"><span class="pre">Ex10Protocol</span></code> module and the
+Impinj Reader Chip, the functionality is split into 2 parts: software module initialization
+and Impinj Reader Chip initialization. Existing callers of <code class="docutils literal notranslate"><span class="pre">Ex10Protocol.init()</span></code> will need
+to also call <code class="docutils literal notranslate"><span class="pre">Ex10Protocol.init_ex10()</span></code> once the Impinj Reader Chip is powered on.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>include/ex10_api/ex10_protocol.h</p></td>
+<td><p>The <a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#ex10-api-host-c-api-protocol"><span class="std std-ref">Ex10Protocol</span></a> reset() function has changed:</p>
+<p><strong>Previous</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">reset</span><span class="p">)(</span><span class="k">enum</span> <span class="n">Status</span> <span class="n">destination</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">reset</span><span class="p">)(</span><span class="k">enum</span> <span class="n">Status</span> <span class="n">destination</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The <a class="reference external" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv4N12Ex10Protocol5resetE">Ex10Protocol.reset()</a>
+function now returns an integer value indicating whether the Impinj Reader Chip
+was successfully reset into the bootloader or into the application.</p>
+<p><strong>Recommended Action</strong>:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Ex10Protocol.reset()</span></code> function now returns an integer value indicating whether the
+call was successful or not. Customers should check the return value, when appropriate, to
+determine whether the functon call was successful.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>include/ex10_api/ex10_ops.h</p>
+<p>src/ex10_api/ex10_ops.c</p>
+</td>
+<td><p>The <a class="reference internal" href="yk_firmware_ex10_host_c_ops_layer.html#ex10-api-host-c-api-ops"><span class="std std-ref">Ex10Ops</span></a> initailization functions have changed:</p>
+<p><strong>Previous</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">init</span><span class="p">)(</span><span class="k">struct</span> <span class="nc">Ex10Protocol</span> <span class="k">const</span><span class="o">*</span> <span class="n">ex10_protocol</span><span class="p">);</span>
+<span class="k">struct</span> <span class="nc">OpCompletionStatus</span> <span class="p">(</span><span class="o">*</span><span class="n">init_ex10</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>New</strong></p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">init</span><span class="p">)(</span><span class="k">struct</span> <span class="nc">Ex10Protocol</span> <span class="k">const</span><span class="o">*</span> <span class="n">ex10_protocol</span><span class="p">);</span>
+<span class="k">struct</span> <span class="nc">OpCompletionStatus</span> <span class="p">(</span><span class="o">*</span><span class="n">init_ex10</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="c1">// ...</span>
+<span class="k">struct</span> <span class="nc">OpCompletionStatus</span> <span class="k">const</span><span class="o">*</span> <span class="n">op_error_none</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Ex10Ops.init()</span></code> function previously initialized the <a class="reference internal" href="yk_firmware_ex10_host_c_ops_layer.html#ex10-api-host-c-api-ops"><span class="std std-ref">Ex10Ops Layer</span></a> and
+initialized the Impinj Reader Chip at the Ops layer. This functionality is split into two
+parts: software module initialization and Impinj Reader Chip initialization.</p>
+<p>The interface function <code class="docutils literal notranslate"><span class="pre">Ex10Ops.init_ex10()</span></code> returns the type <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">OpCompletionStatus</span></code>,
+since it will perform Ex10Ops layer transactions with the Impinj Reader Chip.
+The <code class="docutils literal notranslate"><span class="pre">Ex10Ops.init()</span></code> function returns <code class="docutils literal notranslate"><span class="pre">void</span></code> since it cannot fail its initialization.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Ex10Ops.op_error_none</span></code> property is an error free instance of the data type
+<code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">OpCompletionStatus</span></code>. It can be use to initalize this type to an error free value.</p>
+<p><strong>Recommended Action</strong>:</p>
+<p>Instead of calling <code class="docutils literal notranslate"><span class="pre">Ex110Ops.init()</span></code> to initialize the <code class="docutils literal notranslate"><span class="pre">Ex10Ops</span></code> module and the
+Impinj Reader Chip, the functionality is split into 2 parts: software module initialization
+and Impinj Reader Chip initialization. Existing callers of <code class="docutils literal notranslate"><span class="pre">Ex10Ops.init()</span></code> will need
+to also call <code class="docutils literal notranslate"><span class="pre">Ex10Ops.init_ex10()</span></code> once the Impinj Reader Chip is powered on.</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">Ex10Ops.init_ex10()</span></code> should be called after <code class="docutils literal notranslate"><span class="pre">Ex10Protocol.init()</span></code>.
+These 2 functions write to some of the same Impinj Reader Chip registers and it is
+important that the <code class="docutils literal notranslate"><span class="pre">Ex10Ops</span></code> layer operations not be overwritten by the <code class="docutils literal notranslate"><span class="pre">Ex10Protocol</span></code>
+layer.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>include/ex10_api/ex10_ops.h</p>
+<p>src/ex10_api/ex10_ops.c</p>
+</td>
+<td><p>The <a class="reference internal" href="yk_firmware_ex10_host_c_ops_layer.html#ex10-api-host-c-api-ops"><span class="std std-ref">Ex10Ops</span></a> radio_power_control() function has changed:</p>
+<p><strong>Previous</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="p">(</span><span class="o">*</span><span class="n">radio_power_control</span><span class="p">)(</span><span class="kt">bool</span> <span class="n">enable</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>New</strong></p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">radio_power_control</span><span class="p">)(</span><span class="kt">bool</span> <span class="n">enable</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Ex10Ops.radio_power_control()</span></code> function no longer returns a status indicator.
+Previously, this function was aggregated into the startup code in <code class="docutils literal notranslate"><span class="pre">board_init.c</span></code> and
+the return value resolved the ambiguity of bootloader or application startup.</p>
+<p><strong>Recommended Action</strong>:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Ex10Ops.radio_power_control()</span></code> no longer returns a value and should not be
+checked or a return value.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>include/ex10_api/ex10_reader.h</p>
+<p>src/ex10_api/ex10_reader.c</p>
+</td>
+<td><p>The <a class="reference internal" href="yk_firmware_ex10_host_c_reader_layer.html#ex10-api-host-c-api-reader"><span class="std std-ref">Ex10Reader</span></a> initialization functions have changed:</p>
+<p><strong>Previous</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">init</span><span class="p">)(</span><span class="k">struct</span> <span class="nc">Ex10Ops</span> <span class="k">const</span><span class="o">*</span> <span class="n">ex10_ops</span><span class="p">,</span> <span class="kt">char</span> <span class="k">const</span><span class="o">*</span> <span class="n">region_name</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">init</span><span class="p">)(</span><span class="k">struct</span> <span class="nc">Ex10Ops</span> <span class="k">const</span><span class="o">*</span> <span class="n">ex10_ops</span><span class="p">,</span> <span class="kt">char</span> <span class="k">const</span><span class="o">*</span> <span class="n">region_name</span><span class="p">);</span>
+<span class="k">struct</span> <span class="nc">OpCompletionStatus</span> <span class="p">(</span><span class="o">*</span><span class="n">init_ex10</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+<span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">read_calibration</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Ex10Reader.init()</span></code> function previously initialized the <a class="reference internal" href="yk_firmware_ex10_host_c_reader_layer.html#ex10-api-host-c-api-reader"><span class="std std-ref">Ex10Reader Layer</span></a> and
+initialized the Impinj Reader Chip at the Reader layer. This functionality is split into two
+parts: software module initialization and Impinj Reader Chip initialization.</p>
+<p>The interface function <code class="docutils literal notranslate"><span class="pre">Ex10Reader.init_ex10()</span></code> returns the type <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">OpCompletionStatus</span></code>,
+since it will perform Ex10Ops layer transactions with the Impinj Reader Chip.
+The <code class="docutils literal notranslate"><span class="pre">Ex10Reader.init()</span></code> function returns <code class="docutils literal notranslate"><span class="pre">void</span></code> since it cannot fail its initialization.</p>
+<p>The new function <code class="docutils literal notranslate"><span class="pre">Ex10Reader.read_calibration()</span></code> makes the formerly private encapsulated
+calls to read the calibration public. In the SDK the <code class="docutils literal notranslate"><span class="pre">Ex10Reader.read_calibration()</span></code> function is only
+called from within the <code class="docutils literal notranslate"><span class="pre">board_init.c</span></code> function <code class="docutils literal notranslate"><span class="pre">ex10_typical_board_setup()</span></code>.</p>
+<p><strong>Recommended Action</strong>:</p>
+<p>It should be kept in mind that <code class="docutils literal notranslate"><span class="pre">Ex10Reader.init()</span></code> should be called prior to the Impinj Reader Chip
+being powered up. <code class="docutils literal notranslate"><span class="pre">Ex10Reader.init_ex10()</span></code> and <code class="docutils literal notranslate"><span class="pre">Ex10Reader.read_calibration()</span></code> must be called
+after the Impinj Reader chip is powered up.</p>
+<p>When initializing the software stack, customers code must call, in order:
+<code class="docutils literal notranslate"><span class="pre">Ex10Protocol.init()</span></code>, <code class="docutils literal notranslate"><span class="pre">Ex10Ops.init()</span></code>, <code class="docutils literal notranslate"><span class="pre">Ex10Reader.init()</span></code> functions
+to initialize the software modules prior to power being applied to the Impinj Reader Chip.</p>
+<p>The Impinj Reader Chip can then be powered up using the
+<span class="xref std std-ref">Ex10PowerTransactor</span> module.</p>
+<p>Customer code may then call interface functions
+<code class="docutils literal notranslate"><span class="pre">Ex10Protocol.init()</span></code>, <code class="docutils literal notranslate"><span class="pre">Ex10Ops.init()</span></code>, <code class="docutils literal notranslate"><span class="pre">Ex10Reader.init()</span></code>, <code class="docutils literal notranslate"><span class="pre">Ex10Reader.read_calibration()</span></code>
+to configure the Impinj Reader Chip.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>include/ex10_api/board_init.h</p>
+<p>src/ex10_api/board_init.c</p>
+</td>
+<td><p>The <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">ControllerInterface</span></code> interface is removed.
+It provided no functionality.</p>
+<p><strong>Previous</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">ControllerInterface</span>
+<span class="p">{</span>
+     <span class="k">struct</span> <span class="nc">Ex10UartHelper</span> <span class="k">const</span><span class="o">*</span> <span class="n">uart_helper</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<p>This structure provided no functionality.</p>
+<p><strong>Recommended Action</strong>:</p>
+<p>The usage of this struct has been removed from <code class="docutils literal notranslate"><span class="pre">board_init.c</span></code>. Customer implemenations
+using this sturct should use the <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Ex10UartHelper</span></code> to reference the UART as needed.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>include/ex10_api/board_init.h</p></td>
+<td><p>The <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Ex10Interfaces</span></code> now includes a pointer to <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Ex10PowerModes</span></code>.</p>
+<p><strong>Previous</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">Ex10Interfaces</span>
+<span class="p">{</span>
+    <span class="k">struct</span> <span class="nc">Ex10Protocol</span> <span class="k">const</span><span class="o">*</span>     <span class="n">protocol</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="nc">Ex10Ops</span> <span class="k">const</span><span class="o">*</span>          <span class="n">ops</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="nc">Ex10Reader</span> <span class="k">const</span><span class="o">*</span>       <span class="n">reader</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="nc">Ex10Helpers</span> <span class="k">const</span><span class="o">*</span>      <span class="n">helpers</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="nc">Ex10Gen2Commands</span> <span class="k">const</span><span class="o">*</span> <span class="n">gen2_commands</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="nc">Ex10EventParser</span> <span class="k">const</span><span class="o">*</span>  <span class="n">event_parser</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="nc">Ex10Version</span> <span class="k">const</span><span class="o">*</span>      <span class="n">version</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">Ex10Interfaces</span>
+<span class="p">{</span>
+    <span class="k">struct</span> <span class="nc">Ex10Protocol</span> <span class="k">const</span><span class="o">*</span>     <span class="n">protocol</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="nc">Ex10Ops</span> <span class="k">const</span><span class="o">*</span>          <span class="n">ops</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="nc">Ex10Reader</span> <span class="k">const</span><span class="o">*</span>       <span class="n">reader</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="nc">Ex10PowerModes</span> <span class="k">const</span><span class="o">*</span>   <span class="n">power_modes</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="nc">Ex10Helpers</span> <span class="k">const</span><span class="o">*</span>      <span class="n">helpers</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="nc">Ex10Gen2Commands</span> <span class="k">const</span><span class="o">*</span> <span class="n">gen2_commands</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="nc">Ex10EventParser</span> <span class="k">const</span><span class="o">*</span>  <span class="n">event_parser</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="nc">Ex10Version</span> <span class="k">const</span><span class="o">*</span>      <span class="n">version</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>As part of the <a class="reference internal" href="yk_firmware_ex10_host_c_power_modes_layer.html#ex10-api-host-c-api-power-modes"><span class="std std-ref">SDK Power Modes API</span></a> the
+<code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Ex10PowerModes</span></code> provides an interface into setting the Impinj Reader power mode.</p>
+<p><strong>Recommended Action</strong>:</p>
+<p>The <a class="reference internal" href="yk_firmware_ex10_host_c_power_modes_layer.html#ex10-api-host-c-api-power-modes"><span class="std std-ref">SDK Power Modes API</span></a> is an optional interface
+which customers may chose to use or not. If the Impinj Reader Chip is intended to be powered
+down or placed into a lower power state using this interface, then the Ex10PowerMode interface
+should be instantiaed within the <code class="docutils literal notranslate"><span class="pre">board_init.c</span></code> module.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>include/ex10_api/board_init.h</p>
+<p>src/ex10_api/board_init.c</p>
+<p>src/ex10_api/board_init_status .h</p>
+</td>
+<td><p>The following code has been added to provide board initailization error reporting.</p>
+<p><strong>New</strong>:</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">board_init_status.h</span></code>, which is a new file:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @struct BoardInitError</span>
+<span class="cm"> * An aggregate of board initialziation errors which may be encountered</span>
+<span class="cm"> * during the power up process.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span> <span class="nc">Ex10BoardInitStatus</span>
+<span class="p">{</span>
+    <span class="cm">/**</span>
+<span class="cm">     * This field contains the result from the call to</span>
+<span class="cm">     * Ex10Protocol.power_up_to_application(). Positive values indicate that</span>
+<span class="cm">     * the device powered up into ether the bootlader or the application.</span>
+<span class="cm">     * Negative values indicate an error.</span>
+<span class="cm">     * @see enum Status and Ex10Protocol.power_up_to_application().</span>
+<span class="cm">     */</span>
+    <span class="kt">int</span> <span class="n">power_up_status</span><span class="p">;</span>
+
+    <span class="cm">/**</span>
+<span class="cm">     * This field contains the error result code returned when</span>
+<span class="cm">     * Ex10Protocol.init_ex10() was called. If non-zero then this value</span>
+<span class="cm">     * represents a POSIX-like error that occured. If zero, then the call</span>
+<span class="cm">     * to Ex10Protocol.init_ex10() was successful.</span>
+<span class="cm">     */</span>
+    <span class="kt">int</span> <span class="n">protocol_error</span><span class="p">;</span>
+
+    <span class="cm">/**</span>
+<span class="cm">     * When the successive calls to the init_ex10() function within the</span>
+<span class="cm">     * Ex10Protcol, Ex10Ops, Ex10Reader objects is made, this field contains</span>
+<span class="cm">     * the result of an error encoutered. If no errors were encountered then</span>
+<span class="cm">     * this member&#39;s .error_occurred field will be set to false.</span>
+<span class="cm">     */</span>
+    <span class="k">struct</span> <span class="nc">OpCompletionStatus</span> <span class="n">op_status</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>In <code class="docutils literal notranslate"><span class="pre">board_init.h</span></code>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * If an error was encountered during board initialization, it can be</span>
+<span class="cm"> * returned via this function call. When this function is called, the</span>
+<span class="cm"> * board_init.c internal struct BoardInitError is cleared.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return struct BoardInitError The error status structure that</span>
+<span class="cm"> *         contains any error encountered during board initialization.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span> <span class="nc">Ex10BoardInitStatus</span> <span class="n">ex10_get_board_init_status</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Recommended Action</strong>:</p>
+<p>Previously when the function <code class="docutils literal notranslate"><span class="pre">ex10_typical_board_setup()</span></code> was called, the
+returned <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Ex10Intertfaces</span></code> would contain all NULL pointers if an
+error occurred during initialization. This made debugging board initialization
+difficult and did not provide a means for determining the specific error that
+occurred.</p>
+<p>Now the <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Ex10Interfaces</span></code> function pointers will always return valid
+pointers. The error condition should be checked by calling <code class="docutils literal notranslate"><span class="pre">ex10_get_board_init_status()</span></code>
+after <code class="docutils literal notranslate"><span class="pre">ex10_typical_board_setup()</span></code> or <code class="docutils literal notranslate"><span class="pre">ex10_bootloader_board_setup()</span></code> is called.</p>
+<p>A new function, <code class="docutils literal notranslate"><span class="pre">Ex10Helpers.check_board_init_status()</span></code> can be used to check
+the returned error <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Ex10BoardInitStatus</span></code>.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>include/ex10_api/board_init.h</p>
+<p>src/ex10_api/board_init.c</p>
+</td>
+<td><p>The following function has been added:</p>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">ex10_board_gpio_init</span><span class="p">(</span><span class="k">struct</span> <span class="nc">Ex10GpioInterface</span> <span class="k">const</span><span class="o">*</span> <span class="n">gpio_if</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Recommended Action</strong>:</p>
+<p>This function exposes the host GPIO driver initialization function which
+was previously private. This allows test code to initialize the host GPIO
+interface. Customers do not need to take any action related to this change.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>include/ex10_api/ex10_helpers.h</p></td>
+<td><p>The <code class="docutils literal notranslate"><span class="pre">Ex10Helpers.check_board_status()</span></code> function is added to check the board
+initialization status <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Ex10BaordInitStatus</span></code>. This function will print
+any errors contained within the struct to <code class="docutils literal notranslate"><span class="pre">stderr</span></code> and return an int value
+indicating success (zero) or failure (non-zero).</p>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Check the board initialization status.</span>
+<span class="cm"> * - Call the function ex10_get_board_init_status() and obtain the</span>
+<span class="cm"> *   struct Ex10BoardInitStatus indicating if an error occurred and</span>
+<span class="cm"> *   whether the Impinj Reader Chip is executing in the bootloader or</span>
+<span class="cm"> *   application context.</span>
+<span class="cm"> * - If an error occurred then print the errors strings to stderr.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param status_check The expected Impinj Reader Chip mode of operation:</span>
+<span class="cm"> *                     Bootloader or Application.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @return int   An indication of whether the board initialization</span>
+<span class="cm"> *               completed successfully and as expected.</span>
+<span class="cm"> * @retval 0     The board was initialized correctly, without any errors,</span>
+<span class="cm"> *               and the Impinj Reader Chip is operating in the expected</span>
+<span class="cm"> *               Bootloader or Application context.</span>
+<span class="cm"> * @retval -1    Either the board initialization failed with an error, or</span>
+<span class="cm"> *               the Impinj Reader Chip mode of operation does not match</span>
+<span class="cm"> *               the status_check parameter.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">check_board_init_status</span><span class="p">)(</span><span class="k">enum</span> <span class="n">Status</span> <span class="n">status_check</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Recommended Action</strong>:</p>
+<p>This function may be used to check the board initialization status and return
+a simple pass/fail indicator. The examples have been modified to to use this
+function for checking board initialization status.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>src/ex10_api/board_init.c</p></td>
+<td><p>Add the C standard library srand() seed function call to
+<code class="docutils literal notranslate"><span class="pre">ex10_typical_board_setup()</span></code>.</p>
+<p>Initialize the standard library random number generator prior to
+the region table initialization. The previously generated region tables
+were identical across board setup and teardown sessions.</p>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">Ex10Interfaces</span> <span class="n">ex10_typical_board_setup</span><span class="p">(</span><span class="kt">uint32_t</span>    <span class="n">spi_clock_hz</span><span class="p">,</span>
+                                               <span class="kt">char</span> <span class="k">const</span><span class="o">*</span> <span class="n">region_name</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Seed the random number generator, in the board init layer, prior to</span>
+    <span class="c1">// initializing the region table. The region table is initialized when</span>
+    <span class="c1">// Ex10Reader.init() is called.</span>
+    <span class="n">srand</span><span class="p">(</span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span>
+</pre></div>
+</div>
+<p><strong>Recommended Action</strong>:</p>
+<p>Customers’ board initialization implementations should correctly initialize the
+random number generator’s seed as appropriate for their implementation prior
+to generating the region tables which require randomized hopping.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>board/region.h</p>
+<p>board/e710_ref_design/region.c</p>
+</td>
+<td><p>The following function has been added.</p>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">get_channel_index</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">frequency_khz</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Recommended Action</strong>:</p>
+<p>This function allows the user to find the hop index of a specific
+frequency.  Especially useful for regions that have random hopping enabled.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>board/e710_ref_design/calibration.h</p></td>
+<td><p>The following parameters have been changed in the function power_to_adc</p>
+<p><strong>Previous</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">uint16_t</span> <span class="p">(</span><span class="o">*</span><span class="n">power_to_adc</span><span class="p">)(</span>
+    <span class="kt">uint16_t</span>                             <span class="n">tx_power_dbm_x100</span><span class="p">,</span>
+</pre></div>
+</div>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">uint16_t</span> <span class="p">(</span><span class="o">*</span><span class="n">power_to_adc</span><span class="p">)(</span>
+    <span class="kt">int16_t</span>                             <span class="n">tx_power_dbm_x100</span><span class="p">,</span>
+</pre></div>
+</div>
+<p><strong>Recommended Action</strong>:</p>
+<p>This function now takes a signed int instead of a uint. The caller should
+ensure they are not improperly forcing this to be an unsigned value.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>board/e710_ref_design/calibration.h</p></td>
+<td><p>The following function has been added to the calibration interface</p>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">uint16_t</span> <span class="p">(</span><span class="o">*</span><span class="n">reverse_power_to_adc</span><span class="p">)(</span>
+    <span class="kt">int16_t</span>                              <span class="n">reverse_power_cdBm</span><span class="p">,</span>
+    <span class="kt">uint32_t</span>                             <span class="n">frequency_khz</span><span class="p">,</span>
+    <span class="kt">uint16_t</span>                             <span class="n">temperature_adc</span><span class="p">,</span>
+    <span class="kt">bool</span>                                 <span class="n">temp_comp_enabled</span><span class="p">,</span>
+    <span class="k">enum</span> <span class="n">RfFilter</span>                        <span class="n">rf_band</span><span class="p">,</span>
+    <span class="k">enum</span> <span class="n">AuxAdcControlChannelEnableBits</span><span class="o">*</span> <span class="n">reverse_power_detector_adc</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Recommended Action</strong>:</p>
+<p>This function is used in the reverse power detection used in the basic reader
+layer. The reverse power detection can detect anomolies in the reverse power.
+It is therefore recommended this function be added if this functionality is
+desired.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>board/e710_ref_design/calibration.h</p></td>
+<td><p>The following function has been added to the calibration interface</p>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="kt">int16_t</span> <span class="p">(</span><span class="o">*</span><span class="n">get_compensated_lbt_rssi</span><span class="p">)(</span>
+    <span class="kt">uint16_t</span>                          <span class="n">rssi_raw</span><span class="p">,</span>
+    <span class="k">const</span> <span class="k">struct</span> <span class="nc">RxGainControlFields</span><span class="o">*</span> <span class="n">rx_settings</span><span class="p">,</span>
+    <span class="kt">uint8_t</span>                           <span class="n">antenna</span><span class="p">,</span>
+    <span class="k">enum</span> <span class="n">RfFilter</span>                     <span class="n">rf_band</span><span class="p">,</span>
+    <span class="kt">uint16_t</span>                          <span class="n">temp_adc</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Recommended Action</strong>:</p>
+<p>This function is used to compensate the rssi retrieved from LBT. In order
+to use the LBT functionality, this new function should be incorporate.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>include/ex10_api/regions_table.h</p></td>
+<td><p>The interface <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">RegulatoryTimers</span></code> has been modified.</p>
+<p><strong>Previous</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="p">...</span>
+<span class="kt">uint32_t</span> <span class="n">regulatory</span><span class="p">;</span>        <span class="c1">///&lt; The regulatory limit of transmit time.</span>
+                            <span class="c1">///&lt; If this timer expires the transmitter will</span>
+                            <span class="c1">///&lt; be squelched.</span>
+<span class="kt">uint32_t</span> <span class="n">off</span><span class="p">;</span>               <span class="c1">///&lt; The minimum transmitter silent time between</span>
+                            <span class="c1">///&lt; transmissions.</span>
+<span class="kt">uint32_t</span> <span class="n">off_same_channel</span><span class="p">;</span>  <span class="c1">///&lt; Same as off but applies only when the</span>
+                            <span class="c1">///&lt; transmitter stays on the same frequency.</span>
+<span class="p">...</span>
+</pre></div>
+</div>
+<p><strong>New</strong>:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="p">...</span>
+<span class="kt">uint32_t</span> <span class="n">regulatory</span><span class="p">;</span>        <span class="c1">///&lt; The regulatory limit of transmit time.</span>
+                            <span class="c1">///&lt; If this timer expires the transmitter will</span>
+                            <span class="c1">///&lt; be squelched.</span>
+<span class="kt">uint32_t</span> <span class="n">off_same_channel</span><span class="p">;</span>  <span class="c1">///&lt; The minimum transmitter silent time between</span>
+                            <span class="c1">///&lt; transitions when staying on the same</span>
+                            <span class="c1">///&lt; frequency.</span>
+<span class="p">...</span>
+</pre></div>
+</div>
+<p><strong>Recommended Action</strong>:</p>
+<p>The regulatory timers no longer use a simple off time, which would give time
+off after every hop. This regulatory parameter should be excluded from any
+user defined region. In addition, the off_same_channel is now being used in
+the ops layer. Ensure this value is up to date to properly delay in the case
+where the HW hops to the same channel.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="../../_static/logo.png" alt="Logo"/>
+            </a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="index.html">Impinj Reader Chip SDK</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Changelog for 1.2.0</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, Impinj, Inc..
+    </div>
+  </body>
+</html>

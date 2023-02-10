@@ -1,0 +1,3 @@
+[console_scripts]
+cobertura-clover-transform = cobertura_clover_transform.converter:main
+
