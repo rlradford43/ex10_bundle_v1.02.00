@@ -15,7 +15,7 @@
     <script src="../../_static/doctools.js"></script>
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Impinj Reader Chip Messages" href="yk_firmware_ex10_api_messages.html" />
-    <link rel="prev" title="Impinj Reader Chip Wireline API" href="yk_firmware_ex10_api.html" /> 
+    <link rel="prev" title="Impinj Reader Chip API" href="yk_firmware_ex10_api.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -24,10 +24,10 @@
           <a href="yk_firmware_ex10_api_messages.html" title="Impinj Reader Chip Messages"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="yk_firmware_ex10_api.html" title="Impinj Reader Chip Wireline API"
+          <a href="yk_firmware_ex10_api.html" title="Impinj Reader Chip API"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Impinj Reader Chip SDK</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="yk_firmware_ex10_api.html" accesskey="U">Impinj Reader Chip Wireline API</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="yk_firmware_ex10_api.html" accesskey="U">Impinj Reader Chip API</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Impinj Reader Chip Wireline API</a></li> 
       </ul>
     </div>  
@@ -63,13 +63,13 @@ the bootloader context and the application context.</p>
 <section id="power-up-sequencing">
 <h2>Power-Up Sequencing<a class="headerlink" href="#power-up-sequencing" title="Permalink to this headline">¶</a></h2>
 <p>For information on the startup and shutdown sequences, please see the
-Impinj E910, E710, E510, and E310 Device Datasheet:
+Impinj E710, E510, and E310 Device Datasheet:
 <a class="reference external" href="https://support.impinj.com/hc/en-us/articles/360010952420">https://support.impinj.com/hc/en-us/articles/360010952420</a></p>
 </section>
 <section id="power-down-sequencing">
 <h2>Power-Down Sequencing<a class="headerlink" href="#power-down-sequencing" title="Permalink to this headline">¶</a></h2>
 <p>For information on the startup and shutdown sequences, please see the
-Impinj E910, E710, E510, and E310 Device Datasheet:
+Impinj E710, E510, and E310 Device Datasheet:
 <a class="reference external" href="https://support.impinj.com/hc/en-us/articles/360010952420">https://support.impinj.com/hc/en-us/articles/360010952420</a></p>
 </section>
 <section id="resetting-into-the-bootloader">
@@ -86,7 +86,7 @@ initialization.  Once READY_N goes high, the host should not drive READY_N again
 unless the host resets the Impinj reader chip.</p>
 <figure class="align-default" id="id1">
 <img alt="../../_images/remain_in_bootloader.svg" src="../../_images/remain_in_bootloader.svg" /><figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Request from host to remain in bootloader</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Request from host to remain in bootloader</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
@@ -96,12 +96,12 @@ unless the host resets the Impinj reader chip.</p>
 operating within the application context, a low asserted READY_N line
 indicates to the host that it may continue with SPI traffic over the wireline.
 READY_N provides command and control flow control to the Impinj reader chip.</p>
-<p>The “READY_N Host” signal in <a class="reference internal" href="#wireline-jump-to-app"><span class="std std-numref">Fig. 8</span></a> below is the READY_N
+<p>The “READY_N Host” signal in <a class="reference internal" href="#wireline-jump-to-app"><span class="std std-numref">Fig. 4</span></a> below is the READY_N
 line as driven by the host, and “READY_N Ex10” is READY_N as driven by the Impinj reader
 chip.</p>
 <figure class="align-default" id="id2">
 <span id="wireline-jump-to-app"></span><img alt="../../_images/jump_to_app.svg" src="../../_images/jump_to_app.svg" /><figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Normal startup</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Normal startup</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
@@ -172,7 +172,7 @@ image.</p></td>
 The transaction can be considered complete when READY_N signal is asserted:</p>
 <figure class="align-default" id="id4">
 <img alt="../../_images/spi_no_response.svg" src="../../_images/spi_no_response.svg" /><figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">SPI transaction with no response</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">SPI transaction with no response</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>In the case of a transaction that does have a response, the master sends the
@@ -180,7 +180,7 @@ command, deasserts the SS signal, and once READY_N asserts, reasserts the SS
 signal and clocks out the response message:</p>
 <figure class="align-default" id="id5">
 <img alt="../../_images/spi_with_response.svg" src="../../_images/spi_with_response.svg" /><figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">SPI transaction that contains a response</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">SPI transaction that contains a response</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -225,7 +225,7 @@ with either 0x00 or 0xFF.</p>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="yk_firmware_ex10_api.html"
-                        title="previous chapter">Impinj Reader Chip Wireline API</a></p>
+                        title="previous chapter">Impinj Reader Chip API</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="yk_firmware_ex10_api_messages.html"
                         title="next chapter">Impinj Reader Chip Messages</a></p>
@@ -233,7 +233,7 @@ with either 0x00 or 0xFF.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -250,15 +250,15 @@ with either 0x00 or 0xFF.</p>
           <a href="yk_firmware_ex10_api_messages.html" title="Impinj Reader Chip Messages"
              >next</a></li>
         <li class="right" >
-          <a href="yk_firmware_ex10_api.html" title="Impinj Reader Chip Wireline API"
+          <a href="yk_firmware_ex10_api.html" title="Impinj Reader Chip API"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Impinj Reader Chip SDK</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="yk_firmware_ex10_api.html" >Impinj Reader Chip Wireline API</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="yk_firmware_ex10_api.html" >Impinj Reader Chip API</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Impinj Reader Chip Wireline API</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Impinj, Inc..
+        &#169; Copyright 2021, Impinj, Inc..
     </div>
   </body>
 </html>

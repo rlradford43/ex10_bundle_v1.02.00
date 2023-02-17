@@ -27,7 +27,7 @@ setup(
     ],
     license='Proprietary',
     name='ex10_dev_kit',
-    version='1.2.0',
+    version='1.1.0',
     packages=find_packages(
         where=".", exclude=["tests*"]
     ),
@@ -35,6 +35,7 @@ setup(
         "py2c_interface": [
             "lib_py2c.so",
             "lib_py2c-coverage.so",
+            "yk_app_yx3.yk_image",
             "yk_app_yx4.yk_image",
         ]
     },    scripts=[],

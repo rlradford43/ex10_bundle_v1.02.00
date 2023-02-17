@@ -125,12 +125,6 @@ class RtlRevisionFields(Structure):
         ('rtl_revision', c_uint32, 32),
     ]
 
-class StackDepthFields(Structure):
-    _pack_ = 1
-    _fields_ = [
-        ('depth', c_uint32, 32),
-    ]
-
 class InterruptMaskFields(Structure):
     _pack_ = 1
     _fields_ = [
@@ -141,8 +135,7 @@ class InterruptMaskFields(Structure):
         ('inventory_round_done', c_uint8, 1),
         ('halted_sequence_done', c_uint8, 1),
         ('command_error', c_uint8, 1),
-        ('aggregate_op_done', c_uint8, 1),
-        ('rfu', c_int32, 24),
+        ('rfu', c_int32, 25),
     ]
 
 class InterruptMaskSetFields(Structure):
@@ -155,8 +148,7 @@ class InterruptMaskSetFields(Structure):
         ('inventory_round_done', c_uint8, 1),
         ('halted_sequence_done', c_uint8, 1),
         ('command_error', c_uint8, 1),
-        ('aggregate_op_done', c_uint8, 1),
-        ('rfu', c_int32, 24),
+        ('rfu', c_int32, 25),
     ]
 
 class InterruptMaskClearFields(Structure):
@@ -169,8 +161,7 @@ class InterruptMaskClearFields(Structure):
         ('inventory_round_done', c_uint8, 1),
         ('halted_sequence_done', c_uint8, 1),
         ('command_error', c_uint8, 1),
-        ('aggregate_op_done', c_uint8, 1),
-        ('rfu', c_int32, 24),
+        ('rfu', c_int32, 25),
     ]
 
 class InterruptStatusFields(Structure):
@@ -183,8 +174,7 @@ class InterruptStatusFields(Structure):
         ('inventory_round_done', c_uint8, 1),
         ('halted_sequence_done', c_uint8, 1),
         ('command_error', c_uint8, 1),
-        ('aggregate_op_done', c_uint8, 1),
-        ('rfu', c_int32, 24),
+        ('rfu', c_int32, 25),
     ]
 
 class EventFifoNumBytesFields(Structure):
@@ -233,6 +223,13 @@ class PowerControlLoopMaxIterationsFields(Structure):
         ('max_iterations', c_uint32, 32),
     ]
 
+class PowerControlLoopInitialTxScalarFields(Structure):
+    _pack_ = 1
+    _fields_ = [
+        ('tx_scalar', c_int16, 16),
+        ('rfu', c_int16, 16),
+    ]
+
 class PowerControlLoopAdcTargetFields(Structure):
     _pack_ = 1
     _fields_ = [
@@ -251,30 +248,6 @@ class DelayUsFields(Structure):
     _pack_ = 1
     _fields_ = [
         ('delay', c_uint32, 32),
-    ]
-
-class GpioOutputLevelSetFields(Structure):
-    _pack_ = 1
-    _fields_ = [
-        ('level_bits_set', c_uint32, 32),
-    ]
-
-class GpioOutputLevelClearFields(Structure):
-    _pack_ = 1
-    _fields_ = [
-        ('level_bits_clear', c_uint32, 32),
-    ]
-
-class GpioOutputEnableSetFields(Structure):
-    _pack_ = 1
-    _fields_ = [
-        ('enable_bits_set', c_uint32, 32),
-    ]
-
-class GpioOutputEnableClearFields(Structure):
-    _pack_ = 1
-    _fields_ = [
-        ('enable_bits_clear', c_uint32, 32),
     ]
 
 class OpsControlFields(Structure):
@@ -364,10 +337,9 @@ class LogEnablesFields(Structure):
         ('timer_start_logs', c_uint8, 1),
         ('timer_wait_logs', c_uint8, 1),
         ('aggregate_op_logs', c_uint8, 1),
-        ('read_fifo_logs', c_uint8, 1),
-        ('lbt_op_logs', c_uint8, 1),
-        ('rfu_1', c_uint8, 7),
-        ('rfu_2', c_uint8, 2),
+        ('rfu_1', c_uint8, 1),
+        ('rfu_2', c_uint8, 8),
+        ('rfu_3', c_uint8, 2),
         ('rssi_trace_logs', c_uint8, 1),
         ('modem_data_logs', c_uint8, 1),
         ('code_coverage', c_uint8, 1),
@@ -390,11 +362,20 @@ class BerModeFields(Structure):
         ('rfu', c_int8, 7),
     ]
 
-class HpfOverrideSettingsFields(Structure):
+class ModemDataControlFields(Structure):
     _pack_ = 1
     _fields_ = [
-        ('hpf_mode', c_uint8, 8),
-        ('rfu', c_int32, 24),
+        ('trl_data', c_uint8, 1),
+        ('all_packets', c_uint8, 1),
+        ('rn16_empty', c_uint8, 1),
+        ('rn16_single', c_uint8, 1),
+        ('rn16_collided_bd', c_uint8, 1),
+        ('rn16_single_below_rssi', c_uint8, 1),
+        ('epc_pass_crc', c_uint8, 1),
+        ('epc_fail_crc', c_uint8, 1),
+        ('epc_single_below_rssi', c_uint8, 1),
+        ('Reserved0', c_uint8, 7),
+        ('number_of_samples', c_uint16, 16),
     ]
 
 class AuxAdcControlFields(Structure):
@@ -444,8 +425,8 @@ class RfSynthesizerControlFields(Structure):
 class TxFineGainFields(Structure):
     _pack_ = 1
     _fields_ = [
-        ('tx_scalar', c_int16, 16),
-        ('rfu', c_int16, 16),
+        ('tx_scalar', c_int16, 12),
+        ('rfu', c_int32, 20),
     ]
 
 class RxGainControlFields(Structure):
@@ -496,26 +477,6 @@ class CwIsOnFields(Structure):
     _fields_ = [
         ('is_on', c_uint8, 1),
         ('rfu', c_int32, 31),
-    ]
-
-class LbtOffsetFields(Structure):
-    _pack_ = 1
-    _fields_ = [
-        ('khz', c_int32, 32),
-    ]
-
-class MeasureRssiCountFields(Structure):
-    _pack_ = 1
-    _fields_ = [
-        ('samples', c_uint8, 4),
-        ('rfu', c_int16, 12),
-    ]
-
-class LbtControlFields(Structure):
-    _pack_ = 1
-    _fields_ = [
-        ('override', c_uint8, 1),
-        ('rfu', c_int8, 7),
     ]
 
 class SjcControlFields(Structure):
@@ -600,15 +561,6 @@ class AggregateOpBufferFields(Structure):
     _pack_ = 1
     _fields_ = [
         ('command_buffer', POINTER(c_uint8)),
-    ]
-
-class PowerDroopCompensationFields(Structure):
-    _pack_ = 1
-    _fields_ = [
-        ('enable', c_uint8, 1),
-        ('rfu', c_uint16, 15),
-        ('compensation_interval_ms', c_uint8, 8),
-        ('fine_gain_step_cd_b', c_uint8, 8),
     ]
 
 class RssiThresholdRn16Fields(Structure):
@@ -723,13 +675,6 @@ class Gen2TxnControlsFields(Structure):
         ('is_kill_command', c_uint8, 1),
         ('Reserved0', c_uint8, 8),
         ('rx_length', c_uint16, 16),
-    ]
-
-class DropQueryControlFields(Structure):
-    _pack_ = 1
-    _fields_ = [
-        ('drop_power', c_uint8, 8),
-        ('drop_dwell', c_uint8, 8),
     ]
 
 class Gen2TxBufferFields(Structure):

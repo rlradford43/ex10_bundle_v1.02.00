@@ -1,4 +1,4 @@
-#!/home/pi/ex10_bundle_v1.02.00/ex10_dev_kit/impinj_reader_chip_venv/bin/python3
+#!/home/pi/ex10_bundle_v1.01.00/ex10_dev_kit/impinj_reader_chip_venv/bin/python3
 
 # $Id: rst2odt_prepstyles.py 8346 2019-08-26 12:11:32Z milde $
 # Author: Dave Kuhlman <dkuhlman@rexx.com>

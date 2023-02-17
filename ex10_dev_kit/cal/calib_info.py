@@ -167,10 +167,9 @@ class CalibrationInfoPageAccessor(object):
 
     def to_info_page_string(self):
         """
-        write out the contents of self.cal_param into a byte stream that
-        can be stored in the info page. Failure to pack the bytestream results
-        in an exception. This halts the process (does not write a corrupt
-        info page)
+        write out the contents of self.cal_param into a bytes stream that
+        can be stored in the info page. Failure to pack bytestream restuls
+        in exception/halts process (do not write corrupt info page!)
         """
 
         bytestream = b''

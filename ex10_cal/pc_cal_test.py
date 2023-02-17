@@ -20,18 +20,6 @@ from __future__ import (division, absolute_import, print_function,
 
 import time
 import argparse
-import os
-import sys
-
-# Append this script's parent dir to path so that modules in ex10_api can be
-# imported with "ex10_api.module".
-parent_dir = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
-sys.path.append(parent_dir)
-
-# Equipment addresses can be GPIB or USB.  For example
-# addr="GPIB0::19::INSTR", etc.
-power_meter_addr = "USB0::0x2A8D::0x0701::MY59260011::0::INSTR"
-
 from cal.power_meter import PowerMeter
 from cal.uart_helper import UartBaud, UartHelper
 from cal.uart_reader import UartReader
@@ -252,7 +240,7 @@ def run_pc_cal_test(uart_helper):
 
     uart_helper.open_port(UartBaud.RATE115200)
 
-    power_meter = PowerMeter(addr=power_meter_addr, ofs=args.power_offset)
+    power_meter = PowerMeter(ofs=args.power_offset)
     ex10_reader = UartReader(uart_helper)
     ex10_reader.dump_serial(args.debug_serial)
     cal_test = Ex10CalibrationTest(power_meter=power_meter,

@@ -27,7 +27,7 @@
           <a href="yk_firmware_ex10_api_bootloader_address_map.html" title="Impinj Reader Chip Bootloader Address Map"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Impinj Reader Chip SDK</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="yk_firmware_ex10_api.html" accesskey="U">Impinj Reader Chip Wireline API</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="yk_firmware_ex10_api.html" accesskey="U">Impinj Reader Chip API</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Impinj Reader Chip Application Address Map</a></li> 
       </ul>
     </div>  
@@ -109,12 +109,7 @@ section  When fields are multi-byte, they are little-endian.</p>
 <td><p><p>Impinj reader chip RTL revision</p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-StackDepth"><span class="pre">StackDepth</span></a></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x009C</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">read-only</span></code></td>
-<td><p><p>The maximum stack depth</p>
-</p></td>
+<tr class="row-even"><td colspan="5"></td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-InterruptMask"><span class="pre">InterruptMask</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x00A0</span></code></td>
@@ -193,7 +188,12 @@ section  When fields are multi-byte, they are little-endian.</p>
 <td><p><p>PowerControlLoopOp iteration limit</p>
 </p></td>
 </tr>
-<tr class="row-even"><td colspan="5"></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-PowerControlLoopInitialTxScalar"><span class="pre">PowerControlLoopInitialTxScalar</span></a></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">0x00C8</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
+<td><p><p>PowerControlLoopOp TxScalar initial value</p>
+</p></td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-PowerControlLoopAdcTarget"><span class="pre">PowerControlLoopAdcTarget</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x00CC</span></code></td>
@@ -206,7 +206,7 @@ section  When fields are multi-byte, they are little-endian.</p>
 <td><code class="docutils literal notranslate"><span class="pre">0x00D0</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
-<td><p><p>Thresholds for the PowerControlLoopOp</p>
+<td><p><p>Thresholds for the <a class="reference internal" href="yk_firmware_ex10_api_operations.html#powercontrolloopop"><span class="std std-ref">PowerControlLoopOp</span></a></p>
 </p></td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-DelayUs"><span class="pre">DelayUs</span></a></code></td>
@@ -218,353 +218,284 @@ section  When fields are multi-byte, they are little-endian.</p>
 </tr>
 <tr class="row-even"><td colspan="5"></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-GpioOutputLevelSet"><span class="pre">GpioOutputLevelSet</span></a></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x00E0</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">write-only</span></code></td>
-<td><p><p>Sets individual GPIO pins levels</p>
-</p></td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-GpioOutputLevelClear"><span class="pre">GpioOutputLevelClear</span></a></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x00E4</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">write-only</span></code></td>
-<td><p><p>Clears individual GPIO pins levels</p>
-</p></td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-GpioOutputEnableSet"><span class="pre">GpioOutputEnableSet</span></a></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x00E8</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">write-only</span></code></td>
-<td><p><p>Sets individual GPIO pins as outputs</p>
-</p></td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-GpioOutputEnableClear"><span class="pre">GpioOutputEnableClear</span></a></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x00EC</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">write-only</span></code></td>
-<td><p><p>Clears individual GPIO pins as outputs</p>
-</p></td>
-</tr>
-<tr class="row-odd"><td colspan="5"></td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-OpsControl"><span class="pre">OpsControl</span></a></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-OpsControl"><span class="pre">OpsControl</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x0300</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">1</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>Operation control</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td colspan="5"></td>
+<tr class="row-even"><td colspan="5"></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-OpsStatus"><span class="pre">OpsStatus</span></a></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-OpsStatus"><span class="pre">OpsStatus</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x0304</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-only</span></code></td>
 <td><p><p>Operation status register</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-HaltedControl"><span class="pre">HaltedControl</span></a></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-HaltedControl"><span class="pre">HaltedControl</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x0308</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>Halted state modem control</p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-HaltedStatus"><span class="pre">HaltedStatus</span></a></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-HaltedStatus"><span class="pre">HaltedStatus</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x030C</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-only</span></code></td>
 <td><p><p>Halted state status</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td colspan="5"></td>
+<tr class="row-even"><td colspan="5"></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-LogTestPeriod"><span class="pre">LogTestPeriod</span></a></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-LogTestPeriod"><span class="pre">LogTestPeriod</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x0320</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>LogTestOp log message period</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-LogTestWordRepeat"><span class="pre">LogTestWordRepeat</span></a></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-LogTestWordRepeat"><span class="pre">LogTestWordRepeat</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x0324</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>LogTestOp word repeat count</p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-EventFifoTestPeriod"><span class="pre">EventFifoTestPeriod</span></a></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-EventFifoTestPeriod"><span class="pre">EventFifoTestPeriod</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x0328</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>EventFifoTestOp test data period</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-EventFifoTestPayloadNumWords"><span class="pre">EventFifoTestPayloadNumWords</span></a></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-EventFifoTestPayloadNumWords"><span class="pre">EventFifoTestPayloadNumWords</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x032C</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>EventFifo test packet size</p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-LogSpeed"><span class="pre">LogSpeed</span></a></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-LogSpeed"><span class="pre">LogSpeed</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x0330</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">2</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>SPI master clock frequency</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td colspan="5"></td>
+<tr class="row-even"><td colspan="5"></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-LogEnables"><span class="pre">LogEnables</span></a></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-LogEnables"><span class="pre">LogEnables</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x0334</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>Log enable flags</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-BerControl"><span class="pre">BerControl</span></a></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-BerControl"><span class="pre">BerControl</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x0338</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>BerTestOp control</p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-BerMode"><span class="pre">BerMode</span></a></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-BerMode"><span class="pre">BerMode</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x033C</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">1</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>BerTestOp mode control</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td colspan="5"></td>
+<tr class="row-even"><td colspan="5"></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-HpfOverrideSettings"><span class="pre">HpfOverrideSettings</span></a></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x0344</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
-<td><p><p>HPF (high-pass filter) override setting</p>
-</p></td>
-</tr>
-<tr class="row-odd"><td colspan="5"></td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-AuxAdcControl"><span class="pre">AuxAdcControl</span></a></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-AuxAdcControl"><span class="pre">AuxAdcControl</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x0400</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">2</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>AUX ADC measurement controls</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td colspan="5"></td>
+<tr class="row-even"><td colspan="5"></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-AuxAdcResults"><span class="pre">AuxAdcResults</span></a></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-AuxAdcResults"><span class="pre">AuxAdcResults</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x0404</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">x</span> <span class="pre">15</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-only</span></code></td>
 <td><p><p>AUX ADC measurement results</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td colspan="5"></td>
+<tr class="row-even"><td colspan="5"></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-AuxDacControl"><span class="pre">AuxDacControl</span></a></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-AuxDacControl"><span class="pre">AuxDacControl</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x0430</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">2</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>Enable / Disable specific AUX DACs</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-AuxDacSettings"><span class="pre">AuxDacSettings</span></a></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-AuxDacSettings"><span class="pre">AuxDacSettings</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x0432</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">x</span> <span class="pre">2</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>Set the AUX DAC values</p>
 </p></td>
 </tr>
-<tr class="row-even"><td colspan="5"></td>
+<tr class="row-odd"><td colspan="5"></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-ATestMux"><span class="pre">ATestMux</span></a></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-ATestMux"><span class="pre">ATestMux</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x0440</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">x</span> <span class="pre">4</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>Set the ATEST bus routing</p>
 </p></td>
 </tr>
-<tr class="row-even"><td colspan="5"></td>
+<tr class="row-odd"><td colspan="5"></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-RfSynthesizerControl"><span class="pre">RfSynthesizerControl</span></a></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-RfSynthesizerControl"><span class="pre">RfSynthesizerControl</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x0500</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>RF synthesizer parameters</p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-TxFineGain"><span class="pre">TxFineGain</span></a></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-TxFineGain"><span class="pre">TxFineGain</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x0504</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>Digital Tx gain parameters</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-RxGainControl"><span class="pre">RxGainControl</span></a></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-RxGainControl"><span class="pre">RxGainControl</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x0508</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>Analog Rx gain parameters</p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-TxCoarseGain"><span class="pre">TxCoarseGain</span></a></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-TxCoarseGain"><span class="pre">TxCoarseGain</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x050C</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>Coarse attentuation parameter for controlling the Tx output.</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td colspan="5"></td>
+<tr class="row-even"><td colspan="5"></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-RfMode"><span class="pre">RfMode</span></a></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-RfMode"><span class="pre">RfMode</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x0514</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>RF mode selection</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-DcOffset"><span class="pre">DcOffset</span></a></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-DcOffset"><span class="pre">DcOffset</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x0518</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>Tx DC offset compensation</p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-EtsiBurstOffTime"><span class="pre">EtsiBurstOffTime</span></a></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-EtsiBurstOffTime"><span class="pre">EtsiBurstOffTime</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x051C</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>ETSIBurstOp off time</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-CwIsOn"><span class="pre">CwIsOn</span></a></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-CwIsOn"><span class="pre">CwIsOn</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x0520</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-only</span></code></td>
 <td><p><p>CW on status</p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-LbtOffset"><span class="pre">LbtOffset</span></a></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x0524</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
-<td><p><p>Offset frequency during LBT</p>
-</p></td>
+<tr class="row-odd"><td colspan="5"></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-MeasureRssiCount"><span class="pre">MeasureRssiCount</span></a></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x0528</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">2</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
-<td><p><p>Integration counts when measuring RSSI</p>
-</p></td>
-</tr>
-<tr class="row-even"><td colspan="5"></td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-LbtControl"><span class="pre">LbtControl</span></a></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x052C</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">1</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
-<td><p><p>Allows user configuration of the LBT settings.</p>
-</p></td>
-</tr>
-<tr class="row-even"><td colspan="5"></td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-SjcControl"><span class="pre">SjcControl</span></a></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-SjcControl"><span class="pre">SjcControl</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x0600</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">2</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>RxRunSjcOp settings</p>
 </p></td>
 </tr>
-<tr class="row-even"><td colspan="5"></td>
+<tr class="row-odd"><td colspan="5"></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-SjcGainControl"><span class="pre">SjcGainControl</span></a></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-SjcGainControl"><span class="pre">SjcGainControl</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x0604</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>SJC Rx Gain settings</p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-SjcInitialSettlingTime"><span class="pre">SjcInitialSettlingTime</span></a></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-SjcInitialSettlingTime"><span class="pre">SjcInitialSettlingTime</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x0608</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">2</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>SJC initial settingling time</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td colspan="5"></td>
+<tr class="row-even"><td colspan="5"></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-SjcResidueSettlingTime"><span class="pre">SjcResidueSettlingTime</span></a></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-SjcResidueSettlingTime"><span class="pre">SjcResidueSettlingTime</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x060C</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">2</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>SJC residue settling time</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td colspan="5"></td>
+<tr class="row-even"><td colspan="5"></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-SjcCdacI"><span class="pre">SjcCdacI</span></a></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-SjcCdacI"><span class="pre">SjcCdacI</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x0610</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>CDAC I search range</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-SjcCdacQ"><span class="pre">SjcCdacQ</span></a></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-SjcCdacQ"><span class="pre">SjcCdacQ</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x0614</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>CDAC Q search range</p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-SjcResultI"><span class="pre">SjcResultI</span></a></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-SjcResultI"><span class="pre">SjcResultI</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x0618</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-only</span></code></td>
 <td><p><p>SJC result, I channel</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-SjcResultQ"><span class="pre">SjcResultQ</span></a></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-SjcResultQ"><span class="pre">SjcResultQ</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x061C</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-only</span></code></td>
 <td><p><p>SJC result, Q channel</p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-SjcResidueThreshold"><span class="pre">SjcResidueThreshold</span></a></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-SjcResidueThreshold"><span class="pre">SjcResidueThreshold</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x0620</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">2</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>SJC Residue Threshold</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td colspan="5"></td>
+<tr class="row-even"><td colspan="5"></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-AnalogEnable"><span class="pre">AnalogEnable</span></a></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-AnalogEnable"><span class="pre">AnalogEnable</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x0700</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>Enable analog blocks</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-AggregateOpBuffer"><span class="pre">AggregateOpBuffer</span></a></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-AggregateOpBuffer"><span class="pre">AggregateOpBuffer</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x0704</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">512</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">256</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
 <td><p><p>Buffer for aggregate op instructions</p>
-</p></td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-PowerDroopCompensation"><span class="pre">PowerDroopCompensation</span></a></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x0904</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">4</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
-<td><p><p>Tx power droop compensation controls</p>
 </p></td>
 </tr>
 <tr class="row-odd"><td colspan="5"></td>
@@ -687,15 +618,6 @@ section  When fields are multi-byte, they are little-endian.</p>
 </tr>
 <tr class="row-odd"><td colspan="5"></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-DropQueryControl"><span class="pre">DropQueryControl</span></a></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x1090</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">2</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">read-write</span></code></td>
-<td><p><p>Drop Query Feature Control</p>
-</p></td>
-</tr>
-<tr class="row-odd"><td colspan="5"></td>
-</tr>
 <tr class="row-even"><td><code class="docutils literal notranslate"><a class="reference internal" href="#address-entry-Gen2TxBuffer"><span class="pre">Gen2TxBuffer</span></a></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">0x1100</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">128</span></code></td>
@@ -769,12 +691,12 @@ FREF frequency is unknown (was not correctly set in the info page).</p>
 </table>
 <p></p>
 <h2 id="address-entry-ProductSku">ProductSku: The product SKU<a class="headerlink" href="#application-only_address_map_summary" title="Permalink to this headline">¶</a></h2>
-<p><p>The Impinj reader chip SKU differentiates E310, E510, E710 and E910 devices.
+<p><p>The Impinj reader chip SKU differentiates E310, E510 and E710 devices.
 It is programmed at the time of manufacture.</p>
 <p>Although 8 bytes are allocated, only the lower two bytes are currently
 used to hold the SKU information. The SKU information is encoded as:</p>
-<table class="colwidths-given docutils align-default" id="id2">
-<caption><span class="caption-number">Table 29 </span><span class="caption-text">ProductSku Encoding</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-number">Table 29 </span><span class="caption-text">ProductSku Encoding</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
@@ -787,19 +709,15 @@ used to hold the SKU information. The SKU information is encoded as:</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>E910</p></td>
-<td><p>0x10</p></td>
-<td><p>0x09</p></td>
-</tr>
-<tr class="row-odd"><td><p>E710</p></td>
+<tr class="row-even"><td><p>E710</p></td>
 <td><p>0x10</p></td>
 <td><p>0x07</p></td>
 </tr>
-<tr class="row-even"><td><p>E510</p></td>
+<tr class="row-odd"><td><p>E510</p></td>
 <td><p>0x10</p></td>
 <td><p>0x05</p></td>
 </tr>
-<tr class="row-odd"><td><p>E310</p></td>
+<tr class="row-even"><td><p>E310</p></td>
 <td><p>0x10</p></td>
 <td><p>0x03</p></td>
 </tr>
@@ -905,42 +823,9 @@ used to hold the SKU information. The SKU information is encoded as:</p>
 </tbody>
 </table>
 <p></p>
-<h2 id="address-entry-StackDepth">StackDepth: The maximum stack depth<a class="headerlink" href="#application-only_address_map_summary" title="Permalink to this headline">¶</a></h2>
-<p><p>This register reports the maximum number of bytes used
-on the stack if the firmware is built to paint the entire stack.
-If it is not built to paint the entire stack it will paint the
-last two words of the stack so this register will return the 
-stack size - 12. If a stack overflow has occured it will
-return the stack size.</p>
-</p>
-<p>Field Address: 0x009C</p>
-<p>Field Details:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 8%" />
-<col style="width: 25%" />
-<col style="width: 67%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Bit</p></th>
-<th class="head"><p>Name</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">31:0</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">depth</span></code></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
-<p></p>
 <h2 id="address-entry-InterruptMask">InterruptMask: The interrupt enable mask<a class="headerlink" href="#application-only_address_map_summary" title="Permalink to this headline">¶</a></h2>
-<p><p>This register sets/overrides the value for the interrupt mask, which
-determines which interrupt sources will trigger an interrupt on the IRQ_N pin.
-Immediately upon setting this mask, the state of interrupt line is updated.
-If you enabled a mask for which the specified interrupt bit has already been
-set, the interrupt line is asserted, else the line is de-asserted.</p>
+<p><p>This register sets the value for the interrupt mask which
+determines which interrupt sources will trigger an interrupt on the IRQ_N pin.</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">1</span></code>: indicates that the specific interrupt is enabled.</p></li>
@@ -1029,12 +914,6 @@ The <cite>CommandResult</cite> register will hold further details about the erro
 that occurred.</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">7</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">AggregateOpDone</span></code></td>
-<td><p><p>The aggregate op was started and has completed.
-Details on the aggregate op can be seen in <a class="reference internal" href="yk_firmware_ex10_api_operations.html#aggregateop"><span class="std std-ref">AggregateOp</span></a></p>
-</p></td>
-</tr>
 </tbody>
 </table>
 <p></p>
@@ -1042,9 +921,7 @@ Details on the aggregate op can be seen in <a class="reference internal" href="y
 <p><p>Bits set to ‘1’ within the write command to this register will enable the
 corresponding InterruptMask register bits.
 This allows the InterruptMask bits to be enabled without 
-performing a read-modify-write operation.
-If the newly enabled mask overlaps with an interrupt bit currently set in
-the InterruptStatus register, the interrupt line will be asserted.</p>
+performing a read-modify-write operation.</p>
 </p>
 <p>Field Address: 0x00A4</p>
 <p>Field Details:</p>
@@ -1127,12 +1004,6 @@ The <cite>CommandResult</cite> register will hold further details about the erro
 that occurred.</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">7</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">AggregateOpDone</span></code></td>
-<td><p><p>The aggregate op was started and has completed.
-Details on the aggregate op can be seen in <a class="reference internal" href="yk_firmware_ex10_api_operations.html#aggregateop"><span class="std std-ref">AggregateOp</span></a></p>
-</p></td>
-</tr>
 </tbody>
 </table>
 <p></p>
@@ -1140,10 +1011,7 @@ Details on the aggregate op can be seen in <a class="reference internal" href="y
 <p><p>Bits set to ‘1’ within the write command to this register will disable the
 corresponding InterrupMask register bits.
 This allows the InterruptMask bits to be disabled without
-performing a read-modify-write operation.
-If the newly cleared mask no longer overlaps with any set bits in the
-InterruptStatus register (all triggered interrupts are masked out), the
-interrupt line will be de-asserted.</p>
+performing a read-modify-write operation.</p>
 </p>
 <p>Field Address: 0x00A8</p>
 <p>Field Details:</p>
@@ -1226,25 +1094,16 @@ The <cite>CommandResult</cite> register will hold further details about the erro
 that occurred.</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">7</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">AggregateOpDone</span></code></td>
-<td><p><p>The aggregate op was started and has completed.
-Details on the aggregate op can be seen in <a class="reference internal" href="yk_firmware_ex10_api_operations.html#aggregateop"><span class="std std-ref">AggregateOp</span></a></p>
-</p></td>
-</tr>
 </tbody>
 </table>
 <p></p>
 <h2 id="address-entry-InterruptStatus">InterruptStatus: The interrupt status<a class="headerlink" href="#application-only_address_map_summary" title="Permalink to this headline">¶</a></h2>
-<p><p>This register can be read to determine which interrupts have occurred since the
-last time the interrupt status was read. Reading this register will clear the
-status bits and clear the interrupt line if it is triggered.
-A bit value of ‘1’ indicates that a specific interrupt has been triggered. 
-All interrupts which occur within the device will be set here, but only interrupts
-enabled in the InterruptMask register will trigger a host interrupt via the
-interrupt pin.
-When the host is triggered by a reader chip interrupt it can identify the cause of
-the interrupt by reading this register.</p>
+<p><p>When the host is triggered by a reader chip interrupt it can identify the cause of
+the interrupt by reading this register.
+Note that only interrupts enabled in the InterruptMask register will
+trigger a host interrupt. Enabled and triggered interrupts
+will be cleared within this status register when this register is read.
+A bit value of ‘1’ indicates that a specific interrupt has been triggered.</p>
 </p>
 <p>Field Address: 0x00AC</p>
 <p>Field Details:</p>
@@ -1325,12 +1184,6 @@ completed with a failing
 Any completion code other than ‘Success’ will trigger this interrupt.
 The <cite>CommandResult</cite> register will hold further details about the error
 that occurred.</p>
-</p></td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">7</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">AggregateOpDone</span></code></td>
-<td><p><p>The aggregate op was started and has completed.
-Details on the aggregate op can be seen in <a class="reference internal" href="yk_firmware_ex10_api_operations.html#aggregateop"><span class="std std-ref">AggregateOp</span></a></p>
 </p></td>
 </tr>
 </tbody>
@@ -1420,9 +1273,7 @@ trigger the EventFifoAboveThresh interrupt.</p>
 <td><p><p>The bits within this bitfield represent the corresponding reader chip pins
 in little endian order. eg:
 […Unused, D21, D20, …, D01, D00]
-This register setting takes effect when the <a class="reference internal" href="yk_firmware_ex10_api_operations.html#setgpioop"><span class="std std-ref">SetGpioOp</span></a> is run.
-When the <a class="reference internal" href="yk_firmware_ex10_api_operations.html#setcleargpiopinsop"><span class="std std-ref">SetClearGpioPinsOp</span></a> is run this
-register is updated with the new GPIO enable settings.</p>
+This register setting takes effect when the <a class="reference internal" href="yk_firmware_ex10_api_operations.html#setgpioop"><span class="std std-ref">SetGpioOp</span></a> is run.</p>
 </p></td>
 </tr>
 </tbody>
@@ -1454,9 +1305,7 @@ little endian order. eg:
 The output level of a bit is positive logic with respect to each pin;
 ‘1’ correlates to GPIO output level high
 ‘0’ correlates to GPIO output level low.
-This register setting takes effect when the <a class="reference internal" href="yk_firmware_ex10_api_operations.html#setgpioop"><span class="std std-ref">SetGpioOp</span></a> is run.
-When the <a class="reference internal" href="yk_firmware_ex10_api_operations.html#setcleargpiopinsop"><span class="std std-ref">SetClearGpioPinsOp</span></a> is run this
-register is updated with the new GPIO enable settings.</p>
+This register setting takes effect when the <a class="reference internal" href="yk_firmware_ex10_api_operations.html#setgpioop"><span class="std std-ref">SetGpioOp</span></a> is run.</p>
 </p></td>
 </tr>
 </tbody>
@@ -1496,86 +1345,81 @@ register is updated with the new GPIO enable settings.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">None</span></code></td>
-<td><p><p>No ADC channel enabled.</p>
-</p></td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x1</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x1</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PowerLo0</span></code></td>
-<td><p><p>Enable LO RF power measurement: input with +10 dB gain</p>
+<td><p><p>Enable LO RF power measurement: input with +12 dB gain</p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x2</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x2</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PowerLo1</span></code></td>
 <td><p><p>Enable LO RF power measurement: input with   0 dB gain</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x4</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x4</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PowerLo2</span></code></td>
-<td><p><p>Enable LO RF power measurement: input with -10 dB gain</p>
+<td><p><p>Enable LO RF power measurement: input with -12 dB gain</p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x8</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x8</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PowerLo3</span></code></td>
-<td><p><p>Enable LO RF power measurement: input with -20 dB gain</p>
+<td><p><p>Enable LO RF power measurement: input with -24 dB gain</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x10</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x10</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PowerRx0</span></code></td>
-<td><p><p>Enable RX RF power measurement: input with +10 dB gain</p>
+<td><p><p>Enable RX RF power measurement: input with +12 dB gain</p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x20</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x20</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PowerRx1</span></code></td>
 <td><p><p>Enable RX RF power measurement: input with   0 dB gain</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x40</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x40</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PowerRx2</span></code></td>
-<td><p><p>Enable RX RF power measurement: input with -10dB gain</p>
+<td><p><p>Enable RX RF power measurement: input with -12dB gain</p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x80</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x80</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PowerRx3</span></code></td>
-<td><p><p>Enable RX RF power measurement: input with -20dB gain</p>
+<td><p><p>Enable RX RF power measurement: input with -24dB gain</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x100</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x100</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">TestMux0</span></code></td>
 <td><p><p>Measures a voltage routed from within the reader chip
 through other register settings.</p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x200</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x200</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">TestMux1</span></code></td>
 <td><p><p>Measures a voltage routed from within the reader chip
 through other register settings.</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x400</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x400</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">TestMux2</span></code></td>
 <td><p><p>Measures a voltage routed from within the reader chip
 through other register settings.</p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x800</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x800</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">TestMux3</span></code></td>
 <td><p><p>Measures a voltage routed from within the reader chip
 through other register settings.</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x1000</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x1000</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">Temperature</span></code></td>
 <td><p><p>Take a measurement of the temperature sesnsor.</p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x2000</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x2000</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PowerLoSum</span></code></td>
 <td><p><p>The sum of all 4 LO channels.</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x4000</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x4000</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PowerRxSum</span></code></td>
 <td><p><p>The sum of all 4 RX channels.</p>
 </p></td>
@@ -1649,6 +1493,34 @@ This register setting is used within the Impinj reader chip when the
 </tbody>
 </table>
 <p></p>
+<h2 id="address-entry-PowerControlLoopInitialTxScalar">PowerControlLoopInitialTxScalar: PowerControlLoopOp TxScalar initial value<a class="headerlink" href="#application-only_address_map_summary" title="Permalink to this headline">¶</a></h2>
+<p><p>The digital gain control for the <a class="reference internal" href="yk_firmware_ex10_api_operations.html#powercontrolloopop"><span class="std std-ref">PowerControlLoopOp</span></a>.</p>
+</p>
+<p>Field Address: 0x00C8</p>
+<p>Field Details:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 25%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bit</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">15:0</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">TxScalar</span></code></td>
+<td><p><p>The initial digital gain to apply. The gain is 12 bit limited.
+This register setting is used within the Impinj reader chip when the
+<a class="reference internal" href="yk_firmware_ex10_api_operations.html#powercontrolloopop"><span class="std std-ref">PowerControlLoopOp</span></a> is run.</p>
+</p></td>
+</tr>
+</tbody>
+</table>
+<p></p>
 <h2 id="address-entry-PowerControlLoopAdcTarget">PowerControlLoopAdcTarget: PowerControlLoopOp ADC target value<a class="headerlink" href="#application-only_address_map_summary" title="Permalink to this headline">¶</a></h2>
 <p><p>The desired output power to hit when running the <a class="reference internal" href="yk_firmware_ex10_api_operations.html#powercontrolloopop"><span class="std std-ref">PowerControlLoopOp</span></a>.</p>
 </p>
@@ -1677,7 +1549,7 @@ This register setting is used within the Impinj reader chip when the
 </tbody>
 </table>
 <p></p>
-<h2 id="address-entry-PowerControlLoopAdcThresholds">PowerControlLoopAdcThresholds: Thresholds for the PowerControlLoopOp<a class="headerlink" href="#application-only_address_map_summary" title="Permalink to this headline">¶</a></h2>
+<h2 id="address-entry-PowerControlLoopAdcThresholds">PowerControlLoopAdcThresholds: Thresholds for the :ref:`PowerControlLoopOp &lt;PowerControlLoopOp&gt;`<a class="headerlink" href="#application-only_address_map_summary" title="Permalink to this headline">¶</a></h2>
 <p><p>These thresholds control the stop conditions and the returned error by 
 the <a class="reference internal" href="yk_firmware_ex10_api_operations.html#powercontrolloopop"><span class="std std-ref">PowerControlLoopOp</span></a>.         
 This register setting is used within the Impinj reader chip when the
@@ -1702,9 +1574,7 @@ This register setting is used within the Impinj reader chip when the
 <td><code class="docutils literal notranslate"><span class="pre">LoopStopThreshold</span></code></td>
 <td><p><p>The feedback controller is satisfied when the measured error is
 within this threshold, measured in ADC values. Meaning this threashold
-is used as exit condition within the control loop.  Also used in droop
-compensation to determine whether or not the TxFineGain will be changed
-in each loop pass. See <a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-PowerDroopCompensation">PowerDroopCompensation</a></p>
+is used as exit condition within the control loop.</p>
 </p></td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">31:16</span></code></td>
@@ -1739,147 +1609,6 @@ Measured in ADC values</p>
 <tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">31:0</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">Delay</span></code></td>
 <td><p><p>The time in us to delay.</p>
-</p></td>
-</tr>
-</tbody>
-</table>
-<p></p>
-<h2 id="address-entry-GpioOutputLevelSet">GpioOutputLevelSet: Sets individual GPIO pins levels<a class="headerlink" href="#application-only_address_map_summary" title="Permalink to this headline">¶</a></h2>
-<p><p>Allows the host to set specific Impinj reader chip GPIO pin levels.</p>
-</p>
-<p>Field Address: 0x00E0</p>
-<p>Field Details:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 8%" />
-<col style="width: 25%" />
-<col style="width: 67%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Bit</p></th>
-<th class="head"><p>Name</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">31:0</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">LevelBitsSet</span></code></td>
-<td><p><p>The bits within this bitfield represent the corresponding reader chip pins
-in little endian order. eg: […Unused, D21, D20, …, D01, D00]</p>
-<p>Note: This register is write-only.</p>
-<p>When the <a class="reference internal" href="yk_firmware_ex10_api_operations.html#setcleargpiopinsop"><span class="std std-ref">SetClearGpioPinsOp</span></a> is run:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>A specific GPIO level is set high for each bit in this register that is set.</p></li>
-<li><p>The output level will be applied to the GPIO pin if/when the output is enabed.</p></li>
-</ul>
-</div></blockquote>
-</p></td>
-</tr>
-</tbody>
-</table>
-<p></p>
-<h2 id="address-entry-GpioOutputLevelClear">GpioOutputLevelClear: Clears individual GPIO pins levels<a class="headerlink" href="#application-only_address_map_summary" title="Permalink to this headline">¶</a></h2>
-<p><p>Allows the host to clear specific Impinj reader chip GPIO pin levels.</p>
-</p>
-<p>Field Address: 0x00E4</p>
-<p>Field Details:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 8%" />
-<col style="width: 25%" />
-<col style="width: 67%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Bit</p></th>
-<th class="head"><p>Name</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">31:0</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">LevelBitsClear</span></code></td>
-<td><p><p>The bits within this bitfield represent the corresponding reader chip pins
-in little endian order. eg: […Unused, D21, D20, …, D01, D00]</p>
-<p>Note: This register is write-only.</p>
-<p>When the <a class="reference internal" href="yk_firmware_ex10_api_operations.html#setcleargpiopinsop"><span class="std std-ref">SetClearGpioPinsOp</span></a> is run:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>A specific GPIO level is set low for each bit in this register that is set.</p></li>
-<li><p>The output level will be applied to the GPIO pin if/when the output is enabed.</p></li>
-</ul>
-</div></blockquote>
-</p></td>
-</tr>
-</tbody>
-</table>
-<p></p>
-<h2 id="address-entry-GpioOutputEnableSet">GpioOutputEnableSet: Sets individual GPIO pins as outputs<a class="headerlink" href="#application-only_address_map_summary" title="Permalink to this headline">¶</a></h2>
-<p><p>Allows the host to set specific Impinj reader chip GPIO pins as an outputs.</p>
-</p>
-<p>Field Address: 0x00E8</p>
-<p>Field Details:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 8%" />
-<col style="width: 25%" />
-<col style="width: 67%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Bit</p></th>
-<th class="head"><p>Name</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">31:0</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">EnableBitsSet</span></code></td>
-<td><p><p>The bits within this bitfield represent the corresponding reader chip pins
-in little endian order. eg: […Unused, D21, D20, …, D01, D00]</p>
-<p>Note: This register is write-only.</p>
-<p>When the <a class="reference internal" href="yk_firmware_ex10_api_operations.html#setcleargpiopinsop"><span class="std std-ref">SetClearGpioPinsOp</span></a> is run:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>A specific GPIO output is enabled for each bit in this register that is set.</p></li>
-<li><p>When a GPIO output is enabled, the GPIO level set will take effect, resulting
-in a defined driven output level of one or zero.</p></li>
-</ul>
-</div></blockquote>
-</p></td>
-</tr>
-</tbody>
-</table>
-<p></p>
-<h2 id="address-entry-GpioOutputEnableClear">GpioOutputEnableClear: Clears individual GPIO pins as outputs<a class="headerlink" href="#application-only_address_map_summary" title="Permalink to this headline">¶</a></h2>
-<p><p>Allows the host to clear specific Impinj reader chip GPIO pins as an outputs.</p>
-</p>
-<p>Field Address: 0x00EC</p>
-<p>Field Details:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 8%" />
-<col style="width: 25%" />
-<col style="width: 67%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Bit</p></th>
-<th class="head"><p>Name</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">31:0</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">EnableBitsClear</span></code></td>
-<td><p><p>The bits within this bitfield represent the corresponding reader chip pins
-in little endian order. eg: […Unused, D21, D20, …, D01, D00]</p>
-<p>Note: This register is write-only.</p>
-<p>When the <a class="reference internal" href="yk_firmware_ex10_api_operations.html#setcleargpiopinsop"><span class="std std-ref">SetClearGpioPinsOp</span></a> is run:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>A specific GPIO output is disabled for each bit in this register that is set.</p></li>
-<li><p>If a GPIO pin is not set as an output it is in a Hi-Z state.</p></li>
-</ul>
-</div></blockquote>
 </p></td>
 </tr>
 </tbody>
@@ -2050,25 +1779,7 @@ will complete immediately after.
 See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#setgpioop"><span class="std std-ref">SetGpioOp</span></a></p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0xae</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">SetClearGpioPinsOp</span></code></td>
-<td><p><p>This operation allows for GPIO level and enable settings to be applied
-independently to each GPIO pin.
-The GPIO pins are Set and Cleared based on the register settings:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>GpioOutputLevelSet</p></li>
-<li><p>GpioOutputLevelClear</p></li>
-<li><p>GpioOutputEnableSet</p></li>
-<li><p>GpioOutputEnableClear</p></li>
-</ul>
-</div></blockquote>
-<p>Each bit within the GPIO register is applied to a GPIO pin.
-If a Set and Clear register are both set to value <code class="docutils literal notranslate"><span class="pre">1</span></code>, then the
-clear operation will take precedence.</p>
-</p></td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0xb0</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0xb0</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">StartInventoryRoundOp</span></code></td>
 <td><p><p>Run a single inventory round as described in the
 InventoryRoundControl and InventoryRoundControl_2 registers.
@@ -2078,7 +1789,7 @@ the ‘Idle’ code to the OpsControl register or when the inventory round compl
 See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#startinventoryroundop"><span class="std std-ref">StartInventoryRoundOp</span></a></p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0xb1</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0xb1</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RunPrbsDataOp</span></code></td>
 <td><p><p>Initiates the transmission of a pseudorandom binary sequence for
 transmitter testing purposes. The radio should be ramped up before
@@ -2087,7 +1798,7 @@ sets the OpsControl register to idle or hits the regulatory timeout.
 See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#runprbsdataop"><span class="std std-ref">RunPrbsDataOp</span></a></p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0xb2</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0xb2</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">SendSelectOp</span></code></td>
 <td><p><p>The SendSelectOp initiates a Gen2 Select command
 transaction that is defined in the Gen2TxBuffer and described in
@@ -2101,7 +1812,7 @@ have completed and EventFifo packets have been added to the EventFifo.
 See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#sendselectop"><span class="std std-ref">SendSelectOp</span></a></p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0xb3</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0xb3</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">SetDacOp</span></code></td>
 <td><p><p>Sets the auxiliary DACs as configured in the AuxDacControl register.
 This operation will complete after all enabled DAC channels have
@@ -2109,61 +1820,47 @@ been converted.
 See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#setdacop"><span class="std std-ref">SetDacOp</span></a></p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0xb4</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0xb4</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">SetATestMuxOp</span></code></td>
 <td><p><p>Sets the ATEST multiplexer bus routing values within the ATestMux
 register.
 See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#setatestmuxop"><span class="std std-ref">SetATestMuxOp</span></a></p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0xb5</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0xb5</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PowerControlLoopOp</span></code></td>
 <td><p><p>Run the power control loop to attempt to ramp to the appropriate power
 specified by the user.
 See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#powercontrolloopop"><span class="std std-ref">PowerControlLoopOp</span></a></p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0xb6</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0xb6</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">MeasureRssiOp</span></code></td>
-<td><p><p>Configure the modem to properly retrieve RSSI in a known setup. This
-RSSI measurement is the RSSI of the environment as seen by the Ex10
-Device. This measurement op allows a more versatile and higher accuracy
-RSSI measurement than the measurement for RSSI which accompanies tag
-FIFO reports. The increased versatility comes from this op being able
-to run with or without the CW waveform. The higher accuracy comes from
-allowing for longer measurement time.
+<td><p><p>Configure the modem to properly retrieve RSSI in a known lab setup.
 See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#measurerssiop"><span class="std std-ref">MeasureRssiOp</span></a></p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0xb7</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0xb7</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">UsTimerStartOp</span></code></td>
 <td><p><p>Starts a timer for a user defined number of ms. If the op is run while
 the previous timer is still running, the previous timer will be overriden.
 See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#ustimerstartop"><span class="std std-ref">UsTimerStartOp</span></a></p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0xb8</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0xb8</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">UsTimerWaitOp</span></code></td>
 <td><p><p>Waits on a user specified timer that was previously set in UsTimerStartOp
 If there is no timer currently running, the op will return immediately.
 See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#ustimerwaitop"><span class="std std-ref">UsTimerWaitOp</span></a></p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0xb9</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0xb9</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">AggregateOp</span></code></td>
 <td><p><p>Parses instructions in the AggregateOpBuffer register. If the instruction
 is supported, it will be executed, otherwise an error will be returned to
 the user. The op will continue until the exit instruction is seen, or any
 errors occur.
 See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#aggregateop"><span class="std std-ref">AggregateOp</span></a></p>
-</p></td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0xba</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">ListenBeforeTalkOp</span></code></td>
-<td><p><p>Listen before talk allows the device to measure RSSI on a channel
-before ramping the transmitter. This measurement can be used by
-the host to decide how/if to continue with the subsequent ramp.
-See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#listenbeforetalkop"><span class="std std-ref">ListenBeforeTalkOp</span></a></p>
 </p></td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0xc0</span></code></td>
@@ -2179,20 +1876,7 @@ up and ramp down the transmitter with the applied modulation so
 that the demodulated waveform can be measured. The time between
 ramp down and the subsequent ramp up is determined by the user setting of
 the EtsiBurstOffTime register.
-See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#etsiburstop"><span class="std std-ref">EtsiBurstOp</span></a></p>
-</p></td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0xc2</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">HpfOverrideTestOp</span></code></td>
-<td><p><p>Uses the <a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-HpfOverrideSettings">HpfOverrideSettings</a>
-set by the client to override the HPF (high-pass filter) of the Ex10 receiver.</p>
-<p>The HPF is normally set during <a class="reference internal" href="yk_firmware_ex10_api_operations.html#rxrunsjcop"><span class="std std-ref">RxRunSjcOp</span></a> and
-<a class="reference internal" href="yk_firmware_ex10_api_operations.html#setrfmodeop"><span class="std std-ref">SetRfModeOp</span></a>.</p>
-<p>If the aforementioned two ops are going to be run, they should therefore
-be run before this op.</p>
-<p>Any further operation after using this op is considered a test mode,
-which should be exited through a device reset.
-See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#hpfoverridetestop"><span class="std std-ref">HpfOverrideTestOp</span></a></p>
+See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#bertestop"><span class="std std-ref">BerTestOp</span></a></p>
 </p></td>
 </tr>
 </tbody>
@@ -2362,25 +2046,7 @@ will complete immediately after.
 See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#setgpioop"><span class="std std-ref">SetGpioOp</span></a></p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0xae</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">SetClearGpioPinsOp</span></code></td>
-<td><p><p>This operation allows for GPIO level and enable settings to be applied
-independently to each GPIO pin.
-The GPIO pins are Set and Cleared based on the register settings:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>GpioOutputLevelSet</p></li>
-<li><p>GpioOutputLevelClear</p></li>
-<li><p>GpioOutputEnableSet</p></li>
-<li><p>GpioOutputEnableClear</p></li>
-</ul>
-</div></blockquote>
-<p>Each bit within the GPIO register is applied to a GPIO pin.
-If a Set and Clear register are both set to value <code class="docutils literal notranslate"><span class="pre">1</span></code>, then the
-clear operation will take precedence.</p>
-</p></td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0xb0</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0xb0</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">StartInventoryRoundOp</span></code></td>
 <td><p><p>Run a single inventory round as described in the
 InventoryRoundControl and InventoryRoundControl_2 registers.
@@ -2390,7 +2056,7 @@ the ‘Idle’ code to the OpsControl register or when the inventory round compl
 See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#startinventoryroundop"><span class="std std-ref">StartInventoryRoundOp</span></a></p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0xb1</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0xb1</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RunPrbsDataOp</span></code></td>
 <td><p><p>Initiates the transmission of a pseudorandom binary sequence for
 transmitter testing purposes. The radio should be ramped up before
@@ -2399,7 +2065,7 @@ sets the OpsControl register to idle or hits the regulatory timeout.
 See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#runprbsdataop"><span class="std std-ref">RunPrbsDataOp</span></a></p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0xb2</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0xb2</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">SendSelectOp</span></code></td>
 <td><p><p>The SendSelectOp initiates a Gen2 Select command
 transaction that is defined in the Gen2TxBuffer and described in
@@ -2413,7 +2079,7 @@ have completed and EventFifo packets have been added to the EventFifo.
 See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#sendselectop"><span class="std std-ref">SendSelectOp</span></a></p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0xb3</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0xb3</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">SetDacOp</span></code></td>
 <td><p><p>Sets the auxiliary DACs as configured in the AuxDacControl register.
 This operation will complete after all enabled DAC channels have
@@ -2421,61 +2087,47 @@ been converted.
 See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#setdacop"><span class="std std-ref">SetDacOp</span></a></p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0xb4</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0xb4</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">SetATestMuxOp</span></code></td>
 <td><p><p>Sets the ATEST multiplexer bus routing values within the ATestMux
 register.
 See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#setatestmuxop"><span class="std std-ref">SetATestMuxOp</span></a></p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0xb5</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0xb5</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PowerControlLoopOp</span></code></td>
 <td><p><p>Run the power control loop to attempt to ramp to the appropriate power
 specified by the user.
 See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#powercontrolloopop"><span class="std std-ref">PowerControlLoopOp</span></a></p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0xb6</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0xb6</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">MeasureRssiOp</span></code></td>
-<td><p><p>Configure the modem to properly retrieve RSSI in a known setup. This
-RSSI measurement is the RSSI of the environment as seen by the Ex10
-Device. This measurement op allows a more versatile and higher accuracy
-RSSI measurement than the measurement for RSSI which accompanies tag
-FIFO reports. The increased versatility comes from this op being able
-to run with or without the CW waveform. The higher accuracy comes from
-allowing for longer measurement time.
+<td><p><p>Configure the modem to properly retrieve RSSI in a known lab setup.
 See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#measurerssiop"><span class="std std-ref">MeasureRssiOp</span></a></p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0xb7</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0xb7</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">UsTimerStartOp</span></code></td>
 <td><p><p>Starts a timer for a user defined number of ms. If the op is run while
 the previous timer is still running, the previous timer will be overriden.
 See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#ustimerstartop"><span class="std std-ref">UsTimerStartOp</span></a></p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0xb8</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0xb8</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">UsTimerWaitOp</span></code></td>
 <td><p><p>Waits on a user specified timer that was previously set in UsTimerStartOp
 If there is no timer currently running, the op will return immediately.
 See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#ustimerwaitop"><span class="std std-ref">UsTimerWaitOp</span></a></p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0xb9</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0xb9</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">AggregateOp</span></code></td>
 <td><p><p>Parses instructions in the AggregateOpBuffer register. If the instruction
 is supported, it will be executed, otherwise an error will be returned to
 the user. The op will continue until the exit instruction is seen, or any
 errors occur.
 See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#aggregateop"><span class="std std-ref">AggregateOp</span></a></p>
-</p></td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0xba</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">ListenBeforeTalkOp</span></code></td>
-<td><p><p>Listen before talk allows the device to measure RSSI on a channel
-before ramping the transmitter. This measurement can be used by
-the host to decide how/if to continue with the subsequent ramp.
-See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#listenbeforetalkop"><span class="std std-ref">ListenBeforeTalkOp</span></a></p>
 </p></td>
 </tr>
 <tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0xc0</span></code></td>
@@ -2491,31 +2143,18 @@ up and ramp down the transmitter with the applied modulation so
 that the demodulated waveform can be measured. The time between
 ramp down and the subsequent ramp up is determined by the user setting of
 the EtsiBurstOffTime register.
-See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#etsiburstop"><span class="std std-ref">EtsiBurstOp</span></a></p>
-</p></td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0xc2</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">HpfOverrideTestOp</span></code></td>
-<td><p><p>Uses the <a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-HpfOverrideSettings">HpfOverrideSettings</a>
-set by the client to override the HPF (high-pass filter) of the Ex10 receiver.</p>
-<p>The HPF is normally set during <a class="reference internal" href="yk_firmware_ex10_api_operations.html#rxrunsjcop"><span class="std std-ref">RxRunSjcOp</span></a> and
-<a class="reference internal" href="yk_firmware_ex10_api_operations.html#setrfmodeop"><span class="std std-ref">SetRfModeOp</span></a>.</p>
-<p>If the aforementioned two ops are going to be run, they should therefore
-be run before this op.</p>
-<p>Any further operation after using this op is considered a test mode,
-which should be exited through a device reset.
-See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#hpfoverridetestop"><span class="std std-ref">HpfOverrideTestOp</span></a></p>
+See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#bertestop"><span class="std std-ref">BerTestOp</span></a></p>
 </p></td>
 </tr>
 </tbody>
 </table>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">8</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">8</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">Busy</span></code></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">23:16</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">23:16</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">Error</span></code></td>
 <td><p><table class="docutils align-default">
 <colgroup>
@@ -2593,23 +2232,9 @@ reader SKU.</p>
 <tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0xb</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">SjcResidueThresholdExceeded</span></code></td>
 <td><p><p>When running the <a class="reference internal" href="yk_firmware_ex10_api_operations.html#rxrunsjcop"><span class="std std-ref">RxRunSjcOp</span></a> the resulting
-measured SJC residue voltage magnitude at the receiver exceeds the
-value specified in the <cite>SjcResidueThreshold</cite> magnitude register
+measured SJC residue volatage magnitude at the receiver exceeds the
+value specified in the <cite>SjcResidueThreshold</cite> mganitude register
 field.</p>
-</p></td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0xc</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">DroopCompensationTooManyAdcChannels</span></code></td>
-<td><p><p>Tx power droop compensation only allows one power detector ADC channel.
-If more than one channel is set in the channel enable bits, there is
-insufficient time to measure Tx power across several channels when
-inventory is active.</p>
-</p></td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0xd</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">EventFailedToSend</span></code></td>
-<td><p><p>An EventFifo Packet, which is essential to proper operation of the
-Op being executed, failed to send due to the EventFifo being full.</p>
 </p></td>
 </tr>
 </tbody>
@@ -2722,17 +2347,6 @@ to the next slot.</p>
 <tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x2</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">GetCoverCodeFailed</span></code></td>
 <td><p><p>Failed to obtain the cover code</p>
-</p></td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x3</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">BadCrc</span></code></td>
-<td><p><p>The obtained CRC was incorrect.</p>
-</p></td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x4</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">Unknown</span></code></td>
-<td><p><p>There was an unknown error in attempting to send the requested
-command. Please contact Impinj for further investigation.</p>
 </p></td>
 </tr>
 </tbody>
@@ -2981,12 +2595,7 @@ application, allowing for a more focused log file or a lower bandwidth output.</
 <td><p><p>This bit enables the SDD logging of host IRQ events</p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">15</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">ReadFifoLogs</span></code></td>
-<td><p><p>This bit enables logging of any read fifo commands.</p>
-</p></td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">26</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">26</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RssiTraceLogs</span></code></td>
 <td><p><p>This bit enables logging for the MeasureRssiOp</p>
 </p></td>
@@ -3052,81 +2661,6 @@ operation.</p>
 </tbody>
 </table>
 <p></p>
-<h2 id="address-entry-HpfOverrideSettings">HpfOverrideSettings: HPF (high-pass filter) override setting<a class="headerlink" href="#application-only_address_map_summary" title="Permalink to this headline">¶</a></h2>
-<p><p>Controls the Ex10 receiver HPF (high-pass filter) override setting used by the
-<a class="reference internal" href="yk_firmware_ex10_api_operations.html#hpfoverridetestop"><span class="std std-ref">HpfOverrideTestOp</span></a>; which is used for testing purposes.
-This will override the current HPF setting, which is normally managed by the device.</p>
-<p>When done using this test mode, the device should be reset before proceeding
-with normal operations.</p>
-</p>
-<p>Field Address: 0x0344</p>
-<p>Field Details:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 8%" />
-<col style="width: 25%" />
-<col style="width: 67%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Bit</p></th>
-<th class="head"><p>Name</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">7:0</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">HpfMode</span></code></td>
-<td><p><p>The High Pass Filter (HPF) mode selection.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 9%" />
-<col style="width: 45%" />
-<col style="width: 45%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Value</p></th>
-<th class="head"><p>Name</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">Uninitialized</span></code></td>
-<td><p><p>No HPF mode has been selected.</p>
-</p></td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x1</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">Bypass</span></code></td>
-<td><p><p>Bypass HPF using a DC path through the receiver.</p>
-</p></td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x2</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">FctTestMode</span></code></td>
-<td><p><p>Overrides the High-pass filter for use in FCT.</p>
-</p></td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x3</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">LbtTestMode</span></code></td>
-<td><p><p>Sets the HPF for LBT test mode.</p>
-</p></td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x4</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">2000Ohm</span></code></td>
-<td><p><p>HPF enabled, 2000 ohm series resistance.</p>
-</p></td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x5</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">500Ohm</span></code></td>
-<td><p><p>HPF enabled, 500 ohm series resistance.</p>
-</p></td>
-</tr>
-</tbody>
-</table>
-</p></td>
-</tr>
-</tbody>
-</table>
-<p></p>
 <h2 id="address-entry-AuxAdcControl">AuxAdcControl: AUX ADC measurement controls<a class="headerlink" href="#application-only_address_map_summary" title="Permalink to this headline">¶</a></h2>
 <p><p>The auxiliary ADC can be used for measuring chip temperature, power
 into the LO port, power into the RX port and external voltages via the
@@ -3163,86 +2697,81 @@ ATEST pins. The flags in this register control which measurements to take with t
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">None</span></code></td>
-<td><p><p>No ADC channel enabled.</p>
-</p></td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x1</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x1</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PowerLo0</span></code></td>
-<td><p><p>Enable LO RF power measurement: input with +10 dB gain</p>
+<td><p><p>Enable LO RF power measurement: input with +12 dB gain</p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x2</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x2</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PowerLo1</span></code></td>
 <td><p><p>Enable LO RF power measurement: input with   0 dB gain</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x4</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x4</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PowerLo2</span></code></td>
-<td><p><p>Enable LO RF power measurement: input with -10 dB gain</p>
+<td><p><p>Enable LO RF power measurement: input with -12 dB gain</p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x8</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x8</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PowerLo3</span></code></td>
-<td><p><p>Enable LO RF power measurement: input with -20 dB gain</p>
+<td><p><p>Enable LO RF power measurement: input with -24 dB gain</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x10</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x10</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PowerRx0</span></code></td>
-<td><p><p>Enable RX RF power measurement: input with +10 dB gain</p>
+<td><p><p>Enable RX RF power measurement: input with +12 dB gain</p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x20</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x20</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PowerRx1</span></code></td>
 <td><p><p>Enable RX RF power measurement: input with   0 dB gain</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x40</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x40</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PowerRx2</span></code></td>
-<td><p><p>Enable RX RF power measurement: input with -10dB gain</p>
+<td><p><p>Enable RX RF power measurement: input with -12dB gain</p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x80</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x80</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PowerRx3</span></code></td>
-<td><p><p>Enable RX RF power measurement: input with -20dB gain</p>
+<td><p><p>Enable RX RF power measurement: input with -24dB gain</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x100</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x100</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">TestMux0</span></code></td>
 <td><p><p>Measures a voltage routed from within the reader chip
 through other register settings.</p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x200</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x200</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">TestMux1</span></code></td>
 <td><p><p>Measures a voltage routed from within the reader chip
 through other register settings.</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x400</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x400</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">TestMux2</span></code></td>
 <td><p><p>Measures a voltage routed from within the reader chip
 through other register settings.</p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x800</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x800</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">TestMux3</span></code></td>
 <td><p><p>Measures a voltage routed from within the reader chip
 through other register settings.</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x1000</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x1000</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">Temperature</span></code></td>
 <td><p><p>Take a measurement of the temperature sesnsor.</p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x2000</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x2000</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PowerLoSum</span></code></td>
 <td><p><p>The sum of all 4 LO channels.</p>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x4000</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x4000</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PowerRxSum</span></code></td>
 <td><p><p>The sum of all 4 RX channels.</p>
 </p></td>
@@ -3259,8 +2788,8 @@ through other register settings.</p>
 are only updated when enabled in the AuxAdcControl register and after
 the <a class="reference internal" href="yk_firmware_ex10_api_operations.html#measureadcop"><span class="std std-ref">MeasureAdcOp</span></a> has completed.</p>
 <p>Each ADC channel conversion is held within its own result register:</p>
-<table class="colwidths-given docutils align-default" id="id3">
-<caption><span class="caption-number">Table 30 </span><span class="caption-text">AuxAdcResults</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id2">
+<caption><span class="caption-number">Table 30 </span><span class="caption-text">AuxAdcResults</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 25%" />
@@ -3609,12 +3138,12 @@ The values are:</p>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">0x0</span></code> - Divide by 24</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">0x1</span></code> - Divide by 48</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">0x2</span></code> - Divide by 96 (not fully tested, not recommended for use)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">0x3</span></code> - Divide by 192 (not fully tested, not recommended for use)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">0x4</span></code> - Divide by 30 (not fully tested, not recommended for use)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0x2</span></code> - Divide by 96</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0x3</span></code> - Divide by 192</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0x4</span></code> - Divide by 30</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">0x5</span></code> - Divide by 60</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">0x6</span></code> - Divide by 120 (not fully tested, not recommended for use)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">0x7</span></code> - Divide by 240 (not fully tested, not recommended for use)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0x6</span></code> - Divide by 120</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">0x7</span></code> - Divide by 240</p></li>
 </ul>
 </div></blockquote>
 </p></td>
@@ -3659,7 +3188,7 @@ register if read back.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">15:0</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">11:0</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">TxScalar</span></code></td>
 <td><p><p>Power scalar gain setting. This value can be positive or negative. Since it
 scales the voltage linearly, the linear gain will be applied appropriately
@@ -3733,7 +3262,7 @@ will match the RX solution during normal tag operations.</p>
 </table>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">3:2</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">3:2</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">Pga1Gain</span></code></td>
 <td><p><p>Gain setting for PGA1</p>
 <table class="docutils align-default">
@@ -3813,7 +3342,7 @@ will match the RX solution during normal tag operations.</p>
 </table>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">7:6</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">7:6</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">Pga3Gain</span></code></td>
 <td><p><table class="docutils align-default">
 <colgroup>
@@ -3892,13 +3421,13 @@ will match the RX solution during normal tag operations.</p>
 </table>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">12</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">12</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">Pga1RinSelect</span></code></td>
 <td><p><p>When <code class="docutils literal notranslate"><span class="pre">1</span></code> the PGA1 Rin is in high resolution mode
 When <code class="docutils literal notranslate"><span class="pre">0</span></code> the PGA1 Rin is in low resolution mode</p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">14</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">14</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">MixerBandwidth</span></code></td>
 <td><p><p>When <code class="docutils literal notranslate"><span class="pre">1</span></code> the MixerBandwidth is enabled
 When <code class="docutils literal notranslate"><span class="pre">0</span></code> the MixerBandwidth is disabled</p>
@@ -4048,100 +3577,6 @@ when running the <a class="reference internal" href="yk_firmware_ex10_api_operat
 </tbody>
 </table>
 <p></p>
-<h2 id="address-entry-LbtOffset">LbtOffset: Offset frequency during LBT<a class="headerlink" href="#application-only_address_map_summary" title="Permalink to this headline">¶</a></h2>
-<p><p>The offset (in KHz) from the desired measurement frequency. In order to
-determine noise at a given frequency, we must use LBT to measure at a
-frequency offset from the actual frequency of interest. This controls that
-offset. The offset can be positive or negative.
-Note: The HW is only meant to be used with Japan, thus the modem is
-expecting +/-200KHz for an offset (since a single channel spacing for
-Japan is 200KHz) and sets the internal HPF to 200kHz.
-This feature can be used with greater than 200KHz frequency offset or with
-a non-Japan region, but further testing should be done to ensure results
-are expected. If using a non-Japan region, the offset will need to change
-to the appropriate channel spacing (e.g. 250KHz for FCC).</p>
-</p>
-<p>Field Address: 0x0524</p>
-<p>Field Details:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 8%" />
-<col style="width: 25%" />
-<col style="width: 67%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Bit</p></th>
-<th class="head"><p>Name</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">31:0</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">Khz</span></code></td>
-<td><p><p>The offset in khz. Note, this should be set to +/200KHz to match
-the modem settings.</p>
-</p></td>
-</tr>
-</tbody>
-</table>
-<p></p>
-<h2 id="address-entry-MeasureRssiCount">MeasureRssiCount: Integration counts when measuring RSSI<a class="headerlink" href="#application-only_address_map_summary" title="Permalink to this headline">¶</a></h2>
-<p><p>Controls the number of samples integrated over when measuring RSSI
-with the MeasureRssiOp.</p>
-</p>
-<p>Field Address: 0x0528</p>
-<p>Field Details:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 8%" />
-<col style="width: 25%" />
-<col style="width: 67%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Bit</p></th>
-<th class="head"><p>Name</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">3:0</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">Samples</span></code></td>
-<td><p><p>When calling the measure RSSI op, the RSSI hardware integrates
-over a given number of samples. 2^Samples is the ADC counts used.</p>
-</p></td>
-</tr>
-</tbody>
-</table>
-<p></p>
-<h2 id="address-entry-LbtControl">LbtControl: Allows user configuration of the LBT settings.<a class="headerlink" href="#application-only_address_map_summary" title="Permalink to this headline">¶</a></h2>
-<p><p>Control settings for the listen before talk op.</p>
-</p>
-<p>Field Address: 0x052C</p>
-<p>Field Details:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 8%" />
-<col style="width: 25%" />
-<col style="width: 67%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Bit</p></th>
-<th class="head"><p>Name</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">Override</span></code></td>
-<td><p><p>Overrides the default Rx gain settings used in LBT.
-If set to true, the settings in the RxGainControl
-register will be used. The default value of this register
-is false, which will use the default LBT gain settings.</p>
-</p></td>
-</tr>
-</tbody>
-</table>
-<p></p>
 <h2 id="address-entry-SjcControl">SjcControl: RxRunSjcOp settings<a class="headerlink" href="#application-only_address_map_summary" title="Permalink to this headline">¶</a></h2>
 <p><p>This register contains settings for the SJC algorithm.</p>
 </p>
@@ -4177,21 +3612,9 @@ The number of samples used for averaging is 2^SampleAverageFine.</p>
 </tr>
 <tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">8</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">EventsEnable</span></code></td>
-<td><p><p>Enable SJC trace measurement events to be added to the Event Fifo.</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>This is for analysis and debug only and is not intended for normal
-operation.</p></li>
-<li><p>When SJC trace events are enabled, the Event Fifo will fill up with
-SJC measurement events.</p></li>
-<li><p>When the EventFifo reaches capacity, the <a class="reference internal" href="yk_firmware_ex10_api_operations.html#rxrunsjcop"><span class="std std-ref">RxRunSjcOp</span></a>
-will pause, doing nothing, until room is available in the Event Fifo
-for more SJC measurement events.</p></li>
-<li><p>The <a class="reference internal" href="yk_firmware_ex10_api_operations.html#rxrunsjcop"><span class="std std-ref">RxRunSjcOp</span></a> blocks while waiting for all
-SJC measurements to be inserted into the Event Fifo. The result is
-an RxRunSjcOp which requires several seconds to complete.</p></li>
-</ul>
-</div></blockquote>
+<td><p><p>Enable SJC measurement events to be added to the EventFifo.
+This is for analysis and debug only and is not intended for normal
+operation.</p>
 </p></td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">9</span></code></td>
@@ -4274,7 +3697,7 @@ analog parameters of the receiver chain.</p>
 </table>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">3:2</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">3:2</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">Pga1Gain</span></code></td>
 <td><p><p>Gain setting for PGA1</p>
 <table class="docutils align-default">
@@ -4354,7 +3777,7 @@ analog parameters of the receiver chain.</p>
 </table>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">7:6</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">7:6</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">Pga3Gain</span></code></td>
 <td><p><table class="docutils align-default">
 <colgroup>
@@ -4433,13 +3856,13 @@ analog parameters of the receiver chain.</p>
 </table>
 </p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">12</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">12</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">Pga1RinSelect</span></code></td>
 <td><p><p>When <code class="docutils literal notranslate"><span class="pre">1</span></code> the PGA1 Rin is in high resolution mode
 When <code class="docutils literal notranslate"><span class="pre">0</span></code> the PGA1 Rin is in low resolution mode</p>
 </p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">14</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">14</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">MixerBandwidth</span></code></td>
 <td><p><p>When <code class="docutils literal notranslate"><span class="pre">1</span></code> the MixerBandwidth is enabled
 When <code class="docutils literal notranslate"><span class="pre">0</span></code> the MixerBandwidth is disabled</p>
@@ -4760,60 +4183,9 @@ See <a class="reference internal" href="yk_firmware_ex10_api_operations.html#agg
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">4095:0</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">2047:0</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">CommandBuffer</span></code></td>
 <td><p><p>A buffer containing the instructions to be parsed during the aggregate op.</p>
-</p></td>
-</tr>
-</tbody>
-</table>
-<p></p>
-<h2 id="address-entry-PowerDroopCompensation">PowerDroopCompensation: Tx power droop compensation controls<a class="headerlink" href="#application-only_address_map_summary" title="Permalink to this headline">¶</a></h2>
-<p><p>After Tx power ramps up to a target, the power may droop over time as the
-transmitter warms up when it stays on a long time. The power droop is
-compensated for by periodically measuring the output on one AuxADC channel
-and adjusting the TxFineGain.
-Due to timing constraints, only a single ADC channel in ChannelEnableBits
-is supported.</p>
-</p>
-<p>Field Address: 0x0904</p>
-<p>Field Details:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 8%" />
-<col style="width: 25%" />
-<col style="width: 67%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Bit</p></th>
-<th class="head"><p>Name</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">Enable</span></code></td>
-<td><p><p>Enable power droop compensation</p>
-</p></td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">23:16</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">CompensationIntervalMs</span></code></td>
-<td><p><p>The time interval in milliseconds that Tx power is adjusted.  Minumum
-is 10ms, max is 40ms.</p>
-</p></td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">31:24</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">FineGainStepCdB</span></code></td>
-<td><p><p>Value that the Tx fine gain will be adjusted for each loop pass, in cdB.
-The default value is 10 (0.1 dB * 100).
-The new fine gain will be calculated with:</p>
-<blockquote>
-<div><p>delta = 10 ^ (0.05 * (FineGainStepCdB/100))
-deltaFixedPoint = (2 ^ 30 - 1) * delta
-TxFineGainNew = (TxFineGain * deltaFixedPoint) &gt;&gt; 30</p>
-</div></blockquote>
-<p>The fixed-point values will be used at runtime to avoid expensive power
-and floating point multiply operations.</p>
 </p></td>
 </tr>
 </tbody>
@@ -5444,44 +4816,6 @@ instead of this value as specified in the Gen2 specification.</p>
 </tbody>
 </table>
 <p></p>
-<h2 id="address-entry-DropQueryControl">DropQueryControl: Drop Query Feature Control<a class="headerlink" href="#application-only_address_map_summary" title="Permalink to this headline">¶</a></h2>
-<p><p>This is the control for the drop query feature of the LMAC.  It will drop
-the TX power by the number of cdB before the Query that starts an inventory
-round. Then the LMAC will dwell at that power for the number of us specified.
-Then transmit the Query and  once the Query has been transmitted it will restore
-the TX power to the original setting.  The dwell time is intended to give the 
-tags time to settle at the new power level and adjust their decoding of the commands.</p>
-</p>
-<p>Field Address: 0x1090</p>
-<p>Field Details:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 8%" />
-<col style="width: 25%" />
-<col style="width: 67%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Bit</p></th>
-<th class="head"><p>Name</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">7:0</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">DropPower</span></code></td>
-<td><p><p>The units are in centi-decibels where 0 disables this feature and 200 is the
-maximum value which represents a 2 dB drop in transmitter power during the Query.</p>
-</p></td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">15:8</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">DropDwell</span></code></td>
-<td><p><p>This is the the number of us that the LMAC will dwell at the dropped power
-level before sending the Query command.</p>
-</p></td>
-</tr>
-</tbody>
-</table>
-<p></p>
 <h2 id="address-entry-Gen2TxBuffer">Gen2TxBuffer: Gen2 transmission payload<a class="headerlink" href="#application-only_address_map_summary" title="Permalink to this headline">¶</a></h2>
 <p><p>This is intended for use both by Gen2 Select command transactions that need
 to describe what to send before an inventory round starts as well as to
@@ -5519,62 +4853,14 @@ binary transmission (spaces added for readability) is <code class="docutils lite
 the Impinj reader chip calibration info page. This flash page is separate
 from the memory used by the firmware image and persists across firmware
 updates.</p>
-<p>The calibration flash info page is 2048 bytes in length and conforms to
-the format specified below:</p>
-<table class="colwidths-given docutils align-default" id="id4">
-<caption><span class="caption-number">Table 31 </span><span class="caption-text">Calibration flash info page</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 40%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Offset</p></th>
-<th class="head"><p>Length (bytes)</p></th>
-<th class="head"><p>Field Name</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>0x000</p></td>
-<td><p>1</p></td>
-<td><p>Format ID</p></td>
-<td><p>Calibration table format identifier used in parsing the
-calibration data.</p></td>
-</tr>
-<tr class="row-odd"><td><p>0x004</p></td>
-<td><p>2036</p></td>
-<td><p>Calibration / OEM data</p></td>
-<td><p>Storage space for calibration data and OEM data</p></td>
-</tr>
-<tr class="row-even"><td><p>0x7F8</p></td>
-<td><p>8</p></td>
-<td><p>Lock</p></td>
-<td><p>Controls the flash locking mechanism for the calibration flash
-info page. Writing a ‘0’ value to any of the bits within the
-‘Lock’ field will permanently lock the calibration flash page
-and the contents will be read-only regardless of the Impinj
-Reader Chip firmware context (bootloader or application).
-The calibration flash info page can be re-written as long as
-this field remains set to all-0xFF (erased).</p></td>
-</tr>
-</tbody>
-</table>
 <p>Calibration data can be used to tune the performance of the reader output
 relative to input from internal sensors, such as power output sensors and
 temperature sensors, for example, so that the output characteristics are
 more precise. This can be especially important for meeting regulatory
 requirements.</p>
-<p>Calibration table formats supported by the Impinj Reader Chip SDK are
-defined in the <em>&lt;Impinj reader chip SDK&gt;/ex10_dev_kit/cal/cal_yaml/</em>
-directory. Unused bytes in the calibration data section can be used to
-store OEM data; however future calibration data formats may increase in
-size, which will reduce the available free space for OEM data.
-Calibration format may be modified as needed (which will require updates
-to the Impinj reader chip SDK). The Lock field is the only section of the
-calibration flash info page that cannot be repurposed for different
-data storage.</p>
+<p>The format of the data in this area is application specicific, and it can
+can contain any data in any format that supports reader calibration, as
+long as it is 2KB or less.</p>
 <p>The host writes the calibration data into the flash info page from the
 bootloader. There are funtions for writing to this flash page from all
 three layers of the Impinj Reader Chip Host API.</p>
@@ -5637,7 +4923,7 @@ three layers of the Impinj Reader Chip Host API.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -5657,12 +4943,12 @@ three layers of the Impinj Reader Chip Host API.</p>
           <a href="yk_firmware_ex10_api_bootloader_address_map.html" title="Impinj Reader Chip Bootloader Address Map"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Impinj Reader Chip SDK</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="yk_firmware_ex10_api.html" >Impinj Reader Chip Wireline API</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="yk_firmware_ex10_api.html" >Impinj Reader Chip API</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Impinj Reader Chip Application Address Map</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Impinj, Inc..
+        &#169; Copyright 2021, Impinj, Inc..
     </div>
   </body>
 </html>

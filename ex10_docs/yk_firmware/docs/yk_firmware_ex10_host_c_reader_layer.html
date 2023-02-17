@@ -14,14 +14,14 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Ex10PowerModes Layer" href="yk_firmware_ex10_host_c_power_modes_layer.html" />
+    <link rel="next" title="Ex10Ops Layer" href="yk_firmware_ex10_host_c_ops_layer.html" />
     <link rel="prev" title="Impinj Reader Chip C Host API" href="yk_firmware_ex10_host_c_api.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="yk_firmware_ex10_host_c_power_modes_layer.html" title="Ex10PowerModes Layer"
+          <a href="yk_firmware_ex10_host_c_ops_layer.html" title="Ex10Ops Layer"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="yk_firmware_ex10_host_c_api.html" title="Impinj Reader Chip C Host API"
@@ -59,30 +59,13 @@ API is described in this section.</p>
 </dl>
 </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param ex10_ops</dt>
-<dd class="field-odd"><p>An initialized <a class="reference internal" href="yk_firmware_ex10_host_c_ops_layer.html#struct_ex10_ops"><span class="std std-ref">Ex10Ops</span></a> object. </p>
-</dd>
-<dt class="field-even">Param region_name</dt>
-<dd class="field-even"><p>A null terminated ASCII string representing a valid region. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N10Ex10Reader9init_ex10E">
-<span id="_CPPv3N10Ex10Reader9init_ex10E"></span><span id="_CPPv2N10Ex10Reader9init_ex10E"></span><span class="target" id="struct_ex10_reader_1ad778f2a0f8271e05e22f39363981556e"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv418OpCompletionStatus" title="OpCompletionStatus"><span class="n"><span class="pre">OpCompletionStatus</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">init_ex10</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N10Ex10Reader9init_ex10E" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Initialize the Impinj Reader Chip at the <a class="reference internal" href="#struct_ex10_reader"><span class="std std-ref">Ex10Reader</span></a> layer. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Return</dt>
-<dd class="field-odd"><p>struct <a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#struct_op_completion_status"><span class="std std-ref">OpCompletionStatus</span></a> Indicates whether the call was successful. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ex10_ops</strong> – An initialized <a class="reference internal" href="yk_firmware_ex10_host_c_ops_layer.html#struct_ex10_ops"><span class="std std-ref">Ex10Ops</span></a> object. </p></li>
+<li><p><strong>region_name</strong> – A null terminated ASCII string representing a valid region. </p></li>
+</ul>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N10Ex10Reader16read_calibrationE">
-<span id="_CPPv3N10Ex10Reader16read_calibrationE"></span><span id="_CPPv2N10Ex10Reader16read_calibrationE"></span><span class="target" id="struct_ex10_reader_1a170142ddac04b14d5906e7567443cc98"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">read_calibration</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N10Ex10Reader16read_calibrationE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Read the calibration from the Impinj Reader Chip and store it in the <a class="reference internal" href="#struct_ex10_reader"><span class="std std-ref">Ex10Reader</span></a> layer. </p>
 </dd></dl>
 
 <dl class="cpp var">
@@ -93,19 +76,17 @@ API is described in this section.</p>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N10Ex10Reader20continuous_inventoryE">
-<span id="_CPPv3N10Ex10Reader20continuous_inventoryE"></span><span id="_CPPv2N10Ex10Reader20continuous_inventoryE"></span><span class="target" id="struct_ex10_reader_1a05b29282d64407009bfaef08f151c313"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv418OpCompletionStatus" title="OpCompletionStatus"><span class="n"><span class="pre">OpCompletionStatus</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">continuous_inventory</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">antenna</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">rf_mode</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">tx_power_cdbm</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv427InventoryRoundControlFields" title="InventoryRoundControlFields"><span class="n"><span class="pre">InventoryRoundControlFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">inventory_config</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv429InventoryRoundControl_2Fields" title="InventoryRoundControl_2Fields"><span class="n"><span class="pre">InventoryRoundControl_2Fields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">inventory_config_2</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">send_selects</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414StopConditions" title="StopConditions"><span class="n"><span class="pre">StopConditions</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stop_conditions</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">dual_target</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">frequency_khz</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">remain_on</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N10Ex10Reader20continuous_inventoryE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N10Ex10Reader20continuous_inventoryE"></span><span id="_CPPv2N10Ex10Reader20continuous_inventoryE"></span><span class="target" id="struct_ex10_reader_1a9d2a02b529304d8203138ae7897e138b"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv418OpCompletionStatus" title="OpCompletionStatus"><span class="n"><span class="pre">OpCompletionStatus</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">continuous_inventory</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">antenna</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">rf_mode</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">tx_power_dbm</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv427InventoryRoundControlFields" title="InventoryRoundControlFields"><span class="n"><span class="pre">InventoryRoundControlFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">inventory_config</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv429InventoryRoundControl_2Fields" title="InventoryRoundControl_2Fields"><span class="n"><span class="pre">InventoryRoundControl_2Fields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">inventory_config_2</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">send_selects</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414StopConditions" title="StopConditions"><span class="n"><span class="pre">StopConditions</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stop_conditions</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">dual_target</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">frequency_khz</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">remain_on</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N10Ex10Reader20continuous_inventoryE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Run a inventory continuously until the passed in stop conditions are met. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param stop_conditions</dt>
-<dd class="field-odd"><p>A struct detailing any stop conditions. If 0, the conditions is not used. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stop_conditions</strong> – A struct detailing any stop conditions. If 0, the conditions is not used. </p></li>
+<li><p><strong>dual_target</strong> – Flip the target between rounds if true. </p></li>
+<li><p><strong>other</strong> – See inventory for all other parameters. </p></li>
+</ul>
 </dd>
-<dt class="field-even">Param dual_target</dt>
-<dd class="field-even"><p>Flip the target between rounds if true. </p>
-</dd>
-<dt class="field-odd">Param other</dt>
-<dd class="field-odd"><p>See inventory for all other parameters. </p>
-</dd>
-<dt class="field-even">Return</dt>
+<dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Info about any encountered errors. </p>
 </dd>
 </dl>
@@ -113,46 +94,38 @@ API is described in this section.</p>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N10Ex10Reader9inventoryE">
-<span id="_CPPv3N10Ex10Reader9inventoryE"></span><span id="_CPPv2N10Ex10Reader9inventoryE"></span><span class="target" id="struct_ex10_reader_1af9ac1d83ec354a5bdf160e9ee7f5266f"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv418OpCompletionStatus" title="OpCompletionStatus"><span class="n"><span class="pre">OpCompletionStatus</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">inventory</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">antenna</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">rf_mode</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">tx_power_cdbm</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv427InventoryRoundControlFields" title="InventoryRoundControlFields"><span class="n"><span class="pre">InventoryRoundControlFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">inventory_config</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv429InventoryRoundControl_2Fields" title="InventoryRoundControl_2Fields"><span class="n"><span class="pre">InventoryRoundControl_2Fields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">inventory_config_2</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">send_selects</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">frequency_khz</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">remain_on</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N10Ex10Reader9inventoryE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N10Ex10Reader9inventoryE"></span><span id="_CPPv2N10Ex10Reader9inventoryE"></span><span class="target" id="struct_ex10_reader_1a81c4d561c3cb54494a122111ec69abbd"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv418OpCompletionStatus" title="OpCompletionStatus"><span class="n"><span class="pre">OpCompletionStatus</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">inventory</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">antenna</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">rf_mode</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">tx_power_dbm</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv427InventoryRoundControlFields" title="InventoryRoundControlFields"><span class="n"><span class="pre">InventoryRoundControlFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">inventory_config</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv429InventoryRoundControl_2Fields" title="InventoryRoundControl_2Fields"><span class="n"><span class="pre">InventoryRoundControl_2Fields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">inventory_config_2</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">send_selects</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">frequency_khz</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">remain_on</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N10Ex10Reader9inventoryE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Run a single inventory round. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Left out dual target on purpose - should be handled by calling code based on inventory parameters </p>
+<p>100 * decibel =&gt; millibel </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>left out dual target on purpose - should be handled by calling code based on inventory parameters </p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Param antenna</dt>
-<dd class="field-odd"><p>The antenna to transmit on. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>antenna</strong> – The antenna to transmit on. </p></li>
+<li><p><strong>rf_mode</strong> – An Ex10 RF Mode to be used for this round. </p></li>
+<li><p><strong>tx_power_dbm</strong> – Target transmit power level in 100th’s of a dbm. Example: 2,950 = 29.5 dBm </p></li>
+<li><p><strong>inventory_config</strong> – The inventory settings to be used for this round. </p></li>
+<li><p><strong>inventory_config_2</strong> – The second inventory settings register </p></li>
+<li><p><strong>select_config</strong> – The parameters used for a select sent before each inventory round. By passing in a select configuration through the inventory call, you are overriding any previous command specifications made in the TX buffer. </p></li>
+<li><p><strong>frequency_khz</strong> – If a frequency is specified here, this forces the stack to always ramp up to the same frequency. If 0, the region specific jump table will be used. </p></li>
+<li><p><strong>remain_on</strong> – If false, the normal region specific regulatory timers will be used. If true, the timers will be disabled and the Ex10 device will stay powered on until told to ramp down. </p></li>
+</ul>
 </dd>
-<dt class="field-even">Param rf_mode</dt>
-<dd class="field-even"><p>An Ex10 RF Mode to be used for this round. </p>
-</dd>
-<dt class="field-odd">Param tx_power_cdbm</dt>
-<dd class="field-odd"><p>Target transmit power level in cdBm (100th’s of a dbm). Example: 2,950 = 29.5 dBm. </p>
-</dd>
-<dt class="field-even">Param inventory_config</dt>
-<dd class="field-even"><p>The inventory settings to be used for this round. </p>
-</dd>
-<dt class="field-odd">Param inventory_config_2</dt>
-<dd class="field-odd"><p>The second inventory settings register </p>
-</dd>
-<dt class="field-even">Param select_config</dt>
-<dd class="field-even"><p>The parameters used for a select sent before each inventory round. By passing in a select configuration through the inventory call, you are overriding any previous command specifications made in the TX buffer. </p>
-</dd>
-<dt class="field-odd">Param frequency_khz</dt>
-<dd class="field-odd"><p>If a frequency is specified here, this forces the stack to always ramp up to the same frequency. If 0, the region specific jump table will be used. </p>
-</dd>
-<dt class="field-even">Param remain_on</dt>
-<dd class="field-even"><p>If false, the normal region specific regulatory timers will be used. If true, the timers will be disabled and the Ex10 device will stay powered on until told to ramp down. </p>
-</dd>
-<dt class="field-odd">Return</dt>
-<dd class="field-odd"><p>Info about any encountered errors. </p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Info about any encountered errors. </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N10Ex10Reader17fifo_data_handlerE">
-<span id="_CPPv3N10Ex10Reader17fifo_data_handlerE"></span><span id="_CPPv2N10Ex10Reader17fifo_data_handlerE"></span><span class="target" id="struct_ex10_reader_1a8b37d227b3cd9e80e43c46ecab6b7704"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">fifo_data_handler</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">FifoBufferNode</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fifo_buffer</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N10Ex10Reader17fifo_data_handlerE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N10Ex10Reader17fifo_data_handlerE"></span><span id="_CPPv2N10Ex10Reader17fifo_data_handlerE"></span><span class="target" id="struct_ex10_reader_1a8b37d227b3cd9e80e43c46ecab6b7704"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">fifo_data_handler</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv414FifoBufferNode" title="FifoBufferNode"><span class="n"><span class="pre">FifoBufferNode</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fifo_buffer</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N10Ex10Reader17fifo_data_handlerE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Called by the interrupt handler thread when there is a fifo related interrupt. </p>
 </dd></dl>
 
@@ -167,7 +140,7 @@ API is described in this section.</p>
 <span id="_CPPv3N10Ex10Reader11packet_peekE"></span><span id="_CPPv2N10Ex10Reader11packet_peekE"></span><span class="target" id="struct_ex10_reader_1ab27916a945f5b2987cf13a1ade7e45aa"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv415EventFifoPacket" title="EventFifoPacket"><span class="n"><span class="pre">EventFifoPacket</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">packet_peek</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N10Ex10Reader11packet_peekE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Return the packet at the front of the packet queue. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Return</dt>
+<dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>An <a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#struct_event_fifo_packet"><span class="std std-ref">EventFifoPacket</span></a> or NULL if none available. </p>
 </dd>
 </dl>
@@ -200,7 +173,7 @@ API is described in this section.</p>
 <p>This is merely a proxy for calling <a class="reference internal" href="#struct_ex10_reader_1ab27916a945f5b2987cf13a1ade7e45aa"><span class="std std-ref">packet_peek()</span></a> and returns true if <a class="reference internal" href="#struct_ex10_reader_1ab27916a945f5b2987cf13a1ade7e45aa"><span class="std std-ref">packet_peek()</span></a> returns non-NULL.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Return</dt>
+<dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>bool true if packets are available for reading. false if there are no packets available for reading. </p>
 </dd>
 </dl>
@@ -215,23 +188,41 @@ API is described in this section.</p>
 <p>The modem MUST be in the halted state. </p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Param nak</dt>
-<dd class="field-odd"><p>Indicates whether to nak the tag or not.</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>nak</strong> – Indicates whether to nak the tag or not.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N10Ex10Reader20send_access_commandsE">
+<span id="_CPPv3N10Ex10Reader20send_access_commandsE"></span><span id="_CPPv2N10Ex10Reader20send_access_commandsE"></span><span class="target" id="struct_ex10_reader_1a6d56bc320ce5e9e48d0f6a58f542e6e8"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">send_access_commands</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N10Ex10Reader20send_access_commandsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Send any enabled access commands in the gen2 buffer to the current tag while halted. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The modem MUST be in the halted state. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The commands must already be in the gen2 buffer </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The commands must be enabled and have an appropriate length/offset </p>
+</div>
+</dd></dl>
+
+<dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N10Ex10Reader7cw_testE">
-<span id="_CPPv3N10Ex10Reader7cw_testE"></span><span id="_CPPv2N10Ex10Reader7cw_testE"></span><span class="target" id="struct_ex10_reader_1aa151a0d4a5144ecb5f4d06ac2347ea73"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv418OpCompletionStatus" title="OpCompletionStatus"><span class="n"><span class="pre">OpCompletionStatus</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">cw_test</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">antenna</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">rf_mode</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">tx_power_cdbm</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">frequency_khz</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">remain_on</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N10Ex10Reader7cw_testE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N10Ex10Reader7cw_testE"></span><span id="_CPPv2N10Ex10Reader7cw_testE"></span><span class="target" id="struct_ex10_reader_1ac8de29d58533cfcd009ab8fe985c2475"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv418OpCompletionStatus" title="OpCompletionStatus"><span class="n"><span class="pre">OpCompletionStatus</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">cw_test</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">antenna</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">rf_mode</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">tx_power_dbm</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">frequency_khz</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">remain_on</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N10Ex10Reader7cw_testE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Transmit a continuous wave until regulatory timers expire. </p>
 <p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#struct_ex10_reader_1af9ac1d83ec354a5bdf160e9ee7f5266f"><span class="std std-ref">inventory()</span></a> for parameter descriptions.</p>
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#struct_ex10_reader_1a81c4d561c3cb54494a122111ec69abbd"><span class="std std-ref">inventory()</span></a> for parameter descriptions.</p>
 </dd>
 </dl>
 </p>
 <dl class="field-list simple">
-<dt class="field-odd">Return</dt>
+<dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>Info about any encountered errors. </p>
 </dd>
 </dl>
@@ -244,69 +235,44 @@ API is described in this section.</p>
 <p>
 A CRC-16-CCITT will be calculated across the data and appended to the written data. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param data_ptr</dt>
-<dd class="field-odd"><p>A pointer to the calibration data </p>
-</dd>
-<dt class="field-even">Param write_length</dt>
-<dd class="field-even"><p>The number of bytes to write</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_ptr</strong> – A pointer to the calibration data </p></li>
+<li><p><strong>write_length</strong> – The number of bytes to write</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N10Ex10Reader9prbs_testE">
-<span id="_CPPv3N10Ex10Reader9prbs_testE"></span><span id="_CPPv2N10Ex10Reader9prbs_testE"></span><span class="target" id="struct_ex10_reader_1adb4b6f8bf8b050f7472acc3fa6bb4eca"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv418OpCompletionStatus" title="OpCompletionStatus"><span class="n"><span class="pre">OpCompletionStatus</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">prbs_test</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">antenna</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">rf_mode</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">tx_power_cdbm</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">frequency_khz</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">remain_on</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N10Ex10Reader9prbs_testE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N10Ex10Reader9prbs_testE"></span><span id="_CPPv2N10Ex10Reader9prbs_testE"></span><span class="target" id="struct_ex10_reader_1a525c164d6e4a8739e0411e772c439267"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv418OpCompletionStatus" title="OpCompletionStatus"><span class="n"><span class="pre">OpCompletionStatus</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">prbs_test</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">antenna</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">rf_mode</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">tx_power_dbm</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">frequency_khz</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">remain_on</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N10Ex10Reader9prbs_testE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Transmit a psuedo-random bit stream until regulatory timers expire. </p>
 <p>User must call <a class="reference internal" href="#struct_ex10_reader_1a60af0886cea967fa20d4cdb08dd78876"><span class="std std-ref">stop_transmitting()</span></a> to end this operation.</p>
 <p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#struct_ex10_reader_1af9ac1d83ec354a5bdf160e9ee7f5266f"><span class="std std-ref">inventory()</span></a> for parameter descriptions. </p>
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#struct_ex10_reader_1a81c4d561c3cb54494a122111ec69abbd"><span class="std std-ref">inventory()</span></a> for parameter descriptions. </p>
 </dd>
 </dl>
 </p>
 <dl class="field-list simple">
-<dt class="field-odd">Return</dt>
+<dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>Info about any encountered errors. </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N10Ex10Reader8ber_testE">
-<span id="_CPPv3N10Ex10Reader8ber_testE"></span><span id="_CPPv2N10Ex10Reader8ber_testE"></span><span class="target" id="struct_ex10_reader_1abffd236aa9b4dabd4c208497cfc9d69e"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv418OpCompletionStatus" title="OpCompletionStatus"><span class="n"><span class="pre">OpCompletionStatus</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ber_test</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">antenna</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">rf_mode</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">tx_power_cdbm</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">frequency_khz</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">num_bits</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">num_packets</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">delimiter_only</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N10Ex10Reader8ber_testE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Run a packetized BER test. </p>
-<p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#struct_ex10_reader_1af9ac1d83ec354a5bdf160e9ee7f5266f"><span class="std std-ref">inventory()</span></a> for other parameter descriptions. </p>
-</dd>
-</dl>
-</p>
-<dl class="field-list simple">
-<dt class="field-odd">Param num_bits</dt>
-<dd class="field-odd"><p>Number of bits per packet </p>
-</dd>
-<dt class="field-even">Param num_packets</dt>
-<dd class="field-even"><p>Number of packets to receive </p>
-</dd>
-<dt class="field-odd">Param delimiter_only</dt>
-<dd class="field-odd"><p>Use a delimiter instead of a query to trigger a packet. </p>
-</dd>
-<dt class="field-even">Return</dt>
-<dd class="field-even"><p>Info about any encountered errors. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N10Ex10Reader15etsi_burst_testE">
-<span id="_CPPv3N10Ex10Reader15etsi_burst_testE"></span><span id="_CPPv2N10Ex10Reader15etsi_burst_testE"></span><span class="target" id="struct_ex10_reader_1a550fcd4217e3c528fb1f6818845e1d52"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv418OpCompletionStatus" title="OpCompletionStatus"><span class="n"><span class="pre">OpCompletionStatus</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">etsi_burst_test</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv427InventoryRoundControlFields" title="InventoryRoundControlFields"><span class="n"><span class="pre">InventoryRoundControlFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">inventory_config</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv429InventoryRoundControl_2Fields" title="InventoryRoundControl_2Fields"><span class="n"><span class="pre">InventoryRoundControl_2Fields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">inventory_config_2</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">antenna</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">rf_mode</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">tx_power_cdbm</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">on_time_ms</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">off_time_ms</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">frequency_khz</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N10Ex10Reader15etsi_burst_testE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N10Ex10Reader15etsi_burst_testE"></span><span id="_CPPv2N10Ex10Reader15etsi_burst_testE"></span><span class="target" id="struct_ex10_reader_1a51b85e4df5d941e9bd5b2544a0137871"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv418OpCompletionStatus" title="OpCompletionStatus"><span class="n"><span class="pre">OpCompletionStatus</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">etsi_burst_test</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv427InventoryRoundControlFields" title="InventoryRoundControlFields"><span class="n"><span class="pre">InventoryRoundControlFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">inventory_config</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv429InventoryRoundControl_2Fields" title="InventoryRoundControl_2Fields"><span class="n"><span class="pre">InventoryRoundControl_2Fields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">inventory_config_2</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">antenna</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">rf_mode</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">tx_power_dbm</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">on_time_ms</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">off_time_ms</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">frequency_khz</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N10Ex10Reader15etsi_burst_testE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Start up a continuous cycle of ramp up, inventory, ramp down. </p>
 <p>User must call <a class="reference internal" href="#struct_ex10_reader_1a60af0886cea967fa20d4cdb08dd78876"><span class="std std-ref">stop_transmitting()</span></a> to end this operation.</p>
 <p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#struct_ex10_reader_1af9ac1d83ec354a5bdf160e9ee7f5266f"><span class="std std-ref">inventory()</span></a> for parameter descriptions. </p>
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#struct_ex10_reader_1a81c4d561c3cb54494a122111ec69abbd"><span class="std std-ref">inventory()</span></a> for parameter descriptions. </p>
 </dd>
 </dl>
 </p>
 <dl class="field-list simple">
-<dt class="field-odd">Return</dt>
+<dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>Info about any encountered errors. </p>
 </dd>
 </dl>
@@ -323,11 +289,11 @@ A CRC-16-CCITT will be calculated across the data and appended to the written da
 <span id="_CPPv3N10Ex10Reader15enable_sdd_logsE"></span><span id="_CPPv2N10Ex10Reader15enable_sdd_logsE"></span><span class="target" id="struct_ex10_reader_1ae70c17c9e608c060782f8cc57b7ef15d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">enable_sdd_logs</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv416LogEnablesFields" title="LogEnablesFields"><span class="n"><span class="pre">LogEnablesFields</span></span></a><span class="w"> </span><span class="n"><span class="pre">enables</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">speed_mhz</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N10Ex10Reader15enable_sdd_logsE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Enable the SDD log outputs and log speed. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param enables</dt>
-<dd class="field-odd"><p>the structure with the individual enables </p>
-</dd>
-<dt class="field-even">Param speed_mhz</dt>
-<dd class="field-even"><p>The speed of the sdd SPI clock (1-24 MHz) </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>enables</strong> – the structure with the individual enables </p></li>
+<li><p><strong>speed_mhz</strong> – The speed of the sdd SPI clock (1-24 MHz) </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -337,7 +303,7 @@ A CRC-16-CCITT will be calculated across the data and appended to the written da
 <span id="_CPPv3N10Ex10Reader17stop_transmittingE"></span><span id="_CPPv2N10Ex10Reader17stop_transmittingE"></span><span class="target" id="struct_ex10_reader_1a60af0886cea967fa20d4cdb08dd78876"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv418OpCompletionStatus" title="OpCompletionStatus"><span class="n"><span class="pre">OpCompletionStatus</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">stop_transmitting</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N10Ex10Reader17stop_transmittingE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Stop any ongoing inventory round, stop transmitting, ramp down power. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Return</dt>
+<dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>Info about any encountered errors. </p>
 </dd>
 </dl>
@@ -345,7 +311,7 @@ A CRC-16-CCITT will be calculated across the data and appended to the written da
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N10Ex10Reader16build_cw_configsE">
-<span id="_CPPv3N10Ex10Reader16build_cw_configsE"></span><span id="_CPPv2N10Ex10Reader16build_cw_configsE"></span><span class="target" id="struct_ex10_reader_1a66dbf0b4125dbafe6c57b9ec60fc584d"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv418OpCompletionStatus" title="OpCompletionStatus"><span class="n"><span class="pre">OpCompletionStatus</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">build_cw_configs</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">antenna</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">rf_mode</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">tx_power_cdbm</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">frequency_khz</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">remain_on</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv48CwConfig" title="CwConfig"><span class="n"><span class="pre">CwConfig</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">cw_config</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N10Ex10Reader16build_cw_configsE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N10Ex10Reader16build_cw_configsE"></span><span id="_CPPv2N10Ex10Reader16build_cw_configsE"></span><span class="target" id="struct_ex10_reader_1aef63135af935fc00d3e4d68cc747368d"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv418OpCompletionStatus" title="OpCompletionStatus"><span class="n"><span class="pre">OpCompletionStatus</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">build_cw_configs</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">antenna</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">rf_mode</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">tx_power_dbm</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">frequency_khz</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">remain_on</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv48CwConfig" title="CwConfig"><span class="n"><span class="pre">CwConfig</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">cw_config</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N10Ex10Reader16build_cw_configsE" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp var">
@@ -354,10 +320,10 @@ A CRC-16-CCITT will be calculated across the data and appended to the written da
 <dd><p>Compensate an RSSI value from a <a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#struct_tag_read"><span class="std std-ref">TagRead</span></a> <a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#struct_event_fifo_packet"><span class="std std-ref">EventFifoPacket</span></a>. </p>
 <p>This compensation is calibration version dependent. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param rssi_raw</dt>
-<dd class="field-odd"><p>The non-compensated log2 RSSI value. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rssi_raw</strong> – The non-compensated log2 RSSI value. </p>
 </dd>
-<dt class="field-even">Return</dt>
+<dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The compensated RSSI value in cdBm </p>
 </dd>
 </dl>
@@ -365,77 +331,27 @@ A CRC-16-CCITT will be calculated across the data and appended to the written da
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N10Ex10Reader21get_current_rssi_log2E">
-<span id="_CPPv3N10Ex10Reader21get_current_rssi_log2E"></span><span id="_CPPv2N10Ex10Reader21get_current_rssi_log2E"></span><span class="target" id="struct_ex10_reader_1acd22fa5536e5df11279a3173a6e1c499"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">get_current_rssi_log2</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">int16_t</span></span><span class="w"> </span><span class="n"><span class="pre">rssi_cdbm</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N10Ex10Reader21get_current_rssi_log2E" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Calculate the RSSI count equivalent for a RSSI cdBm input. </p>
+<span id="_CPPv3N10Ex10Reader21get_current_rssi_log2E"></span><span id="_CPPv2N10Ex10Reader21get_current_rssi_log2E"></span><span class="target" id="struct_ex10_reader_1a601d418cdd0c00299d7f3a3c3d58dcc4"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">get_current_rssi_log2</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">int16_t</span></span><span class="w"> </span><span class="n"><span class="pre">rssi_dbm_x100</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N10Ex10Reader21get_current_rssi_log2E" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Calculate the RSSI count equivilent for a RSSI dBm * 100 input. </p>
 <p>This compensation is calibration version dependent. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param rssi_cdbm</dt>
-<dd class="field-odd"><p>The RSSI cdBm value. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rssi_dbm_x100</strong> – The RSSI cdBm value. </p>
 </dd>
-<dt class="field-even">Return</dt>
+<dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The log2 RSSI value </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N10Ex10Reader27get_listen_before_talk_rssiE">
-<span id="_CPPv3N10Ex10Reader27get_listen_before_talk_rssiE"></span><span id="_CPPv2N10Ex10Reader27get_listen_before_talk_rssiE"></span><span class="target" id="struct_ex10_reader_1a7b20b7e6acb179d6b1870743317c5be1"></span><span class="n"><span class="pre">int16_t</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">get_listen_before_talk_rssi</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">antenna</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">frequency_khz</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n"><span class="pre">lbt_offset</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">rssi_count</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">override_used</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N10Ex10Reader27get_listen_before_talk_rssiE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Runs the LBT op, retrieves the RSSI measurement from the event FIFO, and runs the value through compensation. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Param antenna</dt>
-<dd class="field-odd"><p>The antenna to transmit on. </p>
-</dd>
-<dt class="field-even">Param frequency_khz</dt>
-<dd class="field-even"><p>If a frequency is specified here, this forces the stack to always ramp up to the same frequency. If 0, the region specific jump table will be used. </p>
-</dd>
-<dt class="field-odd">Param lbt_offset</dt>
-<dd class="field-odd"><p>The offset frequency for measuring the RSSI. </p>
-</dd>
-<dt class="field-even">Param rssi_count</dt>
-<dd class="field-even"><p>The integration count for measuring RSSI. </p>
-</dd>
-<dt class="field-odd">Param override_used</dt>
-<dd class="field-odd"><p>Determines whether or not to use the Rx gain override setting in the LBT control register. This is normally false, which means the default LBT-specific settings are used in RSSI measurement and compensation. These default settings override the <a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#struct_rx_gain_control_fields"><span class="std std-ref">RxGainControlFields</span></a> in the RxGainControl register. If the override is set, the user-specified settings in the RxGainControl register will be used during measurement and compensation. Note that these user settings must be set before this function call. </p>
-</dd>
-<dt class="field-even">Return</dt>
-<dd class="field-even"><p>The compensated RSSI value in cdBm. In case of any error which causes an issue in reading the RSSI, RSSI_INVALID is returned. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N10Ex10Reader30get_continuous_inventory_stateE">
-<span id="_CPPv3N10Ex10Reader30get_continuous_inventory_stateE"></span><span id="_CPPv2N10Ex10Reader30get_continuous_inventory_stateE"></span><span class="target" id="struct_ex10_reader_1af63a40c196ac0ae916b7f3a886a900c0"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv424ContinuousInventoryState" title="ContinuousInventoryState"><span class="n"><span class="pre">ContinuousInventoryState</span></span></a><span class="w"> </span><span class="k"><span class="pre">volatile</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">get_continuous_inventory_state</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N10Ex10Reader30get_continuous_inventory_stateE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N10Ex10Reader30get_continuous_inventory_stateE"></span><span id="_CPPv2N10Ex10Reader30get_continuous_inventory_stateE"></span><span class="target" id="struct_ex10_reader_1af63a40c196ac0ae916b7f3a886a900c0"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ContinuousInventoryState</span></span><span class="w"> </span><span class="k"><span class="pre">volatile</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">get_continuous_inventory_state</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N10Ex10Reader30get_continuous_inventory_stateE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Used to return the state of continuous inventory. </p>
 <p>Useful in the case of checking overall progress in long runs. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Return</dt>
+<dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>The continuous inventory state. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N10Ex10Reader34get_return_loss_threshold_exceededE">
-<span id="_CPPv3N10Ex10Reader34get_return_loss_threshold_exceededE"></span><span id="_CPPv2N10Ex10Reader34get_return_loss_threshold_exceededE"></span><span class="target" id="struct_ex10_reader_1a158309fe9dd741343fd38826c7051f62"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">get_return_loss_threshold_exceeded</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">return_loss_cdb</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">tx_power_cdbm</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">frequency_khz</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">int16_t</span></span><span class="w"> </span><span class="n"><span class="pre">max_margin</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N10Ex10Reader34get_return_loss_threshold_exceededE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Determines if the return loss threshold was exceeded. </p>
-<p>Using user passed parameters and board specific losses, this function checks if the current measurement on the reverse power detectors is above the allowed value. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Param return_loss</dt>
-<dd class="field-odd"><p>The return loss at the board output in cdB. </p>
-</dd>
-<dt class="field-even">Param tx_power_dbm</dt>
-<dd class="field-even"><p>Target transmit power level in cdbm. </p>
-</dd>
-<dt class="field-odd">Param frequency_khz</dt>
-<dd class="field-odd"><p>The frequency currently ramped to which is the same frequency used for the reverse power detector measurement. </p>
-</dd>
-<dt class="field-even">Param max_margin</dt>
-<dd class="field-even"><p>Margin to ensure we detect a poor return loss condition. Note that a higher max_margin creates a lower tolerance for the reverse power detector.</p>
-</dd>
-<dt class="field-odd">Return</dt>
-<dd class="field-odd"><p>Whether the threshold was exceeded. A true means that the reverse power detector measured higher than expected, and a false means we are within expectations. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -489,98 +405,6 @@ A CRC-16-CCITT will be calculated across the data and appended to the written da
 
 </dd></dl>
 
-<dl class="cpp enum">
-<dt class="sig sig-object cpp" id="_CPPv414InventoryState">
-<span id="_CPPv314InventoryState"></span><span id="_CPPv214InventoryState"></span><span class="target" id="ex10__reader_8h_1a35dcb26601bc18c81e9f2b23634fbcf0"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InventoryState</span></span></span><a class="headerlink" href="#_CPPv414InventoryState" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Keep track of the continuous inventory state. </p>
-<p><em>Values:</em></p>
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N14InventoryState7InvIdleE">
-<span id="_CPPv3N14InventoryState7InvIdleE"></span><span id="_CPPv2N14InventoryState7InvIdleE"></span><span class="target" id="ex10__reader_8h_1a35dcb26601bc18c81e9f2b23634fbcf0af143887fcc59f8f54370c0a22911a856"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InvIdle</span></span></span><a class="headerlink" href="#_CPPv4N14InventoryState7InvIdleE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Contuous inventory is not in progress. </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N14InventoryState10InvOngoingE">
-<span id="_CPPv3N14InventoryState10InvOngoingE"></span><span id="_CPPv2N14InventoryState10InvOngoingE"></span><span class="target" id="ex10__reader_8h_1a35dcb26601bc18c81e9f2b23634fbcf0a947e0f4314aafa1e18ba42b01a94d4b9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InvOngoing</span></span></span><a class="headerlink" href="#_CPPv4N14InventoryState10InvOngoingE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Contuous inventory is in progress. </p>
-</dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N14InventoryState16InvStopRequestedE">
-<span id="_CPPv3N14InventoryState16InvStopRequestedE"></span><span id="_CPPv2N14InventoryState16InvStopRequestedE"></span><span class="target" id="ex10__reader_8h_1a35dcb26601bc18c81e9f2b23634fbcf0ae6d291b2eaca6a74d726587aab123ffe"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InvStopRequested</span></span></span><a class="headerlink" href="#_CPPv4N14InventoryState16InvStopRequestedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>The host requested continuous inventory stop via stop_transmitting(). </p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv424ContinuousInventoryState">
-<span id="_CPPv324ContinuousInventoryState"></span><span id="_CPPv224ContinuousInventoryState"></span><span id="ContinuousInventoryState"></span><span class="target" id="struct_continuous_inventory_state"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ContinuousInventoryState</span></span></span><a class="headerlink" href="#_CPPv424ContinuousInventoryState" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>State variables that are set in update_inventory_state(). </p>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N24ContinuousInventoryState5stateE">
-<span id="_CPPv3N24ContinuousInventoryState5stateE"></span><span id="_CPPv2N24ContinuousInventoryState5stateE"></span><span id="ContinuousInventoryState::state__InventoryState"></span><span class="target" id="struct_continuous_inventory_state_1a6bd83283b8fc1d06e3cbd4383e7ea988"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414InventoryState" title="InventoryState"><span class="n"><span class="pre">InventoryState</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">state</span></span></span><a class="headerlink" href="#_CPPv4N24ContinuousInventoryState5stateE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Initialized in to InvOngoing inventory_continuous() Set in update_inventory_state(). </p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N24ContinuousInventoryState11done_reasonE">
-<span id="_CPPv3N24ContinuousInventoryState11done_reasonE"></span><span id="_CPPv2N24ContinuousInventoryState11done_reasonE"></span><span id="ContinuousInventoryState::done_reason__InventorySummaryReason"></span><span class="target" id="struct_continuous_inventory_state_1a86796b3dde9952c83182e23bf558379f"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv422InventorySummaryReason" title="InventorySummaryReason"><span class="n"><span class="pre">InventorySummaryReason</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">done_reason</span></span></span><a class="headerlink" href="#_CPPv4N24ContinuousInventoryState11done_reasonE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>The reason for inventory round completion. </p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N24ContinuousInventoryState24initial_inventory_configE">
-<span id="_CPPv3N24ContinuousInventoryState24initial_inventory_configE"></span><span id="_CPPv2N24ContinuousInventoryState24initial_inventory_configE"></span><span id="ContinuousInventoryState::initial_inventory_config__InventoryRoundControlFields"></span><span class="target" id="struct_continuous_inventory_state_1ac02698e91344c180ede72d2b90ef724c"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv427InventoryRoundControlFields" title="InventoryRoundControlFields"><span class="n"><span class="pre">InventoryRoundControlFields</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">initial_inventory_config</span></span></span><a class="headerlink" href="#_CPPv4N24ContinuousInventoryState24initial_inventory_configE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Inventory config at the beginning of continuous inventory. </p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N24ContinuousInventoryState10previous_qE">
-<span id="_CPPv3N24ContinuousInventoryState10previous_qE"></span><span id="_CPPv2N24ContinuousInventoryState10previous_qE"></span><span id="ContinuousInventoryState::previous_q__uint8_t"></span><span class="target" id="struct_continuous_inventory_state_1a804d6fe831684e023fef8b9e0586129e"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">previous_q</span></span></span><a class="headerlink" href="#_CPPv4N24ContinuousInventoryState10previous_qE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>The Q from the end of the previous inventory round. </p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N24ContinuousInventoryState11min_q_countE">
-<span id="_CPPv3N24ContinuousInventoryState11min_q_countE"></span><span id="_CPPv2N24ContinuousInventoryState11min_q_countE"></span><span id="ContinuousInventoryState::min_q_count__uint8_t"></span><span class="target" id="struct_continuous_inventory_state_1ab45c21b50f938eeb7e26aed966968622"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">min_q_count</span></span></span><a class="headerlink" href="#_CPPv4N24ContinuousInventoryState11min_q_countE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>The min_q_count from the previous inventory round. </p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N24ContinuousInventoryState29queries_since_valid_epc_countE">
-<span id="_CPPv3N24ContinuousInventoryState29queries_since_valid_epc_countE"></span><span id="_CPPv2N24ContinuousInventoryState29queries_since_valid_epc_countE"></span><span id="ContinuousInventoryState::queries_since_valid_epc_count__uint8_t"></span><span class="target" id="struct_continuous_inventory_state_1a5de559e0ae611b6c967270dcd6d7eead"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">queries_since_valid_epc_count</span></span></span><a class="headerlink" href="#_CPPv4N24ContinuousInventoryState29queries_since_valid_epc_countE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>The queries_since_valid_epc_count from the previous round. </p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N24ContinuousInventoryState11stop_reasonE">
-<span id="_CPPv3N24ContinuousInventoryState11stop_reasonE"></span><span id="_CPPv2N24ContinuousInventoryState11stop_reasonE"></span><span id="ContinuousInventoryState::stop_reason__StopReason"></span><span class="target" id="struct_continuous_inventory_state_1a58cd7cf242121c72110299dda5ef5834"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv410StopReason" title="StopReason"><span class="n"><span class="pre">StopReason</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">stop_reason</span></span></span><a class="headerlink" href="#_CPPv4N24ContinuousInventoryState11stop_reasonE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>set in check_stop_conditions, used to push the <a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#struct_continuous_inventory_summary"><span class="std std-ref">ContinuousInventorySummary</span></a> EventFifo packet </p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N24ContinuousInventoryState11round_countE">
-<span id="_CPPv3N24ContinuousInventoryState11round_countE"></span><span id="_CPPv2N24ContinuousInventoryState11round_countE"></span><span id="ContinuousInventoryState::round_count__s"></span><span class="target" id="struct_continuous_inventory_state_1a1068881ff5ef1006df20ddb9b8a09978"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">round_count</span></span></span><a class="headerlink" href="#_CPPv4N24ContinuousInventoryState11round_countE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Initialized to zero in inventory_continuous(), updated by packets in update_inventory_state(). </p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N24ContinuousInventoryState9tag_countE">
-<span id="_CPPv3N24ContinuousInventoryState9tag_countE"></span><span id="_CPPv2N24ContinuousInventoryState9tag_countE"></span><span id="ContinuousInventoryState::tag_count__s"></span><span class="target" id="struct_continuous_inventory_state_1a512b1bf22a45c5cbe6c370fa1ac2c21f"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">tag_count</span></span></span><a class="headerlink" href="#_CPPv4N24ContinuousInventoryState9tag_countE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N24ContinuousInventoryState6targetE">
-<span id="_CPPv3N24ContinuousInventoryState6targetE"></span><span id="_CPPv2N24ContinuousInventoryState6targetE"></span><span id="ContinuousInventoryState::target__uint8_t"></span><span class="target" id="struct_continuous_inventory_state_1aa8cf03b7f0741529b97c4568b162fb4f"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">target</span></span></span><a class="headerlink" href="#_CPPv4N24ContinuousInventoryState6targetE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-</div>
-</dd></dl>
-
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv414StopConditions">
 <span id="_CPPv314StopConditions"></span><span id="_CPPv214StopConditions"></span><span id="StopConditions"></span><span class="target" id="struct_stop_conditions"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">StopConditions</span></span></span><a class="headerlink" href="#_CPPv414StopConditions" title="Permalink to this definition">¶</a><br /></dt>
@@ -611,7 +435,7 @@ A CRC-16-CCITT will be calculated across the data and appended to the written da
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N8CwConfig4gpioE">
-<span id="_CPPv3N8CwConfig4gpioE"></span><span id="_CPPv2N8CwConfig4gpioE"></span><span id="CwConfig::gpio__GpioPinsSetClear"></span><span class="target" id="struct_cw_config_1a79accbbdd45f0b09347c595c97ad56af"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_ops_layer.html#_CPPv416GpioPinsSetClear" title="GpioPinsSetClear"><span class="n"><span class="pre">GpioPinsSetClear</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gpio</span></span></span><a class="headerlink" href="#_CPPv4N8CwConfig4gpioE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8CwConfig4gpioE"></span><span id="_CPPv2N8CwConfig4gpioE"></span><span id="CwConfig::gpio__GpioControlFields"></span><span class="target" id="struct_cw_config_1a4728bd6253a7589a57957e8838d076b9"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_ops_layer.html#_CPPv417GpioControlFields" title="GpioControlFields"><span class="n"><span class="pre">GpioControlFields</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gpio</span></span></span><a class="headerlink" href="#_CPPv4N8CwConfig4gpioE" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp var">
@@ -637,39 +461,6 @@ A CRC-16-CCITT will be calculated across the data and appended to the written da
 </div>
 </dd></dl>
 
-<section id="reverse-power-threshold-detection">
-<h2>Reverse Power Threshold Detection<a class="headerlink" href="#reverse-power-threshold-detection" title="Permalink to this headline">¶</a></h2>
-<p>The return loss detection mechanism in the reader layer allows
-a way to check the current return loss and compare against a
-threshold.</p>
-<p>This check can be called through the reader function
-<code class="docutils literal notranslate"><span class="pre">get_return_loss_threshold_exceeded</span></code>. This allows the user
-to utilize this functionality at any time they desire. This can be
-helpful in detecting if the current antenna has been disconnected,
-if the antenna is damaged, or if something unexpected has happened
-in the TX/RX pathway.
-Note that this function can only be called when an op is not running,
-so be sure to wait for completion of previous ops before calling.</p>
-<p>A sequence diagram can be seen for the reverse power threshold
-detection call below…</p>
-<figure class="align-default">
-<img alt="../../_images/get_return_loss_threshold_exceeded.png" src="../../_images/get_return_loss_threshold_exceeded.png" />
-</figure>
-<p>In addition to calling this check through the reader layer when
-desired, there is a call to check the reverse power as a callback
-after each rampup. If the user uses the reader layer for ramp up,
-the integrated ramp-up process uses a reader layer callback function
-which get registered to the <code class="docutils literal notranslate"><span class="pre">post_rampup_callack</span></code> callback in the
-ops layer. The user can alter  this callback to change the
-parameters/threshold to this check based on customer board
-specifications. If desired, this check can be removed entirely from
-the process.</p>
-<p>The architecture of the reverse power threshold detection as
-integrated into the ramp up process can be seen below:</p>
-<figure class="align-default">
-<img alt="../../_images/post_rampup_threshold_detection.png" src="../../_images/post_rampup_threshold_detection.png" />
-</figure>
-</section>
 </section>
 
 
@@ -682,25 +473,17 @@ integrated into the ramp up process can be seen below:</p>
             <p class="logo"><a href="index.html">
               <img class="logo" src="../../_static/logo.png" alt="Logo"/>
             </a></p>
-  <h3><a href="index.html">Table of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Ex10Reader Layer</a><ul>
-<li><a class="reference internal" href="#reverse-power-threshold-detection">Reverse Power Threshold Detection</a></li>
-</ul>
-</li>
-</ul>
-
   <h4>Previous topic</h4>
   <p class="topless"><a href="yk_firmware_ex10_host_c_api.html"
                         title="previous chapter">Impinj Reader Chip C Host API</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="yk_firmware_ex10_host_c_power_modes_layer.html"
-                        title="next chapter">Ex10PowerModes Layer</a></p>
+  <p class="topless"><a href="yk_firmware_ex10_host_c_ops_layer.html"
+                        title="next chapter">Ex10Ops Layer</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -714,7 +497,7 @@ integrated into the ramp up process can be seen below:</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="yk_firmware_ex10_host_c_power_modes_layer.html" title="Ex10PowerModes Layer"
+          <a href="yk_firmware_ex10_host_c_ops_layer.html" title="Ex10Ops Layer"
              >next</a></li>
         <li class="right" >
           <a href="yk_firmware_ex10_host_c_api.html" title="Impinj Reader Chip C Host API"
@@ -725,7 +508,7 @@ integrated into the ramp up process can be seen below:</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Impinj, Inc..
+        &#169; Copyright 2021, Impinj, Inc..
     </div>
   </body>
 </html>

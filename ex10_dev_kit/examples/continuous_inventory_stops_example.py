@@ -17,16 +17,16 @@ at least 1 tag is inventoried.
 
 from __future__ import (division, absolute_import, print_function,
                         unicode_literals)
+import binascii
 from datetime import datetime
 import threading
 
-# pylint: disable=locally-disabled, wildcard-import, unused-wildcard-import
 from py2c_interface.py2c_python_wrapper import *
 
 
 # The configuration of the inventory example is set using the definitions below
-TRANSMIT_POWER_CDBM = 3000          # Transmit power (dBm)
-RF_MODE = RfModes.mode_103
+TRANSMIT_POWER_DBM = 3000           # Transmit power (dBm)
+RF_MODE = RfModes.mode_5
 REGION = 'FCC'                      # Regulatory region
 R807_ANTENNA_PORT = 1               # Which R807 antenna port will be used
 
@@ -48,7 +48,17 @@ TAG_FOCUS_ENABLE = False            # Tells a tag to be silent after inventoried
 FAST_ID_ENABLE = False              # Tells a tag to backscatter the TID during
                                     # inventory
 
-packet_info = InfoFromPackets(0, 0, 0, 0, TagReadData())
+pc = c_uint16()
+epc = (c_ubyte * 12)()
+crc = c_uint16()
+
+packet_info = InfoFromPackets(0, 0, 0,
+                              TagReadData(pointer(pc),
+                                          ctypes.cast(epc, POINTER(c_ubyte)),
+                                          0,
+                                          pointer(crc),
+                                          None,
+                                          0))
 
 # pylint: disable=locally-disabled, invalid-name, global-statement
 # Indicates whether new packets are available in Ex10Reader
@@ -140,7 +150,7 @@ def continuous_inventory_stop_on_host_request(
     print("Starting continuous inventory with user stop")
     op_status = ex10_reader.continuous_inventory(R807_ANTENNA_PORT,
                                      RF_MODE,
-                                     TRANSMIT_POWER_CDBM,
+                                     TRANSMIT_POWER_DBM,
                                      inventory_config,
                                      inventory_config_2,
                                      None,
@@ -214,7 +224,7 @@ def continuous_inventory_stop_on_max_tags_count(
     print("Starting Continuous inventory with tag count stop")
     op_status = ex10_reader.continuous_inventory(R807_ANTENNA_PORT,
                                      RF_MODE,
-                                     TRANSMIT_POWER_CDBM,
+                                     TRANSMIT_POWER_DBM,
                                      inventory_config,
                                      inventory_config_2,
                                      None,
@@ -228,7 +238,7 @@ def continuous_inventory_stop_on_max_tags_count(
         if ex10_reader.packets_available():
             packet = ex10_reader.packet_peek().contents
             helpers.examine_packets(packet, packet_info)
-
+            
             if packet.packet_type == EventPacketType.ContinuousInventorySummary:
                 inventory_done = True
                 cont_summary = ContinuousInventorySummary()
@@ -262,11 +272,11 @@ def continuous_inventory_stop_on_inventory_round_count(
     stop_conditions.max_number_of_tags   = 0
     stop_conditions.max_duration_us      = 0
     stop_conditions.max_number_of_rounds = max_inventory_round_count
-
+ 
     print("Starting continuous inventory with round count stop")
     op_status = ex10_reader.continuous_inventory(R807_ANTENNA_PORT,
                                      RF_MODE,
-                                     TRANSMIT_POWER_CDBM,
+                                     TRANSMIT_POWER_DBM,
                                      inventory_config,
                                      inventory_config_2,
                                      None,
@@ -279,7 +289,7 @@ def continuous_inventory_stop_on_inventory_round_count(
     while not inventory_done:
         while ex10_reader.packets_available():
             packet = ex10_reader.packet_peek().contents
-
+            
             if packet.packet_type == EventPacketType.ContinuousInventorySummary:
                 inventory_done = True
                 cont_summary = ContinuousInventorySummary()
@@ -308,6 +318,7 @@ def continuous_inventory_stop_on_duration(
     timeout_s = 60
     dual_target = True
 
+    max_inventory_round_count = 6
     stop_conditions = StopConditions()
     stop_conditions.max_number_of_tags   = 0
     stop_conditions.max_duration_us      = max_duration_s * 1000 * 1000
@@ -316,7 +327,7 @@ def continuous_inventory_stop_on_duration(
     print("Starting continuous inventory with duration_us stop")
     op_status = ex10_reader.continuous_inventory(R807_ANTENNA_PORT,
                                      RF_MODE,
-                                     TRANSMIT_POWER_CDBM,
+                                     TRANSMIT_POWER_DBM,
                                      inventory_config,
                                      inventory_config_2,
                                      None,
@@ -329,7 +340,7 @@ def continuous_inventory_stop_on_duration(
     while not inventory_done:
         while ex10_reader.packets_available():
             packet = ex10_reader.packet_peek().contents
-
+            
             if packet.packet_type == EventPacketType.ContinuousInventorySummary:
                 inventory_done = True
                 cont_summary = ContinuousInventorySummary()

@@ -61,29 +61,29 @@ static int measure_chip_sensors(struct Ex10Interfaces ex10_iface)
     printf("\n");
 
     // define sweep parameters
-    #ifdef Randy
-    uint32_t frequency_kHz_init     = 908750u;   //start at 902750
-    uint32_t frequency_kHz_maximum  = 912250;    // stop at 927250
+    
+    uint32_t frequency_kHz_init     = 902750u;   //start at 902750
+    uint32_t frequency_kHz_maximum  = 927250;    // stop at 927250
     uint32_t frequency_kHz_stepsize = 500;
-    #endif
+
     uint16_t power_tx_cdBm_init     = 0;
     uint16_t power_tx_cdBm_maximum  = 3210;
-    uint16_t power_tx_cdB_stepsize  = 300;
+    uint16_t power_tx_cdB_stepsize  = 50;   //default 300 changed for finer output
     //uint32_t frequency_kHz = frequency_kHz_init; 
 
 
     // sweep frequency and power and measure sensors
-    #ifdef Randy
+
     for (uint32_t frequency_kHz = frequency_kHz_init;
          frequency_kHz <= frequency_kHz_maximum;
          frequency_kHz += frequency_kHz_stepsize)
-    #endif
-    uint32_t frequency_kHz = 903750;
+            //create a  delay here
+         for(uint32_t j=0; j<= 10000;j+=1);
+    // uint32_t frequency_kHz = 903750;  only used for fixed frequency
     {
         // sweep frequency and power and measure sensors
-        for (uint32_t i = 0; i <= 49; i+= 1)     // from 0 to i, so 0 to 9 = 10 times
-    
-        {   
+        for (uint32_t i = 0; i <= 4; i+= 1)     // from 0 to i, so 0 to 9 = 10 times
+        {  
             for (uint16_t power_tx_cdBm = power_tx_cdBm_init;
              power_tx_cdBm <= power_tx_cdBm_maximum;
              power_tx_cdBm += power_tx_cdB_stepsize)

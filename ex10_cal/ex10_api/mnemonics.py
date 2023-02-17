@@ -116,7 +116,6 @@ class ProductSku(Enum):
     E310    = 0x0310
     E510    = 0x0510
     E710    = 0x0710
-    E910    = 0x0910
 
 
 def _is_mnem_field_or_buffer(mnemonic_dict):
@@ -235,7 +234,7 @@ def _create_bit_field(register_name, mnemonic_dict):
                 .format(register_name, field_name, field_value, field_bits))
 
         if field_bits == 0:
-            raise ValueError('register {}.{} has zero bit length'
+            raise ValueError('regiseter {}.{} has zero bit length'
                              .format(register_name, field_name))
 
         while field_bits > 0:
@@ -286,7 +285,7 @@ def _resolve_field_from_bytes(position, length_bits, bytes_, is_signed):
     length_in_bytes = int(math.ceil(length_bits / 8))
     first_byte = math.floor(position / 8)
 
-    # int cast maintains python 2 and 3 compatibility
+    # int cast mantains python 2 and 3 compatibility
     first_byte = int(first_byte)
 
     byte_total = 0
@@ -519,7 +518,7 @@ def bytes_to_mnemonic(register_info, bytes_):
         if len(bytes_) != register_node['length']:
             raise ValueError('Length of bytes_ is incorrect')
 
-        # get the template, and populate it with the bytes value
+        # get the template, and populate it with the bytes valule
         mnemonic_dict = get_template(register_name)
         mnemonic_dict[register_name] = bytes_
         print()

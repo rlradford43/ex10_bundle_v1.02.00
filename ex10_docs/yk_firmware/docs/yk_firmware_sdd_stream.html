@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Yukon SDD Stream &#8212; Impinj Reader Chip SDK</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinxdoc.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="index.html">Impinj Reader Chip SDK</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Yukon SDD Stream</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="yukon-sdd-stream">
+<h1>Yukon SDD Stream<a class="headerlink" href="#yukon-sdd-stream" title="Permalink to this headline">¶</a></h1>
+<p>Yukon has a SDD (System Debug Data) stream that can be enabled to
+document the operations of the firmware running on Yukon.  The
+SDD stream has multiple packets which are documented below. The packets are
+disabled by default and only the hello world packet will be emitted when
+Yukon boots up.  The hello world packet is the SKU followed by the Chip version.
+For example “E710 YX4”</p>
+<p>The SDD stream has a format that is either ASCII based, or is
+CTF (Common Trace Format) based (<a class="reference external" href="https://diamon.org/ctf/">https://diamon.org/ctf/</a>). These two
+modes are delineated by a “CTFASCII” message or a “ASCIICTF” character sequence
+to show that the stream is changing modes. (note that the logger only emits
+the “CTFASCII” or “ASCIICTF” message when it changes modes).  In ASCII mode
+the stream is a simple stream of ASCII bytes that is the message.  The CTF
+mode is a binary mode where the length of the packets is known by the packet
+type and the dynamic data header (if there is dynamic data).</p>
+<p>There are SDD stream decoders that can be used to decode this stream into more
+usable data structures.  There is a python decoder and support files required
+to use babeltrace.  Both of these methods are described in sections below.
+Also note that the log streams are built with the autogen process
+so make sure the SHA of the SDD stream matches the SHA that the
+decoder is looking for.</p>
+<p>The SDD ASCII data can be of any length, but the CTF format data must be
+a multiple of 32-bits in length. All messages will be padded with RFU
+(Reserved for Future Use) fields, or the dynamic data will be padded with
+0’s to enforce this rule.</p>
+<section id="sdd-ctf-parsers">
+<h2>SDD CTF Parsers<a class="headerlink" href="#sdd-ctf-parsers" title="Permalink to this headline">¶</a></h2>
+<p>There are currently 3 ways to parse the SDD stream output using the following tools.
+All three of these parsers are built from the the yk_firmware/app/sdd/sdd_packet_types.yml
+file by the Yukon autogen system.  Note that all of these analyzers are built to match
+the current version of the application.  Make sure that the Yukon application and
+the chosen parser are in sync with each other.</p>
+<section id="babeltrace">
+<h3>Babeltrace<a class="headerlink" href="#babeltrace" title="Permalink to this headline">¶</a></h3>
+<p>Babeltrace can be used to convert the binary SDD format into a human
+readable format.  Babeltrace is a standard linux package and can be installed with
+the normal apt-get or yum package managers. Babeltrace only operates on the pure CTF
+portion of the stream so a script needs to be used to separate the ASCII
+(and ASCIICTF, CTFASCII) sections from the CTF data.</p>
+<p>There is a simple script to do this located in the
+yk_firmware/app/sdd directory of the repository called process_sdd_file.py.  This
+script will create the directories specified on the command line and put the
+ASCII and CTF sections into those directories.</p>
+<p>Once you have the pure CTF data, copy the metadata file located in the
+yk_firmware/app/sdd directory into that directory.  Then call babeltrace with
+that directory name and it will process all the SDD files in that directory.</p>
+<p>Further instructions can be found in the readme.md of the yk_firmware/app/sdd directory.</p>
+</section>
+<section id="python-parser">
+<h3>Python Parser<a class="headerlink" href="#python-parser" title="Permalink to this headline">¶</a></h3>
+<p>The python parser is a python module that takes in the raw SDD stream (including the
+ASCII sections) and acts as a python generator that generates a dictionary of the
+sdd packet fields.  This can then by used by the calling python to do any analysis
+desired.</p>
+<p>The parser itself is located at dev_kit/ex10_dev_kit/ex10_api/sdd_stream_parser.py</p>
+<p>A simple example of how to use this parser and print out the packets is located at
+yk_firmware/app/sdd/process_sdd_stream_file.py</p>
+</section>
+<section id="saleae-analyzer-plugin">
+<h3>Saleae Analyzer Plugin<a class="headerlink" href="#saleae-analyzer-plugin" title="Permalink to this headline">¶</a></h3>
+<p>A Plugin analyzer for the Saleae Logic analyzer has been built for both the Ex10_API
+SPI traffic, and for the SDD Stream that comes out of Yukon.  These Analyzers are
+built for the Windows/MacOS/Linux version.  They are located in the
+yk_firmware/app/sdd/saleae_plugins/ directory.  The instructions for how to
+setup the Logic software use the plugins is in the yk_firmware/app/sdd/readyme.md
+file.  These directions were build with the 1.x Saleae in mind, so the user may need
+to refer to the Saleae documentation for the Logic 2.x version of the software.  These
+analyzers do work with both versions.</p>
+</section>
+</section>
+<section id="sdd-ctf-header">
+<h2>SDD CTF Header<a class="headerlink" href="#sdd-ctf-header" title="Permalink to this headline">¶</a></h2>
+<p>The header of the SDD packet has a timestamp and the message ID that defines
+how to decode the packet.  Then it also has a SHA that is the SHA of the yaml
+file used to generate the CTF format and documentation. Currently this just
+allows the parser to know that it knows the correct definitions of the packets.</p>
+<blockquote>
+<div><table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-text">CTF header</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 14%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Offset</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>uint32_t</p></td>
+<td><p>timestamp</p></td>
+<td><p>Yukon microsecond timetstamp</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint16_t</p></td>
+<td><p>message_id</p></td>
+<td><p>The CTF message id of the packet</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>uint16_t</p></td>
+<td><p>SHA</p></td>
+<td><p>The SHA of the yaml file used to autogen the CTF packets</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>The timestamp comes from the microsecond timer that is running in Yukon, and is
+the same timer used for timestamps in the event fifo.  The timestamp is captured
+when the message is put into the logger buffer, so it may not be the exact time of
+the event, but it should be within a handful of microseconds after the event.</p>
+<p>The message_id is a 16 bit field that identifies the message, and these message_ids
+are the ones listed later in this document.</p>
+<p>The SHA is used to verify that the message definitions used to generate this stream
+is the same as the decoder is expecting.  So the firmware on Yukon and the decoder being
+used need to have the same SHA.  This SHA can also be useful for dealing with corrupted
+streams.  A precaution that the parser can take to detect a corrupt stream is to read in
+the header of the current message and then look further down into the stream and verify
+that the header and specifically the SHA in that header is correct in the next message.
+If it is not, then the parser discards the current message as corrupt, and freewheels
+through the stream until it finds the correct SHA in two sequential messages.</p>
+</section>
+<section id="sdd-ctf-dynamic-data-header">
+<h2>SDD CTF Dynamic Data Header<a class="headerlink" href="#sdd-ctf-dynamic-data-header" title="Permalink to this headline">¶</a></h2>
+<p>The CTF dynamic data header is a section of the packet that comes after the static
+data of the packet and contains two fields. The first field is a 16 bit field that
+contains the number of bytes that follow in the dynamic data.  The second field is
+a 16 bit field that contains the number of padding bytes that were added to the end
+of the dynamic data to bring the packet up to a multiple of 32-bits.  On the packets
+that contain dynamic data, these fields are shown at the end of the static fields with
+the dynamic data represetned as an array of bytes of unknown length at the end.  Note
+that it is possible that the number of bytes in the dynamic data is 0 bytes, in which
+case the dynamic data section of the packet would only be the dynamic data header with
+0 bytes following it.</p>
+<blockquote>
+<div><table class="colwidths-given docutils align-default" id="id2">
+<caption><span class="caption-text">CTF header</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 14%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Offset</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>uint16_t</p></td>
+<td><p>num_dynamic_bytes</p></td>
+<td><p>The number of bytes in the dynamic data</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>uint16_t</p></td>
+<td><p>num_padding_bytes</p></td>
+<td><p>The number of padding bytes added to the end of the dynamic data</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>The dynamic data then immediatly follows this header.  In the packet descriptions below
+show the dynamic header in the fields, and how the dynamic data as an array of unknown
+size (defined by the data in the header).</p>
+</section>
+<section id="logenables-register">
+<h2>LogEnables Register<a class="headerlink" href="#logenables-register" title="Permalink to this headline">¶</a></h2>
+<p>The Ex10 register <a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-LogEnables">LogEnables</a>
+is used to enable the SDD logs.  This register is a bit field that is used to
+enable the different types of SDD logs avalible.  In general most of these
+logs can be enabled at the same time.  There are however some of the logs
+that are intended as debugging logs that should only be enabled if
+specifically debugging that feature.  Some of the logs have a trace and
+solution type where the trace type typically logs every measurement, and
+the solution type just logs the final solution.</p>
+<p>Note that some of these logs will slow Yukon down in different amounts
+depending on how much time Yukon spends emitting the log into the buffer.
+The Lmac logs do not slow Yukon down as the logs are emitted while the LMAC
+is waiting for the modem to complete its task, but it may impact Yukons
+responsiveness on the SPI interface.</p>
+</section>
+<section id="sdd-packet-types">
+<h2>SDD Packet Types<a class="headerlink" href="#sdd-packet-types" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="../../_static/logo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Yukon SDD Stream</a><ul>
+<li><a class="reference internal" href="#sdd-ctf-parsers">SDD CTF Parsers</a><ul>
+<li><a class="reference internal" href="#babeltrace">Babeltrace</a></li>
+<li><a class="reference internal" href="#python-parser">Python Parser</a></li>
+<li><a class="reference internal" href="#saleae-analyzer-plugin">Saleae Analyzer Plugin</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sdd-ctf-header">SDD CTF Header</a></li>
+<li><a class="reference internal" href="#sdd-ctf-dynamic-data-header">SDD CTF Dynamic Data Header</a></li>
+<li><a class="reference internal" href="#logenables-register">LogEnables Register</a></li>
+<li><a class="reference internal" href="#sdd-packet-types">SDD Packet Types</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="index.html">Impinj Reader Chip SDK</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Yukon SDD Stream</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Impinj, Inc..
+    </div>
+  </body>
+</html>

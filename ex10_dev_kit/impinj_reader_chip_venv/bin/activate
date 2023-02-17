@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/pi/ex10_bundle_v1.02.00/ex10_dev_kit/impinj_reader_chip_venv"
+VIRTUAL_ENV="/home/pi/ex10_bundle_v1.01.00/ex10_dev_kit/impinj_reader_chip_venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

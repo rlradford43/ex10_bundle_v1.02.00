@@ -18,14 +18,14 @@ from __future__ import (division, absolute_import, print_function,
                         unicode_literals)
 from datetime import datetime
 
-# pylint: disable=locally-disabled, wildcard-import, unused-wildcard-import
+
 from py2c_interface.py2c_python_wrapper import *
 
 
 # The configuration of the inventory example is set using the definitions below
 INVENTORY_DURATION_S = 5            # Duration of inventory operation (seconds)
-TRANSMIT_POWER_CDBM = 3000          # 30 dBm
-RF_MODE = RfModes.mode_148
+TRANSMIT_POWER_DBM = 3000           # 30 dBm
+RF_MODE = RfModes.mode_5
 R807_ANTENNA_PORT = 1               # Which R807 antenna port will be used
 INITIAL_Q = 2                       # Q field in the Query command
 SELECT_ALL = 0                      # SELECT field in the Query command
@@ -41,7 +41,17 @@ FAST_ID_ENABLE = False              # Tells a tag to backscatter the TID during
 # Words to be written and read back from tag
 TEST_WORD_0 = 0x55AA
 
-packet_info = InfoFromPackets(0, 0, 0, 0, TagReadData())
+pc = c_uint16()
+epc = (c_ubyte * 40)()
+crc = c_uint16()
+tid = (c_ubyte * 40)()
+packet_info = InfoFromPackets(0, 0, 0,
+                              TagReadData(pointer(pc),
+                                          ctypes.cast(epc, POINTER(c_ubyte)),
+                                          0,
+                                          pointer(crc),
+                                          ctypes.cast(tid, POINTER(c_ubyte)),
+                                          0))
 
 cmds = []
 
@@ -69,7 +79,7 @@ def enable_commands(tx_command_manager, enable_index):
         enable_me[ind] = enable_index[ind]
     enable_p = pointer(enable_me)
 
-    tx_command_manager.write_halted_enables(ctypes.cast(enable_p, c_void_p), 10)
+    tx_command_manager.write_halted_enables(ctypes.cast(enable_p, c_void_p), 10);
 
 
 def load_access_commands(tx_command_manager):
@@ -86,22 +96,22 @@ def load_access_commands(tx_command_manager):
     read_args.word_count = 1
 
     cmds.append(Gen2CommandSpec(Gen2Command.Gen2Write,
-                                ctypes.cast(pointer(write_args), c_void_p)))
+                ctypes.cast(pointer(write_args), c_void_p)))
     cmds.append(Gen2CommandSpec(Gen2Command.Gen2Read,
-                                ctypes.cast(pointer(read_args), c_void_p)))
+                ctypes.cast(pointer(read_args), c_void_p)))
 
     # Clear any commands before adding new ones
-    tx_command_manager.clear_local_sequence()
+    tx_command_manager.clear_local_sequence();
     enables = [0]*10
     # Add the command
-    curr_error = tx_command_manager.encode_and_append_command(cmds[0], 0)
-    assert False == curr_error.error_occurred
-    enables[curr_error.current_index] = True
-    curr_error = tx_command_manager.encode_and_append_command(cmds[1], 1)
-    assert False == curr_error.error_occurred
-    enables[curr_error.current_index] = True
-    curr_error = tx_command_manager.write_sequence()
-    assert False == curr_error.error_occurred
+    curr_error = tx_command_manager.encode_and_append_command(cmds[0], 0);
+    assert(False == curr_error.error_occurred);
+    enables[curr_error.current_index] = True;
+    curr_error = tx_command_manager.encode_and_append_command(cmds[1], 1);
+    assert(False == curr_error.error_occurred);
+    enables[curr_error.current_index] = True;
+    curr_error = tx_command_manager.write_sequence();
+    assert(False == curr_error.error_occurred);
 
     # Enable the command we added
     enable_commands(tx_command_manager, enables)
@@ -121,13 +131,13 @@ def run_until_halted(ex10_reader, helper, inventory_config):
         if inv_done:
             inv_done = False
             op_error = ex10_reader.inventory(R807_ANTENNA_PORT,
-                                             RF_MODE,
-                                             TRANSMIT_POWER_CDBM,
-                                             pointer(inventory_config),
-                                             pointer(inventory_config_2),
-                                             None,
-                                             0,
-                                             True)
+                                  RF_MODE,
+                                  TRANSMIT_POWER_DBM,
+                                  pointer(inventory_config),
+                                  pointer(inventory_config_2),
+                                  None,
+                                  0,
+                                  True)
             assert op_error.error_occurred == False
         while ex10_reader.packets_available():
             packet = ex10_reader.packet_peek().contents
@@ -139,12 +149,11 @@ def run_until_halted(ex10_reader, helper, inventory_config):
 
     # Should be halted on a tag now
     assert packet_info.total_singulations == 1  # Should only be one when halted
-    tag_epc = ''.join([str(format(packet_info.access_tag.epc[i], '02x'))
-                       for i in range(packet_info.access_tag.epc_length)])
+    tag_epc = ''.join([str(format(packet_info.access_tag.epc[i], '02x')) for i in range(packet_info.access_tag.epc_length)])
     print('Halted on tag 0x{}'.format(tag_epc))
 
 
-def wait_for_transaction_report(ex10_ifaces, fifo_printer, expected_reports=1, timeout_s=3):
+def wait_for_transaction_report(py2c, ex10_ifaces, expected_reports=1, timeout_s=3):
     ex10_reader = ex10_ifaces.reader
     helper = ex10_ifaces.helpers
 
@@ -155,8 +164,8 @@ def wait_for_transaction_report(ex10_ifaces, fifo_printer, expected_reports=1, t
         while ex10_reader.packets_available():
             packet = ex10_reader.packet_peek().contents
             helper.examine_packets(packet, packet_info)
-            fifo_printer.print_packets(packet)
-
+            helper.print_packets(packet)
+            
             if packet.packet_type == EventPacketType.TxRampDown:
                 raise RuntimeError(
                     'Modem ramped down while waiting for Gen2 transaction')
@@ -164,8 +173,7 @@ def wait_for_transaction_report(ex10_ifaces, fifo_printer, expected_reports=1, t
                 reply_array = c_uint16 * 10
                 reply_words = reply_array()
                 reply = Gen2Reply(0, 0, reply_words)
-                ex10_ifaces.gen2_commands.decode_reply(
-                    cmds[len(transactions)].command, packet, pointer(reply))
+                ex10_ifaces.gen2_commands.decode_reply(cmds[len(transactions)].command, packet, pointer(reply))
                 transactions.append(reply)
 
             ex10_reader.packet_remove()
@@ -183,7 +191,6 @@ def run_access_read_write(py2c, initial_q):
     ex10_ops = ex10_ifaces.ops
     helper = ex10_ifaces.helpers
     tx_command_manager = py2c.get_ex10_gen2_tx_command_manager()
-    fifo_printer = py2c.get_ex10_event_fifo_printer()
 
     # @todo JIRA PI-22454 [YK FW] EX10 should assert Halted interrupt
     # again when Access commands are done
@@ -208,13 +215,13 @@ def run_access_read_write(py2c, initial_q):
     print('########## Delayed Write - User Data Test ##########')
 
     load_access_commands(tx_command_manager)
-
-    ex10_ops.send_gen2_halted_sequence()
+    
+    ex10_ops.send_gen2_halted_sequence();
 
     run_until_halted(ex10_reader, helper, inventory_config)
 
-    transactions = wait_for_transaction_report(ex10_ifaces=ex10_ifaces,
-                                               fifo_printer = fifo_printer,
+    transactions = wait_for_transaction_report(py2c=py2c,
+                                               ex10_ifaces=ex10_ifaces,
                                                expected_reports=2)
     assert len(transactions) == 2
 
@@ -235,11 +242,12 @@ def run_access_read_write(py2c, initial_q):
     while ex10_reader.packets_available():
         packet = ex10_reader.packet_peek().contents
         helper.examine_packets(packet, packet_info)
-        fifo_printer.print_packets(packet)
+        helper.print_packets(packet)
         ex10_reader.packet_remove()
-
+        
         if packet.packet_type == EventPacketType.TxRampDown:
             inventory_config.target = 0
+            round_done = True
         elif packet.packet_type == EventPacketType.InventoryRoundSummary:
             print('Round complete')
 

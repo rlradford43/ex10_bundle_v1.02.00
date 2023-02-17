@@ -57,14 +57,12 @@ common combinations which can incluse some setup registers followed by an op.</p
 <dd><p>Appends the passed instruction into the passed span. </p>
 <p>The function looks at the current instruction and knows how to add it to the passed span. The length and data fields of the span are updated with the new data. NOTE: If the span length does not change, nothing was added.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Param op_instruction</dt>
-<dd class="field-odd"><p>The current instruction being added </p>
-</dd>
-<dt class="field-even">Param agg_op_span</dt>
-<dd class="field-even"><p>The span which we are adding to. The length and data field will be updated </p>
-</dd>
-<dt class="field-odd">Param return</dt>
-<dd class="field-odd"><p>Returns false if there isn’t enough room to add the new instruction, else it returns true. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>op_instruction</strong> – The current instruction being added </p></li>
+<li><p><strong>agg_op_span</strong> – The span which we are adding to. The length and data field will be updated </p></li>
+<li><p><strong>return</strong> – Returns false if there isn’t enough room to add the new instruction, else it returns true. </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -87,17 +85,13 @@ common combinations which can incluse some setup registers followed by an op.</p
 <span id="_CPPv3N22Ex10AggregateOpBuilder26get_instruction_from_indexE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder26get_instruction_from_indexE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1a9cbc24cb850aef870c61689a42ad030f"></span><span class="n"><span class="pre">ssize_t</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">get_instruction_from_index</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv422AggregateOpInstruction" title="AggregateOpInstruction"><span class="n"><span class="pre">AggregateOpInstruction</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">instruction_at_index</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder26get_instruction_from_indexE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Takes in the index of interest and finds the associated instruction data if it exists. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param index</dt>
-<dd class="field-odd"><p>The index to check. </p>
-</dd>
-<dt class="field-even">Param agg_op_span</dt>
-<dd class="field-even"><p>The current buffer data to check through. </p>
-</dd>
-<dt class="field-odd">Param instruction_at_index</dt>
-<dd class="field-odd"><p>The instruction data at the given index. If the index is not found, this will be garbage data. </p>
-</dd>
-<dt class="field-even">Param return</dt>
-<dd class="field-even"><p>Returns the base 0 number of the instruction corresponding to the passed index. This is the instruction number, not the index. Will return a -1 if the index is not a valid instruction. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> – The index to check. </p></li>
+<li><p><strong>agg_op_span</strong> – The current buffer data to check through. </p></li>
+<li><p><strong>instruction_at_index</strong> – The instruction data at the given index. If the index is not found, this will be garbage data. </p></li>
+<li><p><strong>return</strong> – Returns the base 0 number of the instruction corresponding to the passed index. This is the instruction number, not the index. Will return a -1 if the index is not a valid instruction. </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -111,21 +105,15 @@ common combinations which can incluse some setup registers followed by an op.</p
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N22Ex10AggregateOpBuilder16append_reg_writeE">
-<span id="_CPPv3N22Ex10AggregateOpBuilder16append_reg_writeE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder16append_reg_writeE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1ad8af580742a93344851bb595dea463fb"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_reg_write</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv412RegisterInfo" title="RegisterInfo"><span class="n"><span class="pre">RegisterInfo</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">reg_info</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv413ConstByteSpan" title="ConstByteSpan"><span class="n"><span class="pre">ConstByteSpan</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">data_to_write</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder16append_reg_writeE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N22Ex10AggregateOpBuilder16append_reg_writeE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder16append_reg_writeE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1ab5d10157f3aa44ecd599efac09522884"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_reg_write</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv412RegisterInfo" title="RegisterInfo"><span class="n"><span class="pre">RegisterInfo</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">reg_info</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv413ConstByteSpan" title="ConstByteSpan"><span class="n"><span class="pre">ConstByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">data_to_write</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder16append_reg_writeE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Appends a register write to the passed in aggregate buffer. </p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>When used as an ex10 command, writes only require a single instruction code and can be followed by multiple write address/length operations. In the aggregate op, we need to do write commands one at a time. This means we can only write to one register per write instruction. </p>
-</div>
 <dl class="field-list simple">
-<dt class="field-odd">Param data_to_write</dt>
-<dd class="field-odd"><p>The data to add. </p>
-</dd>
-<dt class="field-even">Param agg_op_span</dt>
-<dd class="field-even"><p>The local copy of the aggregate buffer. </p>
-</dd>
-<dt class="field-odd">Param return</dt>
-<dd class="field-odd"><p>Returns false if a buffer overflow occurs in adding to the buffer </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_to_write</strong> – The data to add. </p></li>
+<li><p><strong>agg_op_span</strong> – The local copy of the aggregate buffer. </p></li>
+<li><p><strong>return</strong> – Returns false if a buffer overflow occurs in adding to the buffer </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -135,11 +123,11 @@ common combinations which can incluse some setup registers followed by an op.</p
 <span id="_CPPv3N22Ex10AggregateOpBuilder12append_resetE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder12append_resetE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1a4b3f204b13c5d0301cbdbb8f1f7c27ff"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_reset</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder12append_resetE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Append an Ex10 Reset command to the passed in aggregate buffer. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param destination</dt>
-<dd class="field-odd"><p>Reset destination </p>
-</dd>
-<dt class="field-even">Param return</dt>
-<dd class="field-even"><p>Returns false if a buffer overflow occurs in adding to the buffer </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>destination</strong> – Reset destination </p></li>
+<li><p><strong>return</strong> – Returns false if a buffer overflow occurs in adding to the buffer </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -154,7 +142,7 @@ common combinations which can incluse some setup registers followed by an op.</p
 </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Works the same as the normal Ex10-api command with one exception. Normally, the insert fifo command can be used with a NULL packet by sending nothing more than the command id and the trigger irq. The aggregate op can not find the commmand length if the packet is NULL. If you do not wish to send out a packet, use a packet header which dictates static data length and 0 dynamic data length. This empty packet will not be sent out, but an irq can still be generated. </p>
+<p>Works the same as the normal Ex10-api command with one exception. Normally, the insert fifo command can be used with a NULL packet by sending nothing more than the command id and the trigger irq. The aggregate op currently does not support inserting a NULL packet and a pointer to a valid <a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#struct_event_fifo_packet"><span class="std std-ref">EventFifoPacket</span></a> must always be provided to this function. </p>
 </div>
 </dd></dl>
 
@@ -163,14 +151,12 @@ common combinations which can incluse some setup registers followed by an op.</p
 <span id="_CPPv3N22Ex10AggregateOpBuilder13append_op_runE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder13append_op_runE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1a7a6dc985a217f2057452d448bc5960c2"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_op_run</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv44OpId" title="OpId"><span class="n"><span class="pre">OpId</span></span></a><span class="w"> </span><span class="n"><span class="pre">op_id</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder13append_op_runE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Appends an op run to the passed in aggregate buffer. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param op_id</dt>
-<dd class="field-odd"><p>The op to run. </p>
-</dd>
-<dt class="field-even">Param agg_op_span</dt>
-<dd class="field-even"><p>The local copy of the aggregate buffer. </p>
-</dd>
-<dt class="field-odd">Param return</dt>
-<dd class="field-odd"><p>Returns false if a buffer overflow occurs in adding to the buffer </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>op_id</strong> – The op to run. </p></li>
+<li><p><strong>agg_op_span</strong> – The local copy of the aggregate buffer. </p></li>
+<li><p><strong>return</strong> – Returns false if a buffer overflow occurs in adding to the buffer </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -180,28 +166,11 @@ common combinations which can incluse some setup registers followed by an op.</p
 <span id="_CPPv3N22Ex10AggregateOpBuilder24append_go_to_instructionE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder24append_go_to_instructionE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1a139bb03442eac1e0bdfde3cddf78b985"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_go_to_instruction</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">jump_index</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">repeat_counter</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder24append_go_to_instructionE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Appends a Go-To instruction to the passed aggregate buffer. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param jump_index</dt>
-<dd class="field-odd"><p>Index of the aggregate buffer (in bytes) to jump to </p>
-</dd>
-<dt class="field-even">Param repeat_counter</dt>
-<dd class="field-even"><p>Number of times the jump will be taken before proceeding to the next instruction. If 0, the jump will be bypassed. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N22Ex10AggregateOpBuilder17append_identifierE">
-<span id="_CPPv3N22Ex10AggregateOpBuilder17append_identifierE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder17append_identifierE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1ab3d5c2c96243db7ca45462a932af0996"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_identifier</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">new_id</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder17append_identifierE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Appends an instruction to update the aggregate op identifier. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Param new_id</dt>
-<dd class="field-odd"><p>The new identifier which will be sent back as part of the aggregate op FIFO summary. </p>
-</dd>
-<dt class="field-even">Param agg_op_span</dt>
-<dd class="field-even"><p>The local copy of the aggregate buffer. </p>
-</dd>
-<dt class="field-odd">Param return</dt>
-<dd class="field-odd"><p>Returns false if a buffer overflow occurs in adding to the buffer </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>jump_index</strong> – Index of the aggregate buffer (in bytes) to jump to </p></li>
+<li><p><strong>repeat_counter</strong> – Number of times the jump will be taken before proceeding to the next instruction. If 0, the jump will be bypassed. </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -211,11 +180,11 @@ common combinations which can incluse some setup registers followed by an op.</p
 <span id="_CPPv3N22Ex10AggregateOpBuilder23append_exit_instructionE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder23append_exit_instructionE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1a219c57b53ce752f4e49f81ce5e337ade"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_exit_instruction</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder23append_exit_instructionE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Appends an exit instruction to the passed in aggregate buffer. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param agg_op_span</dt>
-<dd class="field-odd"><p>The local copy of the aggregate buffer. </p>
-</dd>
-<dt class="field-even">Param return</dt>
-<dd class="field-even"><p>Returns false if a buffer overflow occurs in adding to the buffer </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agg_op_span</strong> – The local copy of the aggregate buffer. </p></li>
+<li><p><strong>return</strong> – Returns false if a buffer overflow occurs in adding to the buffer </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -224,7 +193,7 @@ common combinations which can incluse some setup registers followed by an op.</p
 <dt class="sig sig-object cpp" id="_CPPv4N22Ex10AggregateOpBuilder18append_set_rf_modeE">
 <span id="_CPPv3N22Ex10AggregateOpBuilder18append_set_rf_modeE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder18append_set_rf_modeE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1a41e538cca7c18dc736f23b51118c0aca"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_set_rf_mode</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">rf_mode</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder18append_set_rf_modeE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p>ops layer set_rf_mode() call </p>
+<dt><strong>See</strong></dt><dd><p>ops layer <a class="reference internal" href="#struct_ex10_aggregate_op_builder_1a41e538cca7c18dc736f23b51118c0aca"><span class="std std-ref">append_set_rf_mode()</span></a> call </p>
 </dd>
 </dl>
 </p>
@@ -234,17 +203,7 @@ common combinations which can incluse some setup registers followed by an op.</p
 <dt class="sig sig-object cpp" id="_CPPv4N22Ex10AggregateOpBuilder15append_set_gpioE">
 <span id="_CPPv3N22Ex10AggregateOpBuilder15append_set_gpioE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder15append_set_gpioE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1a3df913f9150bec3225a7237b738a9afd"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_set_gpio</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">gpio_levels</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">gpio_enables</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder15append_set_gpioE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p>ops layer set_gpio() call </p>
-</dd>
-</dl>
-</p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N22Ex10AggregateOpBuilder26append_set_clear_gpio_pinsE">
-<span id="_CPPv3N22Ex10AggregateOpBuilder26append_set_clear_gpio_pinsE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder26append_set_clear_gpio_pinsE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1a08fd35f6367bacc482ce6645d5efafea"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_set_clear_gpio_pins</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_ops_layer.html#_CPPv416GpioPinsSetClear" title="GpioPinsSetClear"><span class="n"><span class="pre">GpioPinsSetClear</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">gpio_pins_set_clear</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder26append_set_clear_gpio_pinsE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p>ops layer set_clear_gpio_pins() call </p>
+<dt><strong>See</strong></dt><dd><p>ops layer <a class="reference internal" href="#struct_ex10_aggregate_op_builder_1a3df913f9150bec3225a7237b738a9afd"><span class="std std-ref">append_set_gpio()</span></a> call </p>
 </dd>
 </dl>
 </p>
@@ -254,46 +213,17 @@ common combinations which can incluse some setup registers followed by an op.</p
 <dt class="sig sig-object cpp" id="_CPPv4N22Ex10AggregateOpBuilder23append_lock_synthesizerE">
 <span id="_CPPv3N22Ex10AggregateOpBuilder23append_lock_synthesizerE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder23append_lock_synthesizerE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1a5143914c5c854a6d4a9048d4c59a9cb8"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_lock_synthesizer</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">r_divider</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">n_divider</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder23append_lock_synthesizerE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p>ops layer lock_synthesizer() call </p>
+<dt><strong>See</strong></dt><dd><p>ops layer <a class="reference internal" href="#struct_ex10_aggregate_op_builder_1a5143914c5c854a6d4a9048d4c59a9cb8"><span class="std std-ref">append_lock_synthesizer()</span></a> call </p>
 </dd>
 </dl>
 </p>
 </dd></dl>
 
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N22Ex10AggregateOpBuilder19append_sjc_settingsE">
-<span id="_CPPv3N22Ex10AggregateOpBuilder19append_sjc_settingsE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder19append_sjc_settingsE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1a7920dd62c3284e32c5eb69f65d779e76"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_sjc_settings</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv416SjcControlFields" title="SjcControlFields"><span class="n"><span class="pre">SjcControlFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">sjc_control</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv420SjcGainControlFields" title="SjcGainControlFields"><span class="n"><span class="pre">SjcGainControlFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">sjc_rx_gain</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv428SjcInitialSettlingTimeFields" title="SjcInitialSettlingTimeFields"><span class="n"><span class="pre">SjcInitialSettlingTimeFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">initial_settling_time</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv428SjcResidueSettlingTimeFields" title="SjcResidueSettlingTimeFields"><span class="n"><span class="pre">SjcResidueSettlingTimeFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">residue_settling_time</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv414SjcCdacIFields" title="SjcCdacIFields"><span class="n"><span class="pre">SjcCdacIFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">cdac</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv425SjcResidueThresholdFields" title="SjcResidueThresholdFields"><span class="n"><span class="pre">SjcResidueThresholdFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">sjc_residue_threshold</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder19append_sjc_settingsE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Append SJC settings register writes to the passed in aggregate buffer. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Param sjc_control</dt>
-<dd class="field-odd"><p>SJC algorithm settings. </p>
-</dd>
-<dt class="field-even">Param sjc_rx_gain</dt>
-<dd class="field-even"><p>Rx gain. </p>
-</dd>
-<dt class="field-odd">Param initial_settling_time</dt>
-<dd class="field-odd"><p>Initial settling time. </p>
-</dd>
-<dt class="field-even">Param residue_settling_time</dt>
-<dd class="field-even"><p>Residue settling time. </p>
-</dd>
-<dt class="field-odd">Param cdac</dt>
-<dd class="field-odd"><p>CDAC I search. </p>
-</dd>
-<dt class="field-even">Param sjc_residue_threshold</dt>
-<dd class="field-even"><p>Residue pass/fail threshold. </p>
-</dd>
-<dt class="field-odd">Param agg_op_span</dt>
-<dd class="field-odd"><p>The aggregate buffer to append. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N22Ex10AggregateOpBuilder14append_run_sjcE">
 <span id="_CPPv3N22Ex10AggregateOpBuilder14append_run_sjcE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder14append_run_sjcE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1ad201ac721cd89c7fbaabfe2c4181e87c"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_run_sjc</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder14append_run_sjcE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p>ops layer run_sjc() call </p>
+<dt><strong>See</strong></dt><dd><p>ops layer <a class="reference internal" href="#struct_ex10_aggregate_op_builder_1ad201ac721cd89c7fbaabfe2c4181e87c"><span class="std std-ref">append_run_sjc()</span></a> call </p>
 </dd>
 </dl>
 </p>
@@ -303,7 +233,7 @@ common combinations which can incluse some setup registers followed by an op.</p
 <dt class="sig sig-object cpp" id="_CPPv4N22Ex10AggregateOpBuilder25append_set_tx_coarse_gainE">
 <span id="_CPPv3N22Ex10AggregateOpBuilder25append_set_tx_coarse_gainE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder25append_set_tx_coarse_gainE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1a697c2bae47342a666ad30e0c7ae6b62c"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_set_tx_coarse_gain</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">tx_atten</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder25append_set_tx_coarse_gainE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p>ops layer set_tx_coarse_gain() call </p>
+<dt><strong>See</strong></dt><dd><p>ops layer <a class="reference internal" href="#struct_ex10_aggregate_op_builder_1a697c2bae47342a666ad30e0c7ae6b62c"><span class="std std-ref">append_set_tx_coarse_gain()</span></a> call </p>
 </dd>
 </dl>
 </p>
@@ -313,7 +243,7 @@ common combinations which can incluse some setup registers followed by an op.</p
 <dt class="sig sig-object cpp" id="_CPPv4N22Ex10AggregateOpBuilder23append_set_tx_fine_gainE">
 <span id="_CPPv3N22Ex10AggregateOpBuilder23append_set_tx_fine_gainE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder23append_set_tx_fine_gainE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1a8fc0a18223052ead24faf6d77a04920c"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_set_tx_fine_gain</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">int16_t</span></span><span class="w"> </span><span class="n"><span class="pre">tx_scalar</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder23append_set_tx_fine_gainE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p>ops layer set_tx_fine_gain() call </p>
+<dt><strong>See</strong></dt><dd><p>ops layer <a class="reference internal" href="#struct_ex10_aggregate_op_builder_1a8fc0a18223052ead24faf6d77a04920c"><span class="std std-ref">append_set_tx_fine_gain()</span></a> call </p>
 </dd>
 </dl>
 </p>
@@ -333,7 +263,7 @@ common combinations which can incluse some setup registers followed by an op.</p
 <dt class="sig sig-object cpp" id="_CPPv4N22Ex10AggregateOpBuilder17append_tx_ramp_upE">
 <span id="_CPPv3N22Ex10AggregateOpBuilder17append_tx_ramp_upE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder17append_tx_ramp_upE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1a04528323a919ed5b950f0829c085e25c"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_tx_ramp_up</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">dc_offset</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder17append_tx_ramp_upE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p>ops layer tx_ramp_up() call </p>
+<dt><strong>See</strong></dt><dd><p>ops layer <a class="reference internal" href="#struct_ex10_aggregate_op_builder_1a04528323a919ed5b950f0829c085e25c"><span class="std std-ref">append_tx_ramp_up()</span></a> call </p>
 </dd>
 </dl>
 </p>
@@ -353,7 +283,7 @@ common combinations which can incluse some setup registers followed by an op.</p
 <dt class="sig sig-object cpp" id="_CPPv4N22Ex10AggregateOpBuilder21append_start_log_testE">
 <span id="_CPPv3N22Ex10AggregateOpBuilder21append_start_log_testE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder21append_start_log_testE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1ac88de44699ed2304d053be9d76725601"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_start_log_test</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">word_repeat</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder21append_start_log_testE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p>ops layer start_log_test() call </p>
+<dt><strong>See</strong></dt><dd><p>ops layer <a class="reference internal" href="#struct_ex10_aggregate_op_builder_1ac88de44699ed2304d053be9d76725601"><span class="std std-ref">append_start_log_test()</span></a> call </p>
 </dd>
 </dl>
 </p>
@@ -363,7 +293,7 @@ common combinations which can incluse some setup registers followed by an op.</p
 <dt class="sig sig-object cpp" id="_CPPv4N22Ex10AggregateOpBuilder20append_set_atest_muxE">
 <span id="_CPPv3N22Ex10AggregateOpBuilder20append_set_atest_muxE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder20append_set_atest_muxE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1afda37243a1bcf6ebaac6fa227091ddb3"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_set_atest_mux</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">atest_mux_0</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">atest_mux_1</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">atest_mux_2</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">atest_mux_3</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder20append_set_atest_muxE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p>ops layer set_atest_mux() call </p>
+<dt><strong>See</strong></dt><dd><p>ops layer <a class="reference internal" href="#struct_ex10_aggregate_op_builder_1afda37243a1bcf6ebaac6fa227091ddb3"><span class="std std-ref">append_set_atest_mux()</span></a> call </p>
 </dd>
 </dl>
 </p>
@@ -373,7 +303,7 @@ common combinations which can incluse some setup registers followed by an op.</p
 <dt class="sig sig-object cpp" id="_CPPv4N22Ex10AggregateOpBuilder18append_set_aux_dacE">
 <span id="_CPPv3N22Ex10AggregateOpBuilder18append_set_aux_dacE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder18append_set_aux_dacE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1a79f918c88d74d72b3d811f3e077744de"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_set_aux_dac</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">dac_channel_start</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">num_channels</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dac_values</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder18append_set_aux_dacE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p>ops layer set_aux_dac() call </p>
+<dt><strong>See</strong></dt><dd><p>ops layer <a class="reference internal" href="#struct_ex10_aggregate_op_builder_1a79f918c88d74d72b3d811f3e077744de"><span class="std std-ref">append_set_aux_dac()</span></a> call </p>
 </dd>
 </dl>
 </p>
@@ -383,7 +313,7 @@ common combinations which can incluse some setup registers followed by an op.</p
 <dt class="sig sig-object cpp" id="_CPPv4N22Ex10AggregateOpBuilder19append_tx_ramp_downE">
 <span id="_CPPv3N22Ex10AggregateOpBuilder19append_tx_ramp_downE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder19append_tx_ramp_downE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1a835a4f91270ea1b45d5de249d5029935"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_tx_ramp_down</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder19append_tx_ramp_downE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p>ops layer tx_ramp_down() call </p>
+<dt><strong>See</strong></dt><dd><p>ops layer <a class="reference internal" href="#struct_ex10_aggregate_op_builder_1a835a4f91270ea1b45d5de249d5029935"><span class="std std-ref">append_tx_ramp_down()</span></a> call </p>
 </dd>
 </dl>
 </p>
@@ -393,7 +323,7 @@ common combinations which can incluse some setup registers followed by an op.</p
 <dt class="sig sig-object cpp" id="_CPPv4N22Ex10AggregateOpBuilder26append_radio_power_controlE">
 <span id="_CPPv3N22Ex10AggregateOpBuilder26append_radio_power_controlE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder26append_radio_power_controlE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1a3fad9831b88df50bac5ddb479cd3c4c4"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_radio_power_control</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">enable</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder26append_radio_power_controlE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p>ops layer radio_power_control() call </p>
+<dt><strong>See</strong></dt><dd><p>ops layer <a class="reference internal" href="#struct_ex10_aggregate_op_builder_1a3fad9831b88df50bac5ddb479cd3c4c4"><span class="std std-ref">append_radio_power_control()</span></a> call </p>
 </dd>
 </dl>
 </p>
@@ -403,7 +333,7 @@ common combinations which can incluse some setup registers followed by an op.</p
 <dt class="sig sig-object cpp" id="_CPPv4N22Ex10AggregateOpBuilder27append_set_analog_rx_configE">
 <span id="_CPPv3N22Ex10AggregateOpBuilder27append_set_analog_rx_configE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder27append_set_analog_rx_configE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1a4a759c481afc1e0e59c77f01602f2cd0"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_set_analog_rx_config</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv419RxGainControlFields" title="RxGainControlFields"><span class="n"><span class="pre">RxGainControlFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">analog_rx_fields</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder27append_set_analog_rx_configE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p>ops layer set_analog_rx_config() call </p>
+<dt><strong>See</strong></dt><dd><p>ops layer <a class="reference internal" href="#struct_ex10_aggregate_op_builder_1a4a759c481afc1e0e59c77f01602f2cd0"><span class="std std-ref">append_set_analog_rx_config()</span></a> call </p>
 </dd>
 </dl>
 </p>
@@ -411,29 +341,9 @@ common combinations which can incluse some setup registers followed by an op.</p
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N22Ex10AggregateOpBuilder19append_measure_rssiE">
-<span id="_CPPv3N22Ex10AggregateOpBuilder19append_measure_rssiE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder19append_measure_rssiE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1a3cf7aa73d56ec26c770d4c4153af3b62"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_measure_rssi</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">rssi_count</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder19append_measure_rssiE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N22Ex10AggregateOpBuilder19append_measure_rssiE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder19append_measure_rssiE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1a3926677a49594da59469e48a39abea2d"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_measure_rssi</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder19append_measure_rssiE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p>ops layer measure_rssi() call </p>
-</dd>
-</dl>
-</p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N22Ex10AggregateOpBuilder24append_hpf_override_testE">
-<span id="_CPPv3N22Ex10AggregateOpBuilder24append_hpf_override_testE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder24append_hpf_override_testE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1aa98ee2252a610fe1a294b7b04b0b81a8"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_hpf_override_test</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">hpf_mode</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder24append_hpf_override_testE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p>ops layer start_hpf_override_test_op() call </p>
-</dd>
-</dl>
-</p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N22Ex10AggregateOpBuilder25append_listen_before_talkE">
-<span id="_CPPv3N22Ex10AggregateOpBuilder25append_listen_before_talkE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder25append_listen_before_talkE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1af103546437bcac9fe9ac58bf816a593f"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_listen_before_talk</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">r_divider_index</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">n_divider</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n"><span class="pre">offset_frequency_khz</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">rssi_count</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder25append_listen_before_talkE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p>ops layer run_listen_before_talk() call </p>
+<dt><strong>See</strong></dt><dd><p>ops layer <a class="reference internal" href="#struct_ex10_aggregate_op_builder_1a3926677a49594da59469e48a39abea2d"><span class="std std-ref">append_measure_rssi()</span></a> call </p>
 </dd>
 </dl>
 </p>
@@ -443,7 +353,7 @@ common combinations which can incluse some setup registers followed by an op.</p
 <dt class="sig sig-object cpp" id="_CPPv4N22Ex10AggregateOpBuilder21append_start_timer_opE">
 <span id="_CPPv3N22Ex10AggregateOpBuilder21append_start_timer_opE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder21append_start_timer_opE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1aaa195b51b6c0049d00db98c0beab2590"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_start_timer_op</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">delay_us</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder21append_start_timer_opE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p>ops layer start_timer_op() call </p>
+<dt><strong>See</strong></dt><dd><p>ops layer <a class="reference internal" href="#struct_ex10_aggregate_op_builder_1aaa195b51b6c0049d00db98c0beab2590"><span class="std std-ref">append_start_timer_op()</span></a> call </p>
 </dd>
 </dl>
 </p>
@@ -453,7 +363,7 @@ common combinations which can incluse some setup registers followed by an op.</p
 <dt class="sig sig-object cpp" id="_CPPv4N22Ex10AggregateOpBuilder20append_wait_timer_opE">
 <span id="_CPPv3N22Ex10AggregateOpBuilder20append_wait_timer_opE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder20append_wait_timer_opE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1ad4f8540e5e7140f52c75b97f97b43885"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_wait_timer_op</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder20append_wait_timer_opE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p>ops layer wait_timer_op() call </p>
+<dt><strong>See</strong></dt><dd><p>ops layer <a class="reference internal" href="#struct_ex10_aggregate_op_builder_1ad4f8540e5e7140f52c75b97f97b43885"><span class="std std-ref">append_wait_timer_op()</span></a> call </p>
 </dd>
 </dl>
 </p>
@@ -463,7 +373,7 @@ common combinations which can incluse some setup registers followed by an op.</p
 <dt class="sig sig-object cpp" id="_CPPv4N22Ex10AggregateOpBuilder28append_start_event_fifo_testE">
 <span id="_CPPv3N22Ex10AggregateOpBuilder28append_start_event_fifo_testE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder28append_start_event_fifo_testE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1a21545d1c72b1812950909fb7bba79bad"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_start_event_fifo_test</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">period</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">num_words</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder28append_start_event_fifo_testE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p>ops layer start_event_fifo_test() call </p>
+<dt><strong>See</strong></dt><dd><p>ops layer <a class="reference internal" href="#struct_ex10_aggregate_op_builder_1a21545d1c72b1812950909fb7bba79bad"><span class="std std-ref">append_start_event_fifo_test()</span></a> call </p>
 </dd>
 </dl>
 </p>
@@ -473,7 +383,7 @@ common combinations which can incluse some setup registers followed by an op.</p
 <dt class="sig sig-object cpp" id="_CPPv4N22Ex10AggregateOpBuilder22append_enable_sdd_logsE">
 <span id="_CPPv3N22Ex10AggregateOpBuilder22append_enable_sdd_logsE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder22append_enable_sdd_logsE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1a8a2a8fc678c5da80c91469a1b5db0696"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_enable_sdd_logs</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv416LogEnablesFields" title="LogEnablesFields"><span class="n"><span class="pre">LogEnablesFields</span></span></a><span class="w"> </span><span class="n"><span class="pre">enables</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">speed_mhz</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder22append_enable_sdd_logsE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p>ops layer enable_sdd_logs() call </p>
+<dt><strong>See</strong></dt><dd><p>ops layer <a class="reference internal" href="#struct_ex10_aggregate_op_builder_1a8a2a8fc678c5da80c91469a1b5db0696"><span class="std std-ref">append_enable_sdd_logs()</span></a> call </p>
 </dd>
 </dl>
 </p>
@@ -483,7 +393,7 @@ common combinations which can incluse some setup registers followed by an op.</p
 <dt class="sig sig-object cpp" id="_CPPv4N22Ex10AggregateOpBuilder28append_start_inventory_roundE">
 <span id="_CPPv3N22Ex10AggregateOpBuilder28append_start_inventory_roundE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder28append_start_inventory_roundE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1acd7a2406994286510ffcd6626d0a331d"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_start_inventory_round</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv427InventoryRoundControlFields" title="InventoryRoundControlFields"><span class="n"><span class="pre">InventoryRoundControlFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">configs</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv429InventoryRoundControl_2Fields" title="InventoryRoundControl_2Fields"><span class="n"><span class="pre">InventoryRoundControl_2Fields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">configs_2</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder28append_start_inventory_roundE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p>ops layer start_inventory_round() call </p>
+<dt><strong>See</strong></dt><dd><p>ops layer <a class="reference internal" href="#struct_ex10_aggregate_op_builder_1acd7a2406994286510ffcd6626d0a331d"><span class="std std-ref">append_start_inventory_round()</span></a> call </p>
 </dd>
 </dl>
 </p>
@@ -493,7 +403,7 @@ common combinations which can incluse some setup registers followed by an op.</p
 <dt class="sig sig-object cpp" id="_CPPv4N22Ex10AggregateOpBuilder17append_start_prbsE">
 <span id="_CPPv3N22Ex10AggregateOpBuilder17append_start_prbsE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder17append_start_prbsE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1a5fbab9b5a288cbbf70ec348f9160385a"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_start_prbs</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder17append_start_prbsE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p>ops layer start_prbs() call </p>
+<dt><strong>See</strong></dt><dd><p>ops layer <a class="reference internal" href="#struct_ex10_aggregate_op_builder_1a5fbab9b5a288cbbf70ec348f9160385a"><span class="std std-ref">append_start_prbs()</span></a> call </p>
 </dd>
 </dl>
 </p>
@@ -503,7 +413,7 @@ common combinations which can incluse some setup registers followed by an op.</p
 <dt class="sig sig-object cpp" id="_CPPv4N22Ex10AggregateOpBuilder21append_start_ber_testE">
 <span id="_CPPv3N22Ex10AggregateOpBuilder21append_start_ber_testE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder21append_start_ber_testE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1a9cf14418cb6100c275c747ac742c0e51"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_start_ber_test</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">num_bits</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">num_packets</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">delimiter_only</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder21append_start_ber_testE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p>ops layer start_ber_test() call </p>
+<dt><strong>See</strong></dt><dd><p>ops layer <a class="reference internal" href="#struct_ex10_aggregate_op_builder_1a9cf14418cb6100c275c747ac742c0e51"><span class="std std-ref">append_start_ber_test()</span></a> call </p>
 </dd>
 </dl>
 </p>
@@ -513,24 +423,10 @@ common combinations which can incluse some setup registers followed by an op.</p
 <dt class="sig sig-object cpp" id="_CPPv4N22Ex10AggregateOpBuilder26append_ramp_transmit_powerE">
 <span id="_CPPv3N22Ex10AggregateOpBuilder26append_ramp_transmit_powerE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder26append_ramp_transmit_powerE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1a099da85812583cc636cebaf39e1be527"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_ramp_transmit_power</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_ops_layer.html#_CPPv412PowerConfigs" title="PowerConfigs"><span class="n"><span class="pre">PowerConfigs</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">power_config</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv416RegulatoryTimers" title="RegulatoryTimers"><span class="n"><span class="pre">RegulatoryTimers</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">timer_config</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder26append_ramp_transmit_powerE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p>ops layer ramp_transmit_power() call </p>
+<dt><strong>See</strong></dt><dd><p>ops layer <a class="reference internal" href="#struct_ex10_aggregate_op_builder_1a099da85812583cc636cebaf39e1be527"><span class="std std-ref">append_ramp_transmit_power()</span></a> call </p>
 </dd>
 </dl>
 </p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N22Ex10AggregateOpBuilder25append_droop_compensationE">
-<span id="_CPPv3N22Ex10AggregateOpBuilder25append_droop_compensationE"></span><span id="_CPPv2N22Ex10AggregateOpBuilder25append_droop_compensationE"></span><span class="target" id="struct_ex10_aggregate_op_builder_1afa39d34e49d2eed60f9e9f839d7723bf"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">append_droop_compensation</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv428PowerDroopCompensationFields" title="PowerDroopCompensationFields"><span class="n"><span class="pre">PowerDroopCompensationFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">compensation</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">agg_op_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N22Ex10AggregateOpBuilder25append_droop_compensationE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Append droop compensation register writes to the aggregate buffer. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Param compensation</dt>
-<dd class="field-odd"><p>Droop compensation settings </p>
-</dd>
-<dt class="field-even">Param agg_op_span</dt>
-<dd class="field-even"><p>The aggregate buffer to append </p>
-</dd>
-</dl>
 </dd></dl>
 
 </div>
@@ -573,11 +469,6 @@ common combinations which can incluse some setup registers followed by an op.</p
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N26AggregateOpInstructionType30InstructionTypeExitInstructionE">
 <span id="_CPPv3N26AggregateOpInstructionType30InstructionTypeExitInstructionE"></span><span id="_CPPv2N26AggregateOpInstructionType30InstructionTypeExitInstructionE"></span><span class="target" id="aggregate__op__builder_8h_1a0c833a779987cf499ea9f7b8baca5562a8c560055c758721a4cc57d418e36d749"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InstructionTypeExitInstruction</span></span></span><a class="headerlink" href="#_CPPv4N26AggregateOpInstructionType30InstructionTypeExitInstructionE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N26AggregateOpInstructionType25InstructionTypeIdentifierE">
-<span id="_CPPv3N26AggregateOpInstructionType25InstructionTypeIdentifierE"></span><span id="_CPPv2N26AggregateOpInstructionType25InstructionTypeIdentifierE"></span><span class="target" id="aggregate__op__builder_8h_1a0c833a779987cf499ea9f7b8baca5562ae2b7c9531c44298efca63051c9b952c4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InstructionTypeIdentifier</span></span></span><a class="headerlink" href="#_CPPv4N26AggregateOpInstructionType25InstructionTypeIdentifierE" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -645,11 +536,6 @@ common combinations which can incluse some setup registers followed by an op.</p
 <span id="_CPPv3N24AggregateInstructionData18go_to_index_formatE"></span><span id="_CPPv2N24AggregateInstructionData18go_to_index_formatE"></span><span id="AggregateInstructionData::go_to_index_format__AggregateGoToIndexFormat"></span><span class="target" id="union_aggregate_instruction_data_1acd5ec83c0577770495000da018fe3625"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv424AggregateGoToIndexFormat" title="AggregateGoToIndexFormat"><span class="n"><span class="pre">AggregateGoToIndexFormat</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">go_to_index_format</span></span></span><a class="headerlink" href="#_CPPv4N24AggregateInstructionData18go_to_index_formatE" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N24AggregateInstructionData17identifier_formatE">
-<span id="_CPPv3N24AggregateInstructionData17identifier_formatE"></span><span id="_CPPv2N24AggregateInstructionData17identifier_formatE"></span><span id="AggregateInstructionData::identifier_format__AggregateIdentifierFormat"></span><span class="target" id="union_aggregate_instruction_data_1a99d7cc5c0d50dc768ab3868d829d1664"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">AggregateIdentifierFormat</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">identifier_format</span></span></span><a class="headerlink" href="#_CPPv4N24AggregateInstructionData17identifier_formatE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
 </div>
 </dd></dl>
 
@@ -693,7 +579,7 @@ common combinations which can incluse some setup registers followed by an op.</p
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -718,7 +604,7 @@ common combinations which can incluse some setup registers followed by an op.</p
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Impinj, Inc..
+        &#169; Copyright 2021, Impinj, Inc..
     </div>
   </body>
 </html>

@@ -18,7 +18,7 @@ protocol
 import binascii
 import pathlib
 from enum import Enum
-import ex10_api.mnemonics as mne
+from ex10_api import mnemonics as mne
 
 
 class UartCommand(Enum):

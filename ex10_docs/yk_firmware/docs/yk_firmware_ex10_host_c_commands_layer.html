@@ -14,14 +14,14 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Ex10Transactor Layer" href="yk_firmware_ex10_host_c_transactor_layer.html" />
+    <link rel="next" title="EventFifo Packet Management" href="yk_firmware_ex10_host_c_other_types.html" />
     <link rel="prev" title="Ex10Protocol Layer" href="yk_firmware_ex10_host_c_protocol_layer.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="yk_firmware_ex10_host_c_transactor_layer.html" title="Ex10Transactor Layer"
+          <a href="yk_firmware_ex10_host_c_other_types.html" title="EventFifo Packet Management"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="yk_firmware_ex10_host_c_protocol_layer.html" title="Ex10Protocol Layer"
@@ -48,28 +48,31 @@ interface to the Impinj reader chip over the wireline communication interface.</
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N12Ex10Commands4readE">
-<span id="_CPPv3N12Ex10Commands4readE"></span><span id="_CPPv2N12Ex10Commands4readE"></span><span class="target" id="struct_ex10_commands_1a14499dd52dabac663b4cadcc24fe1ddb"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv422Ex10CommandsHostErrors" title="Ex10CommandsHostErrors"><span class="n"><span class="pre">Ex10CommandsHostErrors</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">read</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv412RegisterInfo" title="RegisterInfo"><span class="n"><span class="pre">RegisterInfo</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">reg_list</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">byte_spans</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">segment_count</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">ready_n_timeout_ms</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Commands4readE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N12Ex10Commands4readE"></span><span id="_CPPv2N12Ex10Commands4readE"></span><span class="target" id="struct_ex10_commands_1a40843d66b069d7305fad571ffaab190b"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv412ResponseCode" title="ResponseCode"><span class="n"><span class="pre">ResponseCode</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">read</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv412RegisterInfo" title="RegisterInfo"><span class="n"><span class="pre">RegisterInfo</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">address_lengths</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">byte_spans</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">number_of_spans</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">ready_n_timeout_ms</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Commands4readE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Read one or more byte spans of memory on the device. </p>
 <p>Given an addresses and lengths to read, access the device over SPI bus to read the byte spans.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If response is not Success, outputs error information to stderr and asserts failure. </p>
+</div>
 <dl class="field-list simple">
-<dt class="field-odd">Param reg_list</dt>
-<dd class="field-odd"><p>A pointer to a buffer of register_info structs, from which the address and length are used. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address_lengths</strong> – A pointer to a buffer of register_info structs, from hich the address and length are used. </p></li>
+<li><p><strong>byte_spans</strong> – A pointer to an array of buffer pointers to return data read from the Ex10 device. </p></li>
+<li><p><strong>number_of_spans</strong> – The number byte_spans to read. </p></li>
+<li><p><strong>ready_n_timeout_ms</strong> – The number of milliseconds to wait for the Ex10 READY_N line to assert low.</p></li>
+</ul>
 </dd>
-<dt class="field-even">Param byte_spans</dt>
-<dd class="field-even"><p>A pointer to an array of buffer pointers to where the read data it stored. </p>
-</dd>
-<dt class="field-odd">Param segment_count</dt>
-<dd class="field-odd"><p>The number of registers to read from, which must match the number of nodes in both the reg_list[] and byte_spans[] arrays. </p>
-</dd>
-<dt class="field-even">Param ready_n_timeout_ms</dt>
-<dd class="field-even"><p>The number of milliseconds to wait for the Ex10 READY_N line to assert low. </p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>enum ResponseCode and updated byte_spans </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N12Ex10Commands9test_readE">
-<span id="_CPPv3N12Ex10Commands9test_readE"></span><span id="_CPPv2N12Ex10Commands9test_readE"></span><span class="target" id="struct_ex10_commands_1a6d64448d04edd6801ccf99c7946a7c21"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv422Ex10CommandsHostErrors" title="Ex10CommandsHostErrors"><span class="n"><span class="pre">Ex10CommandsHostErrors</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">test_read</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">length_in_bytes</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">read_buffer</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Commands9test_readE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N12Ex10Commands9test_readE"></span><span id="_CPPv2N12Ex10Commands9test_readE"></span><span class="target" id="struct_ex10_commands_1a40884cfe434f669f76a714c32008cb04"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv412ResponseCode" title="ResponseCode"><span class="n"><span class="pre">ResponseCode</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">test_read</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">length_in_bytes</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">read_buffer</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Commands9test_readE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Read an Ex10 register blob. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -84,63 +87,35 @@ interface to the Impinj reader chip over the wireline communication interface.</
 <p>This function assumes that the buffer parameter is at least as large as the length parameter. </p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Param address</dt>
-<dd class="field-odd"><p>Address to begin reading from. </p>
-</dd>
-<dt class="field-even">Param length_in_bytes</dt>
-<dd class="field-even"><p>Number of bytes to read from the register. </p>
-</dd>
-<dt class="field-odd">Param buffer</dt>
-<dd class="field-odd"><p>The buffer data from the register will be written to.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N12Ex10Commands19extend_write_bufferE">
-<span id="_CPPv3N12Ex10Commands19extend_write_bufferE"></span><span id="_CPPv2N12Ex10Commands19extend_write_bufferE"></span><span class="target" id="struct_ex10_commands_1adf741d5cbfad29c9fd7f752ee0aa05e5"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">extend_write_buffer</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">cmd_buffer</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buffer</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Commands19extend_write_bufferE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Extend the passed in ‘cmd_buffer’ with the next write comand. </p>
-<p>This takes care of proper formatting by inserting the write command’s address, length, and data copied from the passed in ‘buffer’.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Param address</dt>
-<dd class="field-odd"><p>The address specifier for the write command. </p>
-</dd>
-<dt class="field-even">Param length</dt>
-<dd class="field-even"><p>The length specifier for the write command. Also the length to be copied from ‘buffer’. </p>
-</dd>
-<dt class="field-odd">Param cmd_buffer</dt>
-<dd class="field-odd"><p>The buffer into which the write command will be copied. </p>
-</dd>
-<dt class="field-even">Param buffer</dt>
-<dd class="field-even"><p>The buffer which contains the data to write to the register. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – Address to begin reading from. </p></li>
+<li><p><strong>length_in_bytes</strong> – Number of bytes to read from the register. </p></li>
+<li><p><strong>buffer</strong> – The buffer data from the register will be written to.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N12Ex10Commands5writeE">
-<span id="_CPPv3N12Ex10Commands5writeE"></span><span id="_CPPv2N12Ex10Commands5writeE"></span><span class="target" id="struct_ex10_commands_1a767cb773c83ecce951511d2a06721437"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv422Ex10CommandsHostErrors" title="Ex10CommandsHostErrors"><span class="n"><span class="pre">Ex10CommandsHostErrors</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">write</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv412RegisterInfo" title="RegisterInfo"><span class="n"><span class="pre">RegisterInfo</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">reg_list</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv413ConstByteSpan" title="ConstByteSpan"><span class="n"><span class="pre">ConstByteSpan</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">byte_spans</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">segment_count</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">ready_n_timeout_ms</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Commands5writeE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N12Ex10Commands5writeE"></span><span id="_CPPv2N12Ex10Commands5writeE"></span><span class="target" id="struct_ex10_commands_1af3dba934093553c35fc7d275d85f5eef"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">write</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv413ConstByteSpan" title="ConstByteSpan"><span class="n"><span class="pre">ConstByteSpan</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">byte_spans</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">number_of_spans</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">ready_n_timeout_ms</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Commands5writeE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Write one or more byte spans on the device. </p>
 <p>Given an array of byte spans, access the device over SPI to write.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Param reg_list</dt>
-<dd class="field-odd"><p>A pointer to a buffer of register_info structs, from which the address and length are used. </p>
-</dd>
-<dt class="field-even">Param byte_spans</dt>
-<dd class="field-even"><p>An array of <a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#struct_const_byte_span"><span class="std std-ref">ConstByteSpan</span></a> structs to write to the Ex10 device. </p>
-</dd>
-<dt class="field-odd">Param segment_count</dt>
-<dd class="field-odd"><p>The number of registers to write to, which must match the number of nodes in both the reg_list[] and byte_spans[] arrays. </p>
-</dd>
-<dt class="field-even">Param ready_n_timeout_ms</dt>
-<dd class="field-even"><p>The number of milliseconds to wait for the Ex10 READY_N line to assert low. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>byte_spans</strong> – An array of <a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#struct_const_byte_span"><span class="std std-ref">ConstByteSpan</span></a> structs to write to the Ex10 device. </p></li>
+<li><p><strong>number_of_spans</strong> – The number of byte_spans to write. </p></li>
+<li><p><strong>ready_n_timeout_ms</strong> – The number of milliseconds to wait for the Ex10 READY_N line to assert low. </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N12Ex10Commands9read_fifoE">
-<span id="_CPPv3N12Ex10Commands9read_fifoE"></span><span id="_CPPv2N12Ex10Commands9read_fifoE"></span><span class="target" id="struct_ex10_commands_1a6bf8441790704546745b378d412414f0"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv422Ex10CommandsHostErrors" title="Ex10CommandsHostErrors"><span class="n"><span class="pre">Ex10CommandsHostErrors</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">read_fifo</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv413FifoSelection" title="FifoSelection"><span class="n"><span class="pre">FifoSelection</span></span></a><span class="w"> </span><span class="n"><span class="pre">selection</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">byte_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Commands9read_fifoE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N12Ex10Commands9read_fifoE"></span><span id="_CPPv2N12Ex10Commands9read_fifoE"></span><span class="target" id="struct_ex10_commands_1aa6a9d3448e3e74aae48ec15844e3e062"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv412ResponseCode" title="ResponseCode"><span class="n"><span class="pre">ResponseCode</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">read_fifo</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv413FifoSelection" title="FifoSelection"><span class="n"><span class="pre">FifoSelection</span></span></a><span class="w"> </span><span class="n"><span class="pre">selection</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">byte_span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Commands9read_fifoE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Read the specified number of bytes from device FIFO stream. </p>
 <p>Given a selected fifo, read bytes from the fifo into a <a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#struct_byte_span"><span class="std std-ref">ByteSpan</span></a>.</p>
 <p>Multiple ReadFifo commands are made until the byte_span length value is filled to capacity.</p>
@@ -151,62 +126,67 @@ The byte_span-&gt;length should be the number of bytes obtained by reading the E
 <p class="admonition-title">Note</p>
 <p>If 32-bit alignment of the event fifo messages is required then byte_span-&gt;data[1] must be u32 aligned since data[0] will contain the response code.</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If response is not Success, outputs error information to stderr and calls asserts failure. </p>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>If the byte_span value is greater than the number of bytes contained in the fifo then this function will continue to read from the fifo until the length value is satisfied. Therefore the byte_span length value should contain the value read from EventFifoNumBytes register. </p>
+<p>If the byte_span value is greater than the number of bytes contained in the fifo then this function will continue to read from the fifo until the length value is satisfied. Therefore the byte_span length value should contain the value read from EventFifoNumBytes register.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Param selection</dt>
-<dd class="field-odd"><p>Which FIFO to read from. In the Ex10 only the EventFifo (0) is supported. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>selection</strong> – Which FIFO to read from. In the Ex10 only the EventFifo (0) is supported. </p></li>
+<li><p><strong>byte_span</strong> – A struct with a pointer to a <a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#struct_byte_span"><span class="std std-ref">ByteSpan</span></a> struct to hold the requested bytes, along with a length. </p></li>
+</ul>
 </dd>
-<dt class="field-even">Param byte_span</dt>
-<dd class="field-even"><p>A struct with a pointer to a <a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#struct_byte_span"><span class="std std-ref">ByteSpan</span></a> struct to hold the requested bytes, along with a length. The bytespan data buffer should be able to hold one more byte than the number of bytes to read from the fifo. This extra byte will hold the response code from the device. </p>
+<dt class="field-even">Returns Success</dt>
+<dd class="field-even"><p>Indicates the command was successful. </p>
 </dd>
-<dt class="field-odd">Return</dt>
-<dd class="field-odd"><p>Returns the <a class="reference internal" href="#struct_ex10_commands_host_errors"><span class="std std-ref">Ex10CommandsHostErrors</span></a> struct to inform the caller what type of issues happened during the command. Can return a host_result error if the passed data address for reading the fifo is not 32 bit aligned. Can return a device_response error if the first byte read back from the device is not a Success code. Can return a host_result error if the length read back is not what was expected from the response. </p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>ResponseCode </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N12Ex10Commands15write_info_pageE">
-<span id="_CPPv3N12Ex10Commands15write_info_pageE"></span><span id="_CPPv2N12Ex10Commands15write_info_pageE"></span><span class="target" id="struct_ex10_commands_1a368e72cf938411dff39202c04223f477"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv422Ex10CommandsHostErrors" title="Ex10CommandsHostErrors"><span class="n"><span class="pre">Ex10CommandsHostErrors</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">write_info_page</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">page_code</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv413ConstByteSpan" title="ConstByteSpan"><span class="n"><span class="pre">ConstByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">image_data</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">crc16</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Commands15write_info_pageE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N12Ex10Commands15write_info_pageE"></span><span id="_CPPv2N12Ex10Commands15write_info_pageE"></span><span class="target" id="struct_ex10_commands_1a0c20602c6797fc04ee439830f57504c3"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">write_info_page</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">page_code</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv413ConstByteSpan" title="ConstByteSpan"><span class="n"><span class="pre">ConstByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">image_data</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">crc16</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Commands15write_info_pageE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Erase and write to an info page. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param page_code</dt>
-<dd class="field-odd"><p>Tells the bootloader which info page to work with. </p>
-</dd>
-<dt class="field-even">Param image_data</dt>
-<dd class="field-even"><p>A struct with a pointer to a struct <a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#struct_const_byte_span"><span class="std std-ref">ConstByteSpan</span></a> which contains the image_data to be uploaded and length. </p>
-</dd>
-<dt class="field-odd">Param crc16</dt>
-<dd class="field-odd"><p>crc16-ccitt calculated over image_data bytes </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>page_code</strong> – Tells the bootloader which info page to work with. </p></li>
+<li><p><strong>image_data</strong> – A struct with a pointer to a struct <a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#struct_const_byte_span"><span class="std std-ref">ConstByteSpan</span></a> which contains the image_data to be uploaded and length. </p></li>
+<li><p><strong>crc16</strong> – crc16-ccitt calculated over image_data bytes </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N12Ex10Commands12start_uploadE">
-<span id="_CPPv3N12Ex10Commands12start_uploadE"></span><span id="_CPPv2N12Ex10Commands12start_uploadE"></span><span class="target" id="struct_ex10_commands_1aa764723710742c1326b90e6ca41080de"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv422Ex10CommandsHostErrors" title="Ex10CommandsHostErrors"><span class="n"><span class="pre">Ex10CommandsHostErrors</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">start_upload</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv413ConstByteSpan" title="ConstByteSpan"><span class="n"><span class="pre">ConstByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">image_data</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Commands12start_uploadE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N12Ex10Commands12start_uploadE"></span><span id="_CPPv2N12Ex10Commands12start_uploadE"></span><span class="target" id="struct_ex10_commands_1a9f4313c49f6a18d2bc98866a8ec5b507"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">start_upload</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv413ConstByteSpan" title="ConstByteSpan"><span class="n"><span class="pre">ConstByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">image_data</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Commands12start_uploadE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Initiate an image upload while in the bootloader. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param code</dt>
-<dd class="field-odd"><p>Tells the bootloader where to upload the App image in memory. </p>
-</dd>
-<dt class="field-even">Param image_data</dt>
-<dd class="field-even"><p>A struct with a pointer to a struct <a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#struct_const_byte_span"><span class="std std-ref">ConstByteSpan</span></a> which contains the image_data to be uploaded and length. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code</strong> – Tells the bootloader where to upload the App image in memory. </p></li>
+<li><p><strong>image_data</strong> – A struct with a pointer to a struct <a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#struct_const_byte_span"><span class="std std-ref">ConstByteSpan</span></a> which contains the image_data to be uploaded and length. </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N12Ex10Commands15continue_uploadE">
-<span id="_CPPv3N12Ex10Commands15continue_uploadE"></span><span id="_CPPv2N12Ex10Commands15continue_uploadE"></span><span class="target" id="struct_ex10_commands_1ad0d3b86b68d6e15d6a0a1b04a5999b09"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv422Ex10CommandsHostErrors" title="Ex10CommandsHostErrors"><span class="n"><span class="pre">Ex10CommandsHostErrors</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">continue_upload</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv413ConstByteSpan" title="ConstByteSpan"><span class="n"><span class="pre">ConstByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">image_data</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Commands15continue_uploadE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N12Ex10Commands15continue_uploadE"></span><span id="_CPPv2N12Ex10Commands15continue_uploadE"></span><span class="target" id="struct_ex10_commands_1a5feee373b3c266cec40b3bd36435c13a"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">continue_upload</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv413ConstByteSpan" title="ConstByteSpan"><span class="n"><span class="pre">ConstByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">image_data</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Commands15continue_uploadE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Continue the FW upload process. </p>
 <p>Should have been preceded by a start upload or continue upload command.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Param image_data</dt>
-<dd class="field-odd"><p>A struct with a pointer to a struct <a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#struct_const_byte_span"><span class="std std-ref">ConstByteSpan</span></a> which contains the image_data to be uploaded and length. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>image_data</strong> – A struct with a pointer to a struct <a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#struct_const_byte_span"><span class="std std-ref">ConstByteSpan</span></a> which contains the image_data to be uploaded and length. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -233,25 +213,30 @@ The byte_span-&gt;length should be the number of bytes obtained by reading the E
 <p>This command has no response. </p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Param destination</dt>
-<dd class="field-odd"><p>Where to go after the reset: 1 - Bootloader 2 - Application </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>destination</strong> – Where to go after the reset: 1 - Bootloader 2 - Application </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N12Ex10Commands13test_transferE">
-<span id="_CPPv3N12Ex10Commands13test_transferE"></span><span id="_CPPv2N12Ex10Commands13test_transferE"></span><span class="target" id="struct_ex10_commands_1af78581a9d037480a27492b0ba456d491"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv422Ex10CommandsHostErrors" title="Ex10CommandsHostErrors"><span class="n"><span class="pre">Ex10CommandsHostErrors</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">test_transfer</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv413ConstByteSpan" title="ConstByteSpan"><span class="n"><span class="pre">ConstByteSpan</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">send</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">recv</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">verify</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Commands13test_transferE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N12Ex10Commands13test_transferE"></span><span id="_CPPv2N12Ex10Commands13test_transferE"></span><span class="target" id="struct_ex10_commands_1a5b7d2c9e9a96af5727641aab5100a252"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv412ResponseCode" title="ResponseCode"><span class="n"><span class="pre">ResponseCode</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">test_transfer</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv413ConstByteSpan" title="ConstByteSpan"><span class="n"><span class="pre">ConstByteSpan</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">send</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">recv</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">verify</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Commands13test_transferE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Run the Transfer Test command and get the response. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If response is not Success, or received data content or length is not as expected, outputs error information to stderr and asserts. </p>
+</div>
 <dl class="field-list simple">
-<dt class="field-odd">Param send</dt>
-<dd class="field-odd"><p>A <a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#struct_const_byte_span"><span class="std std-ref">ConstByteSpan</span></a> to send as the transfer test payload. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>send</strong> – A <a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#struct_const_byte_span"><span class="std std-ref">ConstByteSpan</span></a> to send as the transfer test payload. </p></li>
+<li><p><strong>recv</strong> – A <a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#struct_byte_span"><span class="std std-ref">ByteSpan</span></a> of received bytes from the transfer test. <a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#struct_byte_span"><span class="std std-ref">ByteSpan</span></a> length must be =&gt; length of the <a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#struct_byte_span"><span class="std std-ref">ByteSpan</span></a> to send. </p></li>
+<li><p><strong>verify</strong> – Check the test response and return error if incorrect.</p></li>
+</ul>
 </dd>
-<dt class="field-even">Param recv</dt>
-<dd class="field-even"><p>A <a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#struct_byte_span"><span class="std std-ref">ByteSpan</span></a> of received bytes from the transfer test. <a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#struct_byte_span"><span class="std std-ref">ByteSpan</span></a> length must be =&gt; length of the <a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#struct_byte_span"><span class="std std-ref">ByteSpan</span></a> to send. </p>
-</dd>
-<dt class="field-odd">Param verify</dt>
-<dd class="field-odd"><p>Check the test response and return error if incorrect. </p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>ResponseCode </p>
 </dd>
 </dl>
 </dd></dl>
@@ -270,11 +255,11 @@ The byte_span-&gt;length should be the number of bytes obtained by reading the E
 <p>This command has no response </p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Param trigger_irq</dt>
-<dd class="field-odd"><p>A bool that indicates a fifo above threshold interrupt will be generated. </p>
-</dd>
-<dt class="field-even">Param event_packet</dt>
-<dd class="field-even"><p>The EventFifo packet to append to the end of the Ex10 message queue.</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>trigger_irq</strong> – A bool that indicates a fifo above threshold interrupt will be generated. </p></li>
+<li><p><strong>event_packet</strong> – The EventFifo packet to append to the end of the Ex10 message queue.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -451,30 +436,7 @@ The byte_span-&gt;length should be the number of bytes obtained by reading the E
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N25Ex10InsertFifoEventFormat6packetE">
-<span id="_CPPv3N25Ex10InsertFifoEventFormat6packetE"></span><span id="_CPPv2N25Ex10InsertFifoEventFormat6packetE"></span><span id="Ex10InsertFifoEventFormat::packet__uint8_tCP"></span><span class="target" id="struct_ex10_insert_fifo_event_format_1a3a0e99ce303571f37264653db17b4d57"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">packet</span></span></span><a class="headerlink" href="#_CPPv4N25Ex10InsertFifoEventFormat6packetE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-</div>
-</dd></dl>
-
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv422Ex10CommandsHostErrors">
-<span id="_CPPv322Ex10CommandsHostErrors"></span><span id="_CPPv222Ex10CommandsHostErrors"></span><span id="Ex10CommandsHostErrors"></span><span class="target" id="struct_ex10_commands_host_errors"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Ex10CommandsHostErrors</span></span></span><a class="headerlink" href="#_CPPv422Ex10CommandsHostErrors" title="Permalink to this definition">¶</a><br /></dt>
-<dd><div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N22Ex10CommandsHostErrors14error_occurredE">
-<span id="_CPPv3N22Ex10CommandsHostErrors14error_occurredE"></span><span id="_CPPv2N22Ex10CommandsHostErrors14error_occurredE"></span><span id="Ex10CommandsHostErrors::error_occurred__b"></span><span class="target" id="struct_ex10_commands_host_errors_1a4b07cff135e8900077bb48eb2d828964"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">error_occurred</span></span></span><a class="headerlink" href="#_CPPv4N22Ex10CommandsHostErrors14error_occurredE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N22Ex10CommandsHostErrors11host_resultE">
-<span id="_CPPv3N22Ex10CommandsHostErrors11host_resultE"></span><span id="_CPPv2N22Ex10CommandsHostErrors11host_resultE"></span><span id="Ex10CommandsHostErrors::host_result__Ex10CommandsHostResult"></span><span class="target" id="struct_ex10_commands_host_errors_1a5bce1ca4aa53d15af05cc7bedbd8b646"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="n"><span class="pre">Ex10CommandsHostResult</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">host_result</span></span></span><a class="headerlink" href="#_CPPv4N22Ex10CommandsHostErrors11host_resultE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N22Ex10CommandsHostErrors15device_responseE">
-<span id="_CPPv3N22Ex10CommandsHostErrors15device_responseE"></span><span id="_CPPv2N22Ex10CommandsHostErrors15device_responseE"></span><span id="Ex10CommandsHostErrors::device_response__ResponseCode"></span><span class="target" id="struct_ex10_commands_host_errors_1aaa1f29e869ca7443b1aacc49aed8e150"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv412ResponseCode" title="ResponseCode"><span class="n"><span class="pre">ResponseCode</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">device_response</span></span></span><a class="headerlink" href="#_CPPv4N22Ex10CommandsHostErrors15device_responseE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N25Ex10InsertFifoEventFormat6packetE"></span><span id="_CPPv2N25Ex10InsertFifoEventFormat6packetE"></span><span id="Ex10InsertFifoEventFormat::packet__uint8_tP"></span><span class="target" id="struct_ex10_insert_fifo_event_format_1a79065330b395ee53fb1bcb21735edb38"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">packet</span></span></span><a class="headerlink" href="#_CPPv4N25Ex10InsertFifoEventFormat6packetE" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -507,13 +469,13 @@ The byte_span-&gt;length should be the number of bytes obtained by reading the E
   <p class="topless"><a href="yk_firmware_ex10_host_c_protocol_layer.html"
                         title="previous chapter">Ex10Protocol Layer</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="yk_firmware_ex10_host_c_transactor_layer.html"
-                        title="next chapter">Ex10Transactor Layer</a></p>
+  <p class="topless"><a href="yk_firmware_ex10_host_c_other_types.html"
+                        title="next chapter">EventFifo Packet Management</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -527,7 +489,7 @@ The byte_span-&gt;length should be the number of bytes obtained by reading the E
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="yk_firmware_ex10_host_c_transactor_layer.html" title="Ex10Transactor Layer"
+          <a href="yk_firmware_ex10_host_c_other_types.html" title="EventFifo Packet Management"
              >next</a></li>
         <li class="right" >
           <a href="yk_firmware_ex10_host_c_protocol_layer.html" title="Ex10Protocol Layer"
@@ -538,7 +500,7 @@ The byte_span-&gt;length should be the number of bytes obtained by reading the E
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Impinj, Inc..
+        &#169; Copyright 2021, Impinj, Inc..
     </div>
   </body>
 </html>

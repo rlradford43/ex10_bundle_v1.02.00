@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/pi/ex10_bundle_v1.02.00/ex10_dev_kit/impinj_reader_chip_venv"
+set -gx VIRTUAL_ENV "/home/pi/ex10_bundle_v1.01.00/ex10_dev_kit/impinj_reader_chip_venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

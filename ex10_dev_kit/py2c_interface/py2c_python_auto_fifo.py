@@ -116,7 +116,6 @@ class Gen2TransactionStatus(IntEnum):
     Gen2TransactionStatusNoReply          = 3
     Gen2TransactionStatusInvalidReplyType = 4
     Gen2TransactionStatusCoverCodeFailed  = 5
-    Gen2TransactionStatusUnknown          = 6
 
 class Gen2Transaction(Structure):
     _pack_ = 1
@@ -183,9 +182,6 @@ class AggregateOpSummary(Structure):
     ('total_jump_count', c_uint16),
     ('last_inner_op_run', c_uint8),
     ('last_inner_op_error', c_uint8),
-    ('identifier', c_uint16),
-    ('packet_rfu_1', c_uint8),
-    ('packet_rfu_2', c_uint8),
     ]
 
 class Halted(Structure):

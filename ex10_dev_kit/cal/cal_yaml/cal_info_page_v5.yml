@@ -142,7 +142,7 @@ parameters:
         init_value: 0
 
   - name: ControlLoopParams
-    brief: Parameters to control the PowerControlLoopOp.
+    brief: PDET ADC value ranges for each PDET curve to avoid clipping
     address: 34
     length: 4
     fields:

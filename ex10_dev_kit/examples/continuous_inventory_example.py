@@ -37,13 +37,12 @@ from __future__ import (division, absolute_import, print_function,
 import argparse
 import threading
 
-# pylint: disable=locally-disabled, wildcard-import, unused-wildcard-import
 from py2c_interface.py2c_python_wrapper import *
 
 
 # The configuration of the inventory example is set using the definitions below
-TRANSMIT_POWER_CDBM = 3000          # Transmit power (dBm)
-RF_MODE = RfModes.mode_103
+TRANSMIT_POWER_DBM = 3000           # Transmit power (dBm)
+RF_MODE = RfModes.mode_11
 REGION = 'FCC'                      # Regulatory region
 R807_ANTENNA_PORT = 1               # Which R807 antenna port will be used
 
@@ -67,7 +66,17 @@ TAG_FOCUS_ENABLE = False            # Tells a tag to be silent after inventoried
 FAST_ID_ENABLE = False              # Tells a tag to backscatter the TID during
                                     # inventory
 
-packet_info = InfoFromPackets(0, 0, 0, 0, TagReadData())
+pc = c_uint16()
+epc = (c_ubyte * 12)()
+crc = c_uint16()
+
+packet_info = InfoFromPackets(0, 0, 0,
+                              TagReadData(pointer(pc),
+                                          ctypes.cast(epc, POINTER(c_ubyte)),
+                                          0,
+                                          pointer(crc),
+                                          None,
+                                          0))
 
 continuous_inventory_summary = ContinuousInventorySummary(0, 0, 0, 0, 0, 0, 0)
 
@@ -117,7 +126,7 @@ def run_continuous_inventory(py2c, initial_q, min_read_rate):
     ihp = InventoryHelperParams()
     ihp.antenna               = R807_ANTENNA_PORT
     ihp.rf_mode               = RF_MODE
-    ihp.tx_power_cdbm         = TRANSMIT_POWER_CDBM
+    ihp.tx_power_dbm          = TRANSMIT_POWER_DBM
     ihp.inventory_config      = pointer(inventory_config)
     ihp.inventory_config_2    = pointer(inventory_config_2)
     ihp.send_selects          = False

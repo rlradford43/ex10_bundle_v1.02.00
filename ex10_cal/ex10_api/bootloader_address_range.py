@@ -126,12 +126,6 @@ BOOTLOADER_ADDRESS_RANGE = {
         'address' : 0x0030,
         'length'  : 0x0004,
         'access'  : 'read-only',
-        'fields'  : {
-            'data' : {
-                'pos'   :  0,
-                'bits'  : 32,
-            },
-        },
     },
     'FrefFreq' : {
         'address' : 0x0034,

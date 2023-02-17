@@ -18,14 +18,16 @@ the Ex10 reader API.
 from __future__ import (division, absolute_import, print_function,
                         unicode_literals)
 
-# pylint: disable=locally-disabled, wildcard-import, unused-wildcard-import
+import binascii
+from datetime import datetime
+
 from py2c_interface.py2c_python_wrapper import *
 
 
 # The configuration of the inventory example is set using the definitions below
 INVENTORY_DURATION_S = 1            # Duration of inventory operation (seconds)
-TRANSMIT_POWER_CDBM = 3000          # 30 dBm
-RF_MODE = RfModes.mode_148
+TRANSMIT_POWER_DBM = 3000           # 30 dBm
+RF_MODE = RfModes.mode_5
 REGION = 'FCC'                      # Regulatory region
 R807_ANTENNA_PORT = 1               # Which R807 antenna port will be used
 INITIAL_Q = 4                       # Q field in the Query command
@@ -37,10 +39,20 @@ TARGET = 0                          # Target field in the Query command
 DUAL_TARGET = True                  # If True, the Target of subsequent Query
                                     # commands will flip
 
-packet_info = InfoFromPackets(0, 0, 0, 0, TagReadData())
+pc = c_uint16()
+epc = (c_ubyte * 12)()
+crc = c_uint16()
+
+packet_info = InfoFromPackets(0, 0, 0,
+                              TagReadData(pointer(pc),
+                                          ctypes.cast(epc, POINTER(c_ubyte)),
+                                          0,
+                                          pointer(crc),
+                                          None,
+                                          0))
 
 
-def run_inventory_rounds(helper, select_type):
+def run_inventory_rounds(ex10_reader, helper, select_type):
     """
     Runs an inventory round.
     :param ex10_reader: The reader object
@@ -69,7 +81,7 @@ def run_inventory_rounds(helper, select_type):
     ihp = InventoryHelperParams()
     ihp.antenna               = R807_ANTENNA_PORT
     ihp.rf_mode               = RF_MODE
-    ihp.tx_power_cdbm         = TRANSMIT_POWER_CDBM
+    ihp.tx_power_dbm          = TRANSMIT_POWER_DBM
     ihp.inventory_config      = pointer(inventory_config)
     ihp.inventory_config_2    = pointer(inventory_config_2)
     ihp.send_selects          = False if select_type == SELECT_ALL else True
@@ -86,7 +98,8 @@ def run_inventory_rounds(helper, select_type):
 def load_select_commands(tx_command_manager, selected_tag_crc, crc_byte_len):
     """
     Loads select commands into the Gen2 Buffer
-    :param selected_tag_crc: The crc to use in building the select command.
+    :param selected_tag_crc: The crc to use in building
+                             the select command.
     :param crc_byte_len: The length of the crc to use as the mask
     """
     print('Loading commands into Gen2 command buffer')
@@ -112,21 +125,21 @@ def load_select_commands(tx_command_manager, selected_tag_crc, crc_byte_len):
                           ctypes.cast(pointer(select_args), c_void_p))
 
     # Clear any commands before adding new ones
-    tx_command_manager.clear_local_sequence()
+    tx_command_manager.clear_local_sequence();
     enables = [0]*10
     # Add the command
-    curr_error = tx_command_manager.encode_and_append_command(cmd, 0)
-    assert False == curr_error.error_occurred
-    enables[curr_error.current_index] = True
+    curr_error = tx_command_manager.encode_and_append_command(cmd, 0);
+    assert(False == curr_error.error_occurred);
+    enables[curr_error.current_index] = True;
 
     # Change params for a 001 action
     select_args.action = SelectAction.Action001
     # Add as as new command
-    curr_error = tx_command_manager.encode_and_append_command(cmd, 1)
-    assert False == curr_error.error_occurred
-    enables[curr_error.current_index] = True
-    curr_error = tx_command_manager.write_sequence()
-    assert False == curr_error.error_occurred
+    curr_error = tx_command_manager.encode_and_append_command(cmd, 1);
+    assert(False == curr_error.error_occurred);
+    enables[curr_error.current_index] = True;
+    curr_error = tx_command_manager.write_sequence();
+    assert(False == curr_error.error_occurred);
 
 
 def enable_select_command(tx_command_manager, enable_index):
@@ -139,25 +152,26 @@ def enable_select_command(tx_command_manager, enable_index):
     enable_me[enable_index] = 1
     enable_p = pointer(enable_me)
 
-    tx_command_manager.write_select_enables(ctypes.cast(enable_p, c_void_p), 10)
+    tx_command_manager.write_select_enables(ctypes.cast(enable_p, c_void_p), 10);
 
 
 def run_select_script(ex10_ifaces, tx_command_manager):
     """ Run inventory for the specified amount of time """
     ex10_reader = ex10_ifaces.reader
+    ex10_ops = ex10_ifaces.ops
     helper = ex10_ifaces.helpers
 
     print('Starting Select example')
     try:
         # Perform an inventory round to find a tag that we can
         print('Inventory with Sel=ALL, no Select command')
-        run_inventory_rounds(helper, SELECT_ALL)
+        run_inventory_rounds(ex10_reader, helper, SELECT_ALL)
         if 0 == packet_info.total_singulations:
             raise RuntimeError("No tags found in basic inventory")
         print('Done')
 
         # We will use the CRC of the EPC as mask for the select commands
-        crc_hex_string = '{:04x}'.format(packet_info.access_tag.stored_crc)
+        crc_hex_string = '{:04x}'.format(packet_info.access_tag.crc[0])
         crc_byte_len = int(len(crc_hex_string)/2) # number of nibbles in the string / 2
         tag_epc_list = packet_info.access_tag.epc[:packet_info.access_tag.epc_length]
         tag_epc_hex_list = ('{:02x}'.format(i) for i in tag_epc_list)
@@ -166,9 +180,7 @@ def run_select_script(ex10_ifaces, tx_command_manager):
             crc_hex_string, tag_epc_hex_string))
 
         # Load in select commands based off the received tag crc.
-        load_select_commands(tx_command_manager,
-                             packet_info.access_tag.stored_crc,
-                             crc_byte_len)
+        load_select_commands(tx_command_manager, packet_info.access_tag.crc[0], crc_byte_len)
 
         # The command to select on SL is in the buffer under index 1. Enable
         # to run before inventory.
@@ -177,7 +189,7 @@ def run_select_script(ex10_ifaces, tx_command_manager):
         # Run Inventory with SEL=SL(11) and a Select command that asserts SL
         # and check that only the selected tag replies
         print('Inventory with Sel=SL, sending Select with Action001')
-        run_inventory_rounds(helper, SELECT_ASSERT)
+        run_inventory_rounds(ex10_reader, helper, SELECT_ASSERT)
         if 0 == packet_info.total_singulations:
             raise RuntimeError("Selected tag did not reply")
 
@@ -190,7 +202,7 @@ def run_select_script(ex10_ifaces, tx_command_manager):
         # Run Inventory with SEL=~SL(10) and a Select command that deasserts SL
         # and check that selected tag replied
         print('Inventory with Sel=~SL, sending Select with Action101')
-        run_inventory_rounds(helper, SELECT_NOT_ASSERT)
+        run_inventory_rounds(ex10_reader, helper, SELECT_NOT_ASSERT)
         if 0 == packet_info.total_singulations:
             raise RuntimeError("Selected tag did not reply")
 
@@ -200,7 +212,7 @@ def run_select_script(ex10_ifaces, tx_command_manager):
         # is already enabled.
 
         print('Inventory with Sel=SL, sending Select with Action101')
-        run_inventory_rounds(helper, SELECT_ASSERT)
+        run_inventory_rounds(ex10_reader, helper, SELECT_ASSERT)
         if 0 != packet_info.total_singulations:
             tag_epc_list_new = packet_info.access_tag.epc[:packet_info.access_tag.epc_length]
             if tag_epc_list == tag_epc_list_new:

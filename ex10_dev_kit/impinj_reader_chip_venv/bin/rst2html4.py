@@ -1,4 +1,4 @@
-#!/home/pi/ex10_bundle_v1.02.00/ex10_dev_kit/impinj_reader_chip_venv/bin/python3
+#!/home/pi/ex10_bundle_v1.01.00/ex10_dev_kit/impinj_reader_chip_venv/bin/python3
 
 # $Id: rst2html4.py 7994 2016-12-10 17:41:45Z milde $
 # Author: David Goodger <goodger@python.org>

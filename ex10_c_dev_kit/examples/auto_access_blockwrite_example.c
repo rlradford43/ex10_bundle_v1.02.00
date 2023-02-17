@@ -37,7 +37,7 @@ static uint8_t const  initial_q           = 0;          //use Q=0 so we read sin
 static bool const     dual_target         = false;
 static uint8_t const  session             = 0;
 static bool const     tag_focus_enable    = false;
-static bool const     fast_id_enable      = true;       // was false, but want to show TIC
+static bool const     fast_id_enable      = false;       // was false, but want to show TIC
 
 
 /* Global state */
@@ -135,7 +135,7 @@ static int run_inventory_round(enum SelectType const         select_type,
                                                         &stop_cond,
                                                         dual_target,
                                                         0u,
-                                                        false);
+                                                        true);          // was false 
     if (op_status.error_occurred)
     {
         printf("\n\nContinuous Inventory failure\n");

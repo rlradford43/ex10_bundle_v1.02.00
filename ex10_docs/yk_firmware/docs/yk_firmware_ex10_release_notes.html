@@ -14,14 +14,14 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Impinj Reader Chip SDK Overview" href="yk_firmware_ex10_overview.html" />
+    <link rel="next" title="Overview" href="yk_firmware_ex10_overview.html" />
     <link rel="prev" title="Table of Contents" href="index.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="yk_firmware_ex10_overview.html" title="Impinj Reader Chip SDK Overview"
+          <a href="yk_firmware_ex10_overview.html" title="Overview"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="index.html" title="Table of Contents"
@@ -38,166 +38,9 @@
             
   <section id="impinj-reader-chip-release-notes">
 <h1>Impinj Reader Chip Release Notes<a class="headerlink" href="#impinj-reader-chip-release-notes" title="Permalink to this headline">¶</a></h1>
-<p>This bundle contains the Impinj reader chip SDK and the firmware images for 1.2.0.</p>
+<p>This bundle contains the Impinj reader chip SDK and the firmware images for 1.1.0.</p>
 <section id="features-added-in-version">
-<h2>Features added in 1.2.0<a class="headerlink" href="#features-added-in-version" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>Added new RF Mode 202 for faster read rates in ETSI lower band.
-Configured using <a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-RfMode">RfMode</a>
-register and <a class="reference internal" href="yk_firmware_ex10_api_operations.html#setrfmodeop"><span class="std std-ref">SetRFModeOp</span></a>.</p></li>
-<li><p>Added TX Power droop compensation:</p>
-<ul>
-<li><p>Removed the PowerControlInitialTxScalar register to unify control in the
-<a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-TxFineGain">TxFineGain</a> register.
-Now the <a class="reference internal" href="yk_firmware_ex10_api_operations.html#radiopowercontrolop"><span class="std std-ref">RadioPowerControlOp</span></a> uses the same tx scalar register used for the
-<a class="reference internal" href="yk_firmware_ex10_api_operations.html#settxfinegainop"><span class="std std-ref">SetTxFineGainOp</span></a>. This register is used as the starting value of the control loop and
-is also updated with the values obtained in running the loop.</p></li>
-<li><p>Reader chip firmware will periodically adjust the TxFineGain register so that power
-droop is corrected, staying closer to the target.
-This feature is enabled by default using register
-<a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-PowerDroopCompensation">PowerDroopCompensation</a>.</p></li>
-</ul>
-</li>
-<li><p>Added a new LBT (listen before talk) op <a class="reference internal" href="yk_firmware_ex10_api_operations.html#listenbeforetalkop"><span class="std std-ref">ListenBeforeTalkOp</span></a>.</p></li>
-<li><p>Low power improvements:</p>
-<ul>
-<li><p>Added <a class="reference internal" href="yk_firmware_ex10_host_c_power_modes_layer.html#ex10-api-host-c-api-power-modes"><span class="std std-ref">SDK Power Modes API</span></a> for removing
-power from the Impinj Reader Chip, placing the Impinj Reader Chip in low power
-mode as well as the power amplifier (PA).</p></li>
-<li><p>In the SDK, when the <a class="reference internal" href="yk_firmware_ex10_api_operations.html#txrampupop"><span class="std std-ref">TxRampUpOp</span></a> is configured in the
-function <a class="reference internal" href="yk_firmware_ex10_host_c_reader_layer.html#ex10-api-host-c-api-reader"><span class="std std-ref">Ex10Reader.build_cw_configs()</span></a>
-the PA bias is adjusted based on the requested power level.
-The threshold for the PA bias adjustment is determmined by the value
-<a class="reference internal" href="yk_firmware_ex10_host_c_board_specific.html#ex10-api-host-c-api-board-specific"><span class="std std-ref">LOW_BIAS_TX_POWER_MAX_DBM</span></a>.
-found in the <code class="docutils literal notranslate"><span class="pre">board_spec_constants.h</span></code> file.</p></li>
-</ul>
-</li>
-<li><p>Ramp up improvements:</p>
-<ul>
-<li><p>Added callback functions for pre- and post-rampup functionality. These callbacks are
-separate, as are their register/unregister functions. They are executed in the <a class="reference internal" href="yk_firmware_ex10_host_c_ops_layer.html#ex10-api-host-c-api-ops"><span class="std std-ref">ops</span></a>
-layer cw_on function. The pre-rampup callback happens before the rampup in the function,
-and the post-rampup callback happens after the rampup in the function.</p></li>
-<li><p>Added reverse power detector threshold detection. This allows us to detect when a larger
-power is read on the reverse power detector than anticipated and thus detect potentially
-dangerous situations for the hardware. The detection mechanism has been given a function
-call in the reader layer which can be called to detect this high rx reading at any time.
-In addition, this call has been integrated into the post-rampup callback.</p></li>
-</ul>
-</li>
-<li><p>Added a new interrupt mask to allow for interrupt on completion of the <a class="reference internal" href="yk_firmware_ex10_api_operations.html#aggregateop"><span class="std std-ref">AggregateOp</span></a>.</p></li>
-<li><p>Added a new identifier to the <a class="reference internal" href="yk_firmware_ex10_api_operations.html#aggregateop"><span class="std std-ref">AggregateOp</span></a> FIFO summary along with a new command to
-update the identifier.</p></li>
-<li><p>Added new GPIO pin accessor registers and <a class="reference internal" href="yk_firmware_ex10_api_operations.html#setcleargpiopinsop"><span class="std std-ref">SetClearGpioPinsOp</span></a> which can be accessed by the
-added C SDK <a class="reference external" href="yk_firmware_ex10_host_c_ops_layer.html#_CPPv4N7Ex10Ops19set_clear_gpio_pinsE">Ex10Ops.set_clear_gpio_pins()</a>
-function.</p></li>
-<li><p>Added BER functionality to the reader layer, thus making it simpler to use.</p></li>
-<li><p>Added decoding of XPC words 1 and 2</p></li>
-<li><p>Added a new HPF override test op. This op allows for tests to be performed
-which require overriding the internal high pass filter.</p></li>
-</ul>
-</section>
-<section id="fixes-in-version">
-<h2>Fixes in 1.2.0<a class="headerlink" href="#fixes-in-version" title="Permalink to this headline">¶</a></h2>
-<ul>
-<li><p>TX Power overshoot at ramp up due to tx_scalar default = 1152 (PI-27139).</p>
-<p>The Tx waveform overshoot at initial ramp up may be higher than the 5%
-specified by the Gen2 spec. The initial tx_scalar value may be lowered to
-help with this issue and the required infrastructure was put in place in
-calibration.c. By default the drop percentage is set to 0%, leaving the
-tx_scalar unchanged. Refer to <code class="docutils literal notranslate"><span class="pre">get_adjusted_tx_scalar()</span></code> for details and
-to make adjustments to the default drop percentage.</p>
-</li>
-<li><p>FastID feature would misclassify an EPC as an empty EPC with a TID attached
-(PI-27567).</p></li>
-<li><p>EBV calculation errors (PI-27282).</p>
-<p>There is an initial length calculation in the Gen2 encode function which is
-only used for setting the encode array to 0. The actual encoding itself
-was fine, but memory at the end of the encoded function was not cleared
-properly. Since the encode is an OR’ing process, if the backing memory was
-not previously zeroed, the encoded command ran the chance of being
-incorrect.</p>
-</li>
-<li><p>Channel off-times may not be observed (PI-28439).</p>
-<p>Off time on the same channel was not being observed/used even though it was defined
-in the regions table of the SDK. The off time has been removed, and
-off_time_same_channel is now being used in the CW on process to ensure we are not
-ramping too soon if ramping on the same channel we just ramped down on.</p>
-</li>
-<li><p>SDK <code class="docutils literal notranslate"><span class="pre">make</span></code> with BUILD_BASE does not work (PI-28284)</p>
-<p>Now, specifying <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">BUILD_BASE=&lt;build_path&gt;</span></code> will output the build artifacts
-into the directory path specified by <code class="docutils literal notranslate"><span class="pre">BUILD_BASE</span></code>.</p>
-</li>
-<li><p>Double-start of inventory from SDK (PI-27466).</p>
-<p>If ops inventory() was called while the inventory op was already running, it
-would start an aggregate op to set the RF mode that would be ignored by the
-Ex10 device and then would wait for op completion which would actually be
-the inventory op completing.
-To protect against this issue, a check was added to see if Ex10 device is
-idle before attempting to start an inventory round from the SDK.</p>
-</li>
-<li><p>Certain tags cannot be inventoried with FastId enabled (PI-29082).</p>
-<p>FastId operation was not waiting for the T4 time between the Select and the
-Query commands. This would result in some tags not seeing the Query command
-as the preceeding Select would violate T4 time, causing these tags to not be
-properly inventoried when FastId is enabled.</p>
-</li>
-<li><p>PC calibration script in v1.1.0 does not properly run (PI-27639, PI-27641).</p>
-<p>v1.1.0 PC calibration script does not properly run due to incorrect import
-statements and missing default parameter for serial port.</p>
-</li>
-<li><p>Erroneous slot classification in some RF Modes​ (YUKON-6430​).</p>
-<p>Some RF modes misclassified collided slots as empty, causing early termination
-of the inventory round. Built-in thresholds were adjusted to significantly
-improve slot classification.</p>
-</li>
-<li><p>Occasional hangs during continuous inventory (PI-28188​).</p>
-<p>Occasionally, the inventory operation would hang when the <code class="docutils literal notranslate"><span class="pre">struct</span>
-<span class="pre">ContByteSpan</span> <span class="pre">bytes</span></code> used in ex10_reader.c fifo_data_handler() would be
-incorrectly set to zero. This would result in missing the Inventory Summary
-packet and the restart of inventory would not be performed.
-To fix, <code class="docutils literal notranslate"><span class="pre">reader_list_node_push_back()</span></code> in <code class="docutils literal notranslate"><span class="pre">fifo_data_handler</span></code> was moved
-to after continuous inventory state processsing has completed.</p>
-</li>
-<li><p>Large TX power error when target is out of range (PI-28457​)</p>
-<p>Added checks to verify that target power is within calibrated range and added
-caps when requested power is outside of the calibrated range.</p>
-</li>
-</ul>
-</section>
-<section id="known-issues-in-version">
-<h2>Known issues in 1.2.0<a class="headerlink" href="#known-issues-in-version" title="Permalink to this headline">¶</a></h2>
-<ul>
-<li><p>Using an unlimited regulatory timer may cause poor reader performance
-(PI-29431)</p>
-<p>The Impinj Reader Chip SDK performs certain reader chip configuration steps
-only when the reader is ramped down and ramped back up. For example,
-temperature measurement for LO PDET ADC target selection and PLL
-configuration. If the reader temperature changes drastically without the
-reader ramping down and back up, the TX power will become inaccurate, and
-the PLL could become unlocked. Impinj recommends partners do not use an
-unlimited regulatory timer for this reason. Impinj’s implementation of the
-regions_table.c file in the SDK does not use unlimited regulatory timers.</p>
-</li>
-<li><p>E910 SJC RxAtten of 3 dB may not converge to a correct solution
-(PI-23783)</p>
-<p>The E910 SKU does not support 3dB Rx attenuation.
-For E910, the receiver attenuation selected via RxAtten field
-in the SjcGainControl register should not be set to Atten_3_dB. Setting the
-Rx attenuation on E910 to 3 dB may cause SJC convergence issues.</p>
-</li>
-</ul>
-</section>
-<section id="changelog-for-version">
-<h2>Changelog for 1.2.0<a class="headerlink" href="#changelog-for-version" title="Permalink to this headline">¶</a></h2>
-<p>Changelog detailing API changes available <a class="reference external" href="yk_firmware_ex10_changelog.html">here</a>.</p>
-</section>
-<section id="previous-releases">
-<h2>Previous Releases<a class="headerlink" href="#previous-releases" title="Permalink to this headline">¶</a></h2>
-<section id="v1-1-0">
-<h3>v1.1.0<a class="headerlink" href="#v1-1-0" title="Permalink to this headline">¶</a></h3>
-<section id="features-added">
-<h4>Features added<a class="headerlink" href="#features-added" title="Permalink to this headline">¶</a></h4>
+<h2>Features added in 1.1.0<a class="headerlink" href="#features-added-in-version" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p>Added new reader modes. For detailed updated list of modes see
 <a class="reference internal" href="yk_firmware_ex10_api_operations.html#setrfmodeop"><span class="std std-ref">SetRFModeOp</span></a>.</p></li>
@@ -262,12 +105,12 @@ the residue threshold error.</p></li>
 <li><p>Firmware upload APIs exposed in SDK protocol layer for start, continue and
 complete of an application image upload.</p></li>
 <li><p>Added <a class="reference external" href="yk_firmware_ex10_api_event_packets.html#ex10_api_event_packet_halted">Halted Event FIFO packet</a></p></li>
-<li><p>Larger passing margins for adjacent channel selectivity, which is part of
-the ETSI regulatory requirement on EU2.</p></li>
+<li><p>Larger passing margins for adjacent channel selectivity, which is part of the ETSI regulatory requirement</p></li>
 </ul>
+<p>on EU2.</p>
 </section>
-<section id="fixes">
-<h4>Fixes<a class="headerlink" href="#fixes" title="Permalink to this headline">¶</a></h4>
+<section id="fixes-in-version">
+<h2>Fixes in 1.1.0<a class="headerlink" href="#fixes-in-version" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p>SJC algorithm updated to consistently find the correct solution for low BLF
 values (PI-24355)</p>
@@ -288,22 +131,14 @@ This was due to improper handling of invalid packet data from the device event
 fifo buffer. When the data was received, the data fifo handler would attempt to
 parse the invalid data and could see it as good with an incorrect length. This
 parsing of garbage lead us into a repeating loop (PI-26518).</p></li>
-<li><p>Now using mutex locking for independent locking of the free list(which takes
+<li><p>Now using mutex locking for independent locking of the free list (which takes
 in data from the device event fifo buffer) and the reader list (pending
-events which are to be parsed by the user at the reader layer) (PI-26518).</p></li>
-<li><p>The Tx waveform overshoot is higher than that specified by the Gen2 spec.
-To combat this, the function <code class="docutils literal notranslate"><span class="pre">get_adjusted_tx_scalar</span></code> in <code class="docutils literal notranslate"><span class="pre">calibration.c</span></code>
-can be used to drop the tx_scalar value and thus the output by a user specified
-percentage. This percentage is hardcoded in the function and should be changed
-based on customer usage. The default of this function is to drop the output by
-0%.</p></li>
+events which are to be parsed by the user at the reader layer (PI-26518).</p></li>
 </ul>
 </section>
-<section id="known-issues">
-<h4>Known issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h4>
+<section id="known-issues-in-version">
+<h2>Known issues in 1.1.0<a class="headerlink" href="#known-issues-in-version" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>The Tx waveform overshoot is higher than that specified by the Gen2 spec.
-To combat this, the tx_scalar value should be lowered in the future.</p></li>
 <li><p>Low power idle mode not implemented (PI-25286).</p></li>
 <li><p><a class="reference internal" href="yk_firmware_ex10_api_operations.html#aggregateop"><span class="std std-ref">AggregateOp</span></a> can not use an
 <a class="reference external" href="yk_firmware_ex10_api_messages.html#insertfifoevent">InsertFifoEvent</a>
@@ -312,15 +147,10 @@ command can take the command code and trigger interrupt with no packet
 payload provided. The aggregate op helper and aggregate op in general should
 not be used this way with this version. If utilizing the aggregate op, use a
 non-zero length packet payload with it (PI-25971).</p></li>
-<li><p>When using the reader level continuous inventory functionality, rollover timing
-will not control the inventory stop conditions correctly. The timing is a uint32_t
-in us, and if it rolls over, the math for time elapsed will be inaccurate. This
-timing should not be relied on for accuracy. We recommend either starting a new
-continuous inventory if you are not impacted by the inaccuracy or using a different
-timing mechanism.</p></li>
 </ul>
 </section>
-</section>
+<section id="change-log-previous-releases">
+<h2>Change log - Previous Releases<a class="headerlink" href="#change-log-previous-releases" title="Permalink to this headline">¶</a></h2>
 <section id="v1-0-250-rc-1-1-release-candidate">
 <h3>v1.0.250-rc (1.1 release candidate)<a class="headerlink" href="#v1-0-250-rc-1-1-release-candidate" title="Permalink to this headline">¶</a></h3>
 <p>A release candidate to v1.1.0 release, included all new features and fixes
@@ -329,14 +159,14 @@ except for the two changes implemented to fix PI-26518.</p>
 <section id="v1-0-12-1-0-patch">
 <h3>v1.0.12 (1.0 patch)<a class="headerlink" href="#v1-0-12-1-0-patch" title="Permalink to this headline">¶</a></h3>
 <p>Patch to v1.0.0 release, replaced v1.0.0 as the initial production release.</p>
-<section id="id3">
-<h4>Features added<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<section id="features-added">
+<h4>Features added<a class="headerlink" href="#features-added" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>Support added for newer RaspberryPi Model 4 version (RPi BCM2711 GPIO label added)</p></li>
 </ul>
 </section>
-<section id="id4">
-<h4>Fixes<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<section id="fixes">
+<h4>Fixes<a class="headerlink" href="#fixes" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>ReqRN response and CRC (PI-24582): When the reader chip receives a ReqRN
 response with a bad CRC, the lower-level radio control (LMAC) will hang and
@@ -385,21 +215,14 @@ changing reader modes.</p></li>
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Impinj Reader Chip Release Notes</a><ul>
-<li><a class="reference internal" href="#features-added-in-version">Features added in 1.2.0</a></li>
-<li><a class="reference internal" href="#fixes-in-version">Fixes in 1.2.0</a></li>
-<li><a class="reference internal" href="#known-issues-in-version">Known issues in 1.2.0</a></li>
-<li><a class="reference internal" href="#changelog-for-version">Changelog for 1.2.0</a></li>
-<li><a class="reference internal" href="#previous-releases">Previous Releases</a><ul>
-<li><a class="reference internal" href="#v1-1-0">v1.1.0</a><ul>
-<li><a class="reference internal" href="#features-added">Features added</a></li>
-<li><a class="reference internal" href="#fixes">Fixes</a></li>
-<li><a class="reference internal" href="#known-issues">Known issues</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#features-added-in-version">Features added in 1.1.0</a></li>
+<li><a class="reference internal" href="#fixes-in-version">Fixes in 1.1.0</a></li>
+<li><a class="reference internal" href="#known-issues-in-version">Known issues in 1.1.0</a></li>
+<li><a class="reference internal" href="#change-log-previous-releases">Change log - Previous Releases</a><ul>
 <li><a class="reference internal" href="#v1-0-250-rc-1-1-release-candidate">v1.0.250-rc (1.1 release candidate)</a></li>
 <li><a class="reference internal" href="#v1-0-12-1-0-patch">v1.0.12 (1.0 patch)</a><ul>
-<li><a class="reference internal" href="#id3">Features added</a></li>
-<li><a class="reference internal" href="#id4">Fixes</a></li>
+<li><a class="reference internal" href="#features-added">Features added</a></li>
+<li><a class="reference internal" href="#fixes">Fixes</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#v1-0-0-1-0">v1.0.0 (1.0)</a></li>
@@ -414,12 +237,12 @@ changing reader modes.</p></li>
                         title="previous chapter">Table of Contents</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="yk_firmware_ex10_overview.html"
-                        title="next chapter">Impinj Reader Chip SDK Overview</a></p>
+                        title="next chapter">Overview</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -433,7 +256,7 @@ changing reader modes.</p></li>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="yk_firmware_ex10_overview.html" title="Impinj Reader Chip SDK Overview"
+          <a href="yk_firmware_ex10_overview.html" title="Overview"
              >next</a></li>
         <li class="right" >
           <a href="index.html" title="Table of Contents"
@@ -443,7 +266,7 @@ changing reader modes.</p></li>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Impinj, Inc..
+        &#169; Copyright 2021, Impinj, Inc..
     </div>
   </body>
 </html>

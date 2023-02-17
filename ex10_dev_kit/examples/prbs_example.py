@@ -22,15 +22,15 @@ from py2c_interface.py2c_python_wrapper import *
 
 
 PRBS_TIME_ON = 6                    # Duration of PRBS operation (seconds)
-TRANSMIT_POWER_CDBM = 3000          # 30 dBm
-RF_MODE = RfModes.mode_148
+TRANSMIT_POWER_DBM = 3000           # 30 dBm
+RF_MODE = RfModes.mode_5
 REGION = 'FCC'                      # Regulatory region
 R807_ANTENNA_PORT = 1               # Which R807 antenna port will be used
 FREQUENCY_USED = 0                  # Set to 0 to use the jump table
 REMAIN_ON = True
 
 
-def run_prbs(ex10_ifaces, fifo_printer):
+def run_prbs(ex10_ifaces):
     # pylint: disable=missing-docstring
     ex10_reader = ex10_ifaces.reader
     helper = ex10_ifaces.helpers
@@ -51,14 +51,14 @@ def run_prbs(ex10_ifaces, fifo_printer):
                 op_status = ex10_reader.prbs_test(
                     R807_ANTENNA_PORT,
                     RF_MODE,
-                    TRANSMIT_POWER_CDBM,
+                    TRANSMIT_POWER_DBM,
                     FREQUENCY_USED,
                     REMAIN_ON)
                 assert op_status.error_occurred == False
 
             while ex10_reader.packets_available():
                 packet = ex10_reader.packet_peek().contents
-                fifo_printer.print_packets(packet)
+                helper.print_packets(packet)
                 
                 if packet.packet_type == EventPacketType.TxRampDown:
                     transmitting = False
@@ -76,9 +76,8 @@ def run_prbs_example():
     try:
         # Init the python to C layer
         py2c = Ex10Py2CWrapper()
-        fifo_printer = py2c.get_ex10_event_fifo_printer()
         ex10_ifaces = py2c.ex10_typical_board_setup(DEFAULT_SPI_CLOCK_HZ, REGION.encode('ascii'))
-        run_prbs(ex10_ifaces, fifo_printer)
+        run_prbs(ex10_ifaces)
     finally:
         py2c.ex10_typical_board_teardown()
 

@@ -14,17 +14,17 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Gen2 Access Commands" href="yk_firmware_ex10_host_c_gen2_commands.html" />
-    <link rel="prev" title="Ex10Helpers" href="yk_firmware_ex10_host_c_helpers.html" /> 
+    <link rel="next" title="Gen2 Commands" href="yk_firmware_ex10_host_c_gen2_commands.html" />
+    <link rel="prev" title="Ex10Commands Layer" href="yk_firmware_ex10_host_c_commands_layer.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="yk_firmware_ex10_host_c_gen2_commands.html" title="Gen2 Access Commands"
+          <a href="yk_firmware_ex10_host_c_gen2_commands.html" title="Gen2 Commands"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="yk_firmware_ex10_host_c_helpers.html" title="Ex10Helpers"
+          <a href="yk_firmware_ex10_host_c_commands_layer.html" title="Ex10Commands Layer"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Impinj Reader Chip SDK</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="yk_firmware_ex10_host_c_api.html" accesskey="U">Impinj Reader Chip C Host API</a> &#187;</li>
@@ -50,10 +50,9 @@ to the host SDK.</p>
 <dt class="sig sig-object cpp" id="_CPPv4N15Ex10EventParser19get_tag_read_fieldsE">
 <span id="_CPPv3N15Ex10EventParser19get_tag_read_fieldsE"></span><span id="_CPPv2N15Ex10EventParser19get_tag_read_fieldsE"></span><span class="target" id="struct_ex10_event_parser_1a0e1fab091b184893220b3394a6f76a53"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv413TagReadFields" title="TagReadFields"><span class="n"><span class="pre">TagReadFields</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">get_tag_read_fields</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dynamic_data</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">data_length</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv411TagReadType" title="TagReadType"><span class="n"><span class="pre">TagReadType</span></span></a><span class="w"> </span><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">tid_offset</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N15Ex10EventParser19get_tag_read_fieldsE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns a struct that accesses the variable length fields of a <a class="reference internal" href="#struct_tag_read"><span class="std std-ref">TagRead</span></a> packet from the Event FIFO. </p>
-<p>If an error occurs during dynamic data parsing, the returned struct will have all fields nullified.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Param packet</dt>
-<dd class="field-odd"><p>The data to parse for information about the tag. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>packet</strong> – The data to parse for information about the tag. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -64,8 +63,8 @@ to the host SDK.</p>
 <dd><p>Returns the minimum acceptable payload length for data after the packet header. </p>
 <p>This accounts for the static data legnth and does not include the dynamic data length.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Param packet_type</dt>
-<dd class="field-odd"><p>The Event packet type. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>packet_type</strong> – The Event packet type. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -75,8 +74,8 @@ to the host SDK.</p>
 <span id="_CPPv3N15Ex10EventParser21get_packet_type_validE"></span><span id="_CPPv2N15Ex10EventParser21get_packet_type_validE"></span><span class="target" id="struct_ex10_event_parser_1a031615f842f97fd3231ccfabe4d7dafe"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">get_packet_type_valid</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv415EventPacketType" title="EventPacketType"><span class="n"><span class="pre">EventPacketType</span></span></a><span class="w"> </span><span class="n"><span class="pre">packet_type</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N15Ex10EventParser21get_packet_type_validE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Returns whether the passed packet type is valid. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param packet_type</dt>
-<dd class="field-odd"><p>The Event packet type. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>packet_type</strong> – The Event packet type. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -86,10 +85,10 @@ to the host SDK.</p>
 <span id="_CPPv3N15Ex10EventParser18parse_event_packetE"></span><span id="_CPPv2N15Ex10EventParser18parse_event_packetE"></span><span class="target" id="struct_ex10_event_parser_1a281b8bd5cad3deb8f9f63a2f46fce4d9"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv415EventFifoPacket" title="EventFifoPacket"><span class="n"><span class="pre">EventFifoPacket</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">parse_event_packet</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv413ConstByteSpan" title="ConstByteSpan"><span class="n"><span class="pre">ConstByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">bytes</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N15Ex10EventParser18parse_event_packetE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Parse an Event Fifo packet from a stream of bytes. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param bytes</dt>
-<dd class="field-odd"><p>[in] [out] The packet stream to parsee. Upon successful completion of parsing the packet the members values are updated.</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bytes</strong> – [in] [out] The packet stream to parsee. Upon successful completion of parsing the packet the members values are updated.</p>
 </dd>
-<dt class="field-even">Return</dt>
+<dt class="field-even">Returns</dt>
 <dd class="field-even"><p>struct <a class="reference internal" href="#struct_event_fifo_packet"><span class="std std-ref">EventFifoPacket</span></a> The parsed event fifo packet. </p>
 </dd>
 </dl>
@@ -109,7 +108,7 @@ to the host SDK.</p>
 <p>The us_counter will be set to zero.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Return</dt>
+<dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>struct <a class="reference internal" href="#struct_packet_header"><span class="std std-ref">PacketHeader</span></a> The newly formed packet header with a static packet length in bytes and needs to be modified to work properly. </p>
 </dd>
 </dl>
@@ -120,18 +119,44 @@ to the host SDK.</p>
 
 <p>The following are the different types of responses as well as an elaboration on
 their constituent fields.</p>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv412PacketHeader">
+<span id="_CPPv312PacketHeader"></span><span id="_CPPv212PacketHeader"></span><span id="PacketHeader"></span><span class="target" id="struct_packet_header"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PacketHeader</span></span></span><a class="headerlink" href="#_CPPv412PacketHeader" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The EventFifo packet header. </p>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
-<dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.EX10_EVENT_FIFO_SIZE">
-<span class="target" id="event__fifo__packet__types_8h_1a6fd6a5082e9097388c9f3fc060af009d"></span><span class="sig-name descname"><span class="n"><span class="pre">EX10_EVENT_FIFO_SIZE</span></span></span><a class="headerlink" href="#c.EX10_EVENT_FIFO_SIZE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>The size of the Ex10 Event Fifo. </p>
-<p>To simplify Event Fifo packet parsing and storage the size of each buffer allocated for reading during event fifo interrupts must be this size or larger. The prevents packets read from the Ex10 from being wrapped across 2 seperate buffers. </p>
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12PacketHeader13packet_lengthE">
+<span id="_CPPv3N12PacketHeader13packet_lengthE"></span><span id="_CPPv2N12PacketHeader13packet_lengthE"></span><span id="PacketHeader::packet_length__uint8_t"></span><span class="target" id="struct_packet_header_1ae60853f59c9b595a0ef939864ffa7d33"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">packet_length</span></span></span><a class="headerlink" href="#_CPPv4N12PacketHeader13packet_lengthE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The length of the entire packet in 32-bit words. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12PacketHeader11packet_typeE">
+<span id="_CPPv3N12PacketHeader11packet_typeE"></span><span id="_CPPv2N12PacketHeader11packet_typeE"></span><span id="PacketHeader::packet_type__uint8_t"></span><span class="target" id="struct_packet_header_1ae091e55eee936db9648d5c1e50e1791f"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">packet_type</span></span></span><a class="headerlink" href="#_CPPv4N12PacketHeader11packet_typeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The EventFifo packet type. </p>
+<p><dl class="simple">
+<dt><strong>See</strong></dt><dd><p>enum EventPacketType </p>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12PacketHeader3shaE">
+<span id="_CPPv3N12PacketHeader3shaE"></span><span id="_CPPv2N12PacketHeader3shaE"></span><span id="PacketHeader::sha__uint16_t"></span><span class="target" id="struct_packet_header_1ae1d968e0d01d799fce91d184e1669992"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sha</span></span></span><a class="headerlink" href="#_CPPv4N12PacketHeader3shaE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A SHA which is generated based on the EventFifo format. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N12PacketHeader10us_counterE">
+<span id="_CPPv3N12PacketHeader10us_counterE"></span><span id="_CPPv2N12PacketHeader10us_counterE"></span><span id="PacketHeader::us_counter__uint32_t"></span><span class="target" id="struct_packet_header_1a2ff66f8d3165f323d97135151bcee481"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">us_counter</span></span></span><a class="headerlink" href="#_CPPv4N12PacketHeader10us_counterE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Packet timestamp, in microseconds, from the Impinj reader chip. </p>
 </dd></dl>
 
 </div>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+</dd></dl>
+
 <dl class="cpp enum">
 <dt class="sig sig-object cpp" id="_CPPv415EventPacketType">
 <span id="_CPPv315EventPacketType"></span><span id="_CPPv215EventPacketType"></span><span class="target" id="event__fifo__packet__types_8h_1ab869daa15faed19cb8d48c339c871d01"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EventPacketType</span></span></span><a class="headerlink" href="#_CPPv415EventPacketType" title="Permalink to this definition">¶</a><br /></dt>
@@ -225,175 +250,32 @@ their constituent fields.</p>
 
 </dd></dl>
 
-<dl class="cpp enum">
-<dt class="sig sig-object cpp" id="_CPPv414RampDownReason">
-<span id="_CPPv314RampDownReason"></span><span id="_CPPv214RampDownReason"></span><span class="target" id="event__fifo__packet__types_8h_1a517053f58351eb03e26b391183062827"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RampDownReason</span></span></span><a class="headerlink" href="#_CPPv414RampDownReason" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>The reason Tx power was ramped down. </p>
-<p><em>Values:</em></p>
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N14RampDownReason12RampDownHostE">
-<span id="_CPPv3N14RampDownReason12RampDownHostE"></span><span id="_CPPv2N14RampDownReason12RampDownHostE"></span><span class="target" id="event__fifo__packet__types_8h_1a517053f58351eb03e26b391183062827a778fa7e138524ef41b9daac9c38471cf"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RampDownHost</span></span></span><a class="headerlink" href="#_CPPv4N14RampDownReason12RampDownHostE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N14RampDownReason18RampDownRegulatoryE">
-<span id="_CPPv3N14RampDownReason18RampDownRegulatoryE"></span><span id="_CPPv2N14RampDownReason18RampDownRegulatoryE"></span><span class="target" id="event__fifo__packet__types_8h_1a517053f58351eb03e26b391183062827a95802a9307b24cf2f01dd9563b90c3f4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RampDownRegulatory</span></span></span><a class="headerlink" href="#_CPPv4N14RampDownReason18RampDownRegulatoryE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="cpp enum">
-<dt class="sig sig-object cpp" id="_CPPv422InventorySummaryReason">
-<span id="_CPPv322InventorySummaryReason"></span><span id="_CPPv222InventorySummaryReason"></span><span class="target" id="event__fifo__packet__types_8h_1a0063503d26c39cba266a51cde221e83f"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InventorySummaryReason</span></span></span><a class="headerlink" href="#_CPPv422InventorySummaryReason" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>The reason for inventory round completion. </p>
-<p><em>Values:</em></p>
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N22InventorySummaryReason20InventorySummaryDoneE">
-<span id="_CPPv3N22InventorySummaryReason20InventorySummaryDoneE"></span><span id="_CPPv2N22InventorySummaryReason20InventorySummaryDoneE"></span><span class="target" id="event__fifo__packet__types_8h_1a0063503d26c39cba266a51cde221e83faef9b936eff93ae395b13cce0f84f79b3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InventorySummaryDone</span></span></span><a class="headerlink" href="#_CPPv4N22InventorySummaryReason20InventorySummaryDoneE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N22InventorySummaryReason20InventorySummaryHostE">
-<span id="_CPPv3N22InventorySummaryReason20InventorySummaryHostE"></span><span id="_CPPv2N22InventorySummaryReason20InventorySummaryHostE"></span><span class="target" id="event__fifo__packet__types_8h_1a0063503d26c39cba266a51cde221e83fa1f1e1cf0b0c74e2462a50ab17328a723"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InventorySummaryHost</span></span></span><a class="headerlink" href="#_CPPv4N22InventorySummaryReason20InventorySummaryHostE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N22InventorySummaryReason26InventorySummaryRegulatoryE">
-<span id="_CPPv3N22InventorySummaryReason26InventorySummaryRegulatoryE"></span><span id="_CPPv2N22InventorySummaryReason26InventorySummaryRegulatoryE"></span><span class="target" id="event__fifo__packet__types_8h_1a0063503d26c39cba266a51cde221e83fa71338f4ec2d1c7131d318e3eab25a3c0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InventorySummaryRegulatory</span></span></span><a class="headerlink" href="#_CPPv4N22InventorySummaryReason26InventorySummaryRegulatoryE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N22InventorySummaryReason29InventorySummaryEventFifoFullE">
-<span id="_CPPv3N22InventorySummaryReason29InventorySummaryEventFifoFullE"></span><span id="_CPPv2N22InventorySummaryReason29InventorySummaryEventFifoFullE"></span><span class="target" id="event__fifo__packet__types_8h_1a0063503d26c39cba266a51cde221e83fa0590e11c763013672fb6f8a559bc5ca2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InventorySummaryEventFifoFull</span></span></span><a class="headerlink" href="#_CPPv4N22InventorySummaryReason29InventorySummaryEventFifoFullE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N22InventorySummaryReason29InventorySummaryTxNotRampedUpE">
-<span id="_CPPv3N22InventorySummaryReason29InventorySummaryTxNotRampedUpE"></span><span id="_CPPv2N22InventorySummaryReason29InventorySummaryTxNotRampedUpE"></span><span class="target" id="event__fifo__packet__types_8h_1a0063503d26c39cba266a51cde221e83fa540f61eea54ba1cdf3831cbf9f955235"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InventorySummaryTxNotRampedUp</span></span></span><a class="headerlink" href="#_CPPv4N22InventorySummaryReason29InventorySummaryTxNotRampedUpE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N22InventorySummaryReason28InventorySummaryInvalidParamE">
-<span id="_CPPv3N22InventorySummaryReason28InventorySummaryInvalidParamE"></span><span id="_CPPv2N22InventorySummaryReason28InventorySummaryInvalidParamE"></span><span class="target" id="event__fifo__packet__types_8h_1a0063503d26c39cba266a51cde221e83fa440c446a8fde02771d2be5271a3a9c6a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InventorySummaryInvalidParam</span></span></span><a class="headerlink" href="#_CPPv4N22InventorySummaryReason28InventorySummaryInvalidParamE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N22InventorySummaryReason28InventorySummaryLmacOverloadE">
-<span id="_CPPv3N22InventorySummaryReason28InventorySummaryLmacOverloadE"></span><span id="_CPPv2N22InventorySummaryReason28InventorySummaryLmacOverloadE"></span><span class="target" id="event__fifo__packet__types_8h_1a0063503d26c39cba266a51cde221e83fa7d8102164bbbd53ba88e47ecfb6832c9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InventorySummaryLmacOverload</span></span></span><a class="headerlink" href="#_CPPv4N22InventorySummaryReason28InventorySummaryLmacOverloadE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="cpp enum">
-<dt class="sig sig-object cpp" id="_CPPv411TagReadType">
-<span id="_CPPv311TagReadType"></span><span id="_CPPv211TagReadType"></span><span class="target" id="event__fifo__packet__types_8h_1a05cb2d5fe6174150920fc8b13a9d1d5d"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TagReadType</span></span></span><a class="headerlink" href="#_CPPv411TagReadType" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><em>Values:</em></p>
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N11TagReadType14TagReadTypeEpcE">
-<span id="_CPPv3N11TagReadType14TagReadTypeEpcE"></span><span id="_CPPv2N11TagReadType14TagReadTypeEpcE"></span><span class="target" id="event__fifo__packet__types_8h_1a05cb2d5fe6174150920fc8b13a9d1d5dadff80ec7545a14dcdf54e5257d728c8a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TagReadTypeEpc</span></span></span><a class="headerlink" href="#_CPPv4N11TagReadType14TagReadTypeEpcE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N11TagReadType21TagReadTypeEpcWithTidE">
-<span id="_CPPv3N11TagReadType21TagReadTypeEpcWithTidE"></span><span id="_CPPv2N11TagReadType21TagReadTypeEpcWithTidE"></span><span class="target" id="event__fifo__packet__types_8h_1a05cb2d5fe6174150920fc8b13a9d1d5daf376e7f23636718ae68d129ace300f7f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TagReadTypeEpcWithTid</span></span></span><a class="headerlink" href="#_CPPv4N11TagReadType21TagReadTypeEpcWithTidE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N11TagReadType27TagReadTypeEpcWithFastIdTidE">
-<span id="_CPPv3N11TagReadType27TagReadTypeEpcWithFastIdTidE"></span><span id="_CPPv2N11TagReadType27TagReadTypeEpcWithFastIdTidE"></span><span class="target" id="event__fifo__packet__types_8h_1a05cb2d5fe6174150920fc8b13a9d1d5da8bd6649cc595225ddc37127c532e94cb"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TagReadTypeEpcWithFastIdTid</span></span></span><a class="headerlink" href="#_CPPv4N11TagReadType27TagReadTypeEpcWithFastIdTidE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="cpp enum">
-<dt class="sig sig-object cpp" id="_CPPv421Gen2TransactionStatus">
-<span id="_CPPv321Gen2TransactionStatus"></span><span id="_CPPv221Gen2TransactionStatus"></span><span class="target" id="event__fifo__packet__types_8h_1ad0723e4bdcdd08b452993223711c1dbe"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Gen2TransactionStatus</span></span></span><a class="headerlink" href="#_CPPv421Gen2TransactionStatus" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><em>Values:</em></p>
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N21Gen2TransactionStatus23Gen2TransactionStatusOkE">
-<span id="_CPPv3N21Gen2TransactionStatus23Gen2TransactionStatusOkE"></span><span id="_CPPv2N21Gen2TransactionStatus23Gen2TransactionStatusOkE"></span><span class="target" id="event__fifo__packet__types_8h_1ad0723e4bdcdd08b452993223711c1dbea233f6deed3c62c271d5dc892d4e5b616"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Gen2TransactionStatusOk</span></span></span><a class="headerlink" href="#_CPPv4N21Gen2TransactionStatus23Gen2TransactionStatusOkE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N21Gen2TransactionStatus27Gen2TransactionStatusBadCrcE">
-<span id="_CPPv3N21Gen2TransactionStatus27Gen2TransactionStatusBadCrcE"></span><span id="_CPPv2N21Gen2TransactionStatus27Gen2TransactionStatusBadCrcE"></span><span class="target" id="event__fifo__packet__types_8h_1ad0723e4bdcdd08b452993223711c1dbea8183ea07be3e03b50ac9590fc6e81d10"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Gen2TransactionStatusBadCrc</span></span></span><a class="headerlink" href="#_CPPv4N21Gen2TransactionStatus27Gen2TransactionStatusBadCrcE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N21Gen2TransactionStatus28Gen2TransactionStatusNoReplyE">
-<span id="_CPPv3N21Gen2TransactionStatus28Gen2TransactionStatusNoReplyE"></span><span id="_CPPv2N21Gen2TransactionStatus28Gen2TransactionStatusNoReplyE"></span><span class="target" id="event__fifo__packet__types_8h_1ad0723e4bdcdd08b452993223711c1dbeaafc8e733eeb43034b438a2fb9e16367c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Gen2TransactionStatusNoReply</span></span></span><a class="headerlink" href="#_CPPv4N21Gen2TransactionStatus28Gen2TransactionStatusNoReplyE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N21Gen2TransactionStatus37Gen2TransactionStatusInvalidReplyTypeE">
-<span id="_CPPv3N21Gen2TransactionStatus37Gen2TransactionStatusInvalidReplyTypeE"></span><span id="_CPPv2N21Gen2TransactionStatus37Gen2TransactionStatusInvalidReplyTypeE"></span><span class="target" id="event__fifo__packet__types_8h_1ad0723e4bdcdd08b452993223711c1dbead268fb720a886f48716a3f176858ab46"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Gen2TransactionStatusInvalidReplyType</span></span></span><a class="headerlink" href="#_CPPv4N21Gen2TransactionStatus37Gen2TransactionStatusInvalidReplyTypeE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N21Gen2TransactionStatus36Gen2TransactionStatusCoverCodeFailedE">
-<span id="_CPPv3N21Gen2TransactionStatus36Gen2TransactionStatusCoverCodeFailedE"></span><span id="_CPPv2N21Gen2TransactionStatus36Gen2TransactionStatusCoverCodeFailedE"></span><span class="target" id="event__fifo__packet__types_8h_1ad0723e4bdcdd08b452993223711c1dbea0740d513a24a31a6aeb0ef556293e630"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Gen2TransactionStatusCoverCodeFailed</span></span></span><a class="headerlink" href="#_CPPv4N21Gen2TransactionStatus36Gen2TransactionStatusCoverCodeFailedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N21Gen2TransactionStatus28Gen2TransactionStatusUnknownE">
-<span id="_CPPv3N21Gen2TransactionStatus28Gen2TransactionStatusUnknownE"></span><span id="_CPPv2N21Gen2TransactionStatus28Gen2TransactionStatusUnknownE"></span><span class="target" id="event__fifo__packet__types_8h_1ad0723e4bdcdd08b452993223711c1dbea4fdbf9e34b3f137813ded55d14b475bf"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Gen2TransactionStatusUnknown</span></span></span><a class="headerlink" href="#_CPPv4N21Gen2TransactionStatus28Gen2TransactionStatusUnknownE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="cpp enum">
-<dt class="sig sig-object cpp" id="_CPPv412HaltedReason">
-<span id="_CPPv312HaltedReason"></span><span id="_CPPv212HaltedReason"></span><span class="target" id="event__fifo__packet__types_8h_1ab78d2e9db1bc4cb376ca3e493c805c8b"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">HaltedReason</span></span></span><a class="headerlink" href="#_CPPv412HaltedReason" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><em>Values:</em></p>
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N12HaltedReason19HaltedReasonEnteredE">
-<span id="_CPPv3N12HaltedReason19HaltedReasonEnteredE"></span><span id="_CPPv2N12HaltedReason19HaltedReasonEnteredE"></span><span class="target" id="event__fifo__packet__types_8h_1ab78d2e9db1bc4cb376ca3e493c805c8baba11c184c36db6e4a4b8bf9ee54531ff"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">HaltedReasonEntered</span></span></span><a class="headerlink" href="#_CPPv4N12HaltedReason19HaltedReasonEnteredE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N12HaltedReason20HaltedReasonReturnedE">
-<span id="_CPPv3N12HaltedReason20HaltedReasonReturnedE"></span><span id="_CPPv2N12HaltedReason20HaltedReasonReturnedE"></span><span class="target" id="event__fifo__packet__types_8h_1ab78d2e9db1bc4cb376ca3e493c805c8bac944ec6aa7be0960028711eb227d35eb"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">HaltedReasonReturned</span></span></span><a class="headerlink" href="#_CPPv4N12HaltedReason20HaltedReasonReturnedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-</div>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-variables">Variables</p>
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv414event_fifo_sha">
-<span id="_CPPv314event_fifo_sha"></span><span id="_CPPv214event_fifo_sha"></span><span id="event_fifo_sha__uint16_tC"></span><span class="target" id="event__fifo__packet__types_8h_1aa85398662638078f53002b451974c171"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">event_fifo_sha</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0x194f</span></span><a class="headerlink" href="#_CPPv414event_fifo_sha" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-</div>
 <dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv412PacketHeader">
-<span id="_CPPv312PacketHeader"></span><span id="_CPPv212PacketHeader"></span><span id="PacketHeader"></span><span class="target" id="struct_packet_header"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PacketHeader</span></span></span><a class="headerlink" href="#_CPPv412PacketHeader" title="Permalink to this definition">¶</a><br /></dt>
-<dd><em>#include &lt;event_fifo_packet_types.h&gt;</em><p>The EventFifo packet header. </p>
+<dt class="sig sig-object cpp" id="_CPPv414FifoBufferNode">
+<span id="_CPPv314FifoBufferNode"></span><span id="_CPPv214FifoBufferNode"></span><span id="FifoBufferNode"></span><span class="target" id="struct_fifo_buffer_node"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FifoBufferNode</span></span></span><a class="headerlink" href="#_CPPv414FifoBufferNode" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Used for reading EventFifo data using the ReadFifo command and for passing the captured data across the protcol stack. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N12PacketHeader13packet_lengthE">
-<span id="_CPPv3N12PacketHeader13packet_lengthE"></span><span id="_CPPv2N12PacketHeader13packet_lengthE"></span><span id="PacketHeader::packet_length__uint8_t"></span><span class="target" id="struct_packet_header_1ae60853f59c9b595a0ef939864ffa7d33"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">packet_length</span></span></span><a class="headerlink" href="#_CPPv4N12PacketHeader13packet_lengthE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>The length of the entire packet in 32-bit words. </p>
+<dt class="sig sig-object cpp" id="_CPPv4N14FifoBufferNode9fifo_dataE">
+<span id="_CPPv3N14FifoBufferNode9fifo_dataE"></span><span id="_CPPv2N14FifoBufferNode9fifo_dataE"></span><span id="FifoBufferNode::fifo_data__ConstByteSpan"></span><span class="target" id="struct_fifo_buffer_node_1a2d7ada88ca9100e5aa9f0bf72d2b02f3"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv413ConstByteSpan" title="ConstByteSpan"><span class="n"><span class="pre">ConstByteSpan</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fifo_data</span></span></span><a class="headerlink" href="#_CPPv4N14FifoBufferNode9fifo_dataE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The fifo_data is read-only and is how the EventFifo clients access the data. </p>
+<p>The fifo_data-&gt;data field is set during initialization as the first 32-bit aligned byte within the allocated raw backing store.</p>
+<p>The fifo_data-&gt;length field is set to zero during init and set to the the number of EventFifo bytes read using the ReadFifo command. It does not include the ResponseCode byte. </p>
 </dd></dl>
 
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N12PacketHeader11packet_typeE">
-<span id="_CPPv3N12PacketHeader11packet_typeE"></span><span id="_CPPv2N12PacketHeader11packet_typeE"></span><span id="PacketHeader::packet_type__uint8_t"></span><span class="target" id="struct_packet_header_1ae091e55eee936db9648d5c1e50e1791f"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">packet_type</span></span></span><a class="headerlink" href="#_CPPv4N12PacketHeader11packet_typeE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>The EventFifo packet type. See :ref:<code class="docutils literal notranslate"><span class="pre">enum</span> <span class="pre">EventPacketType</span> <span class="pre">&lt;ex10-event-packet-type&gt;</span></code>. </p>
+<dt class="sig sig-object cpp" id="_CPPv4N14FifoBufferNode10raw_bufferE">
+<span id="_CPPv3N14FifoBufferNode10raw_bufferE"></span><span id="_CPPv2N14FifoBufferNode10raw_bufferE"></span><span id="FifoBufferNode::raw_buffer__ByteSpan"></span><span class="target" id="struct_fifo_buffer_node_1a9d2b2d1afeb20143c936303824f6aa92"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">raw_buffer</span></span></span><a class="headerlink" href="#_CPPv4N14FifoBufferNode10raw_bufferE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The raw_buffer fields are set during initialization and must not be modified afterward. </p>
+<p>raw_buffer-&gt;data points to the same point in the backing store as fifo_data-&gt;data but is non-cast and is to transfer data into the buffer with the ReadFifo command.</p>
+<p>raw_buffer-&gt;length represents the number of bytes allocated by the backing store for reading EventFifo data using the ReadFifo command. This value must always be &gt;= EX10_EVENT_FIFO_SIZE for the parsing of EventFifo data to work properly. </p>
 </dd></dl>
 
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N12PacketHeader3shaE">
-<span id="_CPPv3N12PacketHeader3shaE"></span><span id="_CPPv2N12PacketHeader3shaE"></span><span id="PacketHeader::sha__uint16_t"></span><span class="target" id="struct_packet_header_1ae1d968e0d01d799fce91d184e1669992"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sha</span></span></span><a class="headerlink" href="#_CPPv4N12PacketHeader3shaE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>A SHA which is generated based on the EventFifo format. </p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N12PacketHeader10us_counterE">
-<span id="_CPPv3N12PacketHeader10us_counterE"></span><span id="_CPPv2N12PacketHeader10us_counterE"></span><span id="PacketHeader::us_counter__uint32_t"></span><span class="target" id="struct_packet_header_1a2ff66f8d3165f323d97135151bcee481"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">us_counter</span></span></span><a class="headerlink" href="#_CPPv4N12PacketHeader10us_counterE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Packet timestamp, in microseconds, from the Impinj reader chip. </p>
+<dt class="sig sig-object cpp" id="_CPPv4N14FifoBufferNode9list_nodeE">
+<span id="_CPPv3N14FifoBufferNode9list_nodeE"></span><span id="_CPPv2N14FifoBufferNode9list_nodeE"></span><span id="FifoBufferNode::list_node__Ex10ListNode"></span><span class="target" id="struct_fifo_buffer_node_1acad3838b1a8efbe2e0430673ce6c43cf"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">Ex10ListNode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">list_node</span></span></span><a class="headerlink" href="#_CPPv4N14FifoBufferNode9list_nodeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The list node which is used for list insertion operations. </p>
 </dd></dl>
 
 </div>
@@ -402,7 +284,7 @@ their constituent fields.</p>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv48TxRampUp">
 <span id="_CPPv38TxRampUp"></span><span id="_CPPv28TxRampUp"></span><span id="TxRampUp"></span><span class="target" id="struct_tx_ramp_up"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TxRampUp</span></span></span><br /></dt>
-<dd><em>#include &lt;event_fifo_packet_types.h&gt;</em><p>Sent when the transmit power is ramped up. </p>
+<dd><p>Sent when the transmit power is ramped up. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
@@ -416,7 +298,7 @@ their constituent fields.</p>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv410TxRampDown">
 <span id="_CPPv310TxRampDown"></span><span id="_CPPv210TxRampDown"></span><span id="TxRampDown"></span><span class="target" id="struct_tx_ramp_down"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TxRampDown</span></span></span><br /></dt>
-<dd><em>#include &lt;event_fifo_packet_types.h&gt;</em><p>Sent when the transmit power is ramped down. </p>
+<dd><p>Sent when the transmit power is ramped down. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
@@ -442,10 +324,27 @@ their constituent fields.</p>
 </div>
 </dd></dl>
 
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv414RampDownReason">
+<span id="_CPPv314RampDownReason"></span><span id="_CPPv214RampDownReason"></span><span class="target" id="event__fifo__packet__types_8h_1a517053f58351eb03e26b391183062827"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RampDownReason</span></span></span><a class="headerlink" href="#_CPPv414RampDownReason" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The reason Tx power was ramped down. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14RampDownReason12RampDownHostE">
+<span id="_CPPv3N14RampDownReason12RampDownHostE"></span><span id="_CPPv2N14RampDownReason12RampDownHostE"></span><span class="target" id="event__fifo__packet__types_8h_1a517053f58351eb03e26b391183062827a778fa7e138524ef41b9daac9c38471cf"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RampDownHost</span></span></span><a class="headerlink" href="#_CPPv4N14RampDownReason12RampDownHostE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14RampDownReason18RampDownRegulatoryE">
+<span id="_CPPv3N14RampDownReason18RampDownRegulatoryE"></span><span id="_CPPv2N14RampDownReason18RampDownRegulatoryE"></span><span class="target" id="event__fifo__packet__types_8h_1a517053f58351eb03e26b391183062827a95802a9307b24cf2f01dd9563b90c3f4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RampDownRegulatory</span></span></span><a class="headerlink" href="#_CPPv4N14RampDownReason18RampDownRegulatoryE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv421InventoryRoundSummary">
 <span id="_CPPv321InventoryRoundSummary"></span><span id="_CPPv221InventoryRoundSummary"></span><span id="InventoryRoundSummary"></span><span class="target" id="struct_inventory_round_summary"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InventoryRoundSummary</span></span></span><br /></dt>
-<dd><em>#include &lt;event_fifo_packet_types.h&gt;</em><p>End of inventory round report. </p>
+<dd><p>End of inventory round report. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
@@ -501,10 +400,52 @@ their constituent fields.</p>
 </div>
 </dd></dl>
 
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv422InventorySummaryReason">
+<span id="_CPPv322InventorySummaryReason"></span><span id="_CPPv222InventorySummaryReason"></span><span class="target" id="event__fifo__packet__types_8h_1a0063503d26c39cba266a51cde221e83f"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InventorySummaryReason</span></span></span><a class="headerlink" href="#_CPPv422InventorySummaryReason" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The reason for inventory round completion. </p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22InventorySummaryReason20InventorySummaryDoneE">
+<span id="_CPPv3N22InventorySummaryReason20InventorySummaryDoneE"></span><span id="_CPPv2N22InventorySummaryReason20InventorySummaryDoneE"></span><span class="target" id="event__fifo__packet__types_8h_1a0063503d26c39cba266a51cde221e83faef9b936eff93ae395b13cce0f84f79b3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InventorySummaryDone</span></span></span><a class="headerlink" href="#_CPPv4N22InventorySummaryReason20InventorySummaryDoneE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22InventorySummaryReason20InventorySummaryHostE">
+<span id="_CPPv3N22InventorySummaryReason20InventorySummaryHostE"></span><span id="_CPPv2N22InventorySummaryReason20InventorySummaryHostE"></span><span class="target" id="event__fifo__packet__types_8h_1a0063503d26c39cba266a51cde221e83fa1f1e1cf0b0c74e2462a50ab17328a723"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InventorySummaryHost</span></span></span><a class="headerlink" href="#_CPPv4N22InventorySummaryReason20InventorySummaryHostE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22InventorySummaryReason26InventorySummaryRegulatoryE">
+<span id="_CPPv3N22InventorySummaryReason26InventorySummaryRegulatoryE"></span><span id="_CPPv2N22InventorySummaryReason26InventorySummaryRegulatoryE"></span><span class="target" id="event__fifo__packet__types_8h_1a0063503d26c39cba266a51cde221e83fa71338f4ec2d1c7131d318e3eab25a3c0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InventorySummaryRegulatory</span></span></span><a class="headerlink" href="#_CPPv4N22InventorySummaryReason26InventorySummaryRegulatoryE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22InventorySummaryReason29InventorySummaryEventFifoFullE">
+<span id="_CPPv3N22InventorySummaryReason29InventorySummaryEventFifoFullE"></span><span id="_CPPv2N22InventorySummaryReason29InventorySummaryEventFifoFullE"></span><span class="target" id="event__fifo__packet__types_8h_1a0063503d26c39cba266a51cde221e83fa0590e11c763013672fb6f8a559bc5ca2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InventorySummaryEventFifoFull</span></span></span><a class="headerlink" href="#_CPPv4N22InventorySummaryReason29InventorySummaryEventFifoFullE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22InventorySummaryReason29InventorySummaryTxNotRampedUpE">
+<span id="_CPPv3N22InventorySummaryReason29InventorySummaryTxNotRampedUpE"></span><span id="_CPPv2N22InventorySummaryReason29InventorySummaryTxNotRampedUpE"></span><span class="target" id="event__fifo__packet__types_8h_1a0063503d26c39cba266a51cde221e83fa540f61eea54ba1cdf3831cbf9f955235"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InventorySummaryTxNotRampedUp</span></span></span><a class="headerlink" href="#_CPPv4N22InventorySummaryReason29InventorySummaryTxNotRampedUpE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22InventorySummaryReason28InventorySummaryInvalidParamE">
+<span id="_CPPv3N22InventorySummaryReason28InventorySummaryInvalidParamE"></span><span id="_CPPv2N22InventorySummaryReason28InventorySummaryInvalidParamE"></span><span class="target" id="event__fifo__packet__types_8h_1a0063503d26c39cba266a51cde221e83fa440c446a8fde02771d2be5271a3a9c6a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InventorySummaryInvalidParam</span></span></span><a class="headerlink" href="#_CPPv4N22InventorySummaryReason28InventorySummaryInvalidParamE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N22InventorySummaryReason28InventorySummaryLmacOverloadE">
+<span id="_CPPv3N22InventorySummaryReason28InventorySummaryLmacOverloadE"></span><span id="_CPPv2N22InventorySummaryReason28InventorySummaryLmacOverloadE"></span><span class="target" id="event__fifo__packet__types_8h_1a0063503d26c39cba266a51cde221e83fa7d8102164bbbd53ba88e47ecfb6832c9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InventorySummaryLmacOverload</span></span></span><a class="headerlink" href="#_CPPv4N22InventorySummaryReason28InventorySummaryLmacOverloadE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv48QChanged">
 <span id="_CPPv38QChanged"></span><span id="_CPPv28QChanged"></span><span id="QChanged"></span><span class="target" id="struct_q_changed"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">QChanged</span></span></span><br /></dt>
-<dd><em>#include &lt;event_fifo_packet_types.h&gt;</em><p>The modem has adjusted the Q value. </p>
+<dd><p>The modem has adjusted the Q value. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
@@ -553,7 +494,7 @@ their constituent fields.</p>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv47TagRead">
 <span id="_CPPv37TagRead"></span><span id="_CPPv27TagRead"></span><span id="TagRead"></span><span class="target" id="struct_tag_read"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TagRead</span></span></span><br /></dt>
-<dd><em>#include &lt;event_fifo_packet_types.h&gt;</em><p>Contains fixed-length fields from a <a class="reference internal" href="#struct_tag_read"><span class="std std-ref">TagRead</span></a> packet in the EventFifo. </p>
+<dd><p>Contains fixed-length fields from a <a class="reference internal" href="#struct_tag_read"><span class="std std-ref">TagRead</span></a> packet in the EventFifo. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
@@ -599,10 +540,31 @@ their constituent fields.</p>
 </div>
 </dd></dl>
 
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv411TagReadType">
+<span id="_CPPv311TagReadType"></span><span id="_CPPv211TagReadType"></span><span class="target" id="event__fifo__packet__types_8h_1a05cb2d5fe6174150920fc8b13a9d1d5d"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TagReadType</span></span></span><a class="headerlink" href="#_CPPv411TagReadType" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N11TagReadType14TagReadTypeEpcE">
+<span id="_CPPv3N11TagReadType14TagReadTypeEpcE"></span><span id="_CPPv2N11TagReadType14TagReadTypeEpcE"></span><span class="target" id="event__fifo__packet__types_8h_1a05cb2d5fe6174150920fc8b13a9d1d5dadff80ec7545a14dcdf54e5257d728c8a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TagReadTypeEpc</span></span></span><a class="headerlink" href="#_CPPv4N11TagReadType14TagReadTypeEpcE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N11TagReadType21TagReadTypeEpcWithTidE">
+<span id="_CPPv3N11TagReadType21TagReadTypeEpcWithTidE"></span><span id="_CPPv2N11TagReadType21TagReadTypeEpcWithTidE"></span><span class="target" id="event__fifo__packet__types_8h_1a05cb2d5fe6174150920fc8b13a9d1d5daf376e7f23636718ae68d129ace300f7f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TagReadTypeEpcWithTid</span></span></span><a class="headerlink" href="#_CPPv4N11TagReadType21TagReadTypeEpcWithTidE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N11TagReadType27TagReadTypeEpcWithFastIdTidE">
+<span id="_CPPv3N11TagReadType27TagReadTypeEpcWithFastIdTidE"></span><span id="_CPPv2N11TagReadType27TagReadTypeEpcWithFastIdTidE"></span><span class="target" id="event__fifo__packet__types_8h_1a05cb2d5fe6174150920fc8b13a9d1d5da8bd6649cc595225ddc37127c532e94cb"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TagReadTypeEpcWithFastIdTid</span></span></span><a class="headerlink" href="#_CPPv4N11TagReadType27TagReadTypeEpcWithFastIdTidE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv415Gen2Transaction">
 <span id="_CPPv315Gen2Transaction"></span><span id="_CPPv215Gen2Transaction"></span><span id="Gen2Transaction"></span><span class="target" id="struct_gen2_transaction"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Gen2Transaction</span></span></span><br /></dt>
-<dd><em>#include &lt;event_fifo_packet_types.h&gt;</em><p>The result of a user requested Gen2 transaction. </p>
+<dd><p>The result of a user requested Gen2 transaction. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
@@ -648,10 +610,41 @@ their constituent fields.</p>
 </div>
 </dd></dl>
 
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv421Gen2TransactionStatus">
+<span id="_CPPv321Gen2TransactionStatus"></span><span id="_CPPv221Gen2TransactionStatus"></span><span class="target" id="event__fifo__packet__types_8h_1ad0723e4bdcdd08b452993223711c1dbe"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Gen2TransactionStatus</span></span></span><a class="headerlink" href="#_CPPv421Gen2TransactionStatus" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N21Gen2TransactionStatus23Gen2TransactionStatusOkE">
+<span id="_CPPv3N21Gen2TransactionStatus23Gen2TransactionStatusOkE"></span><span id="_CPPv2N21Gen2TransactionStatus23Gen2TransactionStatusOkE"></span><span class="target" id="event__fifo__packet__types_8h_1ad0723e4bdcdd08b452993223711c1dbea233f6deed3c62c271d5dc892d4e5b616"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Gen2TransactionStatusOk</span></span></span><a class="headerlink" href="#_CPPv4N21Gen2TransactionStatus23Gen2TransactionStatusOkE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N21Gen2TransactionStatus27Gen2TransactionStatusBadCrcE">
+<span id="_CPPv3N21Gen2TransactionStatus27Gen2TransactionStatusBadCrcE"></span><span id="_CPPv2N21Gen2TransactionStatus27Gen2TransactionStatusBadCrcE"></span><span class="target" id="event__fifo__packet__types_8h_1ad0723e4bdcdd08b452993223711c1dbea8183ea07be3e03b50ac9590fc6e81d10"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Gen2TransactionStatusBadCrc</span></span></span><a class="headerlink" href="#_CPPv4N21Gen2TransactionStatus27Gen2TransactionStatusBadCrcE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N21Gen2TransactionStatus28Gen2TransactionStatusNoReplyE">
+<span id="_CPPv3N21Gen2TransactionStatus28Gen2TransactionStatusNoReplyE"></span><span id="_CPPv2N21Gen2TransactionStatus28Gen2TransactionStatusNoReplyE"></span><span class="target" id="event__fifo__packet__types_8h_1ad0723e4bdcdd08b452993223711c1dbeaafc8e733eeb43034b438a2fb9e16367c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Gen2TransactionStatusNoReply</span></span></span><a class="headerlink" href="#_CPPv4N21Gen2TransactionStatus28Gen2TransactionStatusNoReplyE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N21Gen2TransactionStatus37Gen2TransactionStatusInvalidReplyTypeE">
+<span id="_CPPv3N21Gen2TransactionStatus37Gen2TransactionStatusInvalidReplyTypeE"></span><span id="_CPPv2N21Gen2TransactionStatus37Gen2TransactionStatusInvalidReplyTypeE"></span><span class="target" id="event__fifo__packet__types_8h_1ad0723e4bdcdd08b452993223711c1dbead268fb720a886f48716a3f176858ab46"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Gen2TransactionStatusInvalidReplyType</span></span></span><a class="headerlink" href="#_CPPv4N21Gen2TransactionStatus37Gen2TransactionStatusInvalidReplyTypeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N21Gen2TransactionStatus36Gen2TransactionStatusCoverCodeFailedE">
+<span id="_CPPv3N21Gen2TransactionStatus36Gen2TransactionStatusCoverCodeFailedE"></span><span id="_CPPv2N21Gen2TransactionStatus36Gen2TransactionStatusCoverCodeFailedE"></span><span class="target" id="event__fifo__packet__types_8h_1ad0723e4bdcdd08b452993223711c1dbea0740d513a24a31a6aeb0ef556293e630"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Gen2TransactionStatusCoverCodeFailed</span></span></span><a class="headerlink" href="#_CPPv4N21Gen2TransactionStatus36Gen2TransactionStatusCoverCodeFailedE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv426ContinuousInventorySummary">
 <span id="_CPPv326ContinuousInventorySummary"></span><span id="_CPPv226ContinuousInventorySummary"></span><span id="ContinuousInventorySummary"></span><span class="target" id="struct_continuous_inventory_summary"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ContinuousInventorySummary</span></span></span><br /></dt>
-<dd><em>#include &lt;event_fifo_packet_types.h&gt;</em><p>End of continuous inventory report. </p>
+<dd><p>End of continuous inventory report. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
@@ -695,7 +688,7 @@ their constituent fields.</p>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv410HelloWorld">
 <span id="_CPPv310HelloWorld"></span><span id="_CPPv210HelloWorld"></span><span id="HelloWorld"></span><span class="target" id="struct_hello_world"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">HelloWorld</span></span></span><br /></dt>
-<dd><em>#include &lt;event_fifo_packet_types.h&gt;</em><p>Sign on message emitted when the reader chip boots up. </p>
+<dd><p>Sign on message emitted when the reader chip boots up. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
@@ -719,7 +712,7 @@ their constituent fields.</p>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv46Custom">
 <span id="_CPPv36Custom"></span><span id="_CPPv26Custom"></span><span id="Custom"></span><span class="target" id="struct_custom"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Custom</span></span></span><br /></dt>
-<dd><em>#include &lt;event_fifo_packet_types.h&gt;</em><p>Packet from the InsertFifoEvent command. </p>
+<dd><p>Packet from the InsertFifoEvent command. </p>
 <p>This packet contains dynamic data. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
@@ -734,7 +727,7 @@ their constituent fields.</p>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv423PowerControlLoopSummary">
 <span id="_CPPv323PowerControlLoopSummary"></span><span id="_CPPv223PowerControlLoopSummary"></span><span id="PowerControlLoopSummary"></span><span class="target" id="struct_power_control_loop_summary"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PowerControlLoopSummary</span></span></span><br /></dt>
-<dd><em>#include &lt;event_fifo_packet_types.h&gt;</em><p>Contains summary data from the PowerControlLoopOp. </p>
+<dd><p>Contains summary data from the PowerControlLoopOp. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
@@ -758,7 +751,7 @@ their constituent fields.</p>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv418MeasureRssiSummary">
 <span id="_CPPv318MeasureRssiSummary"></span><span id="_CPPv218MeasureRssiSummary"></span><span id="MeasureRssiSummary"></span><span class="target" id="struct_measure_rssi_summary"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MeasureRssiSummary</span></span></span><br /></dt>
-<dd><em>#include &lt;event_fifo_packet_types.h&gt;</em><p>Contains summary data from the MeasureRssiOp. </p>
+<dd><p>Contains summary data from the PowerControlLoopOp. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
@@ -782,7 +775,7 @@ their constituent fields.</p>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv418AggregateOpSummary">
 <span id="_CPPv318AggregateOpSummary"></span><span id="_CPPv218AggregateOpSummary"></span><span id="AggregateOpSummary"></span><span class="target" id="struct_aggregate_op_summary"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AggregateOpSummary</span></span></span><br /></dt>
-<dd><em>#include &lt;event_fifo_packet_types.h&gt;</em><p>Contains summary data of what was run in the aggregate op. </p>
+<dd><p>Contains summary data of what was run in the aggregate op. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
@@ -820,28 +813,13 @@ their constituent fields.</p>
 <span id="_CPPv3N18AggregateOpSummary19last_inner_op_errorE"></span><span id="_CPPv2N18AggregateOpSummary19last_inner_op_errorE"></span><span id="AggregateOpSummary::last_inner_op_error__uint8_t"></span><span class="target" id="struct_aggregate_op_summary_1a2dcd38aa2a806ed1174fd2cb4c98c249"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">last_inner_op_error</span></span></span><a class="headerlink" href="#_CPPv4N18AggregateOpSummary19last_inner_op_errorE" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N18AggregateOpSummary10identifierE">
-<span id="_CPPv3N18AggregateOpSummary10identifierE"></span><span id="_CPPv2N18AggregateOpSummary10identifierE"></span><span id="AggregateOpSummary::identifier__uint16_t"></span><span class="target" id="struct_aggregate_op_summary_1ac9c4d59271b63a2609f3a33ba836842c"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">identifier</span></span></span><a class="headerlink" href="#_CPPv4N18AggregateOpSummary10identifierE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N18AggregateOpSummary12packet_rfu_1E">
-<span id="_CPPv3N18AggregateOpSummary12packet_rfu_1E"></span><span id="_CPPv2N18AggregateOpSummary12packet_rfu_1E"></span><span id="AggregateOpSummary::packet_rfu_1__uint8_t"></span><span class="target" id="struct_aggregate_op_summary_1a2a85fd41da6913877c4aa0d45269cc6c"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">packet_rfu_1</span></span></span><a class="headerlink" href="#_CPPv4N18AggregateOpSummary12packet_rfu_1E" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N18AggregateOpSummary12packet_rfu_2E">
-<span id="_CPPv3N18AggregateOpSummary12packet_rfu_2E"></span><span id="_CPPv2N18AggregateOpSummary12packet_rfu_2E"></span><span id="AggregateOpSummary::packet_rfu_2__uint8_t"></span><span class="target" id="struct_aggregate_op_summary_1a137292a785b1c25af023ca6989498d01"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">packet_rfu_2</span></span></span><a class="headerlink" href="#_CPPv4N18AggregateOpSummary12packet_rfu_2E" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
 </div>
 </dd></dl>
 
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv46Halted">
 <span id="_CPPv36Halted"></span><span id="_CPPv26Halted"></span><span id="Halted"></span><span class="target" id="struct_halted"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Halted</span></span></span><br /></dt>
-<dd><em>#include &lt;event_fifo_packet_types.h&gt;</em><p>Packet is emitted when the LMAC enters the halted state. </p>
+<dd><p>Packet is emitted when the LMAC enters the halted state. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
@@ -862,24 +840,26 @@ their constituent fields.</p>
 </div>
 </dd></dl>
 
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv413InvalidPacket">
-<span id="_CPPv313InvalidPacket"></span><span id="_CPPv213InvalidPacket"></span><span id="InvalidPacket"></span><span class="target" id="struct_invalid_packet"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InvalidPacket</span></span></span><br /></dt>
-<dd><em>#include &lt;event_fifo_packet_types.h&gt;</em><p>An invalid packet. </p>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N13InvalidPacket10packet_rfuE">
-<span id="_CPPv3N13InvalidPacket10packet_rfuE"></span><span id="_CPPv2N13InvalidPacket10packet_rfuE"></span><span id="InvalidPacket::packet_rfu__uint32_t"></span><span class="target" id="struct_invalid_packet_1a3c1b0818b5b9bdee569bd3e6771d6202"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">packet_rfu</span></span></span><a class="headerlink" href="#_CPPv4N13InvalidPacket10packet_rfuE" title="Permalink to this definition">¶</a><br /></dt>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv412HaltedReason">
+<span id="_CPPv312HaltedReason"></span><span id="_CPPv212HaltedReason"></span><span class="target" id="event__fifo__packet__types_8h_1ab78d2e9db1bc4cb376ca3e493c805c8b"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">HaltedReason</span></span></span><a class="headerlink" href="#_CPPv412HaltedReason" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N12HaltedReason19HaltedReasonEnteredE">
+<span id="_CPPv3N12HaltedReason19HaltedReasonEnteredE"></span><span id="_CPPv2N12HaltedReason19HaltedReasonEnteredE"></span><span class="target" id="event__fifo__packet__types_8h_1ab78d2e9db1bc4cb376ca3e493c805c8baba11c184c36db6e4a4b8bf9ee54531ff"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">HaltedReasonEntered</span></span></span><a class="headerlink" href="#_CPPv4N12HaltedReason19HaltedReasonEnteredE" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
-</div>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N12HaltedReason20HaltedReasonReturnedE">
+<span id="_CPPv3N12HaltedReason20HaltedReasonReturnedE"></span><span id="_CPPv2N12HaltedReason20HaltedReasonReturnedE"></span><span class="target" id="event__fifo__packet__types_8h_1ab78d2e9db1bc4cb376ca3e493c805c8bac944ec6aa7be0960028711eb227d35eb"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">HaltedReasonReturned</span></span></span><a class="headerlink" href="#_CPPv4N12HaltedReason20HaltedReasonReturnedE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv416WriteProfileData">
 <span id="_CPPv316WriteProfileData"></span><span id="_CPPv216WriteProfileData"></span><span id="WriteProfileData"></span><span class="target" id="struct_write_profile_data"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">WriteProfileData</span></span></span><br /></dt>
-<dd><em>#include &lt;event_fifo_packet_types.h&gt;</em><p>The code profiler file data event. </p>
+<dd><p>The code profiler file data event. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
@@ -898,8 +878,7 @@ their constituent fields.</p>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv414SjcMeasurement">
 <span id="_CPPv314SjcMeasurement"></span><span id="_CPPv214SjcMeasurement"></span><span id="SjcMeasurement"></span><span class="target" id="struct_sjc_measurement"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SjcMeasurement</span></span></span><br /></dt>
-<dd><em>#include &lt;event_fifo_packet_types.h&gt;</em><p>A SJC residue measurement and configuration corresponding to the RxRunSjcOp. </p>
-<p>These measurements can arrive during the RxRunSjcOp if enabled, and at the end of the RxRunSjcOp. The final measurement event packet generated by the FW corresponds with the last and best SJC solution determined by the RxRunSjcOp. </p>
+<dd><p>A SJC residue measurement. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
@@ -938,7 +917,7 @@ their constituent fields.</p>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv45Debug">
 <span id="_CPPv35Debug"></span><span id="_CPPv25Debug"></span><span id="Debug"></span><span class="target" id="struct_debug"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Debug</span></span></span><br /></dt>
-<dd><em>#include &lt;event_fifo_packet_types.h&gt;</em><p>Packet for debugging purposes. </p>
+<dd><p>Packet for debugging purposes. </p>
 <p>This packet contains dynamic data. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
@@ -1095,7 +1074,7 @@ their constituent fields.</p>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv413TagReadFields">
 <span id="_CPPv313TagReadFields"></span><span id="_CPPv213TagReadFields"></span><span id="TagReadFields"></span><span class="target" id="struct_tag_read_fields"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TagReadFields</span></span></span><a class="headerlink" href="#_CPPv413TagReadFields" title="Permalink to this definition">¶</a><br /></dt>
-<dd><em>#include &lt;event_fifo_packet_types.h&gt;</em><p>Contains variable-length fields from a <a class="reference internal" href="#struct_tag_read"><span class="std std-ref">TagRead</span></a> packet in the EventFifo. </p>
+<dd><p>Contains variable-length fields from a <a class="reference internal" href="#struct_tag_read"><span class="std std-ref">TagRead</span></a> packet in the EventFifo. </p>
 <p><dl class="simple">
 <dt><strong>See</strong></dt><dd><p>get_tag_read_fields() in event_packet_parser.h. </p>
 </dd>
@@ -1109,16 +1088,6 @@ their constituent fields.</p>
 <dd></dd></dl>
 
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N13TagReadFields6xpc_w1E">
-<span id="_CPPv3N13TagReadFields6xpc_w1E"></span><span id="_CPPv2N13TagReadFields6xpc_w1E"></span><span id="TagReadFields::xpc_w1__uint16_tCP"></span><span class="target" id="struct_tag_read_fields_1a7bfccc089146d4d1ec9c07a12580f38e"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">xpc_w1</span></span></span><a class="headerlink" href="#_CPPv4N13TagReadFields6xpc_w1E" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N13TagReadFields6xpc_w2E">
-<span id="_CPPv3N13TagReadFields6xpc_w2E"></span><span id="_CPPv2N13TagReadFields6xpc_w2E"></span><span id="TagReadFields::xpc_w2__uint16_tCP"></span><span class="target" id="struct_tag_read_fields_1a97e3958fc49e090a1e582aa3dc234186"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">xpc_w2</span></span></span><a class="headerlink" href="#_CPPv4N13TagReadFields6xpc_w2E" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N13TagReadFields3epcE">
 <span id="_CPPv3N13TagReadFields3epcE"></span><span id="_CPPv2N13TagReadFields3epcE"></span><span id="TagReadFields::epc__uint8_tCP"></span><span class="target" id="struct_tag_read_fields_1a3b0d43d20625d679f6cee0384abb6724"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">epc</span></span></span><a class="headerlink" href="#_CPPv4N13TagReadFields3epcE" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
@@ -1129,8 +1098,8 @@ their constituent fields.</p>
 <dd></dd></dl>
 
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N13TagReadFields10stored_crcE">
-<span id="_CPPv3N13TagReadFields10stored_crcE"></span><span id="_CPPv2N13TagReadFields10stored_crcE"></span><span id="TagReadFields::stored_crc__uint16_tCP"></span><span class="target" id="struct_tag_read_fields_1accd39c55cb890c6004030fa7e52c4125"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">stored_crc</span></span></span><a class="headerlink" href="#_CPPv4N13TagReadFields10stored_crcE" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N13TagReadFields3crcE">
+<span id="_CPPv3N13TagReadFields3crcE"></span><span id="_CPPv2N13TagReadFields3crcE"></span><span id="TagReadFields::crc__uint16_tCP"></span><span class="target" id="struct_tag_read_fields_1a1aa058c6b6c22e2a6b98da3993862b81"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">crc</span></span></span><a class="headerlink" href="#_CPPv4N13TagReadFields3crcE" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp var">
@@ -1146,41 +1115,13 @@ their constituent fields.</p>
 </div>
 </dd></dl>
 
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv427get_ex10_event_fifo_printerv">
-<span id="_CPPv327get_ex10_event_fifo_printerv"></span><span id="_CPPv227get_ex10_event_fifo_printerv"></span><span id="get_ex10_event_fifo_printer__void"></span><span class="target" id="event__fifo__printer_8h_1ac6d3e87ff6ccbe01da870c361afd247c"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv420Ex10EventFifoPrinter" title="Ex10EventFifoPrinter"><span class="n"><span class="pre">Ex10EventFifoPrinter</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">get_ex10_event_fifo_printer</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427get_ex10_event_fifo_printerv" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-</div>
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv420Ex10EventFifoPrinter">
-<span id="_CPPv320Ex10EventFifoPrinter"></span><span id="_CPPv220Ex10EventFifoPrinter"></span><span id="Ex10EventFifoPrinter"></span><span class="target" id="struct_ex10_event_fifo_printer"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Ex10EventFifoPrinter</span></span></span><a class="headerlink" href="#_CPPv420Ex10EventFifoPrinter" title="Permalink to this definition">¶</a><br /></dt>
-<dd><div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N20Ex10EventFifoPrinter13print_packetsE">
-<span id="_CPPv3N20Ex10EventFifoPrinter13print_packetsE"></span><span id="_CPPv2N20Ex10EventFifoPrinter13print_packetsE"></span><span class="target" id="struct_ex10_event_fifo_printer_1a75646ee90b5b882dc89e2df37dc84bd9"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">print_packets</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv415EventFifoPacket" title="EventFifoPacket"><span class="n"><span class="pre">EventFifoPacket</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">packet</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N20Ex10EventFifoPrinter13print_packetsE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Print EventFifo packets based on their type to stdout. </p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N20Ex10EventFifoPrinter19print_tag_read_dataE">
-<span id="_CPPv3N20Ex10EventFifoPrinter19print_tag_read_dataE"></span><span id="_CPPv2N20Ex10EventFifoPrinter19print_tag_read_dataE"></span><span class="target" id="struct_ex10_event_fifo_printer_1a17968e4c473f8cb5b8039b4a297e643d"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">print_tag_read_data</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_helpers.html#_CPPv411TagReadData" title="TagReadData"><span class="n"><span class="pre">TagReadData</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">tag_read_data</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N20Ex10EventFifoPrinter19print_tag_read_dataE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Print the <a class="reference internal" href="yk_firmware_ex10_host_c_helpers.html#struct_tag_read_data"><span class="std std-ref">TagReadData</span></a> struct contents to stdout. </p>
-</dd></dl>
-
-</div>
-</dd></dl>
-
 </section>
 <section id="byte-span-type">
 <h1>Byte Span Type<a class="headerlink" href="#byte-span-type" title="Permalink to this headline">¶</a></h1>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv48ByteSpan">
 <span id="_CPPv38ByteSpan"></span><span id="_CPPv28ByteSpan"></span><span id="ByteSpan"></span><span class="target" id="struct_byte_span"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ByteSpan</span></span></span><a class="headerlink" href="#_CPPv48ByteSpan" title="Permalink to this definition">¶</a><br /></dt>
-<dd><em>#include &lt;byte_span.h&gt;</em><p>Defines a mutable location of contiguous memory, organized as bytes. </p>
+<dd><p>Defines a mutable location of contiguous memory, organized as bytes. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
@@ -1201,7 +1142,7 @@ their constituent fields.</p>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv413ConstByteSpan">
 <span id="_CPPv313ConstByteSpan"></span><span id="_CPPv213ConstByteSpan"></span><span id="ConstByteSpan"></span><span class="target" id="struct_const_byte_span"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ConstByteSpan</span></span></span><a class="headerlink" href="#_CPPv413ConstByteSpan" title="Permalink to this definition">¶</a><br /></dt>
-<dd><em>#include &lt;byte_span.h&gt;</em><p>Defines a immutable location of contiguous memory, organized as bytes. </p>
+<dd><p>Defines a immutable location of contiguous memory, organized as bytes. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
@@ -1223,16 +1164,6 @@ their constituent fields.</p>
 <section id="region-specific-types">
 <h1>Region Specific Types<a class="headerlink" href="#region-specific-types" title="Permalink to this headline">¶</a></h1>
 <p>The Ex10Ops interface depends upon these region specific data types:</p>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
-<dl class="cpp macro">
-<dt class="sig sig-object cpp" id="c.MAX_CHANNELS">
-<span class="target" id="regions__table_8h_1ac69ee46f4a51ed14f0d68628c2dec71d"></span><span class="sig-name descname"><span class="n"><span class="pre">MAX_CHANNELS</span></span></span><a class="headerlink" href="#c.MAX_CHANNELS" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-</div>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
 <dl class="cpp enum">
 <dt class="sig sig-object cpp" id="_CPPv48RfFilter">
 <span id="_CPPv38RfFilter"></span><span id="_CPPv28RfFilter"></span><span class="target" id="regions__table_8h_1a2049db00d1eaae7fd97d23d3f36f146a"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RfFilter</span></span></span><a class="headerlink" href="#_CPPv48RfFilter" title="Permalink to this definition">¶</a><br /></dt>
@@ -1251,19 +1182,10 @@ their constituent fields.</p>
 
 </dd></dl>
 
-</div>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv422get_ex10_regions_tablev">
-<span id="_CPPv322get_ex10_regions_tablev"></span><span id="_CPPv222get_ex10_regions_tablev"></span><span id="get_ex10_regions_table__void"></span><span class="target" id="regions__table_8h_1a7d1eb455c6dd65a0808f0d5d1715a9e1"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv416Ex10RegionsTable" title="Ex10RegionsTable"><span class="n"><span class="pre">Ex10RegionsTable</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">get_ex10_regions_table</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422get_ex10_regions_tablev" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-</div>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv416RegulatoryTimers">
 <span id="_CPPv316RegulatoryTimers"></span><span id="_CPPv216RegulatoryTimers"></span><span id="RegulatoryTimers"></span><span class="target" id="struct_regulatory_timers"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RegulatoryTimers</span></span></span><a class="headerlink" href="#_CPPv416RegulatoryTimers" title="Permalink to this definition">¶</a><br /></dt>
-<dd><em>#include &lt;regions_table.h&gt;</em><p>Defines the channel typical and maximum transmitter dwell times and off times for a region. </p>
+<dd><p>Defines the channel typical and maximum transmitter dwell times and off times for a region. </p>
 <p>Times are in milliseconds </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
@@ -1286,9 +1208,15 @@ their constituent fields.</p>
 </dd></dl>
 
 <dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16RegulatoryTimers3offE">
+<span id="_CPPv3N16RegulatoryTimers3offE"></span><span id="_CPPv2N16RegulatoryTimers3offE"></span><span id="RegulatoryTimers::off__uint32_t"></span><span class="target" id="struct_regulatory_timers_1aa915d3c9b6cfc70696bac87f3390a699"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">off</span></span></span><a class="headerlink" href="#_CPPv4N16RegulatoryTimers3offE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The minimum transmitter silent time between transmissions. </p>
+</dd></dl>
+
+<dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N16RegulatoryTimers16off_same_channelE">
 <span id="_CPPv3N16RegulatoryTimers16off_same_channelE"></span><span id="_CPPv2N16RegulatoryTimers16off_same_channelE"></span><span id="RegulatoryTimers::off_same_channel__uint32_t"></span><span class="target" id="struct_regulatory_timers_1a336713210d3fab8faf8e02fa1e94170e"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">off_same_channel</span></span></span><a class="headerlink" href="#_CPPv4N16RegulatoryTimers16off_same_channelE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>The minimum transmitter silent time between transitions when staying on the same frequency. </p>
+<dd><p>Same as off but applies only when the transmitter stays on the same frequency. </p>
 </dd></dl>
 
 </div>
@@ -1297,7 +1225,7 @@ their constituent fields.</p>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv418RegulatoryChannels">
 <span id="_CPPv318RegulatoryChannels"></span><span id="_CPPv218RegulatoryChannels"></span><span id="RegulatoryChannels"></span><span class="target" id="struct_regulatory_channels"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RegulatoryChannels</span></span></span><a class="headerlink" href="#_CPPv418RegulatoryChannels" title="Permalink to this definition">¶</a><br /></dt>
-<dd><em>#include &lt;regions_table.h&gt;</em><p>Defines the channels which are usable within a specific region. </p>
+<dd><p>Defines the channels which are usable within a specific region. </p>
 <p>If usable is NULL then the channel band of the region is defined as start_freq + count * spacing If the usable field is non-NULL then the plan is limited to the array of channel pointed to by usable[count]. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
@@ -1341,7 +1269,7 @@ their constituent fields.</p>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv46Region">
 <span id="_CPPv36Region"></span><span id="_CPPv26Region"></span><span id="Region"></span><span class="target" id="struct_region"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Region</span></span></span><a class="headerlink" href="#_CPPv46Region" title="Permalink to this definition">¶</a><br /></dt>
-<dd><em>#include &lt;regions_table.h&gt;</em><p>The aggregate regulatory information for a specific region. </p>
+<dd><p>The aggregate regulatory information for a specific region. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
@@ -1375,9 +1303,9 @@ their constituent fields.</p>
 <dd></dd></dl>
 
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N6Region14max_power_cdbmE">
-<span id="_CPPv3N6Region14max_power_cdbmE"></span><span id="_CPPv2N6Region14max_power_cdbmE"></span><span id="Region::max_power_cdbm__int32_tC"></span><span class="target" id="struct_region_1a4adfac0b8adedb8fb89b522fbfe4d0df"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">max_power_cdbm</span></span></span><a class="headerlink" href="#_CPPv4N6Region14max_power_cdbmE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>dBm x 100 </p>
+<dt class="sig sig-object cpp" id="_CPPv4N6Region13max_power_mbmE">
+<span id="_CPPv3N6Region13max_power_mbmE"></span><span id="_CPPv2N6Region13max_power_mbmE"></span><span id="Region::max_power_mbm__int32_tC"></span><span class="target" id="struct_region_1aa125b11a6a9195b9a5c5a6ec567157a1"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">max_power_mbm</span></span></span><a class="headerlink" href="#_CPPv4N6Region13max_power_mbmE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>millibel-milliwatts dBm x 100 </p>
 </dd></dl>
 
 </div>
@@ -1386,7 +1314,7 @@ their constituent fields.</p>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv416Ex10RegionsTable">
 <span id="_CPPv316Ex10RegionsTable"></span><span id="_CPPv216Ex10RegionsTable"></span><span id="Ex10RegionsTable"></span><span class="target" id="struct_ex10_regions_table"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Ex10RegionsTable</span></span></span><a class="headerlink" href="#_CPPv416Ex10RegionsTable" title="Permalink to this definition">¶</a><br /></dt>
-<dd><em>#include &lt;regions_table.h&gt;</em><p>Regions information interface. </p>
+<dd><p>Regions information interface. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
@@ -1394,13 +1322,13 @@ their constituent fields.</p>
 <span id="_CPPv3N16Ex10RegionsTable10get_regionE"></span><span id="_CPPv2N16Ex10RegionsTable10get_regionE"></span><span class="target" id="struct_ex10_regions_table_1ac632b1733a645474d60ed23346f60d40"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv46Region" title="Region"><span class="n"><span class="pre">Region</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">get_region</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">region_name</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N16Ex10RegionsTable10get_regionE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Given a string return the <a class="reference internal" href="#struct_region"><span class="std std-ref">Region</span></a> struct. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param region_name</dt>
-<dd class="field-odd"><p>A string that matches a name in the region_table[] instantiation found in regions.c.</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>region_name</strong> – A string that matches a name in the region_table[] instantiation found in regions.c.</p>
 </dd>
 <dt class="field-even">Returns NULL</dt>
 <dd class="field-even"><p>When the requested string does not match a region. </p>
 </dd>
-<dt class="field-odd">Return</dt>
+<dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>struct <a class="reference internal" href="#struct_region"><span class="std std-ref">Region</span></a> const* A pointer to the <a class="reference internal" href="#struct_region"><span class="std std-ref">Region</span></a> matching the region requested. </p>
 </dd>
 </dl>
@@ -1411,14 +1339,14 @@ their constituent fields.</p>
 <span id="_CPPv3N16Ex10RegionsTable19build_channel_tableE"></span><span id="_CPPv2N16Ex10RegionsTable19build_channel_tableE"></span><span class="target" id="struct_ex10_regions_table_1a1d8167a5952095e9cd73f9a4748eeebb"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">build_channel_table</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv418RegulatoryChannels" title="RegulatoryChannels"><span class="n"><span class="pre">RegulatoryChannels</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">regulatory_channels</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">channel_table</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N16Ex10RegionsTable19build_channel_tableE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>From a struct <a class="reference internal" href="#struct_regulatory_channels"><span class="std std-ref">RegulatoryChannels</span></a> build list of channel indices into the channel table. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param regulatory_channels</dt>
-<dd class="field-odd"><p>A set of channels specific to a <a class="reference internal" href="#struct_region"><span class="std std-ref">Region</span></a>. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>regulatory_channels</strong> – A set of channels specific to a <a class="reference internal" href="#struct_region"><span class="std std-ref">Region</span></a>. </p></li>
+<li><p><strong>channel_table</strong> – <strong>[out]</strong> Based on the channel requirements of the <a class="reference internal" href="#struct_region"><span class="std std-ref">Region</span></a> this array of channel indices is created.</p></li>
+</ul>
 </dd>
-<dt class="field-even">Param channel_table</dt>
-<dd class="field-even"><p><strong>[out]</strong> Based on the channel requirements of the <a class="reference internal" href="#struct_region"><span class="std std-ref">Region</span></a> this array of channel indices is created.</p>
-</dd>
-<dt class="field-odd">Return</dt>
-<dd class="field-odd"><p>size_t The number of channels in the table. This return value can be used to determine whether the expected channel size matches the size used by call to this routine. </p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>size_t The number of channels in the table. This return value can be used to determine whether the expected channel size matches the size used by call to this routine. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1446,16 +1374,16 @@ their constituent fields.</p>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="yk_firmware_ex10_host_c_helpers.html"
-                        title="previous chapter">Ex10Helpers</a></p>
+  <p class="topless"><a href="yk_firmware_ex10_host_c_commands_layer.html"
+                        title="previous chapter">Ex10Commands Layer</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="yk_firmware_ex10_host_c_gen2_commands.html"
-                        title="next chapter">Gen2 Access Commands</a></p>
+                        title="next chapter">Gen2 Commands</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -1469,10 +1397,10 @@ their constituent fields.</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="yk_firmware_ex10_host_c_gen2_commands.html" title="Gen2 Access Commands"
+          <a href="yk_firmware_ex10_host_c_gen2_commands.html" title="Gen2 Commands"
              >next</a></li>
         <li class="right" >
-          <a href="yk_firmware_ex10_host_c_helpers.html" title="Ex10Helpers"
+          <a href="yk_firmware_ex10_host_c_commands_layer.html" title="Ex10Commands Layer"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Impinj Reader Chip SDK</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="yk_firmware_ex10_host_c_api.html" >Impinj Reader Chip C Host API</a> &#187;</li>
@@ -1480,7 +1408,7 @@ their constituent fields.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Impinj, Inc..
+        &#169; Copyright 2021, Impinj, Inc..
     </div>
   </body>
 </html>

@@ -27,7 +27,7 @@
           <a href="yk_firmware_ex10_api_wireline.html" title="Impinj Reader Chip Wireline API"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Impinj Reader Chip SDK</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="yk_firmware_ex10_api.html" accesskey="U">Impinj Reader Chip Wireline API</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="yk_firmware_ex10_api.html" accesskey="U">Impinj Reader Chip API</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Impinj Reader Chip Messages</a></li> 
       </ul>
     </div>  
@@ -49,7 +49,7 @@ situation where a host must examine the received data to determine the length
 of the transfer. Impinj reader chip SPI transactions follow the form:</p>
 <figure class="align-default" id="id5">
 <span id="ex10-api-messages"></span><img alt="../../_images/ex10_api_messages.svg" src="../../_images/ex10_api_messages.svg" /><figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">General form of an Impinj reader chip SPI transaction</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">General form of an Impinj reader chip SPI transaction</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 <div class="admonition-todo admonition" id="id1">
@@ -501,7 +501,7 @@ memory map</p></td>
 </table>
 </td>
 </tr>
-<tr class="row-even"><td><p>Length</p></td>
+<tr class="row-odd"><td><p>Length</p></td>
 <td><p>2</p></td>
 <td><p>The number of bytes to read from the given FIFO</p></td>
 </tr>
@@ -981,25 +981,19 @@ aligned.</p></td>
 <span id="ex10-api-insert-fifo-event"></span><h3>InsertFifoEvent<a class="headerlink" href="#insertfifoevent" title="Permalink to this headline">¶</a></h3>
 <p>The InsertFifoEvent command allows the host to inject an arbitrary event into
 the EventFifo. The insertion point of the event is the end of the EventFifo.</p>
+<p>The inserted event format consists of the format described in the
+<a class="reference internal" href="yk_firmware_ex10_api_event_packets.html#ex10-api-event-packets"><span class="std std-ref">Impinj Reader Chip EventFifo Packets</span></a> section. Any packet may be inserted by the host.
+The host must provide the packet header, the us_counter, and the event packet
+contents which may include dynamic data.</p>
 <p>This command may also be used to force an EventFifo threshold interrupt
-regardless of if it is sending an EventFifo packet. The first byte is always
-the command id byte, and the second is the trigger_irq byte. If set to 1, this
-byte will trigger the irq. A user may choose to send these 2 bytes alone with
-no packet appended.</p>
-<p>If the user does insert an EventFifo packet, the event format consists of
-the format described in the <a class="reference internal" href="yk_firmware_ex10_api_event_packets.html#ex10-api-event-packets"><span class="std std-ref">Impinj Reader Chip EventFifo Packets</span></a> section. Any packet
-may be inserted by the host. The host must provide the packet header (length,
-packet type, sha, us_counter) and the event packet contents. The packet
-contents may or may not include dynamic data.</p>
-<p>The user has a variety of options when inserting an event fifo command, but
-there are certain requirements in order to interpret the command properly.</p>
-<p>If the EventFifo packet does not conform to the following formatting rules,
-it will be rejected as malformed (CommandMalformed).</p>
-<ol class="arabic simple">
-<li><p>There must be enough bytes to fill at least the packet header (8).</p></li>
-<li><p>The EventFifo packet contents must be a multiple of 4 bytes in length.</p></li>
-<li><p>The denoted packet length in the header must match the payload length.</p></li>
-</ol>
+without the command containing an EventFifo packet. In this case the command
+would be a 2-byte command: The code byte followed by the trigger_irq byte (set
+to 1).</p>
+<p>When an EventFifo packet is included for insertion it must be at least 8 bytes
+in length to contain the 4-byte packet header followed by the 4-byte us_counter.
+Addtionally, the EventFifo packet contents must be a multiple of 4 bytes in length.</p>
+<p>If the EventFifo packet contents do not conform to this format it will be
+rejected as malformed (CommandMalformed).</p>
 <table class="colwidths-given docutils align-default" id="id28">
 <caption><span class="caption-number">Table 25 </span><span class="caption-text">InsertFifoEvent Command</span><a class="headerlink" href="#id28" title="Permalink to this table">¶</a></caption>
 <colgroup>
@@ -1145,7 +1139,7 @@ release. It is recommended that the host set these bytes to zero.</p></td>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -1165,12 +1159,12 @@ release. It is recommended that the host set these bytes to zero.</p></td>
           <a href="yk_firmware_ex10_api_wireline.html" title="Impinj Reader Chip Wireline API"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Impinj Reader Chip SDK</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="yk_firmware_ex10_api.html" >Impinj Reader Chip Wireline API</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="yk_firmware_ex10_api.html" >Impinj Reader Chip API</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Impinj Reader Chip Messages</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Impinj, Inc..
+        &#169; Copyright 2021, Impinj, Inc..
     </div>
   </body>
 </html>

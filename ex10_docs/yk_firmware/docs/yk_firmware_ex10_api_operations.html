@@ -14,20 +14,20 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Impinj Reader Chip EventFifo Packets" href="yk_firmware_ex10_api_event_packets.html" />
+    <link rel="next" title="Impinj Reader Chip API Application Stored Settings" href="yk_firmware_ex10_api_stored_settings.html" />
     <link rel="prev" title="Impinj Reader Chip Application Address Map" href="yk_firmware_ex10_api_application_address_map.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="yk_firmware_ex10_api_event_packets.html" title="Impinj Reader Chip EventFifo Packets"
+          <a href="yk_firmware_ex10_api_stored_settings.html" title="Impinj Reader Chip API Application Stored Settings"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="yk_firmware_ex10_api_application_address_map.html" title="Impinj Reader Chip Application Address Map"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Impinj Reader Chip SDK</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="yk_firmware_ex10_api.html" accesskey="U">Impinj Reader Chip Wireline API</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="yk_firmware_ex10_api.html" accesskey="U">Impinj Reader Chip API</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Impinj Reader Chip API Operations</a></li> 
       </ul>
     </div>  
@@ -323,31 +323,32 @@ support article here: <a class="reference external" href="https://impinj.zendesk
 implemented a new RF Mode numbering system in v1.1.
 Any two modes with the same parameters and performance numbers are
 functionally identical, with one small exception.
-The newer 3-digit reader modes all use a newer transmit waveform
-(wavetable/LUT) with improved dense reader performance. Because the
-transmit waveform has changed, devices that were certified with the older
-reader modes should be re-certified with regulatory bodies.</p>
-<p>Supported RF modes are enumerated in the following table. The “Region…”
-columns describe which regulatory regions each mode is designed to achieve
-certification in, which is controlled by the forward link parameters.
-Some of these modes may not have optimal reverse link parameters for those regions.</p>
+The 3-digit RF modes that duplicate existing RF modes use a newer transmit
+waveform (wavetable/LUT) with improved dense reader performance. Because
+the transmit waveform has changed, devices that were previously certified
+with the older RF modes should be re-certified with regulatory bodies if
+the newer 3-digit RF modes are used.
+The 1 and 2-digit RF mode transmit waveforms have not changed, so they can
+be used without re-certification</p>
+<p>Supported RF modes are enumerated as follows:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 11%" />
-<col style="width: 13%" />
-<col style="width: 19%" />
+<col style="width: 10%" />
+<col style="width: 12%" />
+<col style="width: 15%" />
+<col style="width: 17%" />
 <col style="width: 6%" />
-<col style="width: 9%" />
-<col style="width: 9%" />
-<col style="width: 14%" />
-<col style="width: 5%" />
-<col style="width: 5%" />
-<col style="width: 5%" />
-<col style="width: 5%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 12%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Reader Mode ID</p></th>
 <th class="head"><p>Mode Optimization</p></th>
+<th class="head"><p>Forward Link Modulation</p></th>
 <th class="head"><dl class="simple">
 <dt>Typical Optimized Read Rate</dt><dd><p>(tags/s)</p>
 </dd>
@@ -360,9 +361,7 @@ ETSI Upper</p></th>
 <th class="head"><p>Region
 ETSI Lower</p></th>
 <th class="head"><p>Region
-China, Japan, Korea</p></th>
-<th class="head"><p>SKU
-E910</p></th>
+China/Japan/Korea</p></th>
 <th class="head"><p>SKU
 E710</p></th>
 <th class="head"><p>SKU
@@ -374,42 +373,43 @@ E310</p></th>
 <tbody>
 <tr class="row-even"><td><p>103</p></td>
 <td><p>Read rate</p></td>
+<td><p>DSB</p></td>
 <td><p>1000</p></td>
 <td><p>Yes</p></td>
 <td><p>No</p></td>
 <td><p>No</p></td>
 <td><p>No</p></td>
 <td><p>Yes</p></td>
-<td><p>Yes</p></td>
 <td><p>No</p></td>
 <td><p>No</p></td>
 </tr>
 <tr class="row-odd"><td><p>11</p></td>
 <td><p>Read rate</p></td>
+<td><p>PR_ASK</p></td>
 <td><p>800</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 <td><p>No</p></td>
 <td><p>No</p></td>
-<td><p>Yes</p></td>
 <td><p>Yes</p></td>
 <td><p>No</p></td>
 <td><p>No</p></td>
 </tr>
-<tr class="row-even"><td><p>102, 302</p></td>
+<tr class="row-even"><td><p>302</p></td>
 <td><p>Read rate</p></td>
+<td><p>PR_ASK</p></td>
 <td><p>800</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 <td><p>No</p></td>
 <td><p>No</p></td>
-<td><p>Yes</p></td>
 <td><p>Yes</p></td>
 <td><p>No</p></td>
 <td><p>No</p></td>
 </tr>
 <tr class="row-odd"><td><p>120</p></td>
 <td><p>Read rate</p></td>
+<td><p>DSB</p></td>
 <td><p>700</p></td>
 <td><p>Yes</p></td>
 <td><p>No</p></td>
@@ -417,11 +417,11 @@ E310</p></th>
 <td><p>No</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
-<td><p>Yes</p></td>
 <td><p>No</p></td>
 </tr>
 <tr class="row-even"><td><p>1</p></td>
 <td><p>Read rate</p></td>
+<td><p>PR_ASK</p></td>
 <td><p>550</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
@@ -429,11 +429,11 @@ E310</p></th>
 <td><p>No</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
-<td><p>Yes</p></td>
 <td><p>No</p></td>
 </tr>
-<tr class="row-odd"><td><p>124, 323</p></td>
-<td><p>FCC miller mode</p></td>
+<tr class="row-odd"><td><p>323</p></td>
+<td><p>Read rate</p></td>
+<td><p>PR_ASK</p></td>
 <td><p>550</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
@@ -441,23 +441,11 @@ E310</p></th>
 <td><p>No</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
-<td><p>Yes</p></td>
 <td><p>No</p></td>
 </tr>
-<tr class="row-even"><td><p>202</p></td>
-<td><p>Read rate *</p></td>
-<td><p>500</p></td>
-<td><p>Yes</p></td>
-<td><p>Yes</p></td>
-<td><p>Yes</p></td>
-<td><p>Yes</p></td>
-<td><p>Yes</p></td>
-<td><p>Yes</p></td>
-<td><p>No</p></td>
-<td><p>No</p></td>
-</tr>
-<tr class="row-odd"><td><p>15</p></td>
+<tr class="row-even"><td><p>15</p></td>
 <td><p>ETSI UB DRM</p></td>
+<td><p>PR_ASK</p></td>
 <td><p>400</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
@@ -465,11 +453,11 @@ E310</p></th>
 <td><p>No</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
-<td><p>Yes</p></td>
 <td><p>No</p></td>
 </tr>
-<tr class="row-even"><td><p>147, 344</p></td>
-<td><p>FCC miller mode</p></td>
+<tr class="row-odd"><td><p>344</p></td>
+<td><p>ETSI UB DRM</p></td>
+<td><p>PR_ASK</p></td>
 <td><p>400</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
@@ -477,11 +465,11 @@ E310</p></th>
 <td><p>No</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
-<td><p>Yes</p></td>
 <td><p>No</p></td>
 </tr>
-<tr class="row-odd"><td><p>148, 345</p></td>
-<td><p>FCC miller mode</p></td>
+<tr class="row-even"><td><p>345</p></td>
+<td><p>Read rate</p></td>
+<td><p>PR_ASK</p></td>
 <td><p>400</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
@@ -489,11 +477,11 @@ E310</p></th>
 <td><p>No</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
-<td><p>Yes</p></td>
 <td><p>No</p></td>
 </tr>
-<tr class="row-even"><td><p>12</p></td>
+<tr class="row-odd"><td><p>12</p></td>
 <td><p>ETSI LB</p></td>
+<td><p>PR_ASK</p></td>
 <td><p>300</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
@@ -502,10 +490,10 @@ E310</p></th>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
-<td><p>Yes</p></td>
 </tr>
-<tr class="row-odd"><td><p>125, 223, 325</p></td>
-<td><p>FCC miller mode</p></td>
+<tr class="row-even"><td><p>223</p></td>
+<td><p>ETSI LB</p></td>
+<td><p>PR_ASK</p></td>
 <td><p>300</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
@@ -514,10 +502,10 @@ E310</p></th>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
-<td><p>Yes</p></td>
 </tr>
-<tr class="row-even"><td><p>3</p></td>
+<tr class="row-odd"><td><p>3</p></td>
 <td><p>ETSI LB</p></td>
+<td><p>PR_ASK</p></td>
 <td><p>250</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
@@ -526,22 +514,22 @@ E310</p></th>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
-<td><p>Yes</p></td>
 </tr>
-<tr class="row-odd"><td><p>123, 222, 324</p></td>
-<td><p>FCC miller mode</p></td>
-<td><p>250</p></td>
-<td><p>Yes</p></td>
-<td><p>Yes</p></td>
-<td><p>Yes</p></td>
-<td><p>Yes</p></td>
-<td><p>Yes</p></td>
-<td><p>Yes</p></td>
-<td><p>Yes</p></td>
-<td><p>Yes</p></td>
-</tr>
-<tr class="row-even"><td><p>5</p></td>
+<tr class="row-even"><td><p>222</p></td>
 <td><p>ETSI LB DRM</p></td>
+<td><p>PR_ASK</p></td>
+<td><p>250</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>ETSI LB DRM</p></td>
+<td><p>PR_ASK</p></td>
 <td><p>200</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
@@ -550,10 +538,10 @@ E310</p></th>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
-<td><p>Yes</p></td>
 </tr>
-<tr class="row-odd"><td><p>141, 241, 342</p></td>
-<td><p>FCC DRM</p></td>
+<tr class="row-even"><td><p>241</p></td>
+<td><p>ETSI LB DRM</p></td>
+<td><p>PR_ASK</p></td>
 <td><p>200</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
@@ -562,10 +550,10 @@ E310</p></th>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
-<td><p>Yes</p></td>
 </tr>
-<tr class="row-even"><td><p>7</p></td>
+<tr class="row-odd"><td><p>7</p></td>
 <td><p>FCC DRM</p></td>
+<td><p>PR_ASK</p></td>
 <td><p>150</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
@@ -574,10 +562,10 @@ E310</p></th>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
-<td><p>Yes</p></td>
 </tr>
-<tr class="row-odd"><td><p>146, 244, 343</p></td>
+<tr class="row-even"><td><p>244</p></td>
 <td><p>FCC DRM</p></td>
+<td><p>PR_ASK</p></td>
 <td><p>150</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
@@ -586,10 +574,10 @@ E310</p></th>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
-<td><p>Yes</p></td>
 </tr>
-<tr class="row-even"><td><p>13</p></td>
+<tr class="row-odd"><td><p>13</p></td>
 <td><p>Sensitivity</p></td>
+<td><p>PR_ASK</p></td>
 <td><p>50</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
@@ -598,12 +586,11 @@ E310</p></th>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
-<td><p>Yes</p></td>
 </tr>
-<tr class="row-odd"><td><p>185, 285, 382</p></td>
+<tr class="row-even"><td><p>285</p></td>
 <td><p>Sensitivity</p></td>
+<td><p>PR_ASK</p></td>
 <td><p>50</p></td>
-<td><p>Yes</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
 <td><p>Yes</p></td>
@@ -614,13 +601,6 @@ E310</p></th>
 </tr>
 </tbody>
 </table>
-</div></blockquote>
-<blockquote id="rfmodefootnote-mode202">
-<div><p>* Impinj has measured performance gaps in RF mode 202,
-especially in the ETSI Lower frequency band and at long distances. Impinj is
-actively troubleshooting and will update firmware to improve performance when we
-are confident in a fix. Partners should test this mode themselves and decide if
-it is useful for their end customers in its current state.</p>
 <p>The table below shows detailed parameters of the supported RF modes:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -667,7 +647,7 @@ it is useful for their end customers in its current state.</p>
 <td><p>1</p></td>
 <td><p>800</p></td>
 </tr>
-<tr class="row-even"><td><p>102, 302</p></td>
+<tr class="row-even"><td><p>302</p></td>
 <td><p>Read rate</p></td>
 <td><p>PR_ASK</p></td>
 <td><p>7.5</p></td>
@@ -694,8 +674,8 @@ it is useful for their end customers in its current state.</p>
 <td><p>2</p></td>
 <td><p>550</p></td>
 </tr>
-<tr class="row-odd"><td><p>124, 323</p></td>
-<td><p>FCC miller mode</p></td>
+<tr class="row-odd"><td><p>323</p></td>
+<td><p>Read rate</p></td>
 <td><p>PR_ASK</p></td>
 <td><p>7.5</p></td>
 <td><p>2</p></td>
@@ -703,16 +683,7 @@ it is useful for their end customers in its current state.</p>
 <td><p>2</p></td>
 <td><p>550</p></td>
 </tr>
-<tr class="row-even"><td><p>202</p></td>
-<td><p>Read rate *</p></td>
-<td><p>PR_ASK</p></td>
-<td><p>15</p></td>
-<td><p>2</p></td>
-<td><p>426</p></td>
-<td><p>1</p></td>
-<td><p>500</p></td>
-</tr>
-<tr class="row-odd"><td><p>15</p></td>
+<tr class="row-even"><td><p>15</p></td>
 <td><p>ETSI UB DRM</p></td>
 <td><p>PR_ASK</p></td>
 <td><p>7.5</p></td>
@@ -721,8 +692,8 @@ it is useful for their end customers in its current state.</p>
 <td><p>4</p></td>
 <td><p>400</p></td>
 </tr>
-<tr class="row-even"><td><p>147, 344</p></td>
-<td><p>FCC miller mode</p></td>
+<tr class="row-odd"><td><p>344</p></td>
+<td><p>ETSI UB DRM</p></td>
 <td><p>PR_ASK</p></td>
 <td><p>7.5</p></td>
 <td><p>2</p></td>
@@ -730,8 +701,8 @@ it is useful for their end customers in its current state.</p>
 <td><p>4</p></td>
 <td><p>400</p></td>
 </tr>
-<tr class="row-odd"><td><p>148, 345</p></td>
-<td><p>FCC miller mode</p></td>
+<tr class="row-even"><td><p>345</p></td>
+<td><p>Read rate</p></td>
 <td><p>PR_ASK</p></td>
 <td><p>7.5</p></td>
 <td><p>1.5</p></td>
@@ -739,7 +710,7 @@ it is useful for their end customers in its current state.</p>
 <td><p>4</p></td>
 <td><p>400</p></td>
 </tr>
-<tr class="row-even"><td><p>12</p></td>
+<tr class="row-odd"><td><p>12</p></td>
 <td><p>ETSI LB</p></td>
 <td><p>PR_ASK</p></td>
 <td><p>15</p></td>
@@ -748,8 +719,8 @@ it is useful for their end customers in its current state.</p>
 <td><p>2</p></td>
 <td><p>300</p></td>
 </tr>
-<tr class="row-odd"><td><p>125, 223, 325</p></td>
-<td><p>FCC miller mode</p></td>
+<tr class="row-even"><td><p>223</p></td>
+<td><p>ETSI LB</p></td>
 <td><p>PR_ASK</p></td>
 <td><p>15</p></td>
 <td><p>2</p></td>
@@ -757,7 +728,7 @@ it is useful for their end customers in its current state.</p>
 <td><p>2</p></td>
 <td><p>300</p></td>
 </tr>
-<tr class="row-even"><td><p>3</p></td>
+<tr class="row-odd"><td><p>3</p></td>
 <td><p>ETSI LB</p></td>
 <td><p>PR_ASK</p></td>
 <td><p>20</p></td>
@@ -766,8 +737,8 @@ it is useful for their end customers in its current state.</p>
 <td><p>2</p></td>
 <td><p>250</p></td>
 </tr>
-<tr class="row-odd"><td><p>123, 222, 324</p></td>
-<td><p>FCC miller mode</p></td>
+<tr class="row-even"><td><p>222</p></td>
+<td><p>ETSI LB DRM</p></td>
 <td><p>PR_ASK</p></td>
 <td><p>20</p></td>
 <td><p>2</p></td>
@@ -775,7 +746,7 @@ it is useful for their end customers in its current state.</p>
 <td><p>2</p></td>
 <td><p>250</p></td>
 </tr>
-<tr class="row-even"><td><p>5</p></td>
+<tr class="row-odd"><td><p>5</p></td>
 <td><p>ETSI LB DRM</p></td>
 <td><p>PR_ASK</p></td>
 <td><p>20</p></td>
@@ -784,8 +755,8 @@ it is useful for their end customers in its current state.</p>
 <td><p>4</p></td>
 <td><p>200</p></td>
 </tr>
-<tr class="row-odd"><td><p>141, 241, 342</p></td>
-<td><p>FCC DRM</p></td>
+<tr class="row-even"><td><p>241</p></td>
+<td><p>ETSI LB DRM</p></td>
 <td><p>PR_ASK</p></td>
 <td><p>20</p></td>
 <td><p>2</p></td>
@@ -793,7 +764,7 @@ it is useful for their end customers in its current state.</p>
 <td><p>4</p></td>
 <td><p>200</p></td>
 </tr>
-<tr class="row-even"><td><p>7</p></td>
+<tr class="row-odd"><td><p>7</p></td>
 <td><p>FCC DRM</p></td>
 <td><p>PR_ASK</p></td>
 <td><p>20</p></td>
@@ -802,7 +773,7 @@ it is useful for their end customers in its current state.</p>
 <td><p>4</p></td>
 <td><p>150</p></td>
 </tr>
-<tr class="row-odd"><td><p>146, 244, 343</p></td>
+<tr class="row-even"><td><p>244</p></td>
 <td><p>FCC DRM</p></td>
 <td><p>PR_ASK</p></td>
 <td><p>20</p></td>
@@ -811,7 +782,7 @@ it is useful for their end customers in its current state.</p>
 <td><p>4</p></td>
 <td><p>150</p></td>
 </tr>
-<tr class="row-even"><td><p>13</p></td>
+<tr class="row-odd"><td><p>13</p></td>
 <td><p>Sensitivity</p></td>
 <td><p>PR_ASK</p></td>
 <td><p>20</p></td>
@@ -820,7 +791,7 @@ it is useful for their end customers in its current state.</p>
 <td><p>8</p></td>
 <td><p>50</p></td>
 </tr>
-<tr class="row-odd"><td><p>185, 285, 382</p></td>
+<tr class="row-even"><td><p>285</p></td>
 <td><p>Sensitivity</p></td>
 <td><p>PR_ASK</p></td>
 <td><p>20</p></td>
@@ -1149,44 +1120,6 @@ and the operation will complete immediately after.</p>
 </dl>
 </div></blockquote>
 </section>
-<section id="setcleargpiopinsop-0xae">
-<span id="setcleargpiopinsop"></span><h3>SetClearGpioPinsOp (0xAE)<a class="headerlink" href="#setcleargpiopinsop-0xae" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>The SetClearGpioPinsOp allows each GPIO to be configured as an output and
-its level set independently. Each GPIO pin is identified by its bit within
-the 32-bit configuration registers (below). Each pin enable and level may
-be set, without changing other pin settings, using SetClearGpioPinOp.</p>
-<p>Once the SetClearGpioPinsOp has been run the following GPIO registers are updated
-to reflect the updated state of the GPIO settings:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-GpioOutputEnable">GpioOutputEnable</a></p></li>
-<li><p><a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-GpioOutputLevel">GpioOutputLevel</a></p></li>
-</ul>
-</div></blockquote>
-<p>The configuration registers (below) are write-only.</p>
-<p>OpId: 0xAE</p>
-<p>Configuration register:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-GpioOutputLevelSet">GpioOutputLevelSet</a></p></li>
-<li><p><a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-GpioOutputLevelClear">GpioOutputLevelClear</a></p></li>
-<li><p><a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-GpioOutputEnableSet">GpioOutputEnableSet</a></p></li>
-<li><p><a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-GpioOutputEnableClear">GpioOutputEnableClear</a></p></li>
-</ul>
-</div></blockquote>
-<dl class="simple">
-<dt>Prerequisites:</dt><dd><ul class="simple">
-<li><p>None</p></li>
-</ul>
-</dd>
-<dt>Errors:</dt><dd><ul class="simple">
-<li><p>None</p></li>
-</ul>
-</dd>
-</dl>
-</div></blockquote>
-</section>
 <section id="startinventoryroundop-0xb0">
 <span id="startinventoryroundop"></span><h3>StartInventoryRoundOp (0xB0)<a class="headerlink" href="#startinventoryroundop-0xb0" title="Permalink to this headline">¶</a></h3>
 <blockquote>
@@ -1319,8 +1252,8 @@ There are 4 ANA_TEST pins which can have AUX DAC and AUX ADC signals routed:</p>
 <p>Note: The ATEST bus is a bus used by Impinj for testing purposes.
 Setting the parameters to values other than these enumerated values will
 likely result in incorrect device operation and may damage the device.</p>
-<table class="colwidths-given docutils align-default" id="id46">
-<caption><span class="caption-number">Table 33 </span><span class="caption-text">ANA_TEST signal multiplexing</span><a class="headerlink" href="#id46" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id34">
+<caption><span class="caption-number">Table 32 </span><span class="caption-text">ANA_TEST signal multiplexing</span><a class="headerlink" href="#id34" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20%" />
 <col style="width: 20%" />
@@ -1383,11 +1316,10 @@ contains a valid ADC to use for measurements</p>
 <a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-PowerControlLoopAuxAdcControl">PowerControlLoopAuxAdcControl</a>,
 and calculate error from <a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-PowerControlLoopAdcTarget">PowerControlLoopAdcTarget</a>.
 If SDD debug is enabled, extra information about the control loop is printed out. This includes
-printouts of all parameters for each loop in the power control loop.
-The parameters printed are the power control registers as well as the values set into the tx
-fine gain register. This is a good way to debug what is happening at each step. The SDD
-stream prints the data out in real time to give the current ADC values and error for each
-iteration.</p>
+printouts of all parameters for each loop in the power control loop.  These parameters are
+all the power control registers as well as values set into the fine gain. This is a good way to debug
+what is happening at each step. The SDD stream prints the data live to give the current ADC
+values and error for each iteration within the power control loop.</p>
 <p>Step 3: Check if the current ADC threshold error exceeds the allowed error. Check if the
 control loop has completed less than the allowed iterations. If both conditions are
 met, continue into the control loop. If the conditions are not met, jump to the
@@ -1396,17 +1328,14 @@ met, continue into the control loop. If the conditions are not met, jump to the
 == 0, the control loop is run until the error is met.
 <a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-PowerControlLoopAdcThresholds">PowerControlLoopAdcThresholds</a>
 == 0 is an allowed value.</p>
-<p>Step 4: Each pass through the loop we modify the TxScalar. Our starting value is given by the user as. Note that this tx fine gain value is set in the hardware through the tx fine gain op, which is a prerequisite of this op.
-<a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-TxFineGain">TxFineGain</a>.
+<p>Step 4: Each pass through the loop we modify the TxScalar. Our starting value is given by the user as
+<a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-PowerControlLoopInitialTxScalar">PowerControlLoopInitialTxScalar</a>.
 Each round through the loop we modify this value based on the
 <a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-PowerControlLoopGainDivisor">PowerControlLoopGainDivisor</a>.
 With this value modified we do bounds checking to ensure the TxScalar fits within +/-2047.
-If outside the accepted range, we set the value to the appropriate limit. Jump back to step 2.
-Note that by changing this value as the op progresses, the starting value the next time the
-op is called will be closer to the proper value, thus subsequent calls to the op have the
-potential to take less time. A user may read this register out at any time to see these changes.</p>
+If outside the accepted range, we set the value to the appropriate limit. Jump back to step 2.</p>
 <p>Step 5: The power control loop is done, so the final Tx fine gain value is written to the
-<a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-TxFineGain">TxFineGain</a>
+<a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-PowerControlLoopInitialTxScalar">PowerControlLoopInitialTxScalar</a>
 register for faster convergence on the next op run. When finished, a power control loop
 summary EventFifo packet is sent out. This contains information about the control loop
 run including whether the max iterations were run or the target power was achieved.
@@ -1417,7 +1346,7 @@ All parameters will be optionally sent to the SDD stream.</p>
 <li><p><a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-PowerControlLoopAuxAdcControl">PowerControlLoopAuxAdcControl</a></p></li>
 <li><p><a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-PowerControlLoopGainDivisor">PowerControlLoopGainDivisor</a></p></li>
 <li><p><a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-PowerControlLoopMaxIterations">PowerControlLoopMaxIterations</a></p></li>
-<li><p><a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-TxFineGain">TxFineGain</a></p></li>
+<li><p><a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-PowerControlLoopInitialTxScalar">PowerControlLoopInitialTxScalar</a></p></li>
 <li><p><a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-PowerControlLoopAdcTarget">PowerControlLoopAdcTarget</a></p></li>
 <li><p><a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-PowerControlLoopAdcThresholds">PowerControlLoopAdcThresholds</a></p></li>
 </ul>
@@ -1428,7 +1357,6 @@ All parameters will be optionally sent to the SDD stream.</p>
 <li><p><a class="reference internal" href="#locksynthesizerop">LockSynthesizerOp</a></p></li>
 <li><p><a class="reference internal" href="#setrfmodeop">SetRfModeOp</a></p></li>
 <li><p><a class="reference internal" href="#settxcoarsegainop">SetTxCoarseGainOp</a></p></li>
-<li><p><a class="reference internal" href="#settxfinegainop">SetTxFineGainOp</a></p></li>
 <li><p><a class="reference internal" href="#txrampupop">TxRampUpOp</a></p></li>
 </ul>
 </dd>
@@ -1451,13 +1379,11 @@ The LoopGainDivisor was set to 0</p>
 <div><p>The MeasureRssiOp will configure the Rssi Block in the Ex10Device
 through to measure the RSSI and send out a log once the RSSI hardware
 counter reaches the configured maximum. The log sent out will contain
-the linear RSSI, the log2 RSSI, and the counts taken in the hardware.
-The counts over which the Rssi block will integrate is controlled
-through the MeasureRssiCount register.</p>
+the linear RSSI, the log2 RSSI, and the counts taken in the hardware.</p>
 <p>OpId: 0xB6</p>
 <dl class="simple">
 <dt>Configuration register:</dt><dd><ul class="simple">
-<li><p><a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-MeasureRssiCount">MeasureRssiCount</a></p></li>
+<li><p>None</p></li>
 </ul>
 </dd>
 <dt>Prerequisite:</dt><dd><ul class="simple">
@@ -1539,14 +1465,7 @@ code and can be followed by multiple write configurations. In the aggregate op,
 we need to do write commands one at a time. This means we can only write to
 one register per write instruction.</p>
 </li>
-<li><p>insert_fifo_event</p>
-<p>Works the same as the normal Ex10-api command with one exception. Normally, the
-insert fifo command can be used with a NULL packet by sending nothing more than
-the command id and the trigger irq. The aggregate op can not find the commmand
-length if the packet is  NULL. If you do not wish to send out a packet, use a
-packet header which dictates static data length and 0 dynamic data length. This
-empty packet will not be sent out, but an irq can still be generated.</p>
-</li>
+<li><p>insert_fifo_event: Works the same as the normal Ex10-api command.</p></li>
 <li><p>reset: Works the same as the normal Ex10-api command.</p></li>
 </ul>
 <p>The new instructions for this op only allow finer control over the op. The instructions
@@ -1556,14 +1475,6 @@ Runs the op specified. If an error occurs in the op run, the aggregate
 op will send out the failed op and the specific failure in the aggregate op summary
 fifo then immediately exit the entire aggregate op. You may not run another aggregate
 op with the run op instruction.</p>
-<p>identifier:
-The packet identifier is given to the user as part of the aggregate of FIFO summary.
-This command takes in a new identifier following the instruction code.
-The default of the identifier will be 0u if the identifier command is not seen.
-There is no stored state for the identifier. The command to set the identifier must
-appear in the aggregate op sequence as long as the non-default identifier is required.
-The most recent handle defined by the aggregate op sequence will be used if multiple
-identifier commands are seen.</p>
 <p>go_to_index:
 Jumps to the given index in the AggregateOpBuffer. The op always starts at index 0.</p>
 <ul>
@@ -1615,85 +1526,26 @@ or not loaded an exit instruction.</p></li>
 </dl>
 </div></blockquote>
 </section>
-<section id="listenbeforetalkop-0xba">
-<span id="listenbeforetalkop"></span><h3>ListenBeforeTalkOp (0xBA)<a class="headerlink" href="#listenbeforetalkop-0xba" title="Permalink to this headline">¶</a></h3>
+<section id="bertestop-0xc0">
+<span id="bertestop"></span><h3>BerTestOp (0xC0)<a class="headerlink" href="#bertestop-0xc0" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><p>The ListenBeforeTalkOp is used to measure the RSSI at a given channel before
-ramping up. This is needed for some usecases in the Japan region.
-The op takes user configuration to run the lock synthesizer op,
-internally. This includes the settings for the frequency at which we want to
-measure RSSI, as well as the LBT offset frequency in <a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-LbtOffset">LbtOffset</a>.
-We lock the synthesizer to the frequency of interest(FOI) plus the offset (note
-that the offset can be positive or negative).
-Once the user starts the LBT op, it will take care of setting the rx gain, locking the
-synthesizer, setting the internal low pass filter, and running the RSSI measurement.
-Note, through this operation, that sub ops (LockSynthesizerOp, and MeasureRssiOp) will run in
-the same way they normally would if run by a user manually. This means the same fifo events
-and SDD logs will be emitted. Given this, the RSSI measurement event fifo event will be
-emitted during this op, which should be used for the LBT RSSI measurement.
-Note: The setting of analog RX gain is done using custom settings for LBT. This means the
-rx gain register <a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-RxGainControl">RxGainControl</a>
-does not need set before this op is run unless the user wishes to enable the rx gain
-override functionality. This functionality is described in the steps below.
-The overall flow of this op is as follows…</p>
-<dl class="simple">
-<dt>Flow:</dt><dd><ul class="simple">
-<li><p>Modem configuration for LBT</p></li>
-<li><p>Configure custom analog Rx gain</p></li>
-<li><p><a class="reference internal" href="#locksynthesizerop">LockSynthesizerOp</a> (User designated ramp frequency + LBT offset)</p></li>
-<li><p><a class="reference internal" href="#measurerssiop">MeasureRssiOp</a></p></li>
-<li><p>Restore previous modem settings (keeps synthesizer settings)</p></li>
-</ul>
-</dd>
-</dl>
-<p>1. The modem configuration saves off current state of the modem such that when LBT is
-complete, user configurations will be restored.</p>
-<p>2. The analog RX gain are chosen.
-Normally, specific settings for LBT are used. Any user settings will be
-restored after LBT finishes. The LBT settings are as follows:
-RxAtten = k__0_dB
-Pga1Gain = k_12_dB
-Pga2Gain = k__0_dB
-Pga3Gain = k_18_dB
-Pga2Bypass = true
-MixerGain = k_11p2_dB
-Pga1RinMode = false
-MixerBandwidth = true
-It is also possible to override these LBT settings if you use the register <a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-LbtControl">LbtControl</a>.
-By setting the Override field to true, the op will use the user defined settings
-placed in <a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-RxGainControl">RxGainControl</a>.</p>
-<p>3. The synthesizer is locked to the measurement frequency - the user frequency of interest -
-LBT offset, which allows for noise measurement at the frequency of interest.</p>
-<p>4. The LPF is set to 100Khz for LBT. This is normally set as part of ramp the ramp
-up or during SJC, but is specifically set to 100Khz for LBT.</p>
-<p>5. The RSSI is measured and an RSSI measurement FIFO report is sent to the user with the
-measurement on the offset frequency.</p>
-<p>Note: After running LBT, the synthesizer will still be locked to the offset frequency, thus
-the lock synthesizer op still needs to be run.</p>
-<p>OpId: 0xBA</p>
+<div><p>The BerTestOp executes the Bit Error Rate (BER) Test.</p>
+<p>OpId: 0xC0</p>
 <dl>
-<dt>Configuration registers:</dt><dd><ul class="simple">
-<li><p><a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-LbtOffset">LbtOffset</a></p></li>
-<li><p><a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-RfSynthesizerControl">RfSynthesizerControl</a></p></li>
-<li><p><a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-MeasureRssiCount">MeasureRssiCount</a></p></li>
-<li><p><a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-LbtControl">LbtControl</a></p></li>
+<dt>Configuration register:</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-BerControl">BerControl</a></p></li>
+<li><p><a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-BerMode">BerMode</a></p></li>
 </ul>
 </dd>
 <dt>Prerequisites:</dt><dd><ul class="simple">
-<li><p><a class="reference internal" href="#radiopowercontrolop">RadioPowerControlOp</a></p></li>
-<li><p><a class="reference internal" href="#setgpioop">SetGpioOp</a></p></li>
+<li><p><a class="reference internal" href="#cwon">CwOn</a> aggregate operation</p></li>
 </ul>
 </dd>
-<dt>Errors:</dt><dd><p>The errors encountered when running this operation can be the result of one of the
-sub-operations used within this operation. These could come from MeasureRssiOp or
-LockSynthesizerOp.</p>
-<ul>
-<li><p>InvalidParam</p>
-<p>The programmed divider values (R, N) or the loop filter type
-were invalid.</p>
-</li>
-<li><p>NoLock</p>
-<p>The synthesizer failed to lock the LO to its expected frequency.</p>
+<dt>Errors:</dt><dd><ul>
+<li><p>InvalidTxState</p>
+<p>The transmitter is not in a valid state to run BER.
+The transmitter must be transmitting CW, and not currently
+modulating the carrier.</p>
 </li>
 </ul>
 </dd>
@@ -1701,7 +1553,7 @@ were invalid.</p>
 </div></blockquote>
 </section>
 <section id="etsiburstop-0xc1">
-<h3>EtsiBurstOp (0xC1)<a class="headerlink" href="#etsiburstop-0xc1" title="Permalink to this headline">¶</a></h3>
+<span id="etsiburstop"></span><h3>EtsiBurstOp (0xC1)<a class="headerlink" href="#etsiburstop-0xc1" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>The EtsiBurstOp is used during testing to repeatedly ramp up
 and ramp down the transmitter with the applied modulation so that the
@@ -1743,16 +1595,14 @@ result of one of the sub-operations executed within this operation.</p>
 </div></blockquote>
 </section>
 </section>
-<section id="sdk-aggregate-operations">
-<h2>SDK Aggregate Operations<a class="headerlink" href="#sdk-aggregate-operations" title="Permalink to this headline">¶</a></h2>
-<p>SDK aggregate operations are a collection of atomic operations that perform a
+<section id="aggregate-operations">
+<span id="ex10-api-aggregate-operations-label"></span><h2>Aggregate Operations<a class="headerlink" href="#aggregate-operations" title="Permalink to this headline">¶</a></h2>
+<p>Aggregate operations are a collection of atomic operations that perform a
 specified procedure of operations in order to complete a described high level
-behavior. These SDK aggregate operations are not to be confused with the
-AggregateOp operation usable by the Ex10 device. These SDK aggregations
-are a collection of device operations run together to perform common
-tasks. They may or may not use the AggregateOp device op.</p>
+behavior. NOTE: Aggregate operations are implemented in the host code and may
+be integrated into the Impinj reader chip firmware at a later date.</p>
 <dl class="simple">
-<dt>The implementation of the SDK aggregate operations are found in:</dt><dd><ul class="simple">
+<dt>The implementation of the aggregate operations are found in:</dt><dd><ul class="simple">
 <li><p>ex10_c_dev_kit/include/ex10_api/ex10_ops.h,
 ex10_c_dev_kit/src/ex10_api/ex10_ops.c</p></li>
 </ul>
@@ -1795,10 +1645,10 @@ after all atomic operations have completed.</p>
 </dl>
 </div></blockquote>
 </section>
-<section id="ramptransmitpower">
-<h3>RampTransmitPower<a class="headerlink" href="#ramptransmitpower" title="Permalink to this headline">¶</a></h3>
+<section id="txpowerrampup">
+<h3>TxPowerRampUp<a class="headerlink" href="#txpowerrampup" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><p>RampTransmitPower is an aggregate operation that ramps
+<div><p>TxPowerRampUp is an aggregate operation that ramps
 the transmitter to a target output power and adjusts power output based
 on forward power feedback measurements at the LO port. This operation
 will complete after all atomic operations have completed and the power
@@ -1810,27 +1660,6 @@ If an ADC target value of 0 is specified, the <a class="reference internal" href
 <li><p><a class="reference internal" href="#settxfinegainop">SetTxFineGainOp</a></p></li>
 <li><p><a class="reference internal" href="#txrampupop">TxRampUpOp</a></p></li>
 <li><p><a class="reference internal" href="#powercontrolloopop">PowerControlLoopOp</a></p></li>
-</ul>
-</dd>
-</dl>
-</div></blockquote>
-</section>
-<section id="startetsiburst">
-<h3>StartEtsiBurst<a class="headerlink" href="#startetsiburst" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>StartEtsiBurst is an aggregate operation that prepares for running the ETSI
-burst op. It ramps up and down once with the required parameters to set up
-the Ex10 device before kicking off the op.</p>
-<dl class="simple">
-<dt>Atomic operations used:</dt><dd><ul class="simple">
-<li><p><a class="reference internal" href="#setgpioop">SetGpioOp</a></p></li>
-<li><p><a class="reference internal" href="#locksynthesizerop">LockSynthesizerOp</a></p></li>
-<li><p><a class="reference internal" href="#setrfmodeop">SetRfModeOp</a></p></li>
-<li><p><a class="reference internal" href="#settxcoarsegainop">SetTxCoarseGainOp</a></p></li>
-<li><p><a class="reference internal" href="#settxfinegainop">SetTxFineGainOp</a></p></li>
-<li><p><a class="reference internal" href="#txrampupop">TxRampUpOp</a></p></li>
-<li><p><a class="reference internal" href="#powercontrolloopop">PowerControlLoopOp</a></p></li>
-<li><p><a class="reference internal" href="#txrampdownop">TxRampDownOp</a></p></li>
 </ul>
 </dd>
 </dl>
@@ -1887,7 +1716,6 @@ will complete after all atomic operations have completed.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#setgpioop-0xad">SetGpioOp (0xAD)</a></li>
-<li><a class="reference internal" href="#setcleargpiopinsop-0xae">SetClearGpioPinsOp (0xAE)</a></li>
 <li><a class="reference internal" href="#startinventoryroundop-0xb0">StartInventoryRoundOp (0xB0)</a></li>
 <li><a class="reference internal" href="#runprbsdataop-0xb1">RunPrbsDataOp (0xB1)</a></li>
 <li><a class="reference internal" href="#sendselectop-0xb2">SendSelectOp (0xB2)</a></li>
@@ -1898,15 +1726,14 @@ will complete after all atomic operations have completed.</p>
 <li><a class="reference internal" href="#ustimerstartop-0xb7">UsTimerStartOp (0xB7)</a></li>
 <li><a class="reference internal" href="#ustimerwaitop-0xb8">UsTimerWaitOp (0xB8)</a></li>
 <li><a class="reference internal" href="#aggregateop-0xb9">AggregateOp (0xB9)</a></li>
-<li><a class="reference internal" href="#listenbeforetalkop-0xba">ListenBeforeTalkOp (0xBA)</a></li>
+<li><a class="reference internal" href="#bertestop-0xc0">BerTestOp (0xC0)</a></li>
 <li><a class="reference internal" href="#etsiburstop-0xc1">EtsiBurstOp (0xC1)</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#sdk-aggregate-operations">SDK Aggregate Operations</a><ul>
+<li><a class="reference internal" href="#aggregate-operations">Aggregate Operations</a><ul>
 <li><a class="reference internal" href="#cwon">CwOn</a></li>
 <li><a class="reference internal" href="#cwoff">CwOff</a></li>
-<li><a class="reference internal" href="#ramptransmitpower">RampTransmitPower</a></li>
-<li><a class="reference internal" href="#startetsiburst">StartEtsiBurst</a></li>
+<li><a class="reference internal" href="#txpowerrampup">TxPowerRampUp</a></li>
 <li><a class="reference internal" href="#inventory">Inventory</a></li>
 </ul>
 </li>
@@ -1918,13 +1745,13 @@ will complete after all atomic operations have completed.</p>
   <p class="topless"><a href="yk_firmware_ex10_api_application_address_map.html"
                         title="previous chapter">Impinj Reader Chip Application Address Map</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="yk_firmware_ex10_api_event_packets.html"
-                        title="next chapter">Impinj Reader Chip EventFifo Packets</a></p>
+  <p class="topless"><a href="yk_firmware_ex10_api_stored_settings.html"
+                        title="next chapter">Impinj Reader Chip API Application Stored Settings</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -1938,18 +1765,18 @@ will complete after all atomic operations have completed.</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="yk_firmware_ex10_api_event_packets.html" title="Impinj Reader Chip EventFifo Packets"
+          <a href="yk_firmware_ex10_api_stored_settings.html" title="Impinj Reader Chip API Application Stored Settings"
              >next</a></li>
         <li class="right" >
           <a href="yk_firmware_ex10_api_application_address_map.html" title="Impinj Reader Chip Application Address Map"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Impinj Reader Chip SDK</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="yk_firmware_ex10_api.html" >Impinj Reader Chip Wireline API</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="yk_firmware_ex10_api.html" >Impinj Reader Chip API</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Impinj Reader Chip API Operations</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Impinj, Inc..
+        &#169; Copyright 2021, Impinj, Inc..
     </div>
   </body>
 </html>

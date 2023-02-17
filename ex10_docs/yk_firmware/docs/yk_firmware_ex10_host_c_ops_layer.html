@@ -15,7 +15,7 @@
     <script src="../../_static/doctools.js"></script>
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Ex10Protocol Layer" href="yk_firmware_ex10_host_c_protocol_layer.html" />
-    <link rel="prev" title="Ex10PowerModes Layer" href="yk_firmware_ex10_host_c_power_modes_layer.html" /> 
+    <link rel="prev" title="Ex10Reader Layer" href="yk_firmware_ex10_host_c_reader_layer.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -24,7 +24,7 @@
           <a href="yk_firmware_ex10_host_c_protocol_layer.html" title="Ex10Protocol Layer"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="yk_firmware_ex10_host_c_power_modes_layer.html" title="Ex10PowerModes Layer"
+          <a href="yk_firmware_ex10_host_c_reader_layer.html" title="Ex10Reader Layer"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Impinj Reader Chip SDK</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="yk_firmware_ex10_host_c_api.html" accesskey="U">Impinj Reader Chip C Host API</a> &#187;</li>
@@ -45,7 +45,7 @@ sequencing of atomic operations.
 actions that can be executed by the Impinj reader chip.
 Some atomic operations produce data in the EventFifo,
 for example the StartInventoryRoundOp.</p>
-<p><span class="xref std std-ref">Aggregate operations</span>
+<p><a class="reference internal" href="yk_firmware_ex10_api_operations.html#ex10-api-aggregate-operations-label"><span class="std std-ref">Aggregate operations</span></a>
 are an aggregation of atomic and other aggregate operations, sent individually
 by the host, in order to implement a higher level task.
 The Impinj Reader Chip Host Library supports the following aggregate operations:</p>
@@ -56,30 +56,27 @@ The Impinj Reader Chip Host Library supports the following aggregate operations:
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N7Ex10Ops4initE">
-<span id="_CPPv3N7Ex10Ops4initE"></span><span id="_CPPv2N7Ex10Ops4initE"></span><span class="target" id="struct_ex10_ops_1adc44338b2c82a896961a433112845061"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">init</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv412Ex10Protocol" title="Ex10Protocol"><span class="n"><span class="pre">Ex10Protocol</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ex10_protocol</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops4initE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N7Ex10Ops4initE"></span><span id="_CPPv2N7Ex10Ops4initE"></span><span class="target" id="struct_ex10_ops_1a26735f5a86d26847e40244d887c0cc10"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv418OpCompletionStatus" title="OpCompletionStatus"><span class="n"><span class="pre">OpCompletionStatus</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">init</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv412Ex10Protocol" title="Ex10Protocol"><span class="n"><span class="pre">Ex10Protocol</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ex10_protocol</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops4initE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Initialize the Ex10 Ops instance. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param ex10_protocol</dt>
-<dd class="field-odd"><p>An <a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#struct_ex10_protocol"><span class="std std-ref">Ex10Protocol</span></a> instance </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ex10_protocol</strong> – An <a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#struct_ex10_protocol"><span class="std std-ref">Ex10Protocol</span></a> instance </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Info about any encountered errors. </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N7Ex10Ops9init_ex10E">
-<span id="_CPPv3N7Ex10Ops9init_ex10E"></span><span id="_CPPv2N7Ex10Ops9init_ex10E"></span><span class="target" id="struct_ex10_ops_1a745c4636a1b7787526931adbd0e2308d"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv418OpCompletionStatus" title="OpCompletionStatus"><span class="n"><span class="pre">OpCompletionStatus</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">init_ex10</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops9init_ex10E" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Initialize the Impinj Reader Chip at the <a class="reference internal" href="#struct_ex10_ops"><span class="std std-ref">Ex10Ops</span></a> layer. </p>
-</dd></dl>
-
-<dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N7Ex10Ops7releaseE">
 <span id="_CPPv3N7Ex10Ops7releaseE"></span><span id="_CPPv2N7Ex10Ops7releaseE"></span><span class="target" id="struct_ex10_ops_1a9fcae161e710e1fbaa266c790f1ff953"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">release</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops7releaseE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Cleans up dependencies between the SDK and Impinj Reader Chip. </p>
+<dd><p>Class cleanup without waiting for garbage collection. </p>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N7Ex10Ops27register_fifo_data_callbackE">
-<span id="_CPPv3N7Ex10Ops27register_fifo_data_callbackE"></span><span id="_CPPv2N7Ex10Ops27register_fifo_data_callbackE"></span><span class="target" id="struct_ex10_ops_1a848e8e2218e891f2efc947583ce14ea8"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">register_fifo_data_callback</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fifo_cb</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">FifoBufferNode</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops27register_fifo_data_callbackE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N7Ex10Ops27register_fifo_data_callbackE"></span><span id="_CPPv2N7Ex10Ops27register_fifo_data_callbackE"></span><span class="target" id="struct_ex10_ops_1a848e8e2218e891f2efc947583ce14ea8"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">register_fifo_data_callback</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fifo_cb</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv414FifoBufferNode" title="FifoBufferNode"><span class="n"><span class="pre">FifoBufferNode</span></span></a><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops27register_fifo_data_callbackE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Register an optional callback for EventFifo data events. </p>
 <p><dl class="simple">
 <dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#struct_ex10_ops_1ae6aaaf1fc248248194205cb89e5368c2"><span class="std std-ref">register_interrupt_callback</span></a> </p>
@@ -87,8 +84,8 @@ The Impinj Reader Chip Host Library supports the following aggregate operations:
 </dl>
 </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param fifo_cb</dt>
-<dd class="field-odd"><p>This callback is triggered when the interrupt_cb registered through register_interrupt_callback returns true. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fifo_cb</strong> – This callback is triggered when the interrupt_cb registered through register_interrupt_callback returns true. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -103,11 +100,11 @@ The Impinj Reader Chip Host Library supports the following aggregate operations:
 </dl>
 </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param enable_mask</dt>
-<dd class="field-odd"><p>The mask of interrupts to enable. </p>
-</dd>
-<dt class="field-even">Param interrupt_cb</dt>
-<dd class="field-even"><p>A function called when an enabled interrupt fires. The callback receives the interrupt status bits via argument and it should return true or false. If the return value is true then the fifo_data callback is triggered. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>enable_mask</strong> – The mask of interrupts to enable. </p></li>
+<li><p><strong>interrupt_cb</strong> – A function called when an enabled interrupt fires. The callback receives the interrupt status bits via argument and it should return true or false. If the return value is true then the fifo_data callback is triggered. </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -135,8 +132,8 @@ The Impinj Reader Chip Host Library supports the following aggregate operations:
 <span id="_CPPv3N7Ex10Ops12get_cw_is_onE"></span><span id="_CPPv2N7Ex10Ops12get_cw_is_onE"></span><span class="target" id="struct_ex10_ops_1a260c2eebf260a1b282ee6de646f4a2ca"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">get_cw_is_on</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops12get_cw_is_onE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Return whether or not CW is currently on. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param cw_is_on</dt>
-<dd class="field-odd"><p>A bool of whether CW is currently on. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cw_is_on</strong> – A bool of whether CW is currently on. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -144,12 +141,7 @@ The Impinj Reader Chip Host Library supports the following aggregate operations:
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N7Ex10Ops15read_ops_statusE">
 <span id="_CPPv3N7Ex10Ops15read_ops_statusE"></span><span id="_CPPv2N7Ex10Ops15read_ops_statusE"></span><span class="target" id="struct_ex10_ops_1a14a90ee22f17c8205ba83bf385305df8"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv415OpsStatusFields" title="OpsStatusFields"><span class="n"><span class="pre">OpsStatusFields</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">read_ops_status</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops15read_ops_statusE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Read the OpsStatus register. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Return</dt>
-<dd class="field-odd"><p>struct <a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#struct_ops_status_fields"><span class="std std-ref">OpsStatusFields</span></a> The fields of the ‘OpsStatus’ register. </p>
-</dd>
-</dl>
+<dd><p>A helper to read the OpsStatus register return a dictionary that holds the fields of the ‘OpsStatus’ register. </p>
 </dd></dl>
 
 <dl class="cpp var">
@@ -158,11 +150,11 @@ The Impinj Reader Chip Host Library supports the following aggregate operations:
 <dd><p>Start a log test op. </p>
 <p>This op periodically writes a log entry to the debug port. Each log entry consists of a timestamp, followed by a requested number of repetitions of that timestamp and an end-of-line. This op will run until stopped.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Param period</dt>
-<dd class="field-odd"><p>period (milliseconds) of log entries </p>
-</dd>
-<dt class="field-even">Param word_repeat</dt>
-<dd class="field-even"><p>Number of timestamp repetitions in each log entry </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>period</strong> – period (milliseconds) of log entries </p></li>
+<li><p><strong>word_repeat</strong> – Number of timestamp repetitions in each log entry </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -190,16 +182,14 @@ The Impinj Reader Chip Host Library supports the following aggregate operations:
 <p>This runs the MeasureAdcOp to completion.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Param adc_channel_start</dt>
-<dd class="field-odd"><p>Determines the starting channel on which to begin ADC conversions. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>adc_channel_start</strong> – Determines the starting channel on which to begin ADC conversions. </p></li>
+<li><p><strong>num_channels</strong> – The number of ADC conversions to perform starting with the adc_channel_start. Each conversion will be performed on the next multiplexer input. The number of channels converted will be limited to be within the valid AuxAdcResults range. </p></li>
+<li><p><strong>adc_results</strong> – [out] The array into which of ADC conversion results will be contained. The adc_results must be able to fit num_channels conversion results. </p></li>
+</ul>
 </dd>
-<dt class="field-even">Param num_channels</dt>
-<dd class="field-even"><p>The number of ADC conversions to perform starting with the adc_channel_start. Each conversion will be performed on the next multiplexer input. The number of channels converted will be limited to be within the valid AuxAdcResults range. </p>
-</dd>
-<dt class="field-odd">Param adc_results</dt>
-<dd class="field-odd"><p>[out] The array into which of ADC conversion results will be contained. The adc_results must be able to fit num_channels conversion results. </p>
-</dd>
-<dt class="field-even">Return</dt>
+<dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Info about any encountered errors. </p>
 </dd>
 </dl>
@@ -219,39 +209,23 @@ The Impinj Reader Chip Host Library supports the following aggregate operations:
 </p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Param dac_channel_start</dt>
-<dd class="field-odd"><p>Determines the starting DAC channel. </p>
-</dd>
-<dt class="field-even">Param num_channels</dt>
-<dd class="field-even"><p>The number of DAC channel conversions to perform. </p>
-</dd>
-<dt class="field-odd">Param dac_values</dt>
-<dd class="field-odd"><p>An array of DAC channel data containing unsigned 10-bit values for conversion. The size of this array must be uint16_t[num_channels]. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dac_channel_start</strong> – Determines the starting DAC channel. </p></li>
+<li><p><strong>num_channels</strong> – The number of DAC channel conversions to perform. </p></li>
+<li><p><strong>dac_values</strong> – An array of DAC channel data containing unsigned 10-bit values for conversion. The size of this array must be uint16_t[num_channels]. </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N7Ex10Ops11set_rf_modeE">
-<span id="_CPPv3N7Ex10Ops11set_rf_modeE"></span><span id="_CPPv2N7Ex10Ops11set_rf_modeE"></span><span class="target" id="struct_ex10_ops_1a17a25ee025fb4a378bb162e91b34f8c4"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">set_rf_mode</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">rf_mode</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops11set_rf_modeE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>This function executes the SetRfModeOp which will set the Ex10 modem registers for use with a specific RF mode. </p>
+<span id="_CPPv3N7Ex10Ops11set_rf_modeE"></span><span id="_CPPv2N7Ex10Ops11set_rf_modeE"></span><span class="target" id="struct_ex10_ops_1a5c88e7811102e2e7acd45990fe586e53"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">set_rf_mode</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops11set_rf_modeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Updates the modem registers according to the specified RF mode. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param rf_mode</dt>
-<dd class="field-odd"><p>The requested RF mode. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N7Ex10Ops14rf_mode_is_drmE">
-<span id="_CPPv3N7Ex10Ops14rf_mode_is_drmE"></span><span id="_CPPv2N7Ex10Ops14rf_mode_is_drmE"></span><span class="target" id="struct_ex10_ops_1ad508f794d2c975e576b49014d4affdb9"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">rf_mode_is_drm</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">rf_mode</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops14rf_mode_is_drmE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Determine whether the RF mode is intended for use as a Dense Reader Mode (DRM) or not. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Param rf_mode</dt>
-<dd class="field-odd"><p>The requested RF mode.</p>
-</dd>
-<dt class="field-even">Return</dt>
-<dd class="field-even"><p>bool true if the RF mode is a Dense Reader Mode, false if not. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mode</strong> – number of the requested RF mode </p>
 </dd>
 </dl>
 </dd></dl>
@@ -280,8 +254,8 @@ The Impinj Reader Chip Host Library supports the following aggregate operations:
 <span id="_CPPv3N7Ex10Ops18set_tx_coarse_gainE"></span><span id="_CPPv2N7Ex10Ops18set_tx_coarse_gainE"></span><span class="target" id="struct_ex10_ops_1ae531fa111621cbfc70b4798fef7584b1"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">set_tx_coarse_gain</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">tx_atten</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops18set_tx_coarse_gainE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Set the TX coarse gain settings. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param tx_atten</dt>
-<dd class="field-odd"><p>The CT filter attenuation. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tx_atten</strong> – The CT filter attenuation. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -291,19 +265,19 @@ The Impinj Reader Chip Host Library supports the following aggregate operations:
 <span id="_CPPv3N7Ex10Ops16set_tx_fine_gainE"></span><span id="_CPPv2N7Ex10Ops16set_tx_fine_gainE"></span><span class="target" id="struct_ex10_ops_1a204622d6f15b7b4dc5dc092e2f4b5f7a"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">set_tx_fine_gain</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">int16_t</span></span><span class="w"> </span><span class="n"><span class="pre">tx_scalar</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops16set_tx_fine_gainE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Tx fine gain value. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param tx_scalar</dt>
-<dd class="field-odd"><p>new fine gain value </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tx_scalar</strong> – new fine gain value </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N7Ex10Ops19radio_power_controlE">
-<span id="_CPPv3N7Ex10Ops19radio_power_controlE"></span><span id="_CPPv2N7Ex10Ops19radio_power_controlE"></span><span class="target" id="struct_ex10_ops_1a7afa8e0eb909b18fb5f81435ed1ba3b8"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">radio_power_control</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">enable</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops19radio_power_controlE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Power up/down the LDOs and bias currents for the Ex10 radio by running the RadioPowerControlOp. </p>
+<span id="_CPPv3N7Ex10Ops19radio_power_controlE"></span><span id="_CPPv2N7Ex10Ops19radio_power_controlE"></span><span class="target" id="struct_ex10_ops_1af1f5d053738f3cf4cefeadbffa1a66cb"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">radio_power_control</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">enable</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops19radio_power_controlE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Power up/down the LDOs and bias currents for the radio. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param enable</dt>
-<dd class="field-odd"><p>If true, turns on the Ex10 analog power supplies. If false, turns off the Ex10 analog power supplies. </p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Returns a bool true on success else false. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -313,8 +287,8 @@ The Impinj Reader Chip Host Library supports the following aggregate operations:
 <span id="_CPPv3N7Ex10Ops28get_current_analog_rx_configE"></span><span id="_CPPv2N7Ex10Ops28get_current_analog_rx_configE"></span><span class="target" id="struct_ex10_ops_1ac55b94d3b7eb15da147e56dccc131314"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv419RxGainControlFields" title="RxGainControlFields"><span class="n"><span class="pre">RxGainControlFields</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">get_current_analog_rx_config</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops28get_current_analog_rx_configE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get the last used receiver gain. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param return</dt>
-<dd class="field-odd"><p>The stored receiver gain of whatever was last passed to set_analog_rx_config. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>return</strong> – The stored receiver gain of whatever was last passed to set_analog_rx_config. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -324,83 +298,26 @@ The Impinj Reader Chip Host Library supports the following aggregate operations:
 <span id="_CPPv3N7Ex10Ops20set_analog_rx_configE"></span><span id="_CPPv2N7Ex10Ops20set_analog_rx_configE"></span><span class="target" id="struct_ex10_ops_1ae94d47891e59baa02e94eb2bb9728785"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">set_analog_rx_config</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv419RxGainControlFields" title="RxGainControlFields"><span class="n"><span class="pre">RxGainControlFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">analog_rx_fields</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops20set_analog_rx_configE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Set individual block gain of the receiver. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param analog_rx_fields</dt>
-<dd class="field-odd"><p>The gain we set the receiver to. This value is stored in a state variable for later retrieval. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>analog_rx_fields</strong> – The gain we set the receiver to. This value is stored in a state variable for later retrieval. </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N7Ex10Ops12measure_rssiE">
-<span id="_CPPv3N7Ex10Ops12measure_rssiE"></span><span id="_CPPv2N7Ex10Ops12measure_rssiE"></span><span class="target" id="struct_ex10_ops_1af7b76d6992786a5949f4564bf7d8a567"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">measure_rssi</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">rssi_count</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops12measure_rssiE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N7Ex10Ops12measure_rssiE"></span><span id="_CPPv2N7Ex10Ops12measure_rssiE"></span><span class="target" id="struct_ex10_ops_1aae145971c9c96f16304a8644989312d2"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">measure_rssi</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops12measure_rssiE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Setup and run the op to get the RSSI. </p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Once run, the RSSI measurements must be retrieved through the event FIFO </p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Param rssi_count</dt>
-<dd class="field-odd"><p>The integration count to used for measurement. The recommended value is 0x0Fu. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N7Ex10Ops33get_default_lbt_rx_analog_configsE">
-<span id="_CPPv3N7Ex10Ops33get_default_lbt_rx_analog_configsE"></span><span id="_CPPv2N7Ex10Ops33get_default_lbt_rx_analog_configsE"></span><span class="target" id="struct_ex10_ops_1ad513ff3a2d442717a6ff4c18ea17fe71"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv419RxGainControlFields" title="RxGainControlFields"><span class="n"><span class="pre">RxGainControlFields</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">get_default_lbt_rx_analog_configs</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops33get_default_lbt_rx_analog_configsE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Returns the default Rx analog settings used in the listen before talk op. </p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N7Ex10Ops22run_listen_before_talkE">
-<span id="_CPPv3N7Ex10Ops22run_listen_before_talkE"></span><span id="_CPPv2N7Ex10Ops22run_listen_before_talkE"></span><span class="target" id="struct_ex10_ops_1a7a38cb46824e823a321cdff6fa5f9f56"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">run_listen_before_talk</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">r_divider_index</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">n_divider</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n"><span class="pre">offset_frequency_khz</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">rssi_count</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops22run_listen_before_talkE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Runs the listen before talk op. </p>
-<p>The op goes through the following steps:<ol class="lowerroman simple">
-<li><p>Set the synthesizer to the offset frequency</p></li>
-<li><p>Sets the internal low pass filter</p></li>
-<li><p>Runs the RSSI measurement. For these steps to work, the host passes in configurations for the synthesizer lock and LBT offset frequency. When the op measures the RSSI, the measurements are sent out through an RSSI measurement FIFO event. </p></li>
-</ol>
-</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>: Before running LBT, the host must have run 2 ops: set_gpio, set_analog_rx_config. </p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>: CW must also be ramped down. </p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>: The op leaves the synthesizer locked to the offset frequency. </p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Param r_divider_index</dt>
-<dd class="field-odd"><p>Index (0-7) of a divider value for RfSynthesizer, divides down from FREF. </p>
-</dd>
-<dt class="field-even">Param n_divider</dt>
-<dd class="field-even"><p>N divider for the RfSynthesizer </p>
-</dd>
-<dt class="field-odd">Param offset_frequency_khz</dt>
-<dd class="field-odd"><p>The frequency offset for lbt. </p>
-</dd>
-<dt class="field-even">Param rssi_count</dt>
-<dd class="field-even"><p>The integration count to used for measurement. The recommended value is 0x0Fu. </p>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N7Ex10Ops14start_timer_opE">
 <span id="_CPPv3N7Ex10Ops14start_timer_opE"></span><span id="_CPPv2N7Ex10Ops14start_timer_opE"></span><span class="target" id="struct_ex10_ops_1a06fe6d3d37ef48e94bd7723800660891"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">start_timer_op</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">delay_us</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops14start_timer_opE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Run the us timer start op. </p>
-<p>This starts a timer which one can check completion of via the UsTimerWaitOp. </p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If the op is run while a timer is already started, the current timer will be cancelled and a new one will be started. </p>
-</div>
+<p>This starts a timer which one can check completion of via the UsTimerWaitOp. NOTE: If the op is run while a timer is already started, the current timer will be overriden. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param delay_us</dt>
-<dd class="field-odd"><p>The time in microseconds for the timer to run. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>delay_us</strong> – The time in microseconds for the timer to run. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -409,11 +326,7 @@ The Impinj Reader Chip Host Library supports the following aggregate operations:
 <dt class="sig sig-object cpp" id="_CPPv4N7Ex10Ops13wait_timer_opE">
 <span id="_CPPv3N7Ex10Ops13wait_timer_opE"></span><span id="_CPPv2N7Ex10Ops13wait_timer_opE"></span><span class="target" id="struct_ex10_ops_1a6dc8202aaff0de041fdee72e1b0c207f"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">wait_timer_op</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops13wait_timer_opE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Run the us timer wait op. </p>
-<p>This waits for the timer to complete which was started by the UsTimerStartOp. </p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If the timer is done or no timer was started, the op will return immediately. </p>
-</div>
+<p>This waits for the timer to complete which was started by the UsTimerStartOp. NOTE: If the timer is done or no timer was started, the op will return immediately. </p>
 </dd></dl>
 
 <dl class="cpp var">
@@ -421,11 +334,11 @@ The Impinj Reader Chip Host Library supports the following aggregate operations:
 <span id="_CPPv3N7Ex10Ops16lock_synthesizerE"></span><span id="_CPPv2N7Ex10Ops16lock_synthesizerE"></span><span class="target" id="struct_ex10_ops_1aed7079bd06c22e5c8a7907d37e2053a4"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">lock_synthesizer</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">r_divider_index</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">n_divider</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops16lock_synthesizerE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Lock the RF synthesizer to the target frequency. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param r_divider_index</dt>
-<dd class="field-odd"><p>Index (0-7) of a divider value for RfSynthesizer, divides down from FREF. </p>
-</dd>
-<dt class="field-even">Param n_divider</dt>
-<dd class="field-even"><p>N divider for the RfSynthesizer </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r_divider_index</strong> – Index (0-7) of a divider value for RfSynthesizer, divides down from FREF. </p></li>
+<li><p><strong>n_divider</strong> – N divider for the RfSynthesizer </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -436,11 +349,11 @@ The Impinj Reader Chip Host Library supports the following aggregate operations:
 <dd><p>Start event FIFO test op. </p>
 <p>This op periodically pushes debug packets into the event FIFO. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param period</dt>
-<dd class="field-odd"><p>period in milliseconds of event FIFO debug packets </p>
-</dd>
-<dt class="field-even">Param num_words</dt>
-<dd class="field-even"><p>payload size in each event FIFO debug packet </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>period</strong> – period in milliseconds of event FIFO debug packets </p></li>
+<li><p><strong>num_words</strong> – payload size in each event FIFO debug packet </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -457,11 +370,11 @@ The Impinj Reader Chip Host Library supports the following aggregate operations:
 <span id="_CPPv3N7Ex10Ops15enable_sdd_logsE"></span><span id="_CPPv2N7Ex10Ops15enable_sdd_logsE"></span><span class="target" id="struct_ex10_ops_1a57844e510568815852ac7cbb11327784"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">enable_sdd_logs</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv416LogEnablesFields" title="LogEnablesFields"><span class="n"><span class="pre">LogEnablesFields</span></span></a><span class="w"> </span><span class="n"><span class="pre">enables</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">speed_mhz</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops15enable_sdd_logsE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Enable the SDD log outputs and log speed. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param enables</dt>
-<dd class="field-odd"><p>the structure with the individual enables </p>
-</dd>
-<dt class="field-even">Param speed_mhz</dt>
-<dd class="field-even"><p>The speed of the sdd SPI clock (1-24 MHz) </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>enables</strong> – the structure with the individual enables </p></li>
+<li><p><strong>speed_mhz</strong> – The speed of the sdd SPI clock (1-24 MHz) </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -485,8 +398,8 @@ The Impinj Reader Chip Host Library supports the following aggregate operations:
 <p>The modem MUST be in the halted state. </p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Param nak</dt>
-<dd class="field-odd"><p>Indicates whether to nak the tag or not.</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>nak</strong> – Indicates whether to nak the tag or not.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -509,7 +422,7 @@ The Impinj Reader Chip Host Library supports the following aggregate operations:
 <span id="_CPPv3N7Ex10Ops18wait_op_completionE"></span><span id="_CPPv2N7Ex10Ops18wait_op_completionE"></span><span class="target" id="struct_ex10_ops_1a77783423e25f843b42b98f17d91014f2"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv418OpCompletionStatus" title="OpCompletionStatus"><span class="n"><span class="pre">OpCompletionStatus</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">wait_op_completion</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops18wait_op_completionE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Wait for prevously started op to complete. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Return</dt>
+<dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>Info about the completed op. </p>
 </dd>
 </dl>
@@ -526,10 +439,10 @@ The Impinj Reader Chip Host Library supports the following aggregate operations:
 <span id="_CPPv3N7Ex10Ops31wait_op_completion_with_timeoutE"></span><span id="_CPPv2N7Ex10Ops31wait_op_completion_with_timeoutE"></span><span class="target" id="struct_ex10_ops_1a5a17a815f2d9c415df6fbf39fc8b143e"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv418OpCompletionStatus" title="OpCompletionStatus"><span class="n"><span class="pre">OpCompletionStatus</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">wait_op_completion_with_timeout</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">timeout_ms</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops31wait_op_completion_with_timeoutE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Wait for prevously started op to complete. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param timeout_ms</dt>
-<dd class="field-odd"><p>Function returns false if the op takes more time than this number of milliseconds. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>timeout_ms</strong> – Function returns false if the op takes more time than this number of milliseconds. </p>
 </dd>
-<dt class="field-even">Return</dt>
+<dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Info about the completed op. </p>
 </dd>
 </dl>
@@ -543,41 +456,15 @@ The Impinj Reader Chip Host Library supports the following aggregate operations:
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N7Ex10Ops8get_gpioE">
-<span id="_CPPv3N7Ex10Ops8get_gpioE"></span><span id="_CPPv2N7Ex10Ops8get_gpioE"></span><span class="target" id="struct_ex10_ops_1aafb1722bb4df8a66b9237b691038c060"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">GpioControlFields</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">get_gpio</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops8get_gpioE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N7Ex10Ops8get_gpioE"></span><span id="_CPPv2N7Ex10Ops8get_gpioE"></span><span class="target" id="struct_ex10_ops_1aafb1722bb4df8a66b9237b691038c060"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv417GpioControlFields" title="GpioControlFields"><span class="n"><span class="pre">GpioControlFields</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">get_gpio</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops8get_gpioE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get the current GPIO output levels and enable. </p>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N7Ex10Ops8set_gpioE">
 <span id="_CPPv3N7Ex10Ops8set_gpioE"></span><span id="_CPPv2N7Ex10Ops8set_gpioE"></span><span class="target" id="struct_ex10_ops_1a3446c4b5dd2ae7e5dc3a342e3e54e8ba"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">set_gpio</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">gpio_levels</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">gpio_enables</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops8set_gpioE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Set the GPIO levels and enables using the SetGpioOp. </p>
-<p>There are 22 Ex10 GPIOs. Each GPIO can be set as an output by setting the appropriate bit in the gpio level and enable fields. This function uses the SetGpioOp to set the GPIO levels and enables.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Param gpio_levels</dt>
-<dd class="field-odd"><p>A bit-field which sets each GPIO pin output level. </p>
-</dd>
-<dt class="field-even">Param gpio_enables</dt>
-<dd class="field-even"><p>A bit-field which enables each GPIO pin as an output. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N7Ex10Ops19set_clear_gpio_pinsE">
-<span id="_CPPv3N7Ex10Ops19set_clear_gpio_pinsE"></span><span id="_CPPv2N7Ex10Ops19set_clear_gpio_pinsE"></span><span class="target" id="struct_ex10_ops_1a8bb5080ef6a6509e052f21604ebe55b0"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">set_clear_gpio_pins</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv416GpioPinsSetClear" title="GpioPinsSetClear"><span class="n"><span class="pre">GpioPinsSetClear</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">gpio_pins_set_clear</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops19set_clear_gpio_pinsE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Set the GPIO levels and enables using the SetClearGpioPinsOp. </p>
-<p>There are 22 Ex10 GPIOs. Each GPIO can be adressed within each bit-field by setting or clearing the appropriate bit (1u &lt;&lt; pin_number).</p>
-<p>Set the GPIO levels and enable. There are 22 Ex10 GPIOs. The GPIOs are labelled DIGITAL_IO[N] on the Imping Reader Chip schematic.</p>
-<p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p>struct <a class="reference internal" href="#struct_gpio_pins_set_clear"><span class="std std-ref">GpioPinsSetClear</span></a> </p>
-</dd>
-</dl>
-</p>
-<dl class="field-list simple">
-<dt class="field-odd">Param gpio_pins_set_clear</dt>
-<dd class="field-odd"><p>The GPIO pin bit-fields to set and clear. </p>
-</dd>
-</dl>
+<dd><p>Set the GPIO levels and enable. </p>
+<p>There are 22 Ex10 GPIOs. Each GPIO can be set as an output by setting the appropriate bit in the gpio level and enable fields. gpio_levels A bit-field which sets GPIO positive logic output levels. Each bit in the field represents one GPIO level. gpio_enables A bit-field which enables each GPIO as an output. </p>
 </dd></dl>
 
 <dl class="cpp var">
@@ -585,8 +472,8 @@ The Impinj Reader Chip Host Library supports the following aggregate operations:
 <span id="_CPPv3N7Ex10Ops21start_inventory_roundE"></span><span id="_CPPv2N7Ex10Ops21start_inventory_roundE"></span><span class="target" id="struct_ex10_ops_1a42b616fb98f2e6970074b9e4bc8f12e2"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">start_inventory_round</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv427InventoryRoundControlFields" title="InventoryRoundControlFields"><span class="n"><span class="pre">InventoryRoundControlFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">configs</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv429InventoryRoundControl_2Fields" title="InventoryRoundControl_2Fields"><span class="n"><span class="pre">InventoryRoundControl_2Fields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">configs_2</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops21start_inventory_roundE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Start a single inventory round. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param configs</dt>
-<dd class="field-odd"><p>inventory round configuration </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>configs</strong> – inventory round configuration </p>
 </dd>
 </dl>
 </dd></dl>
@@ -598,24 +485,18 @@ The Impinj Reader Chip Host Library supports the following aggregate operations:
 </dd></dl>
 
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N7Ex10Ops26start_hpf_override_test_opE">
-<span id="_CPPv3N7Ex10Ops26start_hpf_override_test_opE"></span><span id="_CPPv2N7Ex10Ops26start_hpf_override_test_opE"></span><span class="target" id="struct_ex10_ops_1a473531aa71598e45fccd046273ee775b"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">start_hpf_override_test_op</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv425HpfOverrideSettingsFields" title="HpfOverrideSettingsFields"><span class="n"><span class="pre">HpfOverrideSettingsFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">hpf_settings</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops26start_hpf_override_test_opE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Set the HPF override settings and run the HPF override test op. </p>
-</dd></dl>
-
-<dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N7Ex10Ops16start_etsi_burstE">
-<span id="_CPPv3N7Ex10Ops16start_etsi_burstE"></span><span id="_CPPv2N7Ex10Ops16start_etsi_burstE"></span><span class="target" id="struct_ex10_ops_1a04fc3b8df938ddec4403f33928179b22"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv418OpCompletionStatus" title="OpCompletionStatus"><span class="n"><span class="pre">OpCompletionStatus</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">start_etsi_burst</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv427InventoryRoundControlFields" title="InventoryRoundControlFields"><span class="n"><span class="pre">InventoryRoundControlFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">inventory_config</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv429InventoryRoundControl_2Fields" title="InventoryRoundControl_2Fields"><span class="n"><span class="pre">InventoryRoundControl_2Fields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">inventory_config_2</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv416GpioPinsSetClear" title="GpioPinsSetClear"><span class="n"><span class="pre">GpioPinsSetClear</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">gpio_controls</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">rf_mode</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv412PowerConfigs" title="PowerConfigs"><span class="n"><span class="pre">PowerConfigs</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">power_config</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv426RfSynthesizerControlFields" title="RfSynthesizerControlFields"><span class="n"><span class="pre">RfSynthesizerControlFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">synth_control</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv416RegulatoryTimers" title="RegulatoryTimers"><span class="n"><span class="pre">RegulatoryTimers</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">timer_config</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">on_time_ms</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">off_time_ms</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops16start_etsi_burstE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N7Ex10Ops16start_etsi_burstE"></span><span id="_CPPv2N7Ex10Ops16start_etsi_burstE"></span><span class="target" id="struct_ex10_ops_1a1f641ebfa6aa197c940a2f5202741ad1"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv418OpCompletionStatus" title="OpCompletionStatus"><span class="n"><span class="pre">OpCompletionStatus</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">start_etsi_burst</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv427InventoryRoundControlFields" title="InventoryRoundControlFields"><span class="n"><span class="pre">InventoryRoundControlFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">inventory_config</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv429InventoryRoundControl_2Fields" title="InventoryRoundControl_2Fields"><span class="n"><span class="pre">InventoryRoundControl_2Fields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">inventory_config_2</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv417GpioControlFields" title="GpioControlFields"><span class="n"><span class="pre">GpioControlFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">gpio_controls</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">rf_mode</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv412PowerConfigs" title="PowerConfigs"><span class="n"><span class="pre">PowerConfigs</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">power_config</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv426RfSynthesizerControlFields" title="RfSynthesizerControlFields"><span class="n"><span class="pre">RfSynthesizerControlFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">synth_control</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv416RegulatoryTimers" title="RegulatoryTimers"><span class="n"><span class="pre">RegulatoryTimers</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">timer_config</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">on_time_ms</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">off_time_ms</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops16start_etsi_burstE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Start the ETSI burst test. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param on_time_ms</dt>
-<dd class="field-odd"><p>The time for which cw remains on after ramp up </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>on_time_ms</strong> – The time for which cw remains on after ramp up </p></li>
+<li><p><strong>off_time_ms</strong> – Controls the time cw remains off after ramp down See <a class="reference internal" href="#struct_ex10_ops_1aa4abbc592623e607307ca07c0934374d"><span class="std std-ref">inventory()</span></a> for other parameter descriptions. </p></li>
+</ul>
 </dd>
-<dt class="field-even">Param off_time_ms</dt>
-<dd class="field-even"><p>Controls the time cw remains off after ramp down See <a class="reference internal" href="#struct_ex10_ops_1a504e92e84cd453a541612ea8bde857eb"><span class="std std-ref">inventory()</span></a> for other parameter descriptions. </p>
-</dd>
-<dt class="field-odd">Return</dt>
-<dd class="field-odd"><p>Info about any encountered errors. </p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Info about any encountered errors. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -625,14 +506,12 @@ The Impinj Reader Chip Host Library supports the following aggregate operations:
 <span id="_CPPv3N7Ex10Ops14start_ber_testE"></span><span id="_CPPv2N7Ex10Ops14start_ber_testE"></span><span class="target" id="struct_ex10_ops_1a92cde87d7f137b0e529ddbf1faffc270"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">start_ber_test</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">num_bits</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">num_packets</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">delimiter_only</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops14start_ber_testE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Enable the Ber Test. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param num_bits</dt>
-<dd class="field-odd"><p>The number of bits to send </p>
-</dd>
-<dt class="field-even">Param num_packets</dt>
-<dd class="field-even"><p>The number of packets to transmit </p>
-</dd>
-<dt class="field-odd">Param delimiter_only</dt>
-<dd class="field-odd"><p>Determine whether to use a delimiter only instead of a full query </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_bits</strong> – The number of bits to send </p></li>
+<li><p><strong>num_packets</strong> – The number of packets to transmit </p></li>
+<li><p><strong>delimiter_only</strong> – Determine whether to use a delimiter only instead of a full query </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -651,11 +530,11 @@ The Impinj Reader Chip Host Library supports the following aggregate operations:
 <p>
 A CRC-16-CCITT will be calculated across the data and appended to the written data. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param data_ptr</dt>
-<dd class="field-odd"><p>A pointer to the calibration data </p>
-</dd>
-<dt class="field-even">Param write_length</dt>
-<dd class="field-even"><p>The number of bytes to write</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_ptr</strong> – A pointer to the calibration data </p></li>
+<li><p><strong>write_length</strong> – The number of bytes to write</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -663,24 +542,20 @@ A CRC-16-CCITT will be calculated across the data and appended to the written da
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N7Ex10Ops6cw_offE">
 <span id="_CPPv3N7Ex10Ops6cw_offE"></span><span id="_CPPv2N7Ex10Ops6cw_offE"></span><span class="target" id="struct_ex10_ops_1a85a8c293cdda649e4f96b3ad731cae13"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">cw_off</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops6cw_offE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Ramp down and turn off the radio transmitter. </p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The radio remains powered on but the transmitter is stopped. </p>
-</div>
+<dd><p>Ramp down and turn off radio. </p>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N7Ex10Ops5cw_onE">
-<span id="_CPPv3N7Ex10Ops5cw_onE"></span><span id="_CPPv2N7Ex10Ops5cw_onE"></span><span class="target" id="struct_ex10_ops_1a9e2b8e6fa48901a7d7e60378b658191f"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv418OpCompletionStatus" title="OpCompletionStatus"><span class="n"><span class="pre">OpCompletionStatus</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">cw_on</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv416GpioPinsSetClear" title="GpioPinsSetClear"><span class="n"><span class="pre">GpioPinsSetClear</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">gpio_pins_set_clear</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">rf_mode</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv412PowerConfigs" title="PowerConfigs"><span class="n"><span class="pre">PowerConfigs</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">power_config</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv426RfSynthesizerControlFields" title="RfSynthesizerControlFields"><span class="n"><span class="pre">RfSynthesizerControlFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">synth_control</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv416RegulatoryTimers" title="RegulatoryTimers"><span class="n"><span class="pre">RegulatoryTimers</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">timer_config</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv428PowerDroopCompensationFields" title="PowerDroopCompensationFields"><span class="n"><span class="pre">PowerDroopCompensationFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">droop_comp</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops5cw_onE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N7Ex10Ops5cw_onE"></span><span id="_CPPv2N7Ex10Ops5cw_onE"></span><span class="target" id="struct_ex10_ops_1a5437605004b6cfe001999e07b9888b7b"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv418OpCompletionStatus" title="OpCompletionStatus"><span class="n"><span class="pre">OpCompletionStatus</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">cw_on</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv417GpioControlFields" title="GpioControlFields"><span class="n"><span class="pre">GpioControlFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">gpio_controls</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">rf_mode</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv412PowerConfigs" title="PowerConfigs"><span class="n"><span class="pre">PowerConfigs</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">power_config</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv426RfSynthesizerControlFields" title="RfSynthesizerControlFields"><span class="n"><span class="pre">RfSynthesizerControlFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">synth_control</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv416RegulatoryTimers" title="RegulatoryTimers"><span class="n"><span class="pre">RegulatoryTimers</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">timer_config</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops5cw_onE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Ramp power while transmitting CW and prepare the receiver. </p>
 <p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#struct_ex10_ops_1a504e92e84cd453a541612ea8bde857eb"><span class="std std-ref">inventory</span></a> for parameter descriptions. </p>
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#struct_ex10_ops_1aa4abbc592623e607307ca07c0934374d"><span class="std std-ref">inventory</span></a> for parameter descriptions. </p>
 </dd>
 </dl>
 </p>
 <dl class="field-list simple">
-<dt class="field-odd">Return</dt>
+<dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>Info about any encountered errors. </p>
 </dd>
 </dl>
@@ -691,12 +566,12 @@ A CRC-16-CCITT will be calculated across the data and appended to the written da
 <span id="_CPPv3N7Ex10Ops19ramp_transmit_powerE"></span><span id="_CPPv2N7Ex10Ops19ramp_transmit_powerE"></span><span class="target" id="struct_ex10_ops_1a80c5e7e7e992181a566e4b3afa1cf403"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv418OpCompletionStatus" title="OpCompletionStatus"><span class="n"><span class="pre">OpCompletionStatus</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ramp_transmit_power</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv412PowerConfigs" title="PowerConfigs"><span class="n"><span class="pre">PowerConfigs</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">power_config</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv416RegulatoryTimers" title="RegulatoryTimers"><span class="n"><span class="pre">RegulatoryTimers</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">timer_config</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops19ramp_transmit_powerE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Ramps to the target transmit power. </p>
 <p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#struct_ex10_ops_1a504e92e84cd453a541612ea8bde857eb"><span class="std std-ref">inventory</span></a> for parameter descriptions. </p>
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#struct_ex10_ops_1aa4abbc592623e607307ca07c0934374d"><span class="std std-ref">inventory</span></a> for parameter descriptions. </p>
 </dd>
 </dl>
 </p>
 <dl class="field-list simple">
-<dt class="field-odd">Return</dt>
+<dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>Info about any encountered errors. </p>
 </dd>
 </dl>
@@ -704,10 +579,10 @@ A CRC-16-CCITT will be calculated across the data and appended to the written da
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N7Ex10Ops9inventoryE">
-<span id="_CPPv3N7Ex10Ops9inventoryE"></span><span id="_CPPv2N7Ex10Ops9inventoryE"></span><span class="target" id="struct_ex10_ops_1a504e92e84cd453a541612ea8bde857eb"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv418OpCompletionStatus" title="OpCompletionStatus"><span class="n"><span class="pre">OpCompletionStatus</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">inventory</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv416GpioPinsSetClear" title="GpioPinsSetClear"><span class="n"><span class="pre">GpioPinsSetClear</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">gpio_pins_set_clear</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">rf_mode</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv412PowerConfigs" title="PowerConfigs"><span class="n"><span class="pre">PowerConfigs</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">power_config</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv426RfSynthesizerControlFields" title="RfSynthesizerControlFields"><span class="n"><span class="pre">RfSynthesizerControlFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">synth_control</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv416RegulatoryTimers" title="RegulatoryTimers"><span class="n"><span class="pre">RegulatoryTimers</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">timer_config</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv427InventoryRoundControlFields" title="InventoryRoundControlFields"><span class="n"><span class="pre">InventoryRoundControlFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">inventory_config</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv429InventoryRoundControl_2Fields" title="InventoryRoundControl_2Fields"><span class="n"><span class="pre">InventoryRoundControl_2Fields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">inventory_config_2</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">run_select_op</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv428PowerDroopCompensationFields" title="PowerDroopCompensationFields"><span class="n"><span class="pre">PowerDroopCompensationFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">droop_comp</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops9inventoryE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N7Ex10Ops9inventoryE"></span><span id="_CPPv2N7Ex10Ops9inventoryE"></span><span class="target" id="struct_ex10_ops_1aa4abbc592623e607307ca07c0934374d"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv418OpCompletionStatus" title="OpCompletionStatus"><span class="n"><span class="pre">OpCompletionStatus</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">inventory</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv417GpioControlFields" title="GpioControlFields"><span class="n"><span class="pre">GpioControlFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">gpio_config</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">rf_mode</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv412PowerConfigs" title="PowerConfigs"><span class="n"><span class="pre">PowerConfigs</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">power_config</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv426RfSynthesizerControlFields" title="RfSynthesizerControlFields"><span class="n"><span class="pre">RfSynthesizerControlFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">synth_control</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv416RegulatoryTimers" title="RegulatoryTimers"><span class="n"><span class="pre">RegulatoryTimers</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">timer_config</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv427InventoryRoundControlFields" title="InventoryRoundControlFields"><span class="n"><span class="pre">InventoryRoundControlFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">inventory_config</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv429InventoryRoundControl_2Fields" title="InventoryRoundControl_2Fields"><span class="n"><span class="pre">InventoryRoundControl_2Fields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">inventory_config_2</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">run_select_op</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops9inventoryE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Ramps up power, runs SJC, and starts an inventory round. </p>
 <p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p>struct <a class="reference internal" href="#struct_gpio_pins_set_clear"><span class="std std-ref">GpioPinsSetClear</span></a> </p>
+<dt><strong>See</strong></dt><dd><p>struct <a class="reference internal" href="#struct_gpio_control_fields"><span class="std std-ref">GpioControlFields</span></a> </p>
 </dd>
 <dt><strong>See</strong></dt><dd><p>struct <a class="reference internal" href="#struct_power_configs"><span class="std std-ref">PowerConfigs</span></a> </p>
 </dd>
@@ -719,39 +594,22 @@ A CRC-16-CCITT will be calculated across the data and appended to the written da
 </dd>
 <dt><strong>See</strong></dt><dd><p>struct <a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#struct_inventory_round_control__2_fields"><span class="std std-ref">InventoryRoundControl_2Fields</span></a> </p>
 </dd>
-<dt><strong>See</strong></dt><dd><p>struct <a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#struct_power_droop_compensation_fields"><span class="std std-ref">PowerDroopCompensationFields</span></a> </p>
-</dd>
 </dl>
 </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param gpio_pins_set_clear</dt>
-<dd class="field-odd"><p></p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gpio_config</strong> – </p></li>
+<li><p><strong>rf_mode</strong> – An integer indicating the RF Mode. </p></li>
+<li><p><strong>power_config</strong> – </p></li>
+<li><p><strong>synth_config</strong> – </p></li>
+<li><p><strong>timer_config</strong> – </p></li>
+<li><p><strong>inventory_config</strong> – </p></li>
+<li><p><strong>inventory_config_2</strong> – </p></li>
+<li><p><strong>run_select_op</strong> – Whether or not to run the send select op and send any enabled select commands in the gen2 command buffer. </p></li>
+</ul>
 </dd>
-<dt class="field-even">Param rf_mode</dt>
-<dd class="field-even"><p>An integer indicating the RF Mode. </p>
-</dd>
-<dt class="field-odd">Param power_config</dt>
-<dd class="field-odd"><p></p>
-</dd>
-<dt class="field-even">Param synth_config</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Param timer_config</dt>
-<dd class="field-odd"><p></p>
-</dd>
-<dt class="field-even">Param inventory_config</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Param inventory_config_2</dt>
-<dd class="field-odd"><p></p>
-</dd>
-<dt class="field-even">Param run_select_op</dt>
-<dd class="field-even"><p>Whether or not to run the send select op and send any enabled select commands in the gen2 command buffer. </p>
-</dd>
-<dt class="field-odd">Param droop_comp</dt>
-<dd class="field-odd"><p></p>
-</dd>
-<dt class="field-even">Return</dt>
+<dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Info about any encountered errors. </p>
 </dd>
 </dl>
@@ -763,104 +621,26 @@ A CRC-16-CCITT will be calculated across the data and appended to the written da
 <dd><p>Return the current 32 bit time (microseconds) since start from the device. </p>
 </dd></dl>
 
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N7Ex10Ops25enable_droop_compensationE">
-<span id="_CPPv3N7Ex10Ops25enable_droop_compensationE"></span><span id="_CPPv2N7Ex10Ops25enable_droop_compensationE"></span><span class="target" id="struct_ex10_ops_1a6c07bd6a97e9592315bc66b5c0c57e16"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">enable_droop_compensation</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv428PowerDroopCompensationFields" title="PowerDroopCompensationFields"><span class="n"><span class="pre">PowerDroopCompensationFields</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">compensation</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops25enable_droop_compensationE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Enable power droop compensation. </p>
-<p>
-Tx RF power can droop as the transmitter warms up, but enabling compensation will periodically adjust TxFineGain so that power is closer to the target. This feature is enabled by default. <dl class="simple">
-<dt><strong>See</strong></dt><dd><p>struct <a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#struct_power_droop_compensation_fields"><span class="std std-ref">PowerDroopCompensationFields</span></a></p>
-</dd>
-</dl>
-</p>
-<dl class="field-list simple">
-<dt class="field-odd">Param compensation</dt>
-<dd class="field-odd"><p></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N7Ex10Ops26disable_droop_compensationE">
-<span id="_CPPv3N7Ex10Ops26disable_droop_compensationE"></span><span id="_CPPv2N7Ex10Ops26disable_droop_compensationE"></span><span class="target" id="struct_ex10_ops_1ab537d2f943f1ccc334a888b305108c14"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">disable_droop_compensation</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops26disable_droop_compensationE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Disable power droop compensation. </p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N7Ex10Ops28register_pre_rampup_callbackE">
-<span id="_CPPv3N7Ex10Ops28register_pre_rampup_callbackE"></span><span id="_CPPv2N7Ex10Ops28register_pre_rampup_callbackE"></span><span class="target" id="struct_ex10_ops_1a64ee10b932cb3320e9733ed4261945f3"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">register_pre_rampup_callback</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">pre_cb</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops28register_pre_rampup_callbackE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Registers the function pointer to call before ramping when callings the ops layer cw_on function. </p>
-<p>The ops cw_on ramp is used from all the reader layer functions as the one pathway to ramping up. This callback will therefore be used by inventory, continuous_inventory, cw_test, ber, prbs, etc. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Param pre_cb</dt>
-<dd class="field-odd"><p>The function pointer to register. The function takes no parameters and returns a bool. This bool shall return true on success, and false otherwise. In the case of an error, and error handling should be done by the callback context since it knows what is appropriate to do for the error. The returned bool will just cause the cw_on call to return with an error occurred. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N7Ex10Ops29register_post_rampup_callbackE">
-<span id="_CPPv3N7Ex10Ops29register_post_rampup_callbackE"></span><span id="_CPPv2N7Ex10Ops29register_post_rampup_callbackE"></span><span class="target" id="struct_ex10_ops_1ae6190ed42b44b2e66e0cad9666416710"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">register_post_rampup_callback</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">post_cb</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops29register_post_rampup_callbackE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Registers the function pointer to call after ramping up when callings the ops layer cw_on function. </p>
-<p>The ops cw_on ramp is used from all the reader layer functions as the one pathway to ramping up. This callback will therefore be used by inventory, continuous_inventory, cw_test, ber, prbs, etc. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Param post_cb</dt>
-<dd class="field-odd"><p>The function pointer to register. The function takes no parameters and returns a bool. This bool shall return true on success, and false otherwise. In the case of an error, and error handling should be done by the callback context since it knows what is appropriate to do for the error. The returned bool will just cause the cw_on call to return with an error occurred. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N7Ex10Ops30unregister_pre_rampup_callbackE">
-<span id="_CPPv3N7Ex10Ops30unregister_pre_rampup_callbackE"></span><span id="_CPPv2N7Ex10Ops30unregister_pre_rampup_callbackE"></span><span class="target" id="struct_ex10_ops_1a4cc706794bc858b503489665eb4e9129"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">unregister_pre_rampup_callback</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops30unregister_pre_rampup_callbackE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Sets the function pointer called pre rampup to NULL. </p>
-<p>For more information, see register_pre_ramp_callback. </p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N7Ex10Ops31unregister_post_rampup_callbackE">
-<span id="_CPPv3N7Ex10Ops31unregister_post_rampup_callbackE"></span><span id="_CPPv2N7Ex10Ops31unregister_post_rampup_callbackE"></span><span class="target" id="struct_ex10_ops_1aeb61395d664b1caad175c05d97bd336f"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">unregister_post_rampup_callback</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops31unregister_post_rampup_callbackE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Sets the function pointer called post rampup to NULL. </p>
-<p>For more information, see register_post_ramp_callback. </p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N7Ex10Ops13op_error_noneE">
-<span id="_CPPv3N7Ex10Ops13op_error_noneE"></span><span id="_CPPv2N7Ex10Ops13op_error_noneE"></span><span id="Ex10Ops::op_error_none__OpCompletionStatusCP"></span><span class="target" id="struct_ex10_ops_1af4b8787946898bcad52a7fcbfeeafcbf"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#_CPPv418OpCompletionStatus" title="OpCompletionStatus"><span class="n"><span class="pre">OpCompletionStatus</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">op_error_none</span></span></span><a class="headerlink" href="#_CPPv4N7Ex10Ops13op_error_noneE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>A const pointer to the struct <a class="reference internal" href="yk_firmware_ex10_host_c_protocol_layer.html#struct_op_completion_status"><span class="std std-ref">OpCompletionStatus</span></a>, initialized with a setting consistent with the No Error condition. </p>
-</dd></dl>
-
 </div>
 </dd></dl>
 
 <dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv416GpioPinsSetClear">
-<span id="_CPPv316GpioPinsSetClear"></span><span id="_CPPv216GpioPinsSetClear"></span><span id="GpioPinsSetClear"></span><span class="target" id="struct_gpio_pins_set_clear"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GpioPinsSetClear</span></span></span><a class="headerlink" href="#_CPPv416GpioPinsSetClear" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Used to control output state of each DIGITAL_IO pin of the Impinj Read Chip. </p>
+<dt class="sig sig-object cpp" id="_CPPv417GpioControlFields">
+<span id="_CPPv317GpioControlFields"></span><span id="_CPPv217GpioControlFields"></span><span id="GpioControlFields"></span><span class="target" id="struct_gpio_control_fields"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GpioControlFields</span></span></span><a class="headerlink" href="#_CPPv417GpioControlFields" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Used to control and read the GPIO outputs. </p>
+<p>Each Ex10 DIGITAL_IO pin is assigned a numeric value. That value is represented as (1u &lt;&lt; DIGITAL_IO[N]); where N is the digital IO numeric value. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N16GpioPinsSetClear16output_level_setE">
-<span id="_CPPv3N16GpioPinsSetClear16output_level_setE"></span><span id="_CPPv2N16GpioPinsSetClear16output_level_setE"></span><span id="GpioPinsSetClear::output_level_set__uint32_t"></span><span class="target" id="struct_gpio_pins_set_clear_1a2e452f7f8a877c3f9e102f2b4ef573a2"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">output_level_set</span></span></span><a class="headerlink" href="#_CPPv4N16GpioPinsSetClear16output_level_setE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Set a group of DIGITAL_IO pins to have their outputs set to Logic 1. This value will only be preset on pins which have their outputs enabled. </p>
+<dt class="sig sig-object cpp" id="_CPPv4N17GpioControlFields13output_enableE">
+<span id="_CPPv3N17GpioControlFields13output_enableE"></span><span id="_CPPv2N17GpioControlFields13output_enableE"></span><span id="GpioControlFields::output_enable__uint32_t"></span><span class="target" id="struct_gpio_control_fields_1abda63adc28b57bfd0f0d99d7239f090b"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">output_enable</span></span></span><a class="headerlink" href="#_CPPv4N17GpioControlFields13output_enableE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set and get the GPIO pins output enable states. </p>
 </dd></dl>
 
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N16GpioPinsSetClear18output_level_clearE">
-<span id="_CPPv3N16GpioPinsSetClear18output_level_clearE"></span><span id="_CPPv2N16GpioPinsSetClear18output_level_clearE"></span><span id="GpioPinsSetClear::output_level_clear__uint32_t"></span><span class="target" id="struct_gpio_pins_set_clear_1a2756e250a0f9615e3ba9b79f2edf1675"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">output_level_clear</span></span></span><a class="headerlink" href="#_CPPv4N16GpioPinsSetClear18output_level_clearE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Set a group of DIGITAL_IO pins to have their outputs set to Logic 0. This value will only be preset on pins which have their outputs enabled. </p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N16GpioPinsSetClear17output_enable_setE">
-<span id="_CPPv3N16GpioPinsSetClear17output_enable_setE"></span><span id="_CPPv2N16GpioPinsSetClear17output_enable_setE"></span><span id="GpioPinsSetClear::output_enable_set__uint32_t"></span><span class="target" id="struct_gpio_pins_set_clear_1a86af208b1013153721074e22eedcaa9a"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">output_enable_set</span></span></span><a class="headerlink" href="#_CPPv4N16GpioPinsSetClear17output_enable_setE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Set a group of DIGITAL_IO pins to be enabled as output pins. </p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N16GpioPinsSetClear19output_enable_clearE">
-<span id="_CPPv3N16GpioPinsSetClear19output_enable_clearE"></span><span id="_CPPv2N16GpioPinsSetClear19output_enable_clearE"></span><span id="GpioPinsSetClear::output_enable_clear__uint32_t"></span><span class="target" id="struct_gpio_pins_set_clear_1adc40e95606ee679ac6d83e17c3ce1731"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">output_enable_clear</span></span></span><a class="headerlink" href="#_CPPv4N16GpioPinsSetClear19output_enable_clearE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Disable a group of DIGITAL_IO pins from being enabled as output pins. Pins which have their output disabled will have the Hi-Z state. </p>
+<dt class="sig sig-object cpp" id="_CPPv4N17GpioControlFields12output_levelE">
+<span id="_CPPv3N17GpioControlFields12output_levelE"></span><span id="_CPPv2N17GpioControlFields12output_levelE"></span><span id="GpioControlFields::output_level__uint32_t"></span><span class="target" id="struct_gpio_control_fields_1a4b41319cc3d6d092f86ae3ff6bf6a869"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">output_level</span></span></span><a class="headerlink" href="#_CPPv4N17GpioControlFields12output_levelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set and get the GPIO pins output level states. </p>
 </dd></dl>
 
 </div>
@@ -955,149 +735,6 @@ Tx RF power can droop as the transmitter warms up, but enabling compensation wil
 
 </dd></dl>
 
-<section id="sdk-aggregate-operations">
-<span id="ex10-api-sdk-aggregate-operations-label"></span><h2>SDK Aggregate Operations<a class="headerlink" href="#sdk-aggregate-operations" title="Permalink to this headline">¶</a></h2>
-<p>SDK aggregate operations are a collection of atomic operations that perform a
-specified procedure of operations in order to complete a described high level
-behavior. These SDK aggregate operations are not to be confused with the
-AggregateOp operation usable by the Ex10 device. These SDK aggregations
-are a collection of device operations run together to perform common
-tasks. They may or may not use the AggregateOp device op.</p>
-<p>The implementation of the SDK aggregate operations are found in the ops layer.</p>
-<section id="cwon">
-<h3>CwOn<a class="headerlink" href="#cwon" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>CwOn is an aggregate operation that will ramp up
-the transmitter, adjust output power based on forward power
-measurements at the LO port and prepare the receiver. This operation
-will complete after all atomic operations have completed.</p>
-<dl class="simple">
-<dt>Prerequisites:</dt><dd><ul class="simple">
-<li><p>None</p></li>
-</ul>
-</dd>
-<dt>Atomic operations used:</dt><dd><ul class="simple">
-<li><p><a class="reference internal" href="yk_firmware_ex10_api_operations.html#setgpioop"><span class="std std-ref">SetGpioOp</span></a></p></li>
-<li><p><a class="reference internal" href="yk_firmware_ex10_api_operations.html#locksynthesizerop"><span class="std std-ref">LockSynthesizerOp</span></a></p></li>
-<li><p><a class="reference internal" href="yk_firmware_ex10_api_operations.html#setrfmodeop"><span class="std std-ref">SetRfModeOp</span></a></p></li>
-<li><p><a class="reference internal" href="yk_firmware_ex10_api_operations.html#settxcoarsegainop"><span class="std std-ref">SetTxCoarseGainOp</span></a></p></li>
-<li><p><a class="reference internal" href="yk_firmware_ex10_api_operations.html#settxfinegainop"><span class="std std-ref">SetTxFineGainOp</span></a></p></li>
-<li><p><a class="reference internal" href="yk_firmware_ex10_api_operations.html#txrampupop"><span class="std std-ref">TxRampUpOp</span></a></p></li>
-<li><p><a class="reference internal" href="yk_firmware_ex10_api_operations.html#powercontrolloopop"><span class="std std-ref">PowerControlLoopOp</span></a></p></li>
-<li><p><a class="reference internal" href="yk_firmware_ex10_api_operations.html#rxrunsjcop"><span class="std std-ref">RxRunSjcOp</span></a></p></li>
-</ul>
-</dd>
-</dl>
-<p>This aggregate logic utilizes the FW aggregate op and appends the
-aforementioned ops based on current transmitter state. This means
-that if the transmitter is already at CW when called, the SetRfMode
-op is still appended and run on its own. Then the function will
-return early. If it is off, next, the pre_ramp_callback is called
-if it is set. Then further ops are added to the aggregate op and
-run (which turns the transmitter on). Finally, the post_rampup_callack
-is called if set. This logic is captured in the diagram below:</p>
-</div></blockquote>
-<figure class="align-default" id="id1">
-<img alt="../../_images/ops_layer_cw_on_logic.png" src="../../_images/ops_layer_cw_on_logic.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">The pre_ramp_callback and post_rampup_callack functions are callbacks
-which can be set in the ops layer. By default, both callbacks are left
-as NULL upon initialization of the ops layer.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="cwoff">
-<h3>CwOff<a class="headerlink" href="#cwoff" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>CwOff is an aggregate operation that will ramp down the transmitter.
-This operation will complete after all atomic operations have completed.</p>
-<dl class="simple">
-<dt>Prerequisites:</dt><dd><ul class="simple">
-<li><p>None</p></li>
-</ul>
-</dd>
-<dt>Atomic operations used:</dt><dd><ul class="simple">
-<li><p><a class="reference internal" href="yk_firmware_ex10_api_operations.html#txrampdownop"><span class="std std-ref">TxRampDownOp</span></a></p></li>
-</ul>
-</dd>
-</dl>
-</div></blockquote>
-</section>
-<section id="ramptransmitpower">
-<h3>RampTransmitPower<a class="headerlink" href="#ramptransmitpower" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>RampTransmitPower is an aggregate operation that ramps
-the transmitter to a target output power and adjusts power output based
-on forward power feedback measurements at the LO port. This operation
-will complete after all atomic operations have completed and the power
-feedback control loop algorithm has finished.
-If an ADC target value of 0 is specified, the <a href="#id2"><span class="problematic" id="id3">PowerControlLoopOp_</span></a> is not run.</p>
-<dl class="simple">
-<dt>Prerequisites:</dt><dd><ul class="simple">
-<li><p><a class="reference internal" href="yk_firmware_ex10_api_operations.html#setgpioop"><span class="std std-ref">SetGpioOp</span></a></p></li>
-<li><p><a class="reference internal" href="yk_firmware_ex10_api_operations.html#locksynthesizerop"><span class="std std-ref">LockSynthesizerOp</span></a></p></li>
-<li><p><a class="reference internal" href="yk_firmware_ex10_api_operations.html#setrfmodeop"><span class="std std-ref">SetRfModeOp</span></a></p></li>
-</ul>
-</dd>
-<dt>Atomic operations used:</dt><dd><ul class="simple">
-<li><p><a class="reference internal" href="yk_firmware_ex10_api_operations.html#settxcoarsegainop"><span class="std std-ref">SetTxCoarseGainOp</span></a></p></li>
-<li><p><a class="reference internal" href="yk_firmware_ex10_api_operations.html#settxfinegainop"><span class="std std-ref">SetTxFineGainOp</span></a></p></li>
-<li><p><a class="reference internal" href="yk_firmware_ex10_api_operations.html#txrampupop"><span class="std std-ref">TxRampUpOp</span></a></p></li>
-<li><p><a class="reference internal" href="yk_firmware_ex10_api_operations.html#powercontrolloopop"><span class="std std-ref">PowerControlLoopOp</span></a></p></li>
-</ul>
-</dd>
-</dl>
-</div></blockquote>
-</section>
-<section id="startetsiburst">
-<h3>StartEtsiBurst<a class="headerlink" href="#startetsiburst" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>StartEtsiBurst is an aggregate operation that prepares for running the ETSI
-burst op. It ramps up and down once with the required parameters to set up
-the Ex10 device before kicking off the op.</p>
-<dl class="simple">
-<dt>Prerequisites:</dt><dd><ul class="simple">
-<li><p>None</p></li>
-</ul>
-</dd>
-<dt>Atomic operations used:</dt><dd><ul class="simple">
-<li><p><a class="reference internal" href="yk_firmware_ex10_api_operations.html#setgpioop"><span class="std std-ref">SetGpioOp</span></a></p></li>
-<li><p><a class="reference internal" href="yk_firmware_ex10_api_operations.html#locksynthesizerop"><span class="std std-ref">LockSynthesizerOp</span></a></p></li>
-<li><p><a class="reference internal" href="yk_firmware_ex10_api_operations.html#setrfmodeop"><span class="std std-ref">SetRfModeOp</span></a></p></li>
-<li><p><a class="reference internal" href="yk_firmware_ex10_api_operations.html#settxcoarsegainop"><span class="std std-ref">SetTxCoarseGainOp</span></a></p></li>
-<li><p><a class="reference internal" href="yk_firmware_ex10_api_operations.html#settxfinegainop"><span class="std std-ref">SetTxFineGainOp</span></a></p></li>
-<li><p><a class="reference internal" href="yk_firmware_ex10_api_operations.html#txrampupop"><span class="std std-ref">TxRampUpOp</span></a></p></li>
-<li><p><a class="reference internal" href="yk_firmware_ex10_api_operations.html#powercontrolloopop"><span class="std std-ref">PowerControlLoopOp</span></a></p></li>
-<li><p><a class="reference internal" href="yk_firmware_ex10_api_operations.html#txrampdownop"><span class="std std-ref">TxRampDownOp</span></a></p></li>
-</ul>
-</dd>
-</dl>
-</div></blockquote>
-</section>
-<section id="inventory">
-<h3>Inventory<a class="headerlink" href="#inventory" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>Inventory is an aggregate operation that ramps up
-power, adjusts output power based on forward power measurements at the
-LO port, runs the SJC and starts an inventory round. This operation
-will complete after all atomic operations have completed.
-Note that the inventory round starts and the function returns while
-the round is still running so that the user may perform other actions
-in parallel.</p>
-<dl class="simple">
-<dt>Prerequisites:</dt><dd><ul class="simple">
-<li><p>None</p></li>
-</ul>
-</dd>
-<dt>Operations used:</dt><dd><ul class="simple">
-<li><p><a class="reference internal" href="#cwon"><span class="std std-ref">CwOn</span></a></p></li>
-<li><p><a class="reference internal" href="yk_firmware_ex10_api_operations.html#startinventoryroundop"><span class="std std-ref">StartInventoryRoundOp</span></a></p></li>
-</ul>
-</dd>
-</dl>
-</div></blockquote>
-</section>
-</section>
 </section>
 
 
@@ -1110,24 +747,9 @@ in parallel.</p>
             <p class="logo"><a href="index.html">
               <img class="logo" src="../../_static/logo.png" alt="Logo"/>
             </a></p>
-  <h3><a href="index.html">Table of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Ex10Ops Layer</a><ul>
-<li><a class="reference internal" href="#sdk-aggregate-operations">SDK Aggregate Operations</a><ul>
-<li><a class="reference internal" href="#cwon">CwOn</a></li>
-<li><a class="reference internal" href="#cwoff">CwOff</a></li>
-<li><a class="reference internal" href="#ramptransmitpower">RampTransmitPower</a></li>
-<li><a class="reference internal" href="#startetsiburst">StartEtsiBurst</a></li>
-<li><a class="reference internal" href="#inventory">Inventory</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
   <h4>Previous topic</h4>
-  <p class="topless"><a href="yk_firmware_ex10_host_c_power_modes_layer.html"
-                        title="previous chapter">Ex10PowerModes Layer</a></p>
+  <p class="topless"><a href="yk_firmware_ex10_host_c_reader_layer.html"
+                        title="previous chapter">Ex10Reader Layer</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="yk_firmware_ex10_host_c_protocol_layer.html"
                         title="next chapter">Ex10Protocol Layer</a></p>
@@ -1135,7 +757,7 @@ in parallel.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -1152,7 +774,7 @@ in parallel.</p>
           <a href="yk_firmware_ex10_host_c_protocol_layer.html" title="Ex10Protocol Layer"
              >next</a></li>
         <li class="right" >
-          <a href="yk_firmware_ex10_host_c_power_modes_layer.html" title="Ex10PowerModes Layer"
+          <a href="yk_firmware_ex10_host_c_reader_layer.html" title="Ex10Reader Layer"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Impinj Reader Chip SDK</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="yk_firmware_ex10_host_c_api.html" >Impinj Reader Chip C Host API</a> &#187;</li>
@@ -1160,7 +782,7 @@ in parallel.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Impinj, Inc..
+        &#169; Copyright 2021, Impinj, Inc..
     </div>
   </body>
 </html>

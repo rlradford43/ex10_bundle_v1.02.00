@@ -17,16 +17,17 @@ The inventory example below uses 'fixed q' test mode and is not optimized for
 
 from __future__ import (division, absolute_import, print_function,
                         unicode_literals)
+import binascii
+from datetime import datetime
 
-# pylint: disable=locally-disabled, wildcard-import, unused-wildcard-import
 from py2c_interface.py2c_python_wrapper import *
 
 
 # The configuration of the inventory example is set using the definitions below
 INVENTORY_DURATION_S = 10           # Duration of inventory operation (seconds)
 
-TRANSMIT_POWER_CDBM = 3000          # 30 dBm
-RF_MODE = RfModes.mode_148
+TRANSMIT_POWER_DBM = 3000           # 30 dBm
+RF_MODE = RfModes.mode_5
 R807_ANTENNA_PORT = 1               # Which R807 antenna port will be used
 
 INITIAL_Q = 4                       # Q field in the Query command
@@ -50,7 +51,7 @@ def run_inventory_example():
         # Init the python to C layer
         py2c = Ex10Py2CWrapper()
         ex10_ifaces = py2c.ex10_typical_board_setup(DEFAULT_SPI_CLOCK_HZ, 'FCC'.encode('ascii'))
-
+        
         total_singulations = run_inventory(ex10_ifaces, INVENTORY_DURATION_S,
                                            INITIAL_Q, RF_MODE)
         print('Total Singulations: {}'.format(total_singulations))
@@ -64,6 +65,7 @@ def run_inventory_example():
 
 def run_inventory(ex10_ifaces, duration_s, initial_q, rf_mode):
     """ Run inventory for the specified amount of time """
+    ex10_reader = ex10_ifaces.reader
     helper = ex10_ifaces.helpers
 
     # Put together configurations for the inventory round
@@ -85,12 +87,12 @@ def run_inventory(ex10_ifaces, duration_s, initial_q, rf_mode):
     inventory_config_2 = InventoryRoundControl_2Fields()
     inventory_config_2.max_queries_since_valid_epc = 0
 
-    packet_info = InfoFromPackets(0, 0, 0, 0, TagReadData())
+    packet_info = InfoFromPackets(0, 0, 0, TagReadData(None, None, 0, None, None, 0))
 
     ihp = InventoryHelperParams()
     ihp.antenna               = R807_ANTENNA_PORT
     ihp.rf_mode               = rf_mode
-    ihp.tx_power_cdbm         = TRANSMIT_POWER_CDBM
+    ihp.tx_power_dbm          = TRANSMIT_POWER_DBM
     ihp.inventory_config      = pointer(inventory_config)
     ihp.inventory_config_2    = pointer(inventory_config_2)
     ihp.send_selects          = False

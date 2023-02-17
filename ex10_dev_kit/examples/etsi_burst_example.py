@@ -22,8 +22,8 @@ from py2c_interface.py2c_python_wrapper import *
 
 
 ETSI_BURST_TIME_ON = 6              # Duration of ETSI Burst operation (seconds)
-TRANSMIT_POWER_CDBM = 3000          # 30 dBm
-RF_MODE = RfModes.mode_241
+TRANSMIT_POWER_DBM = 3000           # 30 dBm
+RF_MODE = RfModes.mode_5
 REGION = 'FCC'                      # Regulatory region
 R807_ANTENNA_PORT = 1               # Which R807 antenna port will be used
 
@@ -79,7 +79,7 @@ def run_etsi_burst(ex10_ifaces, region):
             inventory_config_2,
             R807_ANTENNA_PORT,
             RF_MODE,
-            TRANSMIT_POWER_CDBM,
+            TRANSMIT_POWER_DBM,
             on_time_ms,
             off_time_ms,
             freq_khz)

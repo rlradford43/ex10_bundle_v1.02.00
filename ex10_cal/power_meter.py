@@ -27,10 +27,9 @@ class PowerMeter(object):
     Object that takes in a VISA Resource Manager and returns an object for
     controlling power meter
     """
-    def __init__(self, addr, freq_mhz=915.25, ofs=None):
+    def __init__(self, addr='GPIB0::13::INSTR', freq_mhz=915.25, ofs=None):
         rm = visa.ResourceManager()
         self.instr = rm.open_resource(addr)
-        self.instr.write('SYSTem:PRESet')
         self.instr.write('INIT:CONT ON')
         self.instr.write('TRIG:SOUR IMM')
         self.set_frequency(freq_mhz)

@@ -41,7 +41,7 @@ class UartHelper():
         self.page_buffer_empty = True
         self.debug_dump = False
 
-    def choose_serial_port(self, desired_serial_port=None):
+    def choose_serial_port(self, desired_serial_port):
         """
         Enumerate available serial ports and request user to select one
         """
@@ -112,17 +112,14 @@ class UartHelper():
         and copy them to correct offset in page_buffer
 
         Expected line format:
-            '00000000: FF FF FF FF FF FF FF FF    FF FF FF FF FF FF FF FF \r\n'
+            '0000: FF FF FF FF FF FF FF FF    FF FF FF FF FF FF FF FF \r\n'
         """
-        if line[8:9] == b':':
-            # Get the base address from the first line
-            if self.page_buffer_empty:
-                self.base_addr = int(line[:8], 16)
+        if line[4:5] == b':':
             try:
-                ofs = int(line[:8], 16) - self.base_addr
+                ofs = int(line[:4], 16)
                 if 0 <= ofs <= 2032:
                     cnt = 0
-                    for _, val in enumerate(line[9:].strip().split(b' ')):
+                    for _, val in enumerate(line[5:].strip().split(b' ')):
                         if val != b'':
                             self.page_buffer[ofs + cnt: ofs + cnt + 1] = \
                                 int(val, 16).to_bytes(1, 'little')
@@ -150,7 +147,6 @@ class UartHelper():
         message = ""
         count = 0
         result = False
-        result_value = ""
         while message != 'OK':
             response = self.uart_if.readline()
             message = str(response.decode('ascii')).strip()
@@ -161,13 +157,13 @@ class UartHelper():
             if count > 5:
                 raise Exception('Device is not responding. Is ex10_wrapper running?')
             if message == 'OK':
-                return True, result_value
+                return True, message
             if message == 'ERROR':
-                return False, result_value
+                return False, message
             if not result:
                 if message.startswith('Result: '):
                     result = True
-                    result_value = message[8:]
+                    message = message[8:]
             if not result:
                 # Check for hexdump
                 self._parse_hexdump_line(response)
@@ -204,6 +200,5 @@ class UartHelper():
         """
         Close serial port
         """
-        if self.uart_if:
-            self.uart_if.close()
+        self.uart_if.close()
         self.uart_if = None

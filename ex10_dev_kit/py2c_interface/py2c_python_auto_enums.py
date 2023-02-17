@@ -69,7 +69,6 @@ class OpId(IntEnum):
     EventFifoTestOp              = 0xAB
     RxRunSjcOp                   = 0xAC
     SetGpioOp                    = 0xAD
-    SetClearGpioPinsOp           = 0xAE
     StartInventoryRoundOp        = 0xB0
     RunPrbsDataOp                = 0xB1
     SendSelectOp                 = 0xB2
@@ -80,12 +79,8 @@ class OpId(IntEnum):
     UsTimerStartOp               = 0xB7
     UsTimerWaitOp                = 0xB8
     AggregateOp                  = 0xB9
-    ListenBeforeTalkOp           = 0xBA
     BerTestOp                    = 0xC0
     EtsiBurstOp                  = 0xC1
-    HpfOverrideTestOp            = 0xC2
-    MultiToneTestOp              = 0xC3
-    ExternalLoEnableOp           = 0xFC
     WriteProfileDataOp           = 0xFD
     CrashTestOp                  = 0xFE
 
@@ -102,23 +97,11 @@ class OpsStatus(IntEnum):
     ErrorAggregateInnerOpError    = 0x09
     ErrorSjcCdacRangeError        = 0x0A
     ErrorSjcResidueThresholdExceeded = 0x0B
-    ErrorDroopCompensationTooManyAdcChannels = 0x0C
-    ErrorEventFailedToSend        = 0x0D
 
 class HaltedStatusError(IntEnum):
     ErrorNoError                 = 0x00
     ErrorCoverCodeSizeError      = 0x01
     ErrorGetCoverCodeFailed      = 0x02
-    ErrorBadCrc                  = 0x03
-    ErrorUnknown                 = 0x04
-
-class HpfOverrideSettingsHpfMode(IntEnum):
-    HpfModeUninitialized         = 0x00
-    HpfModeBypass                = 0x01
-    HpfModeFctTestMode           = 0x02
-    HpfModeLbtTestMode           = 0x03
-    HpfMode2000Ohm               = 0x04
-    HpfMode500Ohm                = 0x05
 
 class AuxAdcControlChannelEnableBits(IntEnum):
     ChannelEnableBitsNone        = 0x00

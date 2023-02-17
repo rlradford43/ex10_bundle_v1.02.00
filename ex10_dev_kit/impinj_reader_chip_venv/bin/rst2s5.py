@@ -1,4 +1,4 @@
-#!/home/pi/ex10_bundle_v1.02.00/ex10_dev_kit/impinj_reader_chip_venv/bin/python3
+#!/home/pi/ex10_bundle_v1.01.00/ex10_dev_kit/impinj_reader_chip_venv/bin/python3
 
 # $Id: rst2s5.py 4564 2006-05-21 20:44:42Z wiemann $
 # Author: Chris Liechti <cliechti@gmx.net>

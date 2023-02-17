@@ -25,6 +25,7 @@ examples/revalidate_image.py
 examples/select_command_example.py
 examples/simple_ramping_example.py
 py2c_interface/__init__.py
+py2c_interface/py2c_ex10_expert.py
 py2c_interface/py2c_python_auto_boot_regs.py
 py2c_interface/py2c_python_auto_enums.py
 py2c_interface/py2c_python_auto_fifo.py

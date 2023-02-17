@@ -21,8 +21,8 @@ import struct
 
 from py2c_interface.py2c_python_wrapper import *
 
-TRANSMIT_POWER_CDBM = 3000  # 30 dBm
-RF_MODE = RfModes.mode_148
+TRANSMIT_POWER_DBM = 3000  # 30 dBm
+RF_MODE = RfModes.mode_5
 REGION = 'FCC'             # Regulatory region
 R807_ANTENNA_PORT = 1      # Which R807 antenna port will be used
 FREQUENCY_MHZ = 0          # 0 utilizes the stack defined frequency hop table.
@@ -34,7 +34,6 @@ def run_ramping(py2c, ex10_ifaces):
     ex10_ops = ex10_ifaces.ops
     ex10_protocol = ex10_ifaces.protocol
     helper = ex10_ifaces.helpers
-    fifo_printer = py2c.get_ex10_event_fifo_printer()
 
     # @todo JIRA PI-22454 [YK FW] EX10 should assert Halted interrupt
     # again when Access commands are done
@@ -43,21 +42,18 @@ def run_ramping(py2c, ex10_ifaces):
     print('Starting ramp test')
     try:
         lo_power_return = c_uint16(0)
-        rx_power_return = c_uint16(0)
         ret_status = ex10_ops.measure_aux_adc(
             AuxAdcResultsAdcResult.AdcResultPowerLoSum, 1, pointer(lo_power_return))
         assert ret_status.error_occurred == False
         lo_power = struct.unpack('H', lo_power_return)[0]
-        ret_status = ex10_ops.measure_aux_adc(
-            AuxAdcResultsAdcResult.AdcResultPowerRxSum, 1, pointer(rx_power_return))
-        assert ret_status.error_occurred == False
-        rx_power = struct.unpack('H', rx_power_return)[0]
-        print(lo_power, rx_power)
+        assert lo_power < 200
 
         # Ramp up and output CW
+        ret_status = ex10_ops.wait_op_completion();
+        assert ret_status.error_occurred == False
         ret_status =  ex10_reader.cw_test(R807_ANTENNA_PORT,
                                         RF_MODE,
-                                        TRANSMIT_POWER_CDBM,
+                                        TRANSMIT_POWER_DBM,
                                         FREQUENCY_MHZ,
                                         False)
         assert ret_status.error_occurred == False
@@ -66,7 +62,6 @@ def run_ramping(py2c, ex10_ifaces):
             AuxAdcResultsAdcResult.AdcResultPowerLoSum, 1, lo_power_return)
         assert ret_status.error_occurred == False
         lo_power = struct.unpack('H', lo_power_return)[0]
-        print(lo_power)
         assert lo_power > 500
 
         # Setup a delay to wait for the  ramp down
@@ -91,7 +86,7 @@ def run_ramping(py2c, ex10_ifaces):
             if ex10_reader.packets_available():
                 packet = ex10_reader.packet_peek().contents
                 packet_type = packet.packet_type
-                fifo_printer.print_packets(packet)
+                helper.print_packets(packet)
                 ex10_reader.packet_remove()
 
                 if packet_type == EventPacketType.TxRampDown:

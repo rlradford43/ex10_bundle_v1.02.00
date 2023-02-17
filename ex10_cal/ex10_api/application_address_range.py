@@ -242,19 +242,6 @@ APPLICATION_ADDRESS_RANGE = {
             },
         },
     },
-    'StackDepth' : {
-        'address'    : 0x009C,
-        'length'     : 0x0004,
-        'num_entries': 1,
-        'access'     : 'read-only',
-        'fields'  : {
-            'depth' : {
-                'pos'       :  0,
-                'bits'      : 32,
-                'resolve_as': 'uint',
-            },
-        },
-    },
     'InterruptMask' : {
         'address'    : 0x00A0,
         'length'     : 0x0004,
@@ -293,11 +280,6 @@ APPLICATION_ADDRESS_RANGE = {
             },
             'CommandError' : {
                 'pos'       :  6,
-                'bits'      :  1,
-                'resolve_as': 'bool',
-            },
-            'AggregateOpDone' : {
-                'pos'       :  7,
                 'bits'      :  1,
                 'resolve_as': 'bool',
             },
@@ -344,11 +326,6 @@ APPLICATION_ADDRESS_RANGE = {
                 'bits'      :  1,
                 'resolve_as': 'bool',
             },
-            'AggregateOpDone' : {
-                'pos'       :  7,
-                'bits'      :  1,
-                'resolve_as': 'bool',
-            },
         },
     },
     'InterruptMaskClear' : {
@@ -392,11 +369,6 @@ APPLICATION_ADDRESS_RANGE = {
                 'bits'      :  1,
                 'resolve_as': 'bool',
             },
-            'AggregateOpDone' : {
-                'pos'       :  7,
-                'bits'      :  1,
-                'resolve_as': 'bool',
-            },
         },
     },
     'InterruptStatus' : {
@@ -437,11 +409,6 @@ APPLICATION_ADDRESS_RANGE = {
             },
             'CommandError' : {
                 'pos'       :  6,
-                'bits'      :  1,
-                'resolve_as': 'bool',
-            },
-            'AggregateOpDone' : {
-                'pos'       :  7,
                 'bits'      :  1,
                 'resolve_as': 'bool',
             },
@@ -556,6 +523,19 @@ APPLICATION_ADDRESS_RANGE = {
             },
         },
     },
+    'PowerControlLoopInitialTxScalar' : {
+        'address'    : 0x00C8,
+        'length'     : 0x0004,
+        'num_entries': 1,
+        'access'     : 'read-write',
+        'fields'  : {
+            'TxScalar' : {
+                'pos'       :  0,
+                'bits'      : 16,
+                'resolve_as': 'int',
+            },
+        },
+    },
     'PowerControlLoopAdcTarget' : {
         'address'    : 0x00CC,
         'length'     : 0x0004,
@@ -600,58 +580,6 @@ APPLICATION_ADDRESS_RANGE = {
             },
         },
     },
-    'GpioOutputLevelSet' : {
-        'address'    : 0x00E0,
-        'length'     : 0x0004,
-        'num_entries': 1,
-        'access'     : 'write-only',
-        'fields'  : {
-            'LevelBitsSet' : {
-                'pos'       :  0,
-                'bits'      : 32,
-                'resolve_as': 'uint',
-            },
-        },
-    },
-    'GpioOutputLevelClear' : {
-        'address'    : 0x00E4,
-        'length'     : 0x0004,
-        'num_entries': 1,
-        'access'     : 'write-only',
-        'fields'  : {
-            'LevelBitsClear' : {
-                'pos'       :  0,
-                'bits'      : 32,
-                'resolve_as': 'uint',
-            },
-        },
-    },
-    'GpioOutputEnableSet' : {
-        'address'    : 0x00E8,
-        'length'     : 0x0004,
-        'num_entries': 1,
-        'access'     : 'write-only',
-        'fields'  : {
-            'EnableBitsSet' : {
-                'pos'       :  0,
-                'bits'      : 32,
-                'resolve_as': 'uint',
-            },
-        },
-    },
-    'GpioOutputEnableClear' : {
-        'address'    : 0x00EC,
-        'length'     : 0x0004,
-        'num_entries': 1,
-        'access'     : 'write-only',
-        'fields'  : {
-            'EnableBitsClear' : {
-                'pos'       :  0,
-                'bits'      : 32,
-                'resolve_as': 'uint',
-            },
-        },
-    },
     'OpsControl' : {
         'address'    : 0x0300,
         'length'     : 0x0001,
@@ -677,7 +605,6 @@ APPLICATION_ADDRESS_RANGE = {
                     'EventFifoTestOp'            : 171,
                     'RxRunSjcOp'                 : 172,
                     'SetGpioOp'                  : 173,
-                    'SetClearGpioPinsOp'         : 174,
                     'StartInventoryRoundOp'      : 176,
                     'RunPrbsDataOp'              : 177,
                     'SendSelectOp'               : 178,
@@ -688,12 +615,8 @@ APPLICATION_ADDRESS_RANGE = {
                     'UsTimerStartOp'             : 183,
                     'UsTimerWaitOp'              : 184,
                     'AggregateOp'                : 185,
-                    'ListenBeforeTalkOp'         : 186,
                     'BerTestOp'                  : 192,
                     'EtsiBurstOp'                : 193,
-                    'HpfOverrideTestOp'          : 194,
-                    'MultiToneTestOp'            : 195,
-                    'ExternalLoEnableOp'         : 252,
                     'WriteProfileDataOp'         : 253,
                     'CrashTestOp'                : 254,
                 },
@@ -725,7 +648,6 @@ APPLICATION_ADDRESS_RANGE = {
                     'EventFifoTestOp'            : 171,
                     'RxRunSjcOp'                 : 172,
                     'SetGpioOp'                  : 173,
-                    'SetClearGpioPinsOp'         : 174,
                     'StartInventoryRoundOp'      : 176,
                     'RunPrbsDataOp'              : 177,
                     'SendSelectOp'               : 178,
@@ -736,12 +658,8 @@ APPLICATION_ADDRESS_RANGE = {
                     'UsTimerStartOp'             : 183,
                     'UsTimerWaitOp'              : 184,
                     'AggregateOp'                : 185,
-                    'ListenBeforeTalkOp'         : 186,
                     'BerTestOp'                  : 192,
                     'EtsiBurstOp'                : 193,
-                    'HpfOverrideTestOp'          : 194,
-                    'MultiToneTestOp'            : 195,
-                    'ExternalLoEnableOp'         : 252,
                     'WriteProfileDataOp'         : 253,
                     'CrashTestOp'                : 254,
                 },
@@ -768,8 +686,6 @@ APPLICATION_ADDRESS_RANGE = {
                     'AggregateInnerOpError'      : 9,
                     'SjcCdacRangeError'          : 10,
                     'SjcResidueThresholdExceeded' : 11,
-                    'DroopCompensationTooManyAdcChannels' : 12,
-                    'EventFailedToSend'          : 13,
                 },
             },
         },
@@ -831,8 +747,6 @@ APPLICATION_ADDRESS_RANGE = {
                     'NoError'                    : 0,
                     'CoverCodeSizeError'         : 1,
                     'GetCoverCodeFailed'         : 2,
-                    'BadCrc'                     : 3,
-                    'Unknown'                    : 4,
                 },
             },
         },
@@ -988,22 +902,17 @@ APPLICATION_ADDRESS_RANGE = {
                 'bits'      :  1,
                 'resolve_as': 'bool',
             },
-            'ReadFifoLogs' : {
+            'rfu_1' : {
                 'pos'       : 15,
                 'bits'      :  1,
-                'resolve_as': 'bool',
-            },
-            'LbtOpLogs' : {
-                'pos'       : 16,
-                'bits'      :  1,
-                'resolve_as': 'bool',
-            },
-            'rfu_1' : {
-                'pos'       : 17,
-                'bits'      :  7,
                 'resolve_as': 'uint8_t',
             },
             'rfu_2' : {
+                'pos'       : 16,
+                'bits'      :  8,
+                'resolve_as': 'uint8_t',
+            },
+            'rfu_3' : {
                 'pos'       : 24,
                 'bits'      :  2,
                 'resolve_as': 'uint8_t',
@@ -1071,24 +980,61 @@ APPLICATION_ADDRESS_RANGE = {
             },
         },
     },
-    'HpfOverrideSettings' : {
-        'address'    : 0x0344,
+    'ModemDataControl' : {
+        'address'    : 0x0340,
         'length'     : 0x0004,
         'num_entries': 1,
         'access'     : 'read-write',
         'fields'  : {
-            'HpfMode' : {
+            'TrlData' : {
                 'pos'       :  0,
-                'bits'      :  8,
-                'resolve_as': 'uint8_t',
-                'enums' : {
-                    'Uninitialized'              : 0,
-                    'Bypass'                     : 1,
-                    'FctTestMode'                : 2,
-                    'LbtTestMode'                : 3,
-                    '2000Ohm'                    : 4,
-                    '500Ohm'                     : 5,
-                },
+                'bits'      :  1,
+                'resolve_as': 'bool',
+            },
+            'AllPackets' : {
+                'pos'       :  1,
+                'bits'      :  1,
+                'resolve_as': 'bool',
+            },
+            'Rn16Empty' : {
+                'pos'       :  2,
+                'bits'      :  1,
+                'resolve_as': 'bool',
+            },
+            'Rn16Single' : {
+                'pos'       :  3,
+                'bits'      :  1,
+                'resolve_as': 'bool',
+            },
+            'Rn16CollidedBd' : {
+                'pos'       :  4,
+                'bits'      :  1,
+                'resolve_as': 'bool',
+            },
+            'Rn16SingleBelowRssi' : {
+                'pos'       :  5,
+                'bits'      :  1,
+                'resolve_as': 'bool',
+            },
+            'EpcPassCrc' : {
+                'pos'       :  6,
+                'bits'      :  1,
+                'resolve_as': 'bool',
+            },
+            'EpcFailCrc' : {
+                'pos'       :  7,
+                'bits'      :  1,
+                'resolve_as': 'bool',
+            },
+            'EpcSingleBelowRssi' : {
+                'pos'       :  8,
+                'bits'      :  1,
+                'resolve_as': 'bool',
+            },
+            'NumberOfSamples' : {
+                'pos'       : 16,
+                'bits'      : 16,
+                'resolve_as': 'uint16_t',
             },
         },
     },
@@ -1223,7 +1169,7 @@ APPLICATION_ADDRESS_RANGE = {
         'fields'  : {
             'TxScalar' : {
                 'pos'       :  0,
-                'bits'      : 16,
+                'bits'      : 12,
                 'resolve_as': 'int',
             },
         },
@@ -1360,45 +1306,6 @@ APPLICATION_ADDRESS_RANGE = {
         'access'     : 'read-only',
         'fields'  : {
             'IsOn' : {
-                'pos'       :  0,
-                'bits'      :  1,
-                'resolve_as': 'bool',
-            },
-        },
-    },
-    'LbtOffset' : {
-        'address'    : 0x0524,
-        'length'     : 0x0004,
-        'num_entries': 1,
-        'access'     : 'read-write',
-        'fields'  : {
-            'Khz' : {
-                'pos'       :  0,
-                'bits'      : 32,
-                'resolve_as': 'int',
-            },
-        },
-    },
-    'MeasureRssiCount' : {
-        'address'    : 0x0528,
-        'length'     : 0x0002,
-        'num_entries': 1,
-        'access'     : 'read-write',
-        'fields'  : {
-            'Samples' : {
-                'pos'       :  0,
-                'bits'      :  4,
-                'resolve_as': 'uint',
-            },
-        },
-    },
-    'LbtControl' : {
-        'address'    : 0x052C,
-        'length'     : 0x0001,
-        'num_entries': 1,
-        'access'     : 'read-write',
-        'fields'  : {
-            'Override' : {
                 'pos'       :  0,
                 'bits'      :  1,
                 'resolve_as': 'bool',
@@ -1657,42 +1564,14 @@ APPLICATION_ADDRESS_RANGE = {
     },
     'AggregateOpBuffer' : {
         'address'    : 0x0704,
-        'length'     : 0x0200,
+        'length'     : 0x0100,
         'num_entries': 1,
         'access'     : 'read-write',
         'fields'  : {
             'CommandBuffer' : {
                 'pos'       :  0,
-                'bits'      : 4096,
+                'bits'      : 2048,
                 'resolve_as': 'bytes',
-            },
-        },
-    },
-    'PowerDroopCompensation' : {
-        'address'    : 0x0904,
-        'length'     : 0x0004,
-        'num_entries': 1,
-        'access'     : 'read-write',
-        'fields'  : {
-            'Enable' : {
-                'pos'       :  0,
-                'bits'      :  1,
-                'resolve_as': 'bool',
-            },
-            'rfu' : {
-                'pos'       :  1,
-                'bits'      : 15,
-                'resolve_as': 'uint16_t',
-            },
-            'CompensationIntervalMs' : {
-                'pos'       : 16,
-                'bits'      :  8,
-                'resolve_as': 'uint8_t',
-            },
-            'FineGainStepCdB' : {
-                'pos'       : 24,
-                'bits'      :  8,
-                'resolve_as': 'uint8_t',
             },
         },
     },
@@ -2000,24 +1879,6 @@ APPLICATION_ADDRESS_RANGE = {
             'RxLength' : {
                 'pos'       : 16,
                 'bits'      : 16,
-                'resolve_as': 'uint',
-            },
-        },
-    },
-    'DropQueryControl' : {
-        'address'    : 0x1090,
-        'length'     : 0x0002,
-        'num_entries': 1,
-        'access'     : 'read-write',
-        'fields'  : {
-            'DropPower' : {
-                'pos'       :  0,
-                'bits'      :  8,
-                'resolve_as': 'uint',
-            },
-            'DropDwell' : {
-                'pos'       :  8,
-                'bits'      :  8,
                 'resolve_as': 'uint',
             },
         },

@@ -50,43 +50,24 @@ writes/reads necessary to implement the various operations.</p>
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N12Ex10Protocol4initE">
-<span id="_CPPv3N12Ex10Protocol4initE"></span><span id="_CPPv2N12Ex10Protocol4initE"></span><span class="target" id="struct_ex10_protocol_1aaf6992861afaba720a7a08207f1aa762"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">init</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_board_specific.html#_CPPv414Ex10DriverList" title="Ex10DriverList"><span class="n"><span class="pre">Ex10DriverList</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">driver_list</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Protocol4initE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N12Ex10Protocol4initE"></span><span id="_CPPv2N12Ex10Protocol4initE"></span><span class="target" id="struct_ex10_protocol_1a801d1f587fe656e86380e316df5aca27"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">init</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_board_specific.html#_CPPv414Ex10DriverList" title="Ex10DriverList"><span class="n"><span class="pre">Ex10DriverList</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">driver_list</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Protocol4initE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Initialize the <a class="reference internal" href="#struct_ex10_protocol"><span class="std std-ref">Ex10Protocol</span></a> object. </p>
-<p>This sets up access to an Impinj Reader Chip.</p>
+<p>Sets up access to an Ex10 chip.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This function does not perform any interaction with the Impinj Reader Chip; it only sets up the object.</p>
+<p>If NULL, then no Event Fifo processing is performed.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>EventFifo buffer allocation, as required by this C library implementation requires that each buffer be allocated (EX10_EVENT_FIFO_SIZE + 4) in size. This allows for full reading of the Event Fifo data to maintain packet boundaries. The extra 4 bytes maintains 32-bit alignment and the 1-byte response code. </p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Param driver_list</dt>
-<dd class="field-odd"><p>The interface to use to communicate with the Ex10. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N12Ex10Protocol9init_ex10E">
-<span id="_CPPv3N12Ex10Protocol9init_ex10E"></span><span id="_CPPv2N12Ex10Protocol9init_ex10E"></span><span class="target" id="struct_ex10_protocol_1a5746899f0c652f0c5d19e2cf385c64dd"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">init_ex10</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Protocol9init_ex10E" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Initialize the Impinj Reader Chip at the <a class="reference internal" href="#struct_ex10_protocol"><span class="std std-ref">Ex10Protocol</span></a> level. </p>
-<p><ul class="simple">
-<li><p>Sets the default EventFifo threshold level to 2048 bytes.</p></li>
-<li><p>Clears the Ex10 interrupt mask register.</p></li>
-<li><p>Clears the interrupt status register by reading it.</p></li>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>driver_list</strong> – The interface to use to communicate with the Ex10.</p></li>
+<li><p><strong>event_fifo_buffers</strong> – An array of <a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#struct_byte_span"><span class="std std-ref">ByteSpan</span></a> buffers for filling Event Fifo data into. </p></li>
+<li><p><strong>event_fifo_buffer_count</strong> – The number of <a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#struct_byte_span"><span class="std std-ref">ByteSpan</span></a> buffers allocated for Event Fifo processing.</p></li>
 </ul>
-</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The Ex10 must be powered on prior to calling this function. The chain of Ex10 module processing is enabled in this call.</p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Returns 0</dt>
-<dd class="field-odd"><p>Indicates the initialization was successful. </p>
-</dd>
-<dt class="field-even">Returns !=</dt>
-<dd class="field-even"><p>0 Indicates a pthread related initialization error. </p>
-</dd>
-<dt class="field-odd">Return</dt>
-<dd class="field-odd"><p>int A POSIX error code indicating whether board initialization passed or failed. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -99,7 +80,7 @@ writes/reads necessary to implement the various operations.</p>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N12Ex10Protocol27register_fifo_data_callbackE">
-<span id="_CPPv3N12Ex10Protocol27register_fifo_data_callbackE"></span><span id="_CPPv2N12Ex10Protocol27register_fifo_data_callbackE"></span><span class="target" id="struct_ex10_protocol_1af05d7b31b477bbdbc30f191a38dfdeef"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">register_fifo_data_callback</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fifo_cb</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">FifoBufferNode</span></span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Protocol27register_fifo_data_callbackE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N12Ex10Protocol27register_fifo_data_callbackE"></span><span id="_CPPv2N12Ex10Protocol27register_fifo_data_callbackE"></span><span class="target" id="struct_ex10_protocol_1af05d7b31b477bbdbc30f191a38dfdeef"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">register_fifo_data_callback</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fifo_cb</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv414FifoBufferNode" title="FifoBufferNode"><span class="n"><span class="pre">FifoBufferNode</span></span></a><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Protocol27register_fifo_data_callbackE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Register an optional callback for EventFifo data events. </p>
 <p><dl class="simple">
 <dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#struct_ex10_protocol_1a36ec723de8f3275098f4fbd5660bd899"><span class="std std-ref">register_interrupt_callback</span></a> </p>
@@ -107,8 +88,8 @@ writes/reads necessary to implement the various operations.</p>
 </dl>
 </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param fifo_cb</dt>
-<dd class="field-odd"><p>This callback is triggered when the interrupt_cb registered through <a class="reference internal" href="#struct_ex10_protocol_1a36ec723de8f3275098f4fbd5660bd899"><span class="std std-ref">register_interrupt_callback()</span></a> returns true. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fifo_cb</strong> – This callback is triggered when the interrupt_cb registered through register_interrupt_callback returns true. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -123,11 +104,11 @@ writes/reads necessary to implement the various operations.</p>
 </dl>
 </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param enable_mask</dt>
-<dd class="field-odd"><p>The mask of interrupts to enable. </p>
-</dd>
-<dt class="field-even">Param interrupt_cb</dt>
-<dd class="field-even"><p>A function called when an enabled interrupt fires. The callback receives the interrupt status bits via argument and it should return true or false. If the return value is true then the fifo_data callback is triggered. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>enable_mask</strong> – The mask of interrupts to enable. </p></li>
+<li><p><strong>interrupt_cb</strong> – A function called when an enabled interrupt fires. The callback receives the interrupt status bits via argument and it should return true or false. If the return value is true then the fifo_data callback is triggered. </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -153,11 +134,11 @@ writes/reads necessary to implement the various operations.</p>
 <p>This function assumes that the buffer parameter is the same length as the register defined in reg_info. </p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Param reg_info</dt>
-<dd class="field-odd"><p>A description of the register to access. </p>
-</dd>
-<dt class="field-even">Param buffer</dt>
-<dd class="field-even"><p>The buffer data from the register will be read into.</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>reg_info</strong> – A description of the register to access. </p></li>
+<li><p><strong>buffer</strong> – The buffer data from the register will be read into.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -165,20 +146,18 @@ writes/reads necessary to implement the various operations.</p>
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N12Ex10Protocol9test_readE">
 <span id="_CPPv3N12Ex10Protocol9test_readE"></span><span id="_CPPv2N12Ex10Protocol9test_readE"></span><span class="target" id="struct_ex10_protocol_1aa16ebfeee602f56d9859956439dd7024"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">test_read</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buffer</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Protocol9test_readE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Read raw data from the Impinj Reader Chip internal memory layout. </p>
+<dd><p>Read an Ex10 register blob. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This function assumes that the buffer parameter is at least as large as the length parameter. </p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Param address</dt>
-<dd class="field-odd"><p>Address to begin reading from </p>
-</dd>
-<dt class="field-even">Param length</dt>
-<dd class="field-even"><p>Number of bytes to read from the register. </p>
-</dd>
-<dt class="field-odd">Param buffer</dt>
-<dd class="field-odd"><p>The buffer data from the register will be written to.</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – Address to begin reading from </p></li>
+<li><p><strong>length</strong> – Number of bytes to read from the register. </p></li>
+<li><p><strong>buffer</strong> – The buffer data from the register will be written to.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -192,14 +171,12 @@ writes/reads necessary to implement the various operations.</p>
 <p>This function assumes that the buffer parameter is the same length as the register defined in reg_info. </p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Param reg_info</dt>
-<dd class="field-odd"><p>A description of the register to access. </p>
-</dd>
-<dt class="field-even">Param buffer</dt>
-<dd class="field-even"><p>The buffer data from the register will be read into. </p>
-</dd>
-<dt class="field-odd">Param index</dt>
-<dd class="field-odd"><p>Provides an offset into registers which have multiple entries. Every register has a num_entires fields, where some registers are divided into pieces when used. This is documented on a reg by reg basis. If an index exceeding that allowed by the register is passed in, an error is thrown.</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>reg_info</strong> – A description of the register to access. </p></li>
+<li><p><strong>buffer</strong> – The buffer data from the register will be read into. </p></li>
+<li><p><strong>index</strong> – Provides an offset into registers which have multiple entries. Every register has a num_entires fields, where some registers are divided into pieces when used. This is documented on a reg by reg basis. If an index exceeding that allowed by the register is passed in, an error is thrown.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -213,11 +190,11 @@ writes/reads necessary to implement the various operations.</p>
 <p>This function assumes that the buffer parameter is the same length as the register defined in reg_info. </p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Param reg_info</dt>
-<dd class="field-odd"><p>A description of the register to access. </p>
-</dd>
-<dt class="field-even">Param buffer</dt>
-<dd class="field-even"><p>The data to be written to buffer.</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>reg_info</strong> – A description of the register to access. </p></li>
+<li><p><strong>buffer</strong> – The data to be written to buffer.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -231,14 +208,12 @@ writes/reads necessary to implement the various operations.</p>
 <p>This function assumes that the buffer parameter is the same length as the register defined in reg_info. </p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Param reg_info</dt>
-<dd class="field-odd"><p>A description of the register to access. </p>
-</dd>
-<dt class="field-even">Param buffer</dt>
-<dd class="field-even"><p>The data to be written to buffer. </p>
-</dd>
-<dt class="field-odd">Param index</dt>
-<dd class="field-odd"><p>Provides an offset into registers which have multiple entries. Every register has a num_entires fields, where some registers are divided into pieces when used. This is documented on a reg by reg basis. If an index exceeding that allowed by the register is passed in, an error is thrown.</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>reg_info</strong> – A description of the register to access. </p></li>
+<li><p><strong>buffer</strong> – The data to be written to buffer. </p></li>
+<li><p><strong>index</strong> – Provides an offset into registers which have multiple entries. Every register has a num_entires fields, where some registers are divided into pieces when used. This is documented on a reg by reg basis. If an index exceeding that allowed by the register is passed in, an error is thrown.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -252,14 +227,12 @@ writes/reads necessary to implement the various operations.</p>
 <p>This function assumes that the buffer parameter is at least as large as the length parameter. </p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Param address</dt>
-<dd class="field-odd"><p>Address to begin reading from </p>
-</dd>
-<dt class="field-even">Param length</dt>
-<dd class="field-even"><p>Number of bytes to read from the register. </p>
-</dd>
-<dt class="field-odd">Param buffer</dt>
-<dd class="field-odd"><p>The buffer data from the register will be written to.</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – Address to begin reading from </p></li>
+<li><p><strong>length</strong> – Number of bytes to read from the register. </p></li>
+<li><p><strong>buffer</strong> – The buffer data from the register will be written to.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -273,14 +246,12 @@ writes/reads necessary to implement the various operations.</p>
 <p>This function assumes that the buffer parameter is at least as large as the length parameter. </p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Param address</dt>
-<dd class="field-odd"><p>Address to begin writing to </p>
-</dd>
-<dt class="field-even">Param length</dt>
-<dd class="field-even"><p>Number of bytes to write to the register. </p>
-</dd>
-<dt class="field-odd">Param buffer</dt>
-<dd class="field-odd"><p>The data to be written to the register.</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – Address to begin writing to </p></li>
+<li><p><strong>length</strong> – Number of bytes to write to the register. </p></li>
+<li><p><strong>buffer</strong> – The data to be written to the register.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -294,66 +265,27 @@ writes/reads necessary to implement the various operations.</p>
 <p>This function assumes that the buffer parameter is at least as large as the length parameter. </p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Param regs</dt>
-<dd class="field-odd"><p>A list of registers to write to </p>
-</dd>
-<dt class="field-even">Param buffers</dt>
-<dd class="field-even"><p>A list of buffers with data to write to each register in regs </p>
-</dd>
-<dt class="field-odd">Param num_regs</dt>
-<dd class="field-odd"><p>The number of entries in regs and buffers.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N12Ex10Protocol34get_write_multiple_stored_settingsE">
-<span id="_CPPv3N12Ex10Protocol34get_write_multiple_stored_settingsE"></span><span id="_CPPv2N12Ex10Protocol34get_write_multiple_stored_settingsE"></span><span class="target" id="struct_ex10_protocol_1a62a6106ffebd1bdadda64063ea28b72c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">get_write_multiple_stored_settings</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv412RegisterInfo" title="RegisterInfo"><span class="n"><span class="pre">RegisterInfo</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">regs</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buffers</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">num_regs</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">span</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Protocol34get_write_multiple_stored_settingsE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Get a span containing data written to multiple registers. </p>
-<p>The span will contain a write command, address, length, and data suitable for stored settings.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Param regs</dt>
-<dd class="field-odd"><p>A list of registers to write. </p>
-</dd>
-<dt class="field-even">Param buffers</dt>
-<dd class="field-even"><p>A list of buffers with data to write to each register in regs. </p>
-</dd>
-<dt class="field-odd">Param num_regs</dt>
-<dd class="field-odd"><p>The number of entries in regs and buffers. </p>
-</dd>
-<dt class="field-even">Param span</dt>
-<dd class="field-even"><p>Destination span that will contain all the writes. </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N12Ex10Protocol21read_info_page_bufferE">
-<span id="_CPPv3N12Ex10Protocol21read_info_page_bufferE"></span><span id="_CPPv2N12Ex10Protocol21read_info_page_bufferE"></span><span class="target" id="struct_ex10_protocol_1ab3bd4dceefc0955463d6e97cbb3130e0"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">read_info_page_buffer</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">read_buffer</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Protocol21read_info_page_bufferE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Read an info page from flash. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Param address</dt>
-<dd class="field-odd"><p>The base info page address. </p>
-</dd>
-<dt class="field-even">Param read_buffer</dt>
-<dd class="field-even"><p>Destination buffer for the page data, 2048 bytes in size. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>regs</strong> – A list of registers to write to </p></li>
+<li><p><strong>buffers</strong> – A list of buffers with data to write to each register in regs </p></li>
+<li><p><strong>num_regs</strong> – The number of entries in regs and buffers.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N12Ex10Protocol13read_multipleE">
-<span id="_CPPv3N12Ex10Protocol13read_multipleE"></span><span id="_CPPv2N12Ex10Protocol13read_multipleE"></span><span class="target" id="struct_ex10_protocol_1a5bca3ed8aeed4454a2cd8756ab63ccc2"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_commands_layer.html#_CPPv422Ex10CommandsHostErrors" title="Ex10CommandsHostErrors"><span class="n"><span class="pre">Ex10CommandsHostErrors</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">read_multiple</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv412RegisterInfo" title="RegisterInfo"><span class="n"><span class="pre">RegisterInfo</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">regs</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buffers</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">num_regs</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Protocol13read_multipleE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N12Ex10Protocol13read_multipleE"></span><span id="_CPPv2N12Ex10Protocol13read_multipleE"></span><span class="target" id="struct_ex10_protocol_1a574ca666ae7d7878da16ff02ee867ca9"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">read_multiple</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv412RegisterInfo" title="RegisterInfo"><span class="n"><span class="pre">RegisterInfo</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">regs</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buffers</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">num_regs</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Protocol13read_multipleE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Read multiple registers from the Ex10 device. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param regs</dt>
-<dd class="field-odd"><p>A list of registers to read from. </p>
-</dd>
-<dt class="field-even">Param buffers</dt>
-<dd class="field-even"><p>A list of destination buffers for register data. </p>
-</dd>
-<dt class="field-odd">Param num_regs</dt>
-<dd class="field-odd"><p>The number of entries in regs and buffers. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>regs</strong> – A list of registers to read from. </p></li>
+<li><p><strong>buffers</strong> – A list of destination buffers for register data. </p></li>
+<li><p><strong>num_regs</strong> – The number of entries in regs and buffers. </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -363,8 +295,8 @@ writes/reads necessary to implement the various operations.</p>
 <span id="_CPPv3N12Ex10Protocol8start_opE"></span><span id="_CPPv2N12Ex10Protocol8start_opE"></span><span class="target" id="struct_ex10_protocol_1aa1516b534c4b67aa335b61f64e919e5f"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">start_op</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv44OpId" title="OpId"><span class="n"><span class="pre">OpId</span></span></a><span class="w"> </span><span class="n"><span class="pre">op_id</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Protocol8start_opE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Command the Ex10 device to start running the specified op. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param op_id</dt>
-<dd class="field-odd"><p>The op to run. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>op_id</strong> – The op to run. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -376,22 +308,11 @@ writes/reads necessary to implement the various operations.</p>
 </dd></dl>
 
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N12Ex10Protocol23is_op_currently_runningE">
-<span id="_CPPv3N12Ex10Protocol23is_op_currently_runningE"></span><span id="_CPPv2N12Ex10Protocol23is_op_currently_runningE"></span><span class="target" id="struct_ex10_protocol_1a2c08df9a396690a2ac9b354bc2938b25"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">is_op_currently_running</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Protocol23is_op_currently_runningE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Check to see if an op is currently active. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Return</dt>
-<dd class="field-odd"><p>bool true if an op is busy </p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N12Ex10Protocol18wait_op_completionE">
 <span id="_CPPv3N12Ex10Protocol18wait_op_completionE"></span><span id="_CPPv2N12Ex10Protocol18wait_op_completionE"></span><span class="target" id="struct_ex10_protocol_1a030152bfa7451bedb98f036337e6519f"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv418OpCompletionStatus" title="OpCompletionStatus"><span class="n"><span class="pre">OpCompletionStatus</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">wait_op_completion</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Protocol18wait_op_completionE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Block until ongoing op has completed. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Return</dt>
+<dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>Info about the completed op. </p>
 </dd>
 </dl>
@@ -402,10 +323,10 @@ writes/reads necessary to implement the various operations.</p>
 <span id="_CPPv3N12Ex10Protocol31wait_op_completion_with_timeoutE"></span><span id="_CPPv2N12Ex10Protocol31wait_op_completion_with_timeoutE"></span><span class="target" id="struct_ex10_protocol_1a20443efad951116cd684017b2d321d2a"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv418OpCompletionStatus" title="OpCompletionStatus"><span class="n"><span class="pre">OpCompletionStatus</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">wait_op_completion_with_timeout</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">timeout_ms</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Protocol31wait_op_completion_with_timeoutE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Block until ongoing op has completed. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param timeout_ms</dt>
-<dd class="field-odd"><p>Function returns false if the op takes more time than this number of milliseconds. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>timeout_ms</strong> – Function returns false if the op takes more time than this number of milliseconds. </p>
 </dd>
-<dt class="field-even">Return</dt>
+<dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Info about the completed op. </p>
 </dd>
 </dl>
@@ -413,29 +334,11 @@ writes/reads necessary to implement the various operations.</p>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N12Ex10Protocol5resetE">
-<span id="_CPPv3N12Ex10Protocol5resetE"></span><span id="_CPPv2N12Ex10Protocol5resetE"></span><span class="target" id="struct_ex10_protocol_1a7a8a9b22d14720e9c2b69295fb6b7e96"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">reset</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv46Status" title="Status"><span class="n"><span class="pre">Status</span></span></a><span class="w"> </span><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Protocol5resetE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N12Ex10Protocol5resetE"></span><span id="_CPPv2N12Ex10Protocol5resetE"></span><span class="target" id="struct_ex10_protocol_1aaaa5816692c6e2e540a386190b8b9d5b"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">reset</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv46Status" title="Status"><span class="n"><span class="pre">Status</span></span></a><span class="w"> </span><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Protocol5resetE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Issue a soft reset to the Ex10 chip. </p>
-<p>
-If there is no valid application image loaded into the Ex10, then the request to reset into the Application will result in a reset into the Bootloader.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Requesting a reset into the Application does not guarantee that the device will actually enter Application mode.</p>
-</div>
 <dl class="field-list simple">
-<dt class="field-odd">Param destination</dt>
-<dd class="field-odd"><p>The requested execution context of the Ex10 device: Application or Bootlodaer.</p>
-</dd>
-<dt class="field-even">Returns =</dt>
-<dd class="field-even"><p>0 The reset to the requested destination was successful. </p>
-</dd>
-<dt class="field-odd">Returns =</dt>
-<dd class="field-odd"><p>1 The Impinj Reader Chip reset to the Bootloader when the Application was requested. </p>
-</dd>
-<dt class="field-even">Returns &lt;</dt>
-<dd class="field-even"><p>0 An operating system error code: The negative POSIX errno value. </p>
-</dd>
-<dt class="field-odd">Return</dt>
-<dd class="field-odd"><p>int A integer error code indicating success or failure. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>destination</strong> – The mode to reset into. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -446,8 +349,8 @@ If there is no valid application image loaded into the Ex10, then the request to
 <dd><p>Set the EventFifo threshold in bytes. </p>
 <p>When the number of bytes accumulated by the Ex10 is this threshold or higher then an interrupt wil be generated.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Param threshold</dt>
-<dd class="field-odd"><p>The EventFifo threshold in bytes. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>threshold</strong> – The EventFifo threshold in bytes. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -457,8 +360,8 @@ If there is no valid application image loaded into the Ex10, then the request to
 <span id="_CPPv3N12Ex10Protocol17insert_fifo_eventE"></span><span id="_CPPv2N12Ex10Protocol17insert_fifo_eventE"></span><span class="target" id="struct_ex10_protocol_1afc61aace5c46d871de4ba1bb050a2ca6"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">insert_fifo_event</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">trigger_irq</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv415EventFifoPacket" title="EventFifoPacket"><span class="n"><span class="pre">EventFifoPacket</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">event_packet</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Protocol17insert_fifo_eventE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Insert a host defined event in the event fifo stream. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param event_packet</dt>
-<dd class="field-odd"><p>The EventFifo packet append to the Ex10 EventFifo. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event_packet</strong> – The EventFifo packet append to the Ex10 EventFifo. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -468,7 +371,7 @@ If there is no valid application image loaded into the Ex10, then the request to
 <span id="_CPPv3N12Ex10Protocol20get_running_locationE"></span><span id="_CPPv2N12Ex10Protocol20get_running_locationE"></span><span class="target" id="struct_ex10_protocol_1aafa91d6583670c6d71d518c1a652e81f"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv46Status" title="Status"><span class="n"><span class="pre">Status</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">get_running_location</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Protocol20get_running_locationE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get the running location of the FW (Application or Bootloader) </p>
 <dl class="field-list simple">
-<dt class="field-odd">Return</dt>
+<dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>The running location of the Ex10Device </p>
 </dd>
 </dl>
@@ -481,17 +384,13 @@ If there is no valid application image loaded into the Ex10, then the request to
 <p>
 A CRC-16-CCITT will be calculated across the data and appended to the written data. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param page_id</dt>
-<dd class="field-odd"><p>Determines which flash info page to erase </p>
-</dd>
-<dt class="field-even">Param data_ptr</dt>
-<dd class="field-even"><p>A pointer to the calibration data </p>
-</dd>
-<dt class="field-odd">Param write_length</dt>
-<dd class="field-odd"><p>The number of bytes to write </p>
-</dd>
-<dt class="field-even">Param fref_khz</dt>
-<dd class="field-even"><p>FREF frequency (Khz), must be programmed to valid value to enable programming or erasing flash. Supported values listed in <code class="docutils literal notranslate"><span class="pre">FrefFreq</span></code>.</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>page_id</strong> – Determines which flash info page to erase </p></li>
+<li><p><strong>data_ptr</strong> – A pointer to the calibration data </p></li>
+<li><p><strong>write_length</strong> – The number of bytes to write </p></li>
+<li><p><strong>fref_khz</strong> – FREF frequency (Khz), must be programmed to valid value to enable programming or erasing flash. Supported values listed in <code class="docutils literal notranslate"><span class="pre">FrefFreq</span></code>.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -503,11 +402,11 @@ A CRC-16-CCITT will be calculated across the data and appended to the written da
 <p>
 A CRC-16-CCITT will be calculated across the data and appended to the written data. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param data_ptr</dt>
-<dd class="field-odd"><p>A pointer to the calibration data </p>
-</dd>
-<dt class="field-even">Param write_length</dt>
-<dd class="field-even"><p>The number of bytes to write</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_ptr</strong> – A pointer to the calibration data </p></li>
+<li><p><strong>write_length</strong> – The number of bytes to write</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -517,11 +416,11 @@ A CRC-16-CCITT will be calculated across the data and appended to the written da
 <span id="_CPPv3N12Ex10Protocol15erase_info_pageE"></span><span id="_CPPv2N12Ex10Protocol15erase_info_pageE"></span><span class="target" id="struct_ex10_protocol_1ad108504aca916a8a3e7c7582b8c37298"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">erase_info_page</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv47PageIds" title="PageIds"><span class="n"><span class="pre">PageIds</span></span></a><span class="w"> </span><span class="n"><span class="pre">page_id</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">fref_khz</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Protocol15erase_info_pageE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Erase an info flash page of the device. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param page_id</dt>
-<dd class="field-odd"><p>Determines which flash info page to erase </p>
-</dd>
-<dt class="field-even">Param fref_khz</dt>
-<dd class="field-even"><p>FREF frequency (Khz), must be programmed to valid value to enable programming or erasing flash. Supported values listed in <code class="docutils literal notranslate"><span class="pre">FrefFreq</span></code>. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>page_id</strong> – Determines which flash info page to erase </p></li>
+<li><p><strong>fref_khz</strong> – FREF frequency (Khz), must be programmed to valid value to enable programming or erasing flash. Supported values listed in <code class="docutils literal notranslate"><span class="pre">FrefFreq</span></code>. </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -539,11 +438,11 @@ A CRC-16-CCITT will be calculated across the data and appended to the written da
 <p>
 A CRC-16-CCITT will be calculated across the data and appended to the written data. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param data_ptr</dt>
-<dd class="field-odd"><p>A pointer to the data to write to the settings </p>
-</dd>
-<dt class="field-even">Param write_length</dt>
-<dd class="field-even"><p>The number of bytes to write</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_ptr</strong> – A pointer to the data to write to the settings </p></li>
+<li><p><strong>write_length</strong> – The number of bytes to write</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -551,13 +450,13 @@ A CRC-16-CCITT will be calculated across the data and appended to the written da
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N12Ex10Protocol12upload_imageE">
 <span id="_CPPv3N12Ex10Protocol12upload_imageE"></span><span id="_CPPv2N12Ex10Protocol12upload_imageE"></span><span class="target" id="struct_ex10_protocol_1a917aa7f33d6059d59e2af0e7615e48f3"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">upload_image</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv413ConstByteSpan" title="ConstByteSpan"><span class="n"><span class="pre">ConstByteSpan</span></span></a><span class="w"> </span><span class="n"><span class="pre">upload_image</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Protocol12upload_imageE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Upload an application image. </p>
+<dd><p>Read from an Ex10 chip’s FIFO. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param destination</dt>
-<dd class="field-odd"><p>Where in memory to upload the image. </p>
-</dd>
-<dt class="field-even">Param upload_image</dt>
-<dd class="field-even"><p>Info about the image to upload. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>destination</strong> – Where in memory to upload the image. </p></li>
+<li><p><strong>upload_image</strong> – Info about the image to upload. </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -567,11 +466,11 @@ A CRC-16-CCITT will be calculated across the data and appended to the written da
 <span id="_CPPv3N12Ex10Protocol12upload_startE"></span><span id="_CPPv2N12Ex10Protocol12upload_startE"></span><span class="target" id="struct_ex10_protocol_1a8a5709acc52bc2f28d6a17cdd1020998"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">upload_start</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">image_length</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv413ConstByteSpan" title="ConstByteSpan"><span class="n"><span class="pre">ConstByteSpan</span></span></a><span class="w"> </span><span class="n"><span class="pre">image_chunk</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Protocol12upload_startE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Begin the image upload. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param destination</dt>
-<dd class="field-odd"><p>Where in memory to upload the image. </p>
-</dd>
-<dt class="field-even">Param image_length</dt>
-<dd class="field-even"><p>The total length of the image, in bytes. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>destination</strong> – Where in memory to upload the image. </p></li>
+<li><p><strong>image_length</strong> – The total length of the image, in bytes. </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -582,8 +481,8 @@ A CRC-16-CCITT will be calculated across the data and appended to the written da
 <dd><p>Upload part of an image. </p>
 <p>Call multiple times as need to upload a full image. Each chunk size must not exceed 1021 bytes.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Param image_chunk</dt>
-<dd class="field-odd"><p>Info about the image chunk to upload. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>image_chunk</strong> – Info about the image chunk to upload. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -602,11 +501,11 @@ A CRC-16-CCITT will be calculated across the data and appended to the written da
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N12Ex10Protocol13test_transferE">
-<span id="_CPPv3N12Ex10Protocol13test_transferE"></span><span id="_CPPv2N12Ex10Protocol13test_transferE"></span><span class="target" id="struct_ex10_protocol_1a869f69cc227b3b8573053d34a5461fd6"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_commands_layer.html#_CPPv422Ex10CommandsHostErrors" title="Ex10CommandsHostErrors"><span class="n"><span class="pre">Ex10CommandsHostErrors</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">test_transfer</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv413ConstByteSpan" title="ConstByteSpan"><span class="n"><span class="pre">ConstByteSpan</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">send</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">recv</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">verify</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Protocol13test_transferE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N12Ex10Protocol13test_transferE"></span><span id="_CPPv2N12Ex10Protocol13test_transferE"></span><span class="target" id="struct_ex10_protocol_1ac5f629a9b898dfd2f9729628fa060aac"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv412ResponseCode" title="ResponseCode"><span class="n"><span class="pre">ResponseCode</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">test_transfer</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv413ConstByteSpan" title="ConstByteSpan"><span class="n"><span class="pre">ConstByteSpan</span></span></a><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">send</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv48ByteSpan" title="ByteSpan"><span class="n"><span class="pre">ByteSpan</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">recv</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">verify</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N12Ex10Protocol13test_transferE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Initiate a transfer test. </p>
 <p>This function executes the Ex10 TransferTest command. This is useful for testing the host to Ex10 wireline communication.</p>
 <p><dl class="simple">
-<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#struct_ex10_protocol_1a869f69cc227b3b8573053d34a5461fd6"><span class="std std-ref">test_transfer()</span></a> in commands.h for parameter descriptions. </p>
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#struct_ex10_protocol_1ac5f629a9b898dfd2f9729628fa060aac"><span class="std std-ref">test_transfer()</span></a> in commands.h for parameter descriptions. </p>
 </dd>
 </dl>
 </p>
@@ -724,7 +623,7 @@ A CRC-16-CCITT will be calculated across the data and appended to the written da
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -749,7 +648,7 @@ A CRC-16-CCITT will be calculated across the data and appended to the written da
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Impinj, Inc..
+        &#169; Copyright 2021, Impinj, Inc..
     </div>
   </body>
 </html>

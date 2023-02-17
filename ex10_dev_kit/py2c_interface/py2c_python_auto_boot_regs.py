@@ -24,7 +24,7 @@ from enum import IntEnum
 class RamImageReturnValueFields(Structure):
     _pack_ = 1
     _fields_ = [
-        ('data', c_uint32, 32),
+        ('data', POINTER(c_uint8)),
     ]
 
 class FrefFreqFields(Structure):

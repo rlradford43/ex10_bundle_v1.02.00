@@ -1,4 +1,4 @@
-#!/home/pi/ex10_bundle_v1.02.00/ex10_dev_kit/impinj_reader_chip_venv/bin/python3
+#!/home/pi/ex10_bundle_v1.01.00/ex10_dev_kit/impinj_reader_chip_venv/bin/python3
 # -*- coding: utf8 -*-
 # :Copyright: © 2015 Günter Milde.
 # :License: Released under the terms of the `2-Clause BSD license`_, in short:

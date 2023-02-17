@@ -7,7 +7,7 @@
 # Contact support@impinj.com for a copy of the applicable Impinj license    #
 # terms.                                                                    #
 #                                                                           #
-# (c) Copyright 2021-2022 Impinj, Inc. All rights reserved.                 #
+# (c) Copyright 2021 Impinj, Inc. All rights reserved.                      #
 #                                                                           #
 #############################################################################
 """
@@ -21,31 +21,13 @@ from __future__ import (division, absolute_import, print_function,
 import time
 import os
 import argparse
-import sys
-
-import numpy as np
-import pandas as pd
-
-
-# Append this script's parent dir to path so that modules in ex10_api can be
-# imported with "ex10_api.module".
-parent_dir = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
-sys.path.append(parent_dir)
-
-# Equipment addresses can be GPIB or USB.  For example
-# addr="GPIB0::19::INSTR", etc.
-power_meter_addr = "USB0::0x2A8D::0x0701::MY59260011::0::INSTR"
-sig_gen_addr = "USB0::0x0957::0x2018::0116C599::INSTR"
-
-import calib_info as calib_info
-from power_meter import PowerMeter
-from sig_gen import KeysightSigGen
-from uart_helper import UartBaud, UartHelper
-from uart_reader import UartReader
-
+import cal.calib_info as calib_info
+from cal.power_meter import PowerMeter
+from cal.sig_gen import KeysightSigGen
+from cal.uart_helper import UartBaud, UartHelper
+from cal.uart_reader import UartReader
 import ex10_api.application_address_range as aar
 import ex10_api.mnemonics as mne
-from stopwatch import StopWatch
 
 
 class Ex10CalibrationExample(object):
@@ -59,15 +41,15 @@ class Ex10CalibrationExample(object):
                'PD_SLEEP_TIME': 0.02,
                'ANTENNA': 1,
                'RF_MODE': 5,
-               'TX_SCALAR': 1152,  # 5 dB backoff from fullscale
+               'TX_SCALAR': 1152,  # 5 dB backoff from FS
                'COARSE_ATTS': list(range(30, -1, -1)),
-               'DEFAULT_COARSE_ATT': 8,
-               'DEFAULT_UPPER_FREQ_MHZ': 920.25,
-               'DEFAULT_UPPER_FREQ_REGION': 'FCC',
+               'DFLT_COARSE_ATT': 8,
+               'DFLT_UPPER_FREQ_MHZ': 920.25,
+               'DFLT_UPPER_FREQ_REGION': 'FCC',
                'UPPER_FREQS_MHZ': [902.75, 910.25, 920.25, 927.25],
                'COARSE_ATTS_FREQ': [25, 17, 8],
-               'DEFAULT_LOWER_FREQ_MHZ': 866.3,
-               'DEFAULT_LOWER_FREQ_REGION': 'ETSI LOWER',
+               'DFLT_LOWER_FREQ_MHZ': 866.3,
+               'DFLT_LOWER_FREQ_REGION': 'ETSI LOWER',
                'LOWER_FREQS_MHZ': [865.7, 866.3, 866.9, 867.5],
                'SOAK_TIME': 3,
                'SOAK_COARSE_ATT': 6,
@@ -82,21 +64,12 @@ class Ex10CalibrationExample(object):
                'NUM_PDETS': 4,
                }
 
-    # Calibration trade-offs to optimize speed
-    # TODO: consider removing the power meter optimization as its impact is device dependent
-    CAL_OPTIMIZATIONS = {'PRECISE_COARSE_ATT_THRESH'              : 10,    # Interpolate COARSE_ATTs larger than this
-                         'SKIP_LOWER_BAND_FREQ_CAL'               : True,  # Skip frequency calibration for LOWER_BAND
-                         'SKIP_PWR_METER_FREQ_SET_DURING_FREQ_CAL': True   # Don't change pwr meter freq compensation
-                         }
-
     # The DC offset characterization algorithm uses the following definitions
     DC_CFG = {'PWR_TOL': 1,  # Power ripple tolerance in ADC codes
               'MAX_ITERS': 10,  # Max num DC offset algorithm loops
               'INIT_TX_SCALAR': 2047,  # Initial power scalar
               'MAX_FWD_PWR': 550,  # Max power in ADC codes to avoid compression
               'PWR_BACKOFF_SCALAR': 0.8,  # Fwd pwr backoff for Tx scalar
-              'INIT_MIN_DC_EXP'     : 0,     # Initial minimum DC exponent for DCO search
-              'INIT_MAX_DC_EXP'     : 18,    # Initial maximum DC exponent for DCO search
               }
 
     BLF_KHZ = {  # Used for RSSI calibration
@@ -110,11 +83,10 @@ class Ex10CalibrationExample(object):
         15: 640
     }
 
-    def __init__(self, power_meter, sig_gen, ex10_reader, stopwatch, verbose=True):
+    def __init__(self, power_meter, sig_gen, ex10_reader, verbose=True):
         self.power_meter = power_meter
         self.sig_gen = sig_gen
         self.ex10_reader = ex10_reader
-        self.stopwatch = stopwatch
         self.verbose = verbose
         self.info = self.initialize_cal_info()
 
@@ -128,7 +100,7 @@ class Ex10CalibrationExample(object):
         if board_id is None:
             max_id_len = 16
             board_id = int(input('Enter calibrated board ID number (max '
-                                 + str(2 ** max_id_len - 1) + '):'))
+                                 + str(2 ** max_id_len - 1) + '): '))
             if board_id >= 2 ** max_id_len:
                 raise ValueError('Board ID number larger than max')
         json_file_to_write = directory + os.sep + str(board_id) + '.json'
@@ -148,21 +120,21 @@ class Ex10CalibrationExample(object):
         """
         Init power control data structure as nested dict
         """
-        coarse_len = len(self.CAL_CFG['COARSE_ATTS'])
+        c_len = len(self.CAL_CFG['COARSE_ATTS'])
         freq_len = len(self.CAL_CFG['UPPER_FREQS_MHZ'])
-        freq_att_len = len(self.CAL_CFG['COARSE_ATTS_FREQ'])
         cal_data = {
             'COARSE': {
-                'FWD_PWR': [np.nan] * coarse_len,
-                'LO_PDET': [[np.nan] * self.CAL_CFG['NUM_PDETS'] for _ in range(coarse_len)],
-                'TEMP': [np.nan] * coarse_len,
+                'FWD_PWR': [0xFF] * c_len,
+                'LO_PDET': [[0xFFF for j in range(self.CAL_CFG['NUM_PDETS'])]
+                            for i in range(c_len)],
+                'TEMP': [0] * c_len,
             },
             'FREQ': {
-                'FWD_PWR': [[0.0] * freq_att_len for _ in range(freq_len)],
-                'LO_PDET': [[0.0] * freq_att_len for _ in range(freq_len)],
-                'TEMP': [[0.0] * freq_att_len for _ in range(freq_len)],
+                'FWD_PWR': [[] for j in range(freq_len)],
+                'LO_PDET': [[] for j in range(freq_len)],
+                'TEMP': [[] for j in range(freq_len)],
             },
-            'DC_OFS': [np.nan] * coarse_len,
+            'DC_OFS': [0] * c_len,
             'TEMP': 0,
         }
         return cal_data
@@ -182,9 +154,6 @@ class Ex10CalibrationExample(object):
             },
             mne.ProductSku.E710.value: {
                 'RF_MODES': [1, 3, 5, 7, 11, 12, 13, 15],
-            },
-            mne.ProductSku.E910.value: {
-                'RF_MODES': [1, 3, 5, 7, 11, 12, 13, 15],
             }
         }
         self.RSSI_CFG = {
@@ -201,7 +170,7 @@ class Ex10CalibrationExample(object):
             'RX_ATTS': ['Atten_0_dB', 'Atten_3_dB', 'Atten_6_dB',
                         'Atten_12_dB', ],
         }
-        self.RSSI_DEFAULT_CFG = {
+        self.RSSI_DFLT_CFG = {
             'RX_PWR': -55,  # dBm input power from sig_gen
             'ANTENNA': 1,
             'RF_MODE': 13,
@@ -218,7 +187,7 @@ class Ex10CalibrationExample(object):
 
     def init_rssi_data(self):
         rssi_data = {
-            'DEFAULT': 0,
+            'DFLT': 0,
             'ANTENNA': [0] * len(self.RSSI_CFG['ANTENNA_PORTS']),
             'MODES': [0] * len(self.RSSI_CFG['RF_MODES']),
             'UPPER_FREQS_MHZ': [0],
@@ -234,7 +203,7 @@ class Ex10CalibrationExample(object):
     def measure_fwd_power(self):
         """
         Reads power from power meter and Ex10 lo power detector
-        :return: power meter reading in dBm, list of lo power detector ADC codes
+        :return: power meter reading in dBm, lo power detector ADC code
         """
         time.sleep(self.CAL_CFG['PM_SLEEP_TIME'])
         fwd_pwr = self.power_meter.read_power()
@@ -257,10 +226,7 @@ class Ex10CalibrationExample(object):
             tx_scalar = int(tx_scalar * self.DC_CFG['PWR_BACKOFF_SCALAR'])
             self.ex10_reader.set_tx_fine_gain(tx_scalar)
             time.sleep(self.CAL_CFG['PD_SLEEP_TIME'])
-        # Reassign init_tx_scalar to speed up next DCO estimation
-        self.DC_CFG['INIT_TX_SCALAR'] = tx_scalar
-
-        # Reset DC Offset and determine if search range should be negative
+        # Determine if DC offset search range should be negative
         self.ex10_reader.tx_ramp_up(dc_offset=0)
         pwr_diff, pwr_p, pwr_n = self.get_fwd_pwr_diff(tx_scalar)
         dc_sign = -1 if pwr_diff > 0 else 1
@@ -268,8 +234,8 @@ class Ex10CalibrationExample(object):
         # to optimize speed
         n_iters = 0
         dc_exp = 0
-        dc_exp_low = self.DC_CFG['INIT_MIN_DC_EXP']
-        dc_exp_high = self.DC_CFG['INIT_MAX_DC_EXP']
+        dc_exp_low = 4
+        dc_exp_high = 18
         while dc_exp_low <= dc_exp_high and n_iters < self.DC_CFG['MAX_ITERS']:
             # Set exponential to be average of bounds
             dc_exp = (dc_exp_low + dc_exp_high) / 2
@@ -295,16 +261,12 @@ class Ex10CalibrationExample(object):
         :param tx_scalar: Fine gain power scalar
         :return: dB power difference, dBm pos power, dBm neg power
         """
-        # Positive ramp
         self.ex10_reader.set_tx_fine_gain(tx_scalar)
         time.sleep(self.CAL_CFG['PD_SLEEP_TIME'])
         pwr_p = self.ex10_reader.measure_adc('lo_sum')
-
-        # Negative ramp
         self.ex10_reader.set_tx_fine_gain(-1 * tx_scalar)
         time.sleep(self.CAL_CFG['PD_SLEEP_TIME'])
         pwr_n = self.ex10_reader.measure_adc('lo_sum')
-
         pwr_diff = pwr_p - pwr_n
         return pwr_diff, pwr_p, pwr_n
 
@@ -315,7 +277,7 @@ class Ex10CalibrationExample(object):
     def reset_dflt_pwr_cal_gains(self):
         self.ex10_reader.set_tx_fine_gain(tx_scalar=self.CAL_CFG['TX_SCALAR'])
         self.ex10_reader.set_coarse_gain(
-            tx_atten=self.CAL_CFG['DEFAULT_COARSE_ATT'])
+            tx_atten=self.CAL_CFG['DFLT_COARSE_ATT'])
 
     def acquire_pwr_cal_data(self, rf_filter='UPPER_BAND', cal_dc_offset=False):
         """
@@ -332,12 +294,12 @@ class Ex10CalibrationExample(object):
 
         # Set rf filter
         if rf_filter == 'UPPER_BAND':
-            self.ex10_reader.set_region(self.CAL_CFG['DEFAULT_UPPER_FREQ_REGION'])
-            freq_mhz = self.CAL_CFG['DEFAULT_UPPER_FREQ_MHZ']
+            self.ex10_reader.set_region(self.CAL_CFG['DFLT_UPPER_FREQ_REGION'])
+            freq_mhz = self.CAL_CFG['DFLT_UPPER_FREQ_MHZ']
             freqs = self.CAL_CFG['UPPER_FREQS_MHZ']
         elif rf_filter == 'LOWER_BAND':
-            self.ex10_reader.set_region(self.CAL_CFG['DEFAULT_LOWER_FREQ_REGION'])
-            freq_mhz = self.CAL_CFG['DEFAULT_LOWER_FREQ_MHZ']
+            self.ex10_reader.set_region(self.CAL_CFG['DFLT_LOWER_FREQ_REGION'])
+            freq_mhz = self.CAL_CFG['DFLT_LOWER_FREQ_MHZ']
             freqs = self.CAL_CFG['LOWER_FREQS_MHZ']
         else:
             raise ValueError('rf_filter not recognized.')
@@ -352,72 +314,54 @@ class Ex10CalibrationExample(object):
         self.reset_dflt_pwr_cal_gains()
         # Enable the transmitter
         self.ex10_reader.tx_ramp_up()
-        self.stopwatch.split('PWR CAL', rf_filter + ' init')
 
         # Heat the board up to operating temp
         self._print('Warming up board')
         self.ex10_reader.set_coarse_gain(self.CAL_CFG['SOAK_COARSE_ATT'])
         time.sleep(self.CAL_CFG['SOAK_TIME'])
-        self.stopwatch.split('PWR CAL', rf_filter + ' warmup')
 
-        # Calibrate across coarse attenuations
+        # Cal across coarse attenuations
         self._print('Measuring across coarse att.')
-        self._print('{:>3}  {:>5}  {:>20}  {:>3}  {:>7}'.format('att', 'pwr', 'lo_pdet', 'temp', 'dc_ofs'))
 
-        for coarse_idx, coarse_val in enumerate(self.CAL_CFG['COARSE_ATTS']):
-            # Skip every odd coarse attenuation up to the specified limit
-            # to reduce total calibration runtime.
-            if (coarse_val > self.CAL_OPTIMIZATIONS['PRECISE_COARSE_ATT_THRESH']) and (coarse_idx % 2):
-                continue
-            self.ex10_reader.set_coarse_gain(coarse_val)
-            # Measure values
-            (data['COARSE']['FWD_PWR'][coarse_val],
-             data['COARSE']['LO_PDET'][coarse_val]) = self.measure_fwd_power()
-            data['COARSE']['TEMP'][coarse_val] = self.ex10_reader.measure_adc('temp')
+        for c_ind, c_val in enumerate(self.CAL_CFG['COARSE_ATTS']):
+            self.ex10_reader.set_coarse_gain(c_val)
+            (data['COARSE']['FWD_PWR'][c_val],
+             data['COARSE']['LO_PDET'][c_val]) = self.measure_fwd_power()
+            data['COARSE']['TEMP'][c_val] = self.ex10_reader.measure_adc('temp')
             if cal_dc_offset:
-                data['DC_OFS'][coarse_val] = self.estimate_dc_offset()
+                data['DC_OFS'][c_val] = self.estimate_dc_offset()
                 self.ex10_reader.set_tx_fine_gain(
                     tx_scalar=self.CAL_CFG['TX_SCALAR'])
-            to_print = (round(data['COARSE']['FWD_PWR'][coarse_val], 1),
-                        data['COARSE']['LO_PDET'][coarse_val],
-                        data['COARSE']['TEMP'][coarse_val], data['DC_OFS'][coarse_val])
+            to_print = (round(data['COARSE']['FWD_PWR'][c_val], 1),
+                        data['COARSE']['LO_PDET'][c_val],
+                        data['COARSE']['TEMP'][c_val], data['DC_OFS'][c_val])
             self._print(to_print)
             # Stop transmitting above specified limit to protect board
-            if (data['COARSE']['FWD_PWR'][coarse_val]
+            if (data['COARSE']['FWD_PWR'][c_val]
                     > self.CAL_CFG['FWD_PWR_LIMIT_DBM']):
-                print("Over FWD_PWR_LIMIT_DBM!")
                 break
 
         self.reset_dflt_pwr_cal_gains()
 
         data['TEMP'] = self.ex10_reader.measure_adc('temp')
-        self.stopwatch.split('PWR CAL', rf_filter + ' coarse')
 
-        # Calibrate across frequency
-        if rf_filter == 'LOWER_BAND' and self.CAL_OPTIMIZATIONS['SKIP_LOWER_BAND_FREQ_CAL']:
-            self._print('Skipping LOWER_BAND frequency calibration')
-        else:
-            self._print('Measuring across frequency.')
-            self._print('freq         fwd_pwrs                pdet_adcs')
-            for freq_idx, freq_val in enumerate(freqs):
-                self.set_freq_mhz(freq_mhz=freq_val)
-                for coarse_idx, coarse_val in enumerate(self.CAL_CFG['COARSE_ATTS_FREQ']):
-                    self.ex10_reader.set_coarse_gain(coarse_val)
-
-                    (pwr, pdet_adc) = self.measure_fwd_power()
-                    temp_adc = self.ex10_reader.measure_adc('temp')
-
-                    data['FREQ']['FWD_PWR'][freq_idx][coarse_idx] = pwr
-                    data['FREQ']['LO_PDET'][freq_idx][coarse_idx] = pdet_adc
-                    data['FREQ']['TEMP'][freq_idx][coarse_idx] = temp_adc
-                to_print = (
-                    freq_val,
-                    [round(x, 1) for x in data['FREQ']['FWD_PWR'][freq_idx]],
-                    data['FREQ']['LO_PDET'][freq_idx])
-                self._print(to_print)
-
+        # Cal across freq
+        self._print('Measuring across frequency.')
+        for f_ind, f_val in enumerate(freqs):
+            self.set_freq_mhz(freq_mhz=f_val)
+            for c_ind, c_val in enumerate(self.CAL_CFG['COARSE_ATTS_FREQ']):
+                self.ex10_reader.set_coarse_gain(c_val)
+                (pwr, pdet_adc) = self.measure_fwd_power()
+                data['FREQ']['FWD_PWR'][f_ind].append(pwr)
+                data['FREQ']['LO_PDET'][f_ind].append(pdet_adc)
+                temp_adc = self.ex10_reader.measure_adc('temp')
+                data['FREQ']['TEMP'][f_ind].append(temp_adc)
+            to_print = (
+                f_val,
+                [round(x, 1) for x in data['FREQ']['FWD_PWR'][f_ind]],
+                data['FREQ']['LO_PDET'][f_ind])
+            self._print(to_print)
         self.set_freq_mhz(freq_mhz)
-        self.stopwatch.split('PWR CAL', rf_filter + ' freq')
 
         self.power_off()
         self._print('Finished acquiring cal data ' + rf_filter)
@@ -432,25 +376,25 @@ class Ex10CalibrationExample(object):
 
         self._print('Acquiring RSSI calibration data.')
 
-        # Init cal configs based on SKU and initialize data structure
+        # Init cal configs based on SKU
         self.init_rssi_configs()
+        # Initialize data structure
         data = self.init_rssi_data()
 
         # Set up defaults
         self.ex10_reader.radio_power_control(True)
-        self.sig_gen.set_power_dbm(power=self.RSSI_DEFAULT_CFG['RX_PWR']+path_loss)
+        self.set_mode_antenna()
+        self.sig_gen.set_power_dbm(power=self.RSSI_DFLT_CFG['RX_PWR']+path_loss)
         self.sig_gen.on()
-
         # Set RX gains
         self.set_rssi_gains()
-
         # Set TX RF filter and frequency
-        self.ex10_reader.set_region(self.RSSI_DEFAULT_CFG['UPPER_FREQ_REGION'])
-        self.ex10_reader.lock_synthesizer(self.RSSI_DEFAULT_CFG['FREQ_MHZ'])
+        self.ex10_reader.set_region(self.RSSI_DFLT_CFG['UPPER_FREQ_REGION'])
+        self.ex10_reader.lock_synthesizer(self.RSSI_DFLT_CFG['FREQ_MHZ'])
 
         self.RSSI_CFG['TEMP_COEFS'][1] = self.ex10_reader.measure_adc('temp')
 
-        # Cal across RF Modes and RX gain settings
+        # Cal across RF Modes
         self._print('----Sweeping RF modes')
         for m, mode in enumerate(self.RSSI_CFG['RF_MODES']):
             # Set mode
@@ -464,24 +408,28 @@ class Ex10CalibrationExample(object):
             # Set RX Gains
             self.set_rssi_gains(pga1_gain=pga1)
             data['PGA1'][g] = self.ex10_reader.read_rssi()
+        self.set_rssi_gains()
 
         self._print('----Sweeping PGA2 gain')
         for g, pga2 in enumerate(self.RSSI_CFG['PGA2_GAINS']):
             # Set RX Gains
             self.set_rssi_gains(pga2_gain=pga2)
             data['PGA2'][g] = self.ex10_reader.read_rssi()
+        self.set_rssi_gains()
 
         self._print('----Sweeping PGA3 gain')
         for g, pga3 in enumerate(self.RSSI_CFG['PGA3_GAINS']):
             # Set RX Gains
             self.set_rssi_gains(pga3_gain=pga3)
             data['PGA3'][g] = self.ex10_reader.read_rssi()
+        self.set_rssi_gains()
 
         self._print('----Sweeping TIA gain')
         for g, tia in enumerate(self.RSSI_CFG['MIXER_GAINS']):
             # Set RX Gains
             self.set_rssi_gains(mixer_gain=tia)
             data['MIXER'][g] = self.ex10_reader.read_rssi()
+        self.set_rssi_gains()
 
         self._print('----Sweeping RX ATT gain')
         for a, rx_atten in enumerate(self.RSSI_CFG['RX_ATTS']):
@@ -490,16 +438,16 @@ class Ex10CalibrationExample(object):
             data['RX_ATT'][a] = self.ex10_reader.read_rssi()
         self.set_rssi_gains()
 
-        data['DEFAULT'] = self.ex10_reader.read_rssi()
+        data['DFLT'] = self.ex10_reader.read_rssi()
 
         self._print('----Sweeping FREQS')
-        self.ex10_reader.set_region(self.RSSI_DEFAULT_CFG['LOWER_FREQ_REGION'])
-        self.ex10_reader.lock_synthesizer(self.RSSI_DEFAULT_CFG['LOWER_FREQ_MHZ'])
-        self.set_mode_antenna(freq_mhz=self.RSSI_DEFAULT_CFG['LOWER_FREQ_MHZ'])
+        self.ex10_reader.set_region(self.RSSI_DFLT_CFG['LOWER_FREQ_REGION'])
+        self.ex10_reader.lock_synthesizer(self.RSSI_DFLT_CFG['LOWER_FREQ_MHZ'])
+        self.set_mode_antenna(freq_mhz=self.RSSI_DFLT_CFG['LOWER_FREQ_MHZ'])
         data['LOWER_FREQS_MHZ'] = self.ex10_reader.read_rssi()
-        self.ex10_reader.set_region(self.RSSI_DEFAULT_CFG['UPPER_FREQ_REGION'])
-        self.ex10_reader.lock_synthesizer(self.RSSI_DEFAULT_CFG['FREQ_MHZ'])
-        self.set_mode_antenna(freq_mhz=self.RSSI_DEFAULT_CFG['FREQ_MHZ'])
+        self.ex10_reader.set_region(self.RSSI_DFLT_CFG['UPPER_FREQ_REGION'])
+        self.ex10_reader.lock_synthesizer(self.RSSI_DFLT_CFG['FREQ_MHZ'])
+        self.set_mode_antenna(freq_mhz=self.RSSI_DFLT_CFG['FREQ_MHZ'])
         data['UPPER_FREQS_MHZ'] = self.ex10_reader.read_rssi()
 
         # Check antenna path losses
@@ -510,7 +458,6 @@ class Ex10CalibrationExample(object):
             self.set_mode_antenna(antenna=antenna)
             data['ANTENNA'][a] = self.ex10_reader.read_rssi()
 
-        self.sig_gen.off()
         return data
 
     def set_rssi_gains(self,
@@ -528,15 +475,15 @@ class Ex10CalibrationExample(object):
         pga3_enums = analog_rx['Pga3Gain']['enums']
         mixer_enums = analog_rx['MixerGain']['enums']
 
-        rx_att = rx_att if rx_att is not None else self.RSSI_DEFAULT_CFG['RX_ATT']
-        pga1_gain = pga1_gain if pga1_gain is not None else self.RSSI_DEFAULT_CFG[
+        rx_att = rx_att if rx_att is not None else self.RSSI_DFLT_CFG['RX_ATT']
+        pga1_gain = pga1_gain if pga1_gain is not None else self.RSSI_DFLT_CFG[
             'PGA1_GAIN']
-        pga2_gain = pga2_gain if pga2_gain is not None else self.RSSI_DEFAULT_CFG[
+        pga2_gain = pga2_gain if pga2_gain is not None else self.RSSI_DFLT_CFG[
             'PGA2_GAIN']
-        pga3_gain = pga3_gain if pga3_gain is not None else self.RSSI_DEFAULT_CFG[
+        pga3_gain = pga3_gain if pga3_gain is not None else self.RSSI_DFLT_CFG[
             'PGA3_GAIN']
         mixer_gain = (mixer_gain if mixer_gain is not None else
-                      self.RSSI_DEFAULT_CFG['MIXER_GAIN'])
+                      self.RSSI_DFLT_CFG['MIXER_GAIN'])
 
         rx_config = {
             'RxAtten': rx_atten_enums[rx_att],
@@ -550,30 +497,23 @@ class Ex10CalibrationExample(object):
         self.ex10_reader.set_analog_rx_config(rx_config)
 
     def set_mode_antenna(self,
-                         antenna=None,
                          rf_mode=None,
-                         freq_mhz=None,
-                         blf_khz=None):
-        """
-        Set the signal generator frequency and device radio. If a param is not specified, use the default value
-        :param antenna : device antenna setting
-        :param rf_mode : device RF mode number
-        :param freq_mhz: Signal generator center frequency in MHz
-        :param blf_khz : Signal generator offset frequency in kHz
-        """
-        antenna = antenna if antenna is not None else self.RSSI_DEFAULT_CFG[
-            'ANTENNA']
-        freq_mhz = freq_mhz if freq_mhz is not None else self.RSSI_DEFAULT_CFG[
+                         blf_khz=None,
+                         antenna=None,
+                         freq_mhz=None):
+        freq_mhz = freq_mhz if freq_mhz is not None else self.RSSI_DFLT_CFG[
             'FREQ_MHZ']
-        rf_mode = rf_mode if rf_mode is not None else self.RSSI_DEFAULT_CFG[
+        rf_mode = rf_mode if rf_mode is not None else self.RSSI_DFLT_CFG[
             'RF_MODE']
         blf_khz = blf_khz if blf_khz is not None else self.BLF_KHZ[
-            self.RSSI_DEFAULT_CFG['RF_MODE']]
+            self.RSSI_DFLT_CFG['RF_MODE']]
+        antenna = antenna if antenna is not None else self.RSSI_DFLT_CFG[
+            'ANTENNA']
 
         self.sig_gen.set_freq_mhz(freq_mhz + blf_khz / 1e3)
         self.ex10_reader.enable_radio(antenna=antenna,
                                       rf_mode=rf_mode)
-        self.set_rssi_gains()
+        time.sleep(0.05)
 
     @staticmethod
     def argmin_2(num_list):
@@ -602,9 +542,7 @@ class Ex10CalibrationExample(object):
 
     def store_pwr_cal_params(self, data, rf_filter):
         """
-        Calculates calibration parameters from acquired data and stores them
-        :param data     : calibration data from acquire_pwr_cal_data()
-        :param rf_filter: 'UPPER_BAND' or 'LOWER_BAND'
+        Calculates calibration parameters from acquired data.
         """
         self._print('Calculating cal params ' + rf_filter)
 
@@ -632,36 +570,6 @@ class Ex10CalibrationExample(object):
         self.info.set_parameter(rf_cal_prefix + 'CalTemp',
                                 tuple([data['TEMP']]))
 
-        # Interpolate coarse attenuation data
-        pdet_names  = [f'PDET{i}' for i in range(self.CAL_CFG['NUM_PDETS'])]  # PDET vals from op MUST be in same order
-        pdet_values = np.array(data['COARSE'].pop('LO_PDET')).transpose()
-        pdet_data   = {pdet: list(adc) for pdet, adc in zip(pdet_names, pdet_values)}
-
-        df_coarse_data = pd.DataFrame({**data['COARSE'],
-                                       **pdet_data,
-                                       **{'DC_OFS': data['DC_OFS']}})
-        df_interp_data = df_coarse_data.interpolate()
-
-        default_vals = {
-            'FWD_PWR': 0xFF,
-            'TEMP'   : 0,
-            'DC_OFS' : 0,
-            'PDET0'  : 0xFFF,
-            'PDET1'  : 0xFFF,
-            'PDET2'  : 0xFFF,
-            'PDET3'  : 0xFFF,
-        }
-
-        df_interp_data = df_interp_data.fillna(value=default_vals)
-        df_interp_data[['TEMP', 'DC_OFS'] + pdet_names] = df_interp_data[['TEMP', 'DC_OFS'] + pdet_names].apply(round)
-        df_interp_data = df_interp_data.convert_dtypes()
-        self._print('\nInterpolated Coarse Power\n', df_interp_data)
-
-        data['COARSE']['FWD_PWR'] = df_interp_data.FWD_PWR.tolist()
-        data['COARSE']['LO_PDET'] = [list(map(int, pdet_adcs)) for pdet_adcs in df_interp_data[pdet_names].to_numpy()]
-        data['COARSE']['TEMP']    = list(map(int, df_interp_data.TEMP.to_list()))
-        data['DC_OFS']            = list(map(int, df_interp_data.DC_OFS.to_list()))
-
         # Store PDET ADC values as LUT
         pdet_lut = tuple(
             zip(*data['COARSE']['LO_PDET']))[0:self.CAL_CFG['NUM_PDET_BLOCKS']]
@@ -672,23 +580,22 @@ class Ex10CalibrationExample(object):
         # Calc freq power offsets in PDETs
         r_coarse_atts = range(len(self.CAL_CFG['COARSE_ATTS_FREQ']))
         r_pdet_blocks = range(self.CAL_CFG['NUM_PDET_BLOCKS'])
-        pwr_diff_over_freq = [[0] * len(freqs) for j in r_pdet_blocks]
-        if not(rf_filter == 'LOWER_BAND' and self.CAL_OPTIMIZATIONS['SKIP_LOWER_BAND_FREQ_CAL']):
-            for p_ind in r_pdet_blocks:
-                for c_ind in r_coarse_atts:
-                    for f_ind, freq in enumerate(freqs):
-                        # Calculate what the power should be from initial cal
-                        adc = data['FREQ']['LO_PDET'][f_ind][c_ind][p_ind]
-                        pwr, i = self._adc_to_power(adc,
-                                                    data['COARSE']['FWD_PWR'],
-                                                    pdet_lut[p_ind])
-
-                        # Compensate for temperature
-                        if pwr != -0xFF:  # not invalid power
-                            temp_delta = data['COARSE']['TEMP'][i] - data['FREQ']['TEMP'][f_ind][c_ind]
-                            pwr += self.CAL_CFG['PDET_PWR_PER_TEMP_ADC'][p_ind] * temp_delta
-                            pwr_diff_over_freq[p_ind][f_ind] = int((pwr - data[
-                                'FREQ']['FWD_PWR'][f_ind][c_ind]) * 100)
+        pwr_diff_over_freq = [[0 for i in freqs] for j in r_pdet_blocks]
+        for p_ind in r_pdet_blocks:
+            for c_ind in r_coarse_atts:
+                for f_ind, freq in enumerate(freqs):
+                    # First calculate what the pwr should be from initial cal
+                    adc = data['FREQ']['LO_PDET'][f_ind][c_ind][p_ind]
+                    pwr, i = self._adc_to_power(adc,
+                                                data['COARSE']['FWD_PWR'],
+                                                pdet_lut[p_ind])
+                    # Next comp temperature
+                    if pwr != -0xFF:  # not invalid power
+                        pwr += self.CAL_CFG['PDET_PWR_PER_TEMP_ADC'][p_ind] * (
+                                data['COARSE']['TEMP'][i] -
+                                data['FREQ']['TEMP'][f_ind][c_ind])
+                        pwr_diff_over_freq[p_ind][f_ind] = int((pwr - data[
+                            'FREQ']['FWD_PWR'][f_ind][c_ind]) * 100)
 
         pwr_diff_over_freq = tuple([f for p in pwr_diff_over_freq for f in p])
         self.info.set_parameter(
@@ -715,22 +622,15 @@ class Ex10CalibrationExample(object):
         self._print('Calibration parameters done ' + rf_filter)
 
     def store_dc_cal_params(self, data):
-        """
-        Store DC offset estimates
-        :param data: calibration data from acquire_pwr_cal_data()
-        """
+        # Store DC offset estimates
         self.info.set_parameter('DcOffsetCal', tuple(data['DC_OFS']))
 
     def store_rssi_cal_params(self, rssi_data):
-        """
-        Store RSSI data
-        :param rssi_data: calibration data from acquire_rssi_cal_data()
-        """
-        baseline_rssi = rssi_data['DEFAULT']  # RSSI value at default settings
+        baseline_rssi = rssi_data['DFLT']  # RSSI value at default settings
 
         # Store baseline RSSI value and input power
         self.info.set_parameter('RssiRxDefaultPwr',
-                                tuple([self.RSSI_DEFAULT_CFG['RX_PWR']]))
+                                tuple([self.RSSI_DFLT_CFG['RX_PWR']]))
         self.info.set_parameter('RssiRxDefaultLog2', tuple([baseline_rssi]))
 
         # Store RF modes and RF mode RSSI offsets
@@ -743,17 +643,30 @@ class Ex10CalibrationExample(object):
         self.info.set_parameter('RssiRfModeLut',
                                 tuple(mode_offsets + rf_mode_cal_pad))
 
-        # Store analog RX gain offsets
+        # Store PGA1 offsets
         pga1_offsets = [i - baseline_rssi for i in rssi_data['PGA1']]
+        self.info.set_parameter('RssiPga1Lut',
+                                tuple(pga1_offsets))
+
+        # Store PGA2 offsets
         pga2_offsets = [i - baseline_rssi for i in rssi_data['PGA2']]
+        self.info.set_parameter('RssiPga2Lut',
+                                tuple(pga2_offsets))
+
+        # Store PGA3 offsets
         pga3_offsets = [i - baseline_rssi for i in rssi_data['PGA3']]
+        self.info.set_parameter('RssiPga3Lut',
+                                tuple(pga3_offsets))
+
+        # Store Mixer Gain offsets
         mixer_gain_offsets = [i - baseline_rssi for i in rssi_data['MIXER']]
+        self.info.set_parameter('RssiMixerGainLut',
+                                tuple(mixer_gain_offsets))
+
+        # Store RX Att offsets
         rx_att_offsets = [i - baseline_rssi for i in rssi_data['RX_ATT']]
-        self.info.set_parameter('RssiPga1Lut', tuple(pga1_offsets))
-        self.info.set_parameter('RssiPga2Lut', tuple(pga2_offsets))
-        self.info.set_parameter('RssiPga3Lut', tuple(pga3_offsets))
-        self.info.set_parameter('RssiMixerGainLut', tuple(mixer_gain_offsets))
-        self.info.set_parameter('RssiRxAttLut', tuple(rx_att_offsets))
+        self.info.set_parameter('RssiRxAttLut',
+                                tuple(rx_att_offsets))
 
         # Store Antenna offsets
         antenna_cal_pad = [0] * (self.RSSI_CFG['N_ANTENNA_PORTS']
@@ -765,10 +678,12 @@ class Ex10CalibrationExample(object):
         self.info.set_parameter('RssiAntennaLut',
                                 tuple(antenna_offsets + antenna_cal_pad))
 
-        # Store Upper + Lower Band RSSI offsets across frequency
+        # Store Upper Band RSSI offsets across frequency
         self.info.set_parameter('UpperBandRssiFreqOffset',
                                 tuple([rssi_data['UPPER_FREQS_MHZ'] -
                                       baseline_rssi]))
+
+        # Store Lower Band RSSI offsets across frequency
         self.info.set_parameter('LowerBandRssiFreqOffset',
                                 tuple([rssi_data['LOWER_FREQS_MHZ'] -
                                       baseline_rssi]))
@@ -781,25 +696,29 @@ class Ex10CalibrationExample(object):
 
 
     def store_cal_version_params(self, board_id):
-        """
-        Store calibration version number, board id, calibration tx_scalar,
-        PDET limits, and power control loop params
-        :param board_id: device id number
-        """
+        # Store cal version number
         self.info.set_parameter(
             'CalibrationVersion', tuple([self.CAL_CFG['CAL_VERSION']]))
 
         # User board ID
-        self.info.set_parameter('UserBoardId', tuple([board_id]))
+        self.info.set_parameter(
+            'UserBoardId',
+            tuple([board_id]))
 
         # Tx scalar
-        self.info.set_parameter('TxScalarCal', tuple([self.CAL_CFG['TX_SCALAR']]))
+        self.info.set_parameter(
+            'TxScalarCal',
+            tuple([self.CAL_CFG['TX_SCALAR']]))
 
         # Valid PDET ADC range for each PDET block
-        self.info.set_parameter('ValidPdetAdcs', tuple(self.CAL_CFG['PDET_ADC_MIN_MAX']))
+        self.info.set_parameter(
+            'ValidPdetAdcs',
+            tuple(self.CAL_CFG['PDET_ADC_MIN_MAX']))
 
         # Control loop params
-        self.info.set_parameter('ControlLoopParams', tuple([self.CAL_CFG['LOOP_GAIN_DIVISOR'],
+        self.info.set_parameter(
+            'ControlLoopParams',
+            tuple([self.CAL_CFG['LOOP_GAIN_DIVISOR'],
                    self.CAL_CFG['ADC_ERROR_THRESHOLD'],
                    self.CAL_CFG['MAX_ITERATIONS']]))
 
@@ -824,7 +743,7 @@ class Ex10CalibrationExample(object):
         """
         self.ex10_reader.stop_transmitting()
 
-def run_pc_cal(uart_helper, power_meter, sig_gen, path_loss, board_id, verbose, debug_serial, stopwatch):
+def run_pc_cal(uart_helper, power_meter, sig_gen, path_loss, board_id, verbose, debug_serial):
     """
     Executes calibration procedure: acquires calibration data, calculates
     calibration params, and writes cal table into flash.
@@ -835,52 +754,42 @@ def run_pc_cal(uart_helper, power_meter, sig_gen, path_loss, board_id, verbose, 
     :param board_id: R807 board ID number
     :param verbose: verbose flag for printing
     :param debug_serial: flag for dumping all serial data to/from device
-    :param stopwatch: object to measure time
     """
     uart_helper.open_port(UartBaud.RATE115200)
     ex10_reader = UartReader(uart_helper)
     ex10_reader.dump_serial(debug_serial)
-    stopwatch.split('READER SDK', 'setup')
 
     cal_example = Ex10CalibrationExample(power_meter=power_meter,
                                          sig_gen=sig_gen,
                                          ex10_reader=ex10_reader,
-                                         stopwatch=stopwatch,
                                          verbose=verbose)
-    stopwatch.split('CAL', 'setup')
 
     board_id, json_file_to_write = cal_example.get_board_id(board_id)
     rssi_data = cal_example.acquire_rssi_cal_data(path_loss=path_loss)
-    stopwatch.split('RSSI CAL', 'stop')
     upper_data = cal_example.acquire_pwr_cal_data(rf_filter='UPPER_BAND',
                                                   cal_dc_offset=True)
-    stopwatch.split('PWR CAL', 'UPPER_BAND stop')
     lower_data = cal_example.acquire_pwr_cal_data(rf_filter='LOWER_BAND')
-    stopwatch.split('PWR CAL', 'LOWER_BAND stop')
 
     cal_example.store_cal_version_params(board_id=board_id)
     cal_example.store_pwr_cal_params(data=upper_data, rf_filter='UPPER_BAND')
     cal_example.store_pwr_cal_params(data=lower_data, rf_filter='LOWER_BAND')
     cal_example.store_dc_cal_params(data=upper_data)
     cal_example.store_rssi_cal_params(rssi_data)
-    stopwatch.split('CAL', 'store')
     cal_example.info.dump_params()
     cal_example.info.to_json(json_file_to_write)
     cal_example.power_off()
 
     #  Writing cal info page
     cal_example.write_calibration_info_page()
-    stopwatch.split('CAL', 'write')
 
     # Test cal info page written correctly
     cal_example.read_calibration_info_page()
     print(*cal_example.info.dump_params(), sep=os.linesep)
-    stopwatch.split('CAL', 'readback')
 
     print('Calibration complete.')
 
 
-def run_pc_cal_example(stopwatch):
+def run_pc_cal_example():
     print('Ex10 Development Kit Calibration example')
 
     try:
@@ -903,37 +812,17 @@ def run_pc_cal_example(stopwatch):
         args = parser.parse_args()
 
         # Use selected port with speed 115200, 8n1
-        stopwatch.start()
         uart_helper = UartHelper()
         uart_helper.choose_serial_port()
-        stopwatch.split('READER HW', 'init')
-        power_meter = PowerMeter(addr=power_meter_addr, ofs=args.power_offset)
-        stopwatch.split('INST', 'power meter init')
-        sig_gen = KeysightSigGen(address=sig_gen_addr)
-        stopwatch.split('INST', 'signal generator init')
+
+        power_meter = PowerMeter(ofs=args.power_offset)
+        sig_gen = KeysightSigGen()
 
         run_pc_cal(uart_helper, power_meter, sig_gen,
-                args.path_loss, args.board_id, args.verbose, args.debug_serial, stopwatch)
-        stopwatch.stop()
-
+                args.path_loss, args.board_id, args.verbose, args.debug_serial)
     finally:
         uart_helper.shutdown()
 
-        if args.verbose:
-            print('\nCalibration timeline:')
-            for label, time_s, category in zip(stopwatch.labels, stopwatch.times, stopwatch.categories):
-                print(f'{time_s: 7.1f} || {category:10} || {label}')
-
-            print('\nCalibration time breakdown:')
-            for label, time_s, category in zip(stopwatch.lap_labels, stopwatch.lap_times, stopwatch.lap_categories):
-                if time_s <= 5e-2:
-                    continue
-                print(f'{time_s: 7.1f} || {category:10} || {label}')
-
-            print(f'\n{stopwatch.times[-1]:7.1f} || Total')
-
 
 if __name__ == "__main__":
-    stopwatch = StopWatch()
-    stopwatch.start()
-    run_pc_cal_example(stopwatch)
+    run_pc_cal_example()

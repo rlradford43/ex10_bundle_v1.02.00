@@ -1,4 +1,4 @@
-#!/home/pi/ex10_bundle_v1.02.00/ex10_dev_kit/impinj_reader_chip_venv/bin/python3
+#!/home/pi/ex10_bundle_v1.01.00/ex10_dev_kit/impinj_reader_chip_venv/bin/python3
 
 # $Id: rst2odt.py 5839 2009-01-07 19:09:28Z dkuhlman $
 # Author: Dave Kuhlman <dkuhlman@rexx.com>

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Gen2 Access Commands &#8212; Impinj Reader Chip SDK</title>
+    <title>Gen2 Commands &#8212; Impinj Reader Chip SDK</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinxdoc.css" />
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
@@ -28,7 +28,7 @@
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Impinj Reader Chip SDK</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="yk_firmware_ex10_host_c_api.html" accesskey="U">Impinj Reader Chip C Host API</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Gen2 Access Commands</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Gen2 Commands</a></li> 
       </ul>
     </div>  
 
@@ -37,8 +37,8 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="gen2-access-commands">
-<span id="ex10-api-host-c-api-gen2-commands"></span><h1>Gen2 Access Commands<a class="headerlink" href="#gen2-access-commands" title="Permalink to this headline">¶</a></h1>
+  <section id="gen2-commands">
+<span id="ex10-api-host-c-api-gen2-commands"></span><h1>Gen2 Commands<a class="headerlink" href="#gen2-commands" title="Permalink to this headline">¶</a></h1>
 <p>This gen2 commands file allows for organization and interpreting of different
 gen2 commands. This file therefore has knowledge about all different gen2
 commands, what their individual fields consist of, etc. This file is then used
@@ -166,50 +166,42 @@ to encode and decode gen2 commands and responses.</p>
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N12SelectAction9Action000E">
 <span id="_CPPv3N12SelectAction9Action000E"></span><span id="_CPPv2N12SelectAction9Action000E"></span><span class="target" id="gen2__commands_8h_1a8ad0f848b9b0494b3d72af816e23b4fea31bda0b15ac9b066e7144d4759827178"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Action000</span></span></span><a class="headerlink" href="#_CPPv4N12SelectAction9Action000E" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>match:SL=1, inv-&gt;A non-match:SL=0, inv-&gt;B </p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N12SelectAction9Action001E">
 <span id="_CPPv3N12SelectAction9Action001E"></span><span id="_CPPv2N12SelectAction9Action001E"></span><span class="target" id="gen2__commands_8h_1a8ad0f848b9b0494b3d72af816e23b4feaa08c7616eb7f7a1899215bfeef365f78"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Action001</span></span></span><a class="headerlink" href="#_CPPv4N12SelectAction9Action001E" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>match:SL=1, inv-&gt;A non-match:do nothing </p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N12SelectAction9Action010E">
 <span id="_CPPv3N12SelectAction9Action010E"></span><span id="_CPPv2N12SelectAction9Action010E"></span><span class="target" id="gen2__commands_8h_1a8ad0f848b9b0494b3d72af816e23b4fea66c290ee7702ecb4d78b1567abe3471d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Action010</span></span></span><a class="headerlink" href="#_CPPv4N12SelectAction9Action010E" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>match:do nothing non-match:SL=0, inv-&gt;B </p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N12SelectAction9Action011E">
 <span id="_CPPv3N12SelectAction9Action011E"></span><span id="_CPPv2N12SelectAction9Action011E"></span><span class="target" id="gen2__commands_8h_1a8ad0f848b9b0494b3d72af816e23b4fea3add82b7381ddc5cc33b5f200455ea67"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Action011</span></span></span><a class="headerlink" href="#_CPPv4N12SelectAction9Action011E" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>match:SL=!, (A-&gt;B,B-&gt;A) non-match:do nothing </p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N12SelectAction9Action100E">
 <span id="_CPPv3N12SelectAction9Action100E"></span><span id="_CPPv2N12SelectAction9Action100E"></span><span class="target" id="gen2__commands_8h_1a8ad0f848b9b0494b3d72af816e23b4feae8d55640fd567051d58bf69b24449703"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Action100</span></span></span><a class="headerlink" href="#_CPPv4N12SelectAction9Action100E" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>match:SL=0, inv-&gt;B non-match:SL=1, inv-&gt;A </p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N12SelectAction9Action101E">
 <span id="_CPPv3N12SelectAction9Action101E"></span><span id="_CPPv2N12SelectAction9Action101E"></span><span class="target" id="gen2__commands_8h_1a8ad0f848b9b0494b3d72af816e23b4fea0a5409b23d11f67a4160a2f3b52f2ae0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Action101</span></span></span><a class="headerlink" href="#_CPPv4N12SelectAction9Action101E" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>match:SL=0, inv-&gt;B non-match:do nothing </p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N12SelectAction9Action110E">
 <span id="_CPPv3N12SelectAction9Action110E"></span><span id="_CPPv2N12SelectAction9Action110E"></span><span class="target" id="gen2__commands_8h_1a8ad0f848b9b0494b3d72af816e23b4feae5b35e40828d60944242d1798b72e71d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Action110</span></span></span><a class="headerlink" href="#_CPPv4N12SelectAction9Action110E" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>match:do nothing non-match:SL=1, inv-&gt;A </p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N12SelectAction9Action111E">
 <span id="_CPPv3N12SelectAction9Action111E"></span><span id="_CPPv2N12SelectAction9Action111E"></span><span class="target" id="gen2__commands_8h_1a8ad0f848b9b0494b3d72af816e23b4feab400665c6550997b445082c5e13acb10"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Action111</span></span></span><a class="headerlink" href="#_CPPv4N12SelectAction9Action111E" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>match:do nothing non-match:SL=!, (A-&gt;B, B-&gt;A) </p>
-</dd></dl>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -850,14 +842,12 @@ load_mask = 0x10 load_bits = 4 bits_loaded = 0b0001 </p>
 <p>For select mask only: Everything is loaded in left-justified. This means the bytes are loaded in via lsb, but the bits are loaded in left to right as well, making them bitwise msb. This was done for reader clarity to make it look like a bitstream EX: load_mask = 0xa2f5 load_bits = 12 bits_loaded = 0xa2f</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Param cmd_spec</dt>
-<dd class="field-odd"><p>A struct containing: 1) command - The command type as an enum Gen2Command 2) args - A pointer to an arg struct for the specified command, which contains values for the fields in the CommandEncoder table. </p>
-</dd>
-<dt class="field-even">Param encoded_command</dt>
-<dd class="field-even"><p><strong>[out]</strong> A bit span containing info about the encoded command. This contains the length of the command and data for the left-justified Gen2 command. </p>
-</dd>
-<dt class="field-odd">Param [return]</dt>
-<dd class="field-odd"><p>Returns false if the command type is invalid, otherwise returns true. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cmd_spec</strong> – A struct containing: 1) command - The command type as an enum Gen2Command 2) args - A pointer to an arg struct for the specified command, which contains values for the fields in the CommandEncoder table. </p></li>
+<li><p><strong>encoded_command</strong> – <strong>[out]</strong> A bit span containing info about the encoded command. This contains the length of the command and data for the left-justified Gen2 command. </p></li>
+<li><p><strong>[return]</strong> – Returns false if the command type is invalid, otherwise returns true. </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -868,14 +858,12 @@ load_mask = 0x10 load_bits = 4 bits_loaded = 0b0001 </p>
 <dd><p>Decodes an encoded Gen2 command. </p>
 <p>Takes in an encoded command via a <a class="reference internal" href="#struct_bit_span"><span class="std std-ref">BitSpan</span></a> and create populates a <a class="reference internal" href="#struct_gen2_command_spec"><span class="std std-ref">Gen2CommandSpec</span></a>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Param cmd_spec</dt>
-<dd class="field-odd"><p><strong>[out]</strong> A struct containing: 1) command - The command type as an enum Gen2Command 2) args - A pointer to an arg struct for the specified command, which contains values for the fields in the CommandEncoder table. </p>
-</dd>
-<dt class="field-even">Param encoded_command</dt>
-<dd class="field-even"><p>A bit span containing info about the encoded command. This contains the length of the command and data for the left-justified Gen2 command. </p>
-</dd>
-<dt class="field-odd">Param [return]</dt>
-<dd class="field-odd"><p>Returns false if the command type is invalid, otherwise returns true. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cmd_spec</strong> – <strong>[out]</strong> A struct containing: 1) command - The command type as an enum Gen2Command 2) args - A pointer to an arg struct for the specified command, which contains values for the fields in the CommandEncoder table. </p></li>
+<li><p><strong>encoded_command</strong> – A bit span containing info about the encoded command. This contains the length of the command and data for the left-justified Gen2 command. </p></li>
+<li><p><strong>[return]</strong> – Returns false if the command type is invalid, otherwise returns true. </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -885,16 +873,14 @@ load_mask = 0x10 load_bits = 4 bits_loaded = 0b0001 </p>
 <span id="_CPPv3N16Ex10Gen2Commands12decode_replyE"></span><span id="_CPPv2N16Ex10Gen2Commands12decode_replyE"></span><span class="target" id="struct_ex10_gen2_commands_1a6e11e7d4eb50c7d6df780487bf24c176"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">decode_reply</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv411Gen2Command" title="Gen2Command"><span class="n"><span class="pre">Gen2Command</span></span></a><span class="w"> </span><span class="n"><span class="pre">command</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#_CPPv415EventFifoPacket" title="EventFifoPacket"><span class="n"><span class="pre">EventFifoPacket</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">gen2_pkt</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv49Gen2Reply" title="Gen2Reply"><span class="n"><span class="pre">Gen2Reply</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">decoded_reply</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N16Ex10Gen2Commands12decode_replyE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Decodes a Gen2 command reply into a <a class="reference internal" href="#struct_gen2_reply"><span class="std std-ref">Gen2Reply</span></a> struct. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param command</dt>
-<dd class="field-odd"><p>The Gen2 command that caused this reply. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>command</strong> – The Gen2 command that caused this reply. </p></li>
+<li><p><strong>gen2_pkt</strong> – A <a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#struct_gen2_transaction"><span class="std std-ref">Gen2Transaction</span></a> packet parsed using the packet parser. </p></li>
+<li><p><strong>decoded_reply</strong> – A <a class="reference internal" href="#struct_gen2_reply"><span class="std std-ref">Gen2Reply</span></a> struct pointer to store decoded output. </p></li>
+</ul>
 </dd>
-<dt class="field-even">Param gen2_pkt</dt>
-<dd class="field-even"><p>A <a class="reference internal" href="yk_firmware_ex10_host_c_other_types.html#struct_gen2_transaction"><span class="std std-ref">Gen2Transaction</span></a> packet parsed using the packet parser. </p>
-</dd>
-<dt class="field-odd">Param decoded_reply</dt>
-<dd class="field-odd"><p>A <a class="reference internal" href="#struct_gen2_reply"><span class="std std-ref">Gen2Reply</span></a> struct pointer to store decoded output. </p>
-</dd>
-<dt class="field-even">Return</dt>
+<dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Returns false if the command has no known reply or if an error is parsed in the return (showing the tag reported back and error). </p>
 </dd>
 </dl>
@@ -905,10 +891,10 @@ load_mask = 0x10 load_bits = 4 bits_loaded = 0b0001 </p>
 <span id="_CPPv3N16Ex10Gen2Commands26get_gen2_tx_control_configE"></span><span id="_CPPv2N16Ex10Gen2Commands26get_gen2_tx_control_configE"></span><span class="target" id="struct_ex10_gen2_commands_1a22977bf78fe28307f54901ce0ab2f07a"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">get_gen2_tx_control_config</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv415Gen2CommandSpec" title="Gen2CommandSpec"><span class="n"><span class="pre">Gen2CommandSpec</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">cmd_spec</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#_CPPv421Gen2TxnControlsFields" title="Gen2TxnControlsFields"><span class="n"><span class="pre">Gen2TxnControlsFields</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">txn_control</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N16Ex10Gen2Commands26get_gen2_tx_control_configE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Determine the Gen2TxnControls register settings needed for this command. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param cmd_spec</dt>
-<dd class="field-odd"><p>A command spec used with ‘encode_command’. </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cmd_spec</strong> – A command spec used with ‘encode_command’. </p>
 </dd>
-<dt class="field-even">Return</dt>
+<dt class="field-even">Returns</dt>
 <dd class="field-even"><p>A <a class="reference internal" href="yk_firmware_ex10_host_c_register_accessors.html#struct_gen2_txn_controls_fields"><span class="std std-ref">Gen2TxnControlsFields</span></a> struct which maps directly to the Gen2TxnControls register. </p>
 </dd>
 </dl>
@@ -940,10 +926,10 @@ responsible for modifying the local buffer and updating the device accordingly.<
 <span id="_CPPv3N24Ex10Gen2TxCommandManager31clear_command_in_local_sequenceE"></span><span id="_CPPv2N24Ex10Gen2TxCommandManager31clear_command_in_local_sequenceE"></span><span class="target" id="struct_ex10_gen2_tx_command_manager_1a1d37a78a7d871861673b0343ef62478d"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv425Gen2TxCommandManagerError" title="Gen2TxCommandManagerError"><span class="n"><span class="pre">Gen2TxCommandManagerError</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">clear_command_in_local_sequence</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">clear_idx</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N24Ex10Gen2TxCommandManager31clear_command_in_local_sequenceE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Clears the validity markers for the passed index. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Param clear_idx</dt>
-<dd class="field-odd"><p>The index to clear </p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>clear_idx</strong> – The index to clear </p>
 </dd>
-<dt class="field-even">Return</dt>
+<dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Returns an instance of <a class="reference internal" href="#struct_gen2_tx_command_manager_error"><span class="std std-ref">Gen2TxCommandManagerError</span></a> which informs the user if any errors occurred while clearing the index. If the user attempts to clear an index which is out of bounds, it will return an error immediately. the cleared index. </p>
 </dd>
 </dl>
@@ -968,7 +954,7 @@ responsible for modifying the local buffer and updating the device accordingly.<
 <span id="_CPPv3N24Ex10Gen2TxCommandManager14write_sequenceE"></span><span id="_CPPv2N24Ex10Gen2TxCommandManager14write_sequenceE"></span><span class="target" id="struct_ex10_gen2_tx_command_manager_1a8a8136e6f9b5f00b939197ea72dfdfef"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv425Gen2TxCommandManagerError" title="Gen2TxCommandManagerError"><span class="n"><span class="pre">Gen2TxCommandManagerError</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">write_sequence</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N24Ex10Gen2TxCommandManager14write_sequenceE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Writes all valid commands into the device Gen2TxBuffer register and sets up the required companion registers. </p>
 <dl class="field-list simple">
-<dt class="field-odd">Return</dt>
+<dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>Returns an instance of <a class="reference internal" href="#struct_gen2_tx_command_manager_error"><span class="std std-ref">Gen2TxCommandManagerError</span></a> which informs the user if any errors occurred while adding the command. </p>
 </dd>
 </dl>
@@ -1002,14 +988,14 @@ responsible for modifying the local buffer and updating the device accordingly.<
 <p>The ID has no bearing on the order in which a command is sent. </p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Param tx_buffer</dt>
-<dd class="field-odd"><p>A byte span with data of the encoded command</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tx_buffer</strong> – A byte span with data of the encoded command</p></li>
+<li><p><strong>transaction_id</strong> – An Id to assocciate with the command. This ID is sent back in the event fifo when the command is sent, but has no other effect on the command sending itself.</p></li>
+</ul>
 </dd>
-<dt class="field-even">Param transaction_id</dt>
-<dd class="field-even"><p>An Id to assocciate with the command. This ID is sent back in the event fifo when the command is sent, but has no other effect on the command sending itself.</p>
-</dd>
-<dt class="field-odd">Return</dt>
-<dd class="field-odd"><p>Returns an instance of <a class="reference internal" href="#struct_gen2_tx_command_manager_error"><span class="std std-ref">Gen2TxCommandManagerError</span></a> which informs the user if any errors occurred while adding the command.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns an instance of <a class="reference internal" href="#struct_gen2_tx_command_manager_error"><span class="std std-ref">Gen2TxCommandManagerError</span></a> which informs the user if any errors occurred while adding the command.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1027,14 +1013,14 @@ responsible for modifying the local buffer and updating the device accordingly.<
 <p>The ID has no bearing on the order in which a command is sent. </p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Param cmd_spec</dt>
-<dd class="field-odd"><p>A specification for the gen2 command.</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cmd_spec</strong> – A specification for the gen2 command.</p></li>
+<li><p><strong>transaction_id</strong> – An Id to assocciate with the command. This ID is sent back in the event fifo when the command is sent, but has no other effect on the command sending itself.</p></li>
+</ul>
 </dd>
-<dt class="field-even">Param transaction_id</dt>
-<dd class="field-even"><p>An Id to assocciate with the command. This ID is sent back in the event fifo when the command is sent, but has no other effect on the command sending itself.</p>
-</dd>
-<dt class="field-odd">Return</dt>
-<dd class="field-odd"><p>Returns an instance of <a class="reference internal" href="#struct_gen2_tx_command_manager_error"><span class="std std-ref">Gen2TxCommandManagerError</span></a> which informs the user if any errors occurred while adding the command.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns an instance of <a class="reference internal" href="#struct_gen2_tx_command_manager_error"><span class="std std-ref">Gen2TxCommandManagerError</span></a> which informs the user if any errors occurred while adding the command.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1056,12 +1042,6 @@ responsible for modifying the local buffer and updating the device accordingly.<
 </dd></dl>
 
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N24Ex10Gen2TxCommandManager22dump_control_registersE">
-<span id="_CPPv3N24Ex10Gen2TxCommandManager22dump_control_registersE"></span><span id="_CPPv2N24Ex10Gen2TxCommandManager22dump_control_registersE"></span><span class="target" id="struct_ex10_gen2_tx_command_manager_1ac71d6ac4bf55db02ff713d5902231743"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">dump_control_registers</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N24Ex10Gen2TxCommandManager22dump_control_registersE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Reads all the registers associated with Gen2 commands from the device and prints them out. </p>
-</dd></dl>
-
-<dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N24Ex10Gen2TxCommandManager18get_local_sequenceE">
 <span id="_CPPv3N24Ex10Gen2TxCommandManager18get_local_sequenceE"></span><span id="_CPPv2N24Ex10Gen2TxCommandManager18get_local_sequenceE"></span><span class="target" id="struct_ex10_gen2_tx_command_manager_1a43ae32a728356eafaf211c3da39730f4"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv413TxCommandInfo" title="TxCommandInfo"><span class="n"><span class="pre">TxCommandInfo</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">get_local_sequence</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv4N24Ex10Gen2TxCommandManager18get_local_sequenceE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Retrieves a pointer to the structure containing all commands. </p>
@@ -1071,7 +1051,7 @@ responsible for modifying the local buffer and updating the device accordingly.<
 <p>This will print off all commands in the buffer, even if not enabled.</p>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Return</dt>
+<dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>Returns a pointer to the local command sequence. </p>
 </dd>
 </dl>
@@ -1190,108 +1170,78 @@ responsible for modifying the local buffer and updating the device accordingly.<
 </section>
 <section id="gen2-tx-command-manager-usage">
 <h2>Gen2 Tx Command Manager Usage<a class="headerlink" href="#gen2-tx-command-manager-usage" title="Permalink to this headline">¶</a></h2>
-<section id="step-1-setup">
-<h3>Step 1 – Setup<a class="headerlink" href="#step-1-setup" title="Permalink to this headline">¶</a></h3>
-<p>In working with this buffer, rather than the command structures being
-intertwined with the ops, one begins by retrieving the gen2 sequence helper:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">Ex10Gen2TxCommandManager</span> <span class="n">const</span><span class="o">*</span> <span class="n">g2tcm</span> <span class="o">=</span> <span class="n">get_gen2_tx_command_manager</span><span class="p">(</span><span class="n">void</span><span class="p">);</span>
-</pre></div>
-</div>
+<p>Step 1 – Steup
+In working with this buffer, rather than the command structures being
+intertwined with the ops, one begins by retrieving the gen2 sequence helper.</p>
+<dl class="simple">
+<dt>struct Ex10Gen2TxCommandManager const* g2tcm =</dt><dd><p>get_gen2_tx_command_manager(void);</p>
+</dd>
+</dl>
 <p>The buffer builder has an init function which is called in the SDK reader layer,
 but should be called if not utilizing that layer. This invalidates all commands
-in the local buffer, and properly allocates the backing memory of the structures
-in the local gen2 command storage. The function to call follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">init</span> <span class="p">(</span><span class="n">void</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>This clears the local buffers, but leaves the device side buffers as they are.
-Clearing the device side buffer is not always necessary since it will be cleared
-at device start up and overwritten when you add commands regardless. Clearing of
-the local or device side buffer can be done through the individual calls following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">clear_sequence</span><span class="p">(</span><span class="n">void</span><span class="p">);</span>
-<span class="n">void</span> <span class="n">clear_local_sequence</span> <span class="p">(</span><span class="n">void</span><span class="p">);</span>
-</pre></div>
-</div>
+in the local buffer, device buffer, and properly allocates the backing memory
+of the structures in the local gen2 command storage. The buffer clearing is
+already done in the reader initialization through…</p>
+<p>void init (void);</p>
+<p>This clears bot the local and device side buffers. Both of these things can be
+done individually of course through the following…</p>
+<p>void clear_sequence(void);
+void clear_local_sequence (void);</p>
 <p>This is to ensure there is nothing leftover in the sequence storage that we did
 not intend to use. There is not a need to utilize this every time you want to
 add something in. There is, however, a max of 10 commands. If you still want
 previous commands, but are running close on the command limit, you can always
-clear a single index of the sequence through the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">Gen2TxCommandManagerError</span> <span class="n">clear_command_in_local_sequence</span><span class="p">(</span><span class="n">uint8_t</span> <span class="n">clear_idx</span><span class="p">);</span>
-</pre></div>
-</div>
-</section>
-<section id="step-2-error-management">
-<h3>Step 2 – Error Management<a class="headerlink" href="#step-2-error-management" title="Permalink to this headline">¶</a></h3>
-<p>You will notice that a number of the functions used in the sequence manager
-return the following structure:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">Gen2TxCommandManagerError</span>
-</pre></div>
-</div>
+clear a single index of the sequence through the following…</p>
+<p>struct Gen2TxCommandManagerError clear_command_in_local_sequence(uint8_t clear_idx);</p>
+<p>Step 2 – Error Management
+You will notice that a number of the functions used in the sequence manager
+return the following structure…</p>
+<p>struct Gen2TxCommandManagerError</p>
 <p>This is used to inform the user what happened within the api. The main piece to
 check is the ‘error_occurred’ field. If this boolean is set to true, you will
 want to check the error field to find what specifically happened.
 There is also a ‘current_index’ field which gets set to inform the user which
 index is being operated on if any. An example would be if you are clearing out
-a command using the previously mentioned:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">Gen2TxCommandManagerError</span> <span class="n">clear_command_in_local_sequence</span><span class="p">(</span><span class="n">uint8_t</span> <span class="n">clear_idx</span><span class="p">);</span>
-</pre></div>
-</div>
+a command using the previously mentioned…</p>
+<p>struct Gen2TxCommandManagerError clear_command_in_local_sequence(uint8_t clear_idx);</p>
 <p>If successful, the ‘current_index’ field will be set with the index which was
 cleared. If not, the field dictates the index at which the error occurred.</p>
-</section>
-<section id="step-3-adding-commands">
-<h3>Step 3 – Adding commands<a class="headerlink" href="#step-3-adding-commands" title="Permalink to this headline">¶</a></h3>
-<p>The buffer is now ready to accept new commands. There are 2 ways to add a new
-command to the local buffer. You can call one of the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">Gen2TxCommandManagerError</span> <span class="p">(</span><span class="o">*</span><span class="n">append_encoded_command</span><span class="p">)(</span>
-   <span class="n">const</span> <span class="n">struct</span> <span class="n">BitSpan</span><span class="o">*</span> <span class="n">tx_buffer</span><span class="p">,</span>
-   <span class="n">uint8_t</span>                <span class="n">transaction_id</span><span class="p">);</span>
-
-<span class="n">struct</span> <span class="n">Gen2TxCommandManagerError</span> <span class="p">(</span><span class="o">*</span><span class="n">encode_and_append_command</span><span class="p">)(</span>
-   <span class="n">struct</span> <span class="n">Gen2CommandSpec</span><span class="o">*</span> <span class="n">cmd_spec</span><span class="p">,</span>
-   <span class="n">uint8_t</span>                 <span class="n">transaction_id</span><span class="p">);</span>
-</pre></div>
-</div>
+<p>Step 3 – Adding commands
+The buffer is now ready to accept new commands. There are 2 ways to add a new
+command to the local buffer. You can call one of the following…</p>
+<dl class="simple">
+<dt>struct Gen2TxCommandManagerError (<a href="#id1"><span class="problematic" id="id2">*</span></a>append_encoded_command)(</dt><dd><p>const struct BitSpan* tx_buffer,
+uint8_t                transaction_id);</p>
+</dd>
+<dt>struct Gen2TxCommandManagerError (<a href="#id3"><span class="problematic" id="id4">*</span></a>encode_and_append_command)(</dt><dd><p>struct Gen2CommandSpec* cmd_spec,
+uint8_t                 transaction_id);</p>
+</dd>
+</dl>
 <p>This gives you the option of adding in a pre-encoded command, or adding in a
 command specifier which will be encoded for you.
-If you go the route of adding in a command spec, the API will encode for you
+If you go the route of adding in a command spec, the api will encode for you
 then store a copy of the command specifications and the encoded command for
-ease of use.</p>
-<p>The other API function is to allow pre-encoding of the command, thus giving
+ease of use.
+The other API function is to allow pre-encoding of the command, thus giving
 the user flexibility in creation of commands. This will still allow you to
-utilize the gen2 encoder by yourself if you need to add in something custom:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">bool</span> <span class="p">(</span><span class="o">*</span><span class="n">encode_gen2_command</span><span class="p">)(</span><span class="n">const</span> <span class="n">struct</span> <span class="n">Gen2CommandSpec</span><span class="o">*</span> <span class="n">cmd_spec</span><span class="p">,</span>
-                            <span class="n">struct</span> <span class="n">BitSpan</span><span class="o">*</span>               <span class="n">encoded_command</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>To check what has been added to the buffer at any time, you may use the API:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">TxCommandInfo</span><span class="o">*</span> <span class="p">(</span><span class="o">*</span><span class="n">get_local_sequence</span><span class="p">)(</span><span class="n">void</span><span class="p">);</span>
-</pre></div>
-</div>
-</section>
-<section id="step-4-ex10-device-side-management">
-<h3>Step 4 – Ex10 device side management<a class="headerlink" href="#step-4-ex10-device-side-management" title="Permalink to this headline">¶</a></h3>
-<p>When the SDK buffer contains all the commands of interest, it is time to write
-it to the device. One uses the API command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">Gen2TxCommandManagerError</span> <span class="p">(</span><span class="o">*</span><span class="n">write_sequence</span><span class="p">)(</span><span class="n">void</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>This write the sequence of commands to the device Gen2Tx register. The API also
+utilize the gen2 encoder by yourself if you need to add in something custom…</p>
+<dl class="simple">
+<dt>bool (<em>encode_gen2_command)(const struct Gen2CommandSpec</em> cmd_spec,</dt><dd><p>struct BitSpan*              encoded_command);</p>
+</dd>
+</dl>
+<p>To check what has been added to the buffer at any time, you may use the API…
+struct TxCommandInfo* (<a href="#id5"><span class="problematic" id="id6">*</span></a>get_local_sequence)(void);</p>
+<p>Step 4 – Ex10 device side management
+When the SDK buffer contains all the commands of interest, it is time to write
+it to the device. One uses the API command…</p>
+<p>struct Gen2TxCommandManagerError (<a href="#id7"><span class="problematic" id="id8">*</span></a>write_sequence)(void);</p>
+<p>This write the sequence of commands to the device Gen2Tx register. The api also
 takes care of updating all of other registers which are used to control the
 Gen2Tx buffer. This includes the length registers, offsets, transaction ids,
 and txn controls.</p>
-<p>Registers updated:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-Gen2Offsets">Gen2Offsets</a></p></li>
-<li><p><a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-Gen2Lengths">Gen2Lengths</a></p></li>
-<li><p><a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-Gen2TransactionIds">Gen2TransactionIds</a></p></li>
-<li><p><a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-Gen2TxnControls">Gen2TxnControls</a></p></li>
-<li><p><a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-Gen2TxBuffer">Gen2TxBuffer</a></p></li>
-</ul>
-</div></blockquote>
-<p>The Gen2Offsets register tells the device where in the Gen2TxBuffer register
+<p>Registers updated:
+Gen2Offsets, Gen2Lengths, Gen2TransactionIds, Gen2TxnControls, Gen2TxBuffer
+The Gen2Offsets register tells the device where in the Gen2TxBuffer register
 the command starts.
 The Gen2Lengths register tells the device how long the command at that offset is.</p>
 <p>Note that since the SDK API commands were used to build the local buffer, the
@@ -1305,99 +1255,70 @@ rx length to look for, etc.
 The writing of the sequence to the device, however, does not touch the enables
 for the commands. This is done separately, though it can be done before or after
 updating these registers.</p>
-<p>Example:</p>
-<p>For clarity on how a command is stored in the device:
-If index is enabled:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Gen2Offsets</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">offset_used</span>
-<span class="n">Gen2Lengths</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">length_used</span>
-<span class="n">command_start</span> <span class="o">=</span> <span class="n">Gen2TxBuffer</span><span class="p">[</span><span class="n">offset_used</span><span class="p">]</span>
-<span class="n">command_end</span> <span class="o">=</span> <span class="n">Gen2TxBuffer</span><span class="p">[</span><span class="n">offset_used</span> <span class="o">+</span> <span class="n">length_used</span><span class="p">]</span>
-</pre></div>
-</div>
-</section>
-<section id="step-5-enabling-commands">
-<h3>Step 5 – Enabling commands<a class="headerlink" href="#step-5-enabling-commands" title="Permalink to this headline">¶</a></h3>
-<p>With your sequence in the device, you now want to set the enable registers to
+<p>Example:
+For clarity on how a command is stored in the device…
+If index is enabled -
+Gen2Offsets[index] = offset_used
+Gen2Lengths[index] = length_used
+command_start = Gen2TxBuffer[offset_used]
+command_end = Gen2TxBuffer[offset_used + length_used]</p>
+<p>Step 5 – Enabling commands
+With your sequence in the device, you now want to set the enable registers to
 let the device know which commands to run.
 There are three different enable registers on the device, which enable sending
 commands from the sequence under differernt situation. The interface allows you
 to load in 10 commands, but only enable a given subset at a time dependent on
 tag, timing, etc.
-The three different registers are:</p>
-<dl class="simple">
-<dt>Registers:</dt><dd><ul class="simple">
-<li><p><a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-Gen2SelectEnable">Gen2SelectEnable</a></p></li>
-<li><p><a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-Gen2AccessEnable">Gen2AccessEnable</a></p></li>
-<li><p><a class="reference external" href="yk_firmware_ex10_api_application_address_map.html#address-entry-Gen2AutoAccessEnable">Gen2AutoAccessEnable</a></p></li>
-</ul>
-</dd>
-</dl>
-<p>General example:</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li><p>Commands 1 through 5 are loaded into the device.</p></li>
-<li><p>Gen2SelectEnable sets index 2 to be enabled, indicating that ther second
-index in the sequence is a select command.</p></li>
-<li><p>Gen2AccessEnable sets index 1 and  3 to be enabled to utilize during a
-halted scenario.</p></li>
-<li><p>Gen2AutoAccessEnable sets index 3 and 4 to be enabled for the auto access
+The three different registers are…</p>
+<p>Registers:
+Gen2SelectEnable, Gen2AccessEnable, Gen2AutoAccessEnable</p>
+<p>General example:
+1. Commands 1 through 5 are loaded into the device.
+2. Gen2SelectEnable sets index 2 to be enabled, indicating that ther second
+index in the sequence is a select command.
+3. Gen2AccessEnable sets index 1 and  3 to be enabled to utilize during a
+halted scenario.
+4. Gen2AutoAccessEnable sets index 3 and 4 to be enabled for the auto access
 situation. This indicates that index 3 which is already used for halted, should
-also be used for auto access.</p></li>
-<li><p>The Gen2AccessEnable register is update to enable only index 5 since we want
+also be used for auto access.
+5. The Gen2AccessEnable register is update to enable only index 5 since we want
 to change which command in the sequence we send. No update to the sequence needs
-to be made since the commands are pre-loaded.</p></li>
-</ol>
-</div></blockquote>
-<p>There are 3 separate functions used in updating these 3 enable registers:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">Gen2TxCommandManagerError</span> <span class="p">(</span><span class="o">*</span><span class="n">write_select_enables</span><span class="p">)(</span>
-    <span class="nb">bool</span> <span class="n">const</span><span class="o">*</span> <span class="n">select_enables</span><span class="p">,</span>
-    <span class="n">uint8_t</span> <span class="n">size</span><span class="p">);</span>
-
-<span class="n">struct</span> <span class="n">Gen2TxCommandManagerError</span> <span class="p">(</span><span class="o">*</span><span class="n">write_halted_enables</span><span class="p">)(</span>
-    <span class="nb">bool</span> <span class="n">const</span><span class="o">*</span> <span class="n">access_enables</span><span class="p">,</span>
-    <span class="n">uint8_t</span> <span class="n">size</span><span class="p">);</span>
-
-<span class="n">struct</span> <span class="n">Gen2TxCommandManagerError</span> <span class="p">(</span><span class="o">*</span><span class="n">write_auto_access_enables</span><span class="p">)(</span>
-    <span class="nb">bool</span> <span class="n">const</span><span class="o">*</span> <span class="n">auto_access_enables</span><span class="p">,</span>
-    <span class="n">uint8_t</span> <span class="n">size</span><span class="p">);</span>
-</pre></div>
-</div>
+to be made since the commands are pre-loaded.</p>
+<p>There are 3 separate functions used in updating these 3 enable registers…</p>
+<p>struct Gen2TxCommandManagerError (<em>write_select_enables)(
+bool const</em> select_enables,
+uint8_t size);
+struct Gen2TxCommandManagerError (<em>write_halted_enables)(
+bool const</em> access_enables,
+uint8_t size);
+struct Gen2TxCommandManagerError (<em>write_auto_access_enables)(
+bool const</em> auto_access_enables,
+uint8_t size);</p>
 <p>The bool pointers indicate that a user is meant to pass in an array of bools
 indicating which indices in the  sequence to enable. The max of this array is
 the the max number of commands. If you exceed this, an eror will be returned.
 If you pass a size less than this, the rest of the bits up to the max will be
 filled with 0s.</p>
-</section>
-<section id="step-6-running-commands">
-<h3>Step 6 – Running commands<a class="headerlink" href="#step-6-running-commands" title="Permalink to this headline">¶</a></h3>
-<p>With the command set up and enabled, all that’s left is to run them at the
+<p>Step 6 – Running commands
+With the command set up and enabled, all that’s left is to run them at the
 appropriate time. There are different ways, however, to run different commands
 in the sequence.</p>
-<section id="select">
-<h4>Select:<a class="headerlink" href="#select" title="Permalink to this headline">¶</a></h4>
-<p>To run the select op, there is a call in the ops layer:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">send_select</span><span class="p">(</span><span class="n">void</span><span class="p">);</span>
-</pre></div>
-</div>
+<p>Select -
+To run the select op, there is a call in the ops layer…</p>
+<p>void send_select(void)</p>
 <p>This will execute the op assuming no other ops are running. There is another way
 to utilize this through the reader layer, however. If you are using the reader
 level inventory command, there is a parameter “send_selects”. This will also
 execute the select op after ramping up.</p>
-</section>
-<section id="access">
-<h4>Access:<a class="headerlink" href="#access" title="Permalink to this headline">¶</a></h4>
-<p>To run a command during inventory, there are two methods:</p>
-<p>1. If you are halted on a tag, you may set the ‘Go’ bit in the HaltedControl
+<p>Access -
+To run a command during inventory, there are two methods:
+1. If you are halted on a tag, you may set the ‘Go’ bit in the HaltedControl
 register. This tells the device to execute the command sequence as dictated by
 the previously set halted enables. This  ‘Go’ bit can be set from the ops layer
-command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">send_gen2_halted_sequence</span><span class="p">(</span><span class="n">void</span><span class="p">);</span>
-</pre></div>
-</div>
+command…</p>
+<p>void send_gen2_halted_sequence(void)</p>
 <p>2. The other option is through the auto access feature. If you enabled any auto
 access commands they will be sent automatically when a tag is found.</p>
-</section>
-</section>
 </section>
 </section>
 
@@ -1413,21 +1334,9 @@ access commands they will be sent automatically when a tag is found.</p>
             </a></p>
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Gen2 Access Commands</a><ul>
+<li><a class="reference internal" href="#">Gen2 Commands</a><ul>
 <li><a class="reference internal" href="#gen2-tx-command-manager">Gen2 Tx Command Manager</a></li>
-<li><a class="reference internal" href="#gen2-tx-command-manager-usage">Gen2 Tx Command Manager Usage</a><ul>
-<li><a class="reference internal" href="#step-1-setup">Step 1 – Setup</a></li>
-<li><a class="reference internal" href="#step-2-error-management">Step 2 – Error Management</a></li>
-<li><a class="reference internal" href="#step-3-adding-commands">Step 3 – Adding commands</a></li>
-<li><a class="reference internal" href="#step-4-ex10-device-side-management">Step 4 – Ex10 device side management</a></li>
-<li><a class="reference internal" href="#step-5-enabling-commands">Step 5 – Enabling commands</a></li>
-<li><a class="reference internal" href="#step-6-running-commands">Step 6 – Running commands</a><ul>
-<li><a class="reference internal" href="#select">Select:</a></li>
-<li><a class="reference internal" href="#access">Access:</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><a class="reference internal" href="#gen2-tx-command-manager-usage">Gen2 Tx Command Manager Usage</a></li>
 </ul>
 </li>
 </ul>
@@ -1442,7 +1351,7 @@ access commands they will be sent automatically when a tag is found.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -1463,11 +1372,11 @@ access commands they will be sent automatically when a tag is found.</p>
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Impinj Reader Chip SDK</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="yk_firmware_ex10_host_c_api.html" >Impinj Reader Chip C Host API</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Gen2 Access Commands</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Gen2 Commands</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Impinj, Inc..
+        &#169; Copyright 2021, Impinj, Inc..
     </div>
   </body>
 </html>

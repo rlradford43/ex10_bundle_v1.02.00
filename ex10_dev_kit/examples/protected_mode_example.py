@@ -14,11 +14,6 @@
 An example of how to use protected mode and short range functionality.
 Note: This example assumes a single tag on antenna port one.
 Note: This example assumes a starting password of all 0s
-Note: The tag we use for this test is an M775. This is not the only tag which
-supports this feature (e.g. M730, M750, M770), but it is one tag which allows
-demonstration of all required steps. This example shows usage of password
-changing to use the feature, entering protected mode and becoming invisible,
-discovering an invisible tag, and leaving protected mode to go back to visible.
 """
 from __future__ import (absolute_import, division, print_function,
                         unicode_literals)
@@ -27,14 +22,13 @@ from collections import namedtuple
 from datetime import datetime
 import time
 
-# pylint: disable=locally-disabled, wildcard-import, unused-wildcard-import
 from py2c_interface.py2c_python_wrapper import *
 
 
 # The configuration of the inventory round is set using the definitions below
 INVENTORY_DURATION_S = 3  # Duration of inventory operation (seconds)
-TRANSMIT_POWER_CDBM = 3000  # 30 dBm
-RF_MODE = RfModes.mode_148
+TRANSMIT_POWER_DBM = 3000  # 30 dBm
+RF_MODE = RfModes.mode_5
 REGION = "FCC"  # Regulatory region
 R807_ANTENNA_PORT = 1
 
@@ -60,8 +54,11 @@ ZERO_ACCESS_PWD = bytes(ZERO_ARRAY)
 NON_ZERO_ACCESS_PWD = bytes(NON_ZERO_ARRAY)
 
 # Set up buffers for the tag read data to be written to during a halt
-packet_info = InfoFromPackets(0, 0, 0, 0, TagReadData())
-fifo_printer = None
+packet_info = InfoFromPackets(0, 0, 0, TagReadData(None, None, 0, None, None, 0))
+packet_info.access_tag.pc = ctypes.cast(pointer((c_uint8 * 2)()), type(packet_info.access_tag.pc))
+packet_info.access_tag.epc = ctypes.cast(pointer((c_uint8 * 40)()), type(packet_info.access_tag.epc))
+packet_info.access_tag.crc = ctypes.cast(pointer((c_uint8 * 2)()), type(packet_info.access_tag.crc))
+packet_info.access_tag.tid = ctypes.cast(pointer((c_uint8 * 40)()), type(packet_info.access_tag.tid))
 
 
 def inventory_and_halt(ex10_ifaces, tx_command_manager, select_command=None, expect_tag=True):
@@ -107,14 +104,14 @@ def inventory_and_halt(ex10_ifaces, tx_command_manager, select_command=None, exp
         arraytype = ctypes.c_bool * 10
         select_enables = arraytype(0,0,0,0,0,0,0,0,0,0)
 
-        curr_error = tx_command_manager.encode_and_append_command(select_command, 0)
-        assert False == curr_error.error_occurred
-        select_enables[curr_error.current_index] = True
-        curr_error = tx_command_manager.write_sequence()
-        assert False == curr_error.error_occurred
+        curr_error = tx_command_manager.encode_and_append_command(select_command, 0);
+        assert(False == curr_error.error_occurred);
+        select_enables[curr_error.current_index] = True;
+        curr_error = tx_command_manager.write_sequence();
+        assert(False == curr_error.error_occurred);
 
         enable_p = pointer(select_enables)
-        tx_command_manager.write_select_enables(ctypes.cast(enable_p, c_void_p), 10)
+        tx_command_manager.write_select_enables(ctypes.cast(enable_p, c_void_p), 10);
 
     inv_done = True
     start_time = datetime.now()
@@ -126,7 +123,7 @@ def inventory_and_halt(ex10_ifaces, tx_command_manager, select_command=None, exp
             inv_done = False
             op_error = ex10_reader.inventory(R807_ANTENNA_PORT,
                                   RF_MODE,
-                                  TRANSMIT_POWER_CDBM,
+                                  TRANSMIT_POWER_DBM,
                                   pointer(inventory_config),
                                   pointer(inventory_config_2),
                                   send_selects,
@@ -147,15 +144,14 @@ def inventory_and_halt(ex10_ifaces, tx_command_manager, select_command=None, exp
             raise Exception("No tags found in inventory")
         else:
             # Should be halted on a tag now
-            tag_epc = ''.join([str(format(packet_info.access_tag.epc[i], '02x'))
-                               for i in range(packet_info.access_tag.epc_length)])
+            tag_epc = ''.join([str(format(packet_info.access_tag.epc[i], '02x')) for i in range(packet_info.access_tag.epc_length)])
             print('Halted on tag 0x{}'.format(tag_epc))
     else:
         if packet_info.total_singulations > 0:
             raise Exception("Saw tags when not expecting any")
 
 
-def wait_for_transaction_report(ex10_ifaces, decode_cmd, timeout_s=3):
+def wait_for_transaction_report(py2c, ex10_ifaces, decode_cmd, timeout_s=3):
     """
     Send the Gen2 Access command to the Ex10 reader with password.
     :params decode_cmd: The command structure into which the
@@ -173,9 +169,8 @@ def wait_for_transaction_report(ex10_ifaces, decode_cmd, timeout_s=3):
         while ex10_reader.packets_available():
             packet = ex10_reader.packet_peek().contents
             helper.examine_packets(packet, packet_info)
-            global fifo_printer
-            fifo_printer.print_packets(packet)
-
+            helper.print_packets(packet)
+            
             if packet.packet_type == EventPacketType.Gen2Transaction:
                 tran = Gen2Transaction()
                 ctypes.memmove(pointer(tran), packet.static_data, sizeof(tran))
@@ -185,8 +180,7 @@ def wait_for_transaction_report(ex10_ifaces, decode_cmd, timeout_s=3):
                 reply_array = c_uint16 * 20
                 reply_words = reply_array()
                 reply = Gen2Reply(0, 0, reply_words)
-                ex10_ifaces.gen2_commands.decode_reply(
-                    decode_cmd.command, packet, pointer(reply))
+                ex10_ifaces.gen2_commands.decode_reply(decode_cmd.command, packet, pointer(reply))
                 transactions.append(reply)
 
             ex10_reader.packet_remove()
@@ -202,7 +196,7 @@ def ensure_previous_command_finished(ex10_protocol):
         halt_status = ex10_protocol.read('HaltedStatus')
 
 
-def send_access_command(ex10_ifaces, pwd):
+def send_access_command(py2c, ex10_ifaces, pwd):
     """
     Send the Gen2 Access command with password.
     :params pwd: One half of the 32 bit Access password
@@ -221,11 +215,11 @@ def send_access_command(ex10_ifaces, pwd):
 
     ex10_helpers.send_single_halted_command(access_command)
 
-    report = wait_for_transaction_report(ex10_ifaces, access_command)
+    report = wait_for_transaction_report(py2c, ex10_ifaces, access_command)
     return report
+ 
 
-
-def write_to_reserved(ex10_ifaces, word_to_write, page_data):
+def write_to_reserved(py2c, ex10_ifaces, word_to_write, page_data):
     """
     Write to the reserved memory.
     :param word_to_write: The word number in reserved memory
@@ -249,16 +243,17 @@ def write_to_reserved(ex10_ifaces, word_to_write, page_data):
     ex10_helpers.send_single_halted_command(write_command)
 
     # Wait for gen2 transaction report
-    gen2_transactions = wait_for_transaction_report(ex10_ifaces, write_command)
-
+    gen2_transactions = wait_for_transaction_report(
+                            py2c, ex10_ifaces, write_command)
+    
     # Sent 1 command, should be 1 report
     if len(gen2_transactions) != 1:
         raise Exception(
-            "{} reports seen instead of 1".format(len(gen2_transactions)))
+            "{} reports seen instead of 1 }".format(len(gen2_transactions)))
 
     ex10_helpers.check_gen2_error(gen2_transactions[0])
 
-def read_reserved_memory(ex10_ifaces, word_pointer, word_count):
+def read_reserved_memory(py2c, ex10_ifaces, word_pointer, word_count):
     """
     Read the reserved memory
     :param word_pointer: The word offset to start the read
@@ -281,24 +276,27 @@ def read_reserved_memory(ex10_ifaces, word_pointer, word_count):
     ex10_helpers.send_single_halted_command(read_command)
 
     # Wait for gen2 transaction report
-    gen2_reply = wait_for_transaction_report(ex10_ifaces, read_command)
+    gen2_reply = wait_for_transaction_report(py2c,
+                                             ex10_ifaces,
+                                             read_command)
     # Sent 1 command, should be 1 report
     if len(gen2_reply) != 1:
         raise Exception(
-            "{} reports seen instead of 1".format(len(gen2_reply)))
+            "{} reports seen instead of 1 }".format(len(gen2_reply)))
     ex10_helpers.check_gen2_error(gen2_reply[0])
-
+    
     return gen2_reply[0].data[:word_count]
 
 
-def read_settings(ex10_ifaces):
+def read_settings(py2c, ex10_ifaces):
     """
     Read the reserved memory then return whether the device
     is in protected mode, short range mode, as well as the
     entire page so we can do a read modify write.
     :return: Returns a named tuple of info read from the tag
     """
-    read_data = read_reserved_memory(ex10_ifaces=ex10_ifaces,
+    read_data = read_reserved_memory(py2c=py2c,
+                                     ex10_ifaces=ex10_ifaces,
                                      word_pointer=4,
                                      word_count=1)
     read_val = read_data[0]
@@ -332,39 +330,46 @@ def create_protected_select(tag_pass):
     return protected_select, protected_params
 
 
-def change_access_pwd(ex10_ifaces, ending_pwd):
+def change_access_pwd(py2c, ex10_ifaces, ending_pwd):
     """
     Change the access password in reserved memory
     :param ending_pwd: The new password to change to using
     """
+    ex10_reader = ex10_ifaces.reader
     print("Changing access pwd")
     pwd_word_0 = (ending_pwd[1] << 8) | ending_pwd[0]
     pwd_word_1 = (ending_pwd[3] << 8) | ending_pwd[2]
 
     # Write the new password to memory
-    write_to_reserved(ex10_ifaces=ex10_ifaces,
+    write_to_reserved(py2c=py2c,
+                      ex10_ifaces=ex10_ifaces,
                       word_to_write=2,
                       page_data=pwd_word_0)
-    write_to_reserved(ex10_ifaces=ex10_ifaces,
+    write_to_reserved(py2c=py2c,
+                      ex10_ifaces=ex10_ifaces,
                       word_to_write=3,
                       page_data=pwd_word_1)
     print("Password changed")
 
 
-def set_protected_mode_state(ex10_ifaces, enable):
+def set_protected_mode_state(py2c,
+                             ex10_ifaces,
+                             enable):
     """
     Set the tag memory to change the state of protected
     mode and the short range feature
     :param enable: whether to enable or disable protected mode and
     the short range feature.
     """
+    ex10_reader = ex10_ifaces.reader
+
     if enable:
         print("Entering protected mode")
     else:
         print("Leaving protected mode")
 
     # Read reserved memory for modify write
-    tag_settings = read_settings(ex10_ifaces)
+    tag_settings = read_settings(py2c, ex10_ifaces)
     page_data = tag_settings.data_returned
 
     # To enable protected mode
@@ -382,13 +387,14 @@ def set_protected_mode_state(ex10_ifaces, enable):
     # Write memory controlling protected mode and short range control
     # We change both together here though not necessary
     print("Writing to change protected and sr bit")
-    write_to_reserved(ex10_ifaces=ex10_ifaces,
+    write_to_reserved(py2c=py2c,
+                      ex10_ifaces=ex10_ifaces,
                       word_to_write=4,
                       page_data=page_data)
     print("Settings written")
 
     # Read back memory to verify the write
-    tag_settings = read_settings(ex10_ifaces)
+    tag_settings = read_settings(py2c, ex10_ifaces)
     protected_read = tag_settings.protected_mode_enabled
     short_range_read = tag_settings.short_range_enabled
 
@@ -409,15 +415,16 @@ def set_protected_mode_state(ex10_ifaces, enable):
         print("Left protected mode successfully")
 
 
-def enter_access_mode(ex10_ifaces, access_pwd):
+def enter_access_mode(py2c, ex10_ifaces, access_pwd):
     """
     Send the access password in two steps to enter the access state
     :param access_pwd: The password to use to enter access mdoe
     """
+    ex10_reader = ex10_ifaces.reader
     helper = ex10_ifaces.helpers
 
     # Send the first word of the password
-    report = send_access_command(ex10_ifaces, (access_pwd[1] << 8) | access_pwd[0])
+    report = send_access_command(py2c, ex10_ifaces, (access_pwd[1] << 8) | access_pwd[0])
     helper.check_gen2_error(report[0])
     print("Access command 1 sent")
     read_reply = report[0]
@@ -425,7 +432,7 @@ def enter_access_mode(ex10_ifaces, access_pwd):
     handle = read_reply.data
 
     # Send the second word of the password
-    report = send_access_command(ex10_ifaces, (access_pwd[3] << 8) | access_pwd[2])
+    report = send_access_command(py2c, ex10_ifaces, (access_pwd[3] << 8) | access_pwd[2])
     helper.check_gen2_error(report[0])
     # Check against the handle from command 1
     if handle[0:1] != read_reply.data[0:1]:
@@ -440,8 +447,6 @@ def run_protected_mode_example():
     reader = ex10_ifaces.reader
     protocol = ex10_ifaces.protocol
     tx_command_manager = py2c.get_ex10_gen2_tx_command_manager()
-    global fifo_printer
-    fifo_printer = py2c.get_ex10_event_fifo_printer()
 
     # Set up to see event fifo activity immediately
     protocol.set_event_fifo_threshold(0)
@@ -449,40 +454,44 @@ def run_protected_mode_example():
     data_type = c_uint8 * 4
     tag_pass_span = BitSpan(data_type.from_buffer(bytearray(NON_ZERO_ARRAY)), 32)
     non_zero_select, protected_params = create_protected_select(tag_pass_span)
-
+    
     # Change the password
     inventory_and_halt(ex10_ifaces, tx_command_manager, None, True)
-    change_access_pwd(ex10_ifaces, NON_ZERO_ACCESS_PWD)
+    change_access_pwd(py2c, ex10_ifaces, NON_ZERO_ACCESS_PWD)
     reader.stop_transmitting()
     time.sleep(2)
 
     # Enter protected mode
     inventory_and_halt(ex10_ifaces, tx_command_manager, None, True)
-    enter_access_mode(ex10_ifaces, NON_ZERO_ACCESS_PWD)
-    set_protected_mode_state(ex10_ifaces=ex10_ifaces, enable=True)
+    enter_access_mode(py2c, ex10_ifaces, NON_ZERO_ACCESS_PWD)
+    set_protected_mode_state(py2c=py2c,
+                             ex10_ifaces=ex10_ifaces,
+                             enable=True)
     reader.stop_transmitting()
     time.sleep(2)
-
+    
     # Ensure we can not see the tag
     inventory_and_halt(ex10_ifaces, tx_command_manager, None, False)
     reader.stop_transmitting()
     time.sleep(2)
 
     print(non_zero_select)
-
+    
     # Now show how to find it again and return to non-protected mode
     inventory_and_halt(ex10_ifaces, tx_command_manager, non_zero_select, True)
-    enter_access_mode(ex10_ifaces, NON_ZERO_ACCESS_PWD)
-    set_protected_mode_state(ex10_ifaces=ex10_ifaces, enable=False)
-    change_access_pwd(ex10_ifaces, ZERO_ACCESS_PWD)
+    enter_access_mode(py2c, ex10_ifaces, NON_ZERO_ACCESS_PWD)
+    set_protected_mode_state(py2c=py2c,
+                             ex10_ifaces=ex10_ifaces,
+                             enable=False)
+    change_access_pwd(py2c, ex10_ifaces, ZERO_ACCESS_PWD)
     reader.stop_transmitting()
     time.sleep(2)
-
+    
     # Ensure we can see it normally now
     inventory_and_halt(ex10_ifaces, tx_command_manager, None, True)
     reader.stop_transmitting()
     time.sleep(2)
-
+ 
     py2c.ex10_typical_board_teardown()
 
 
